@@ -129,3 +129,9 @@ Seated hip anchor is now world1362/762, controller81.4593%/90.1027%; head calibr
 `room-clean-v5.png` is the active base background. Edited with the built-in image generation tool from `room-clean-v4.png`. Removed the trailing plant beside the espresso machine, replaced the window vine with a matching left tieback curtain, and removed the large bottom-right foreground leaves. All other plants and furniture were preserved. Localized chair-clear, album and piano depth layers retain their existing sources because their visible clips do not intersect the edited regions.
 
 Prompt: Remove only the coffee-cabinet plant, window-left vine, and extreme bottom-right leaves. Replace the window-left vine with a cream peach tieback curtain mirroring the existing right curtain. Preserve room framing, furniture positions, other plants, colors and hand-drawn style. Add no characters or text.
+
+## Room background v6
+
+`room-clean-v6.png` is the active base background, edited from v5 with the built-in image generation tool. The two green casement sashes now swing outward into the garden. Outer jamb hinges remain fixed, free edges recede and shorten in perspective, and the interior sill stays clear. Curtains, furniture and the previous plant removals are preserved. Existing localized depth layers do not intersect this edit.
+
+Prompt: Correct only the two olive green glazed casement leaves to open outward away from the interior viewer. Anchor hinges at the outer jambs, shorten distant free edges, slope the upper edges down and lower edges up toward those edges, and preserve the broad central opening. Retain full-room framing, curtains, sill, scenery, furniture, plants, colors and hand-drawn style. Add no characters or text.
