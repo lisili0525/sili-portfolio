@@ -38,7 +38,7 @@ function openEntry(key, trigger) {
 }
 document.addEventListener('click',event=>{const trigger=event.target.closest('[data-entry]');if(trigger)openEntry(trigger.dataset.entry,trigger);});
 document.querySelector('.close').addEventListener('click',()=>dialog.close());
-dialog.addEventListener('click',event=>{if(event.target!==dialog)return;const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();});
+dialog.addEventListener('click',event=>{if(dialog.classList.contains('album-view')){if(!event.target.closest('.album-stage')&&!event.target.closest('.close'))dialog.close();return;}if(event.target!==dialog)return;const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();});
 dialog.addEventListener('close',()=>{window.siliAlbum.destroy();window.siliPiano.detach();origin?.focus();});
 const destinations=document.querySelector('#destinations');
 for(const [key,entry] of Object.entries(entries)){const button=document.createElement('button');button.dataset.entry=key;button.textContent=entry.title;destinations.append(button);}

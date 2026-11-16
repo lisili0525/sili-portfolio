@@ -6,6 +6,8 @@ Updated: November 16, 2026
 
 This update supersedes the older implementation and GitHub status below.
 
+- Album presentation correction: the album is now a large physical book directly over the room, with a transparent full-viewport dialog used only for focus/dismissal. No visible window/panel, headings, introduction, toolbar or spread selectors. Cover depth, page edges, binding and mounted images are styled in CSS. Lower page corners support click and pointer-driven dragging; turns can complete or cancel. Arrow keys, Escape, close and outside-book dismissal remain. Empty pages have no filler copy. Simulated direct-drag/bounds/reduced-motion/cleanup checks pass. Browser host is currently unavailable, so actual browser appearance is not verified.
+
 - Album placement refinement: active room background/foreground is `assets/room-clean-v4.png`. The open album is placed diagonally and slightly left on the table with natural perspective and page curvature. The album hotspot follows its new bounds. The eight-page book interaction and character calibration are unchanged.
 
 - Album milestone: current background is `assets/room-clean-v3.png`. Removed the two remaining decorative wall photos, preserved the couple portrait and calendar, moved the espresso cabinet right, and put an open album on the foreground table. Both room images (base and piano foreground) use v3. Coffee and album hotspots align to the new art. Piano geometry and character scale are unchanged.

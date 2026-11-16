@@ -17,7 +17,7 @@ The first animation uses a single stride pose with a small bob and a seated play
 
 ## Photo album
 
-The open album on the foreground table and the Rachel-and-Sili wall portrait both open an eight-page book (four spreads). Page one contains the approved couple illustration; seven photo spaces await selected personal photos. Use Previous/Next, arrow keys, spread selectors or touch swipes. Reduced motion skips page turns. Configure reviewed images and captions in `albumPages` at the top of `album.js`.
+The open album on the foreground table and the Rachel-and-Sili wall portrait both open an eight-page book (four spreads). Page one contains the approved couple illustration; seven photo spaces await selected personal photos. The book appears directly over the room with no panel, heading or toolbar. Click or drag its lower corners, or use arrow keys. The page follows the drag, then completes the turn or returns. Reduced motion skips page turns. Configure reviewed images and captions in `albumPages` at the top of `album.js`.
 
 The active room artwork is `assets/room-clean-v4.png`: other wall photos are removed and the coffee cabinet is shifted right. Piano geometry and calibrated Sili scale are preserved.
 

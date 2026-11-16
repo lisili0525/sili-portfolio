@@ -38,37 +38,43 @@ html,body{width:100%;height:100%;overflow:hidden;overscroll-behavior:none}body{b
 /* Keep the piano journey visible when cover sizing crops the room on phones. */
 @media(max-width:640px){.room.piano-view{left:0;transform:translate(0,-50%)}}
 
-/* An eight-page album, opened flat with a central binding. */
-dialog.album-view{width:min(1060px,94vw);background:#e8ddc7;border-color:#a68a64}
-.album-view .paper{padding:28px clamp(14px,3vw,38px) 24px}
-.album-view .paper h2{font-size:clamp(24px,3vw,34px);margin:6px 0 8px}
-.album-view .eyebrow{margin:0}
-.album-intro{font-size:13px;margin:0 0 20px}
-.album-book{position:relative;display:grid;grid-template-columns:1fr 1fr;perspective:1600px;isolation:isolate;touch-action:pan-y;min-height:380px;border:7px solid #76533b;border-radius:8px;background:#76533b;box-shadow:0 12px 24px #4d37272b,0 2px 0 #c1a88a}
-.album-book::after{content:'';position:absolute;z-index:4;top:0;bottom:0;left:50%;width:16px;transform:translateX(-50%);background:linear-gradient(90deg,#65493200,#65493235,#fff7df20,#65493200);pointer-events:none}
-.album-view .album-page{margin:0;border:0;position:relative;display:flex;flex-direction:column;align-items:center;min-width:0;padding:28px 28px 42px;background:#fcf5e5;color:#594a39;box-shadow:inset -10px 0 16px -15px #5c4228}
-.album-book>.album-page:nth-child(2){box-shadow:inset 10px 0 16px -15px #5c4228;background:#faf1de}
-.album-photo-mount{width:100%;max-width:min(100%,30dvh);aspect-ratio:231/220;flex-shrink:0;border:10px solid #fffdf4;outline:1px solid #d9ccb4;box-shadow:1px 5px 9px #513a2520;transform:rotate(-2deg);background:#e8dfce}
-.album-page:nth-child(even) .album-photo-mount{transform:rotate(2deg)}
-.album-photo-mount img{display:block;width:100%;height:100%;object-fit:cover}
-.album-portrait{background-image:url('assets/room-clean-v4.png');background-size:723.81% auto;background-position:27.342% 20.11%}
-.album-empty{display:grid;place-items:center;background:linear-gradient(145deg,#eee6d7,#e4d8c3);outline:1px solid #d1c1a6;outline-offset:-20px}
-.album-empty span{font:italic 15px 'Lora',Georgia,serif;color:#9a8a73;text-align:center;padding:20px}
-.album-view .album-page h3{font:400 clamp(15px,2vw,22px)/1.3 'Lora',Georgia,serif;margin:24px 0 5px;text-align:center}
-.album-view .album-page p{font-size:12px;line-height:1.5;text-align:center;margin:0;max-width:260px}
-.album-page-number{position:absolute;bottom:15px;font-size:10px;letter-spacing:2px;color:#a59279}
-.album-navigation{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:22px}
-.album-navigation button,.album-spreads button{border:1px solid #bca485;background:#f8efdf;border-radius:20px;padding:8px 16px;min-height:42px}
-.album-navigation button:disabled{opacity:.35;cursor:default}
-.album-view .album-counter{font-size:12px;margin:0;color:#6b5944;text-align:center}
-.album-spreads{display:flex;justify-content:center;gap:8px;margin-top:12px}
-.album-spreads button{font-size:11px;min-width:44px;padding:5px 10px;min-height:34px}
-.album-spreads button[aria-current=true]{background:#76533b;color:#fff7e7;border-color:#76533b}
-.album-turn-sheet{position:absolute;top:0;bottom:0;width:50%;z-index:3;transform-style:preserve-3d;pointer-events:none}
-.album-turn-sheet .album-page{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:0 0 25px #432d2630}
+/* The album is the object itself: no surrounding window or toolbar. */
+dialog.album-view{position:fixed;inset:0;margin:0;width:100vw;height:100dvh;max-width:none;max-height:none;border:0;padding:0;border-radius:0;background:transparent;box-shadow:none;overflow:hidden;outline:none}
+dialog.album-view::backdrop{background:#24180f65;backdrop-filter:blur(4px)}
+.album-view .paper{position:absolute;inset:0;display:grid;place-items:center;padding:0;pointer-events:none}
+.album-view .eyebrow,.album-view #detail-title{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.album-view #detail-body,.photo-album{width:100%;height:100%;display:grid;place-items:center;pointer-events:none}
+.album-view .close{position:fixed;z-index:10;right:max(18px,env(safe-area-inset-right));top:max(16px,env(safe-area-inset-top));margin:0;float:none;width:38px;height:38px;pointer-events:auto;background:#fff7e5df;border-color:#d5c4a9;box-shadow:0 3px 12px #24180f24}
+.photo-album{animation:album-lift .42s cubic-bezier(.2,.65,.25,1)}
+.album-stage{position:relative;width:min(94vw,128dvh,1360px);aspect-ratio:1.55;transform:rotate(-.8deg);isolation:isolate;pointer-events:auto;filter:drop-shadow(0 28px 30px #160d0a66)}
+.album-book{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;perspective:2200px;isolation:isolate;touch-action:none;user-select:none;-webkit-user-select:none;border:9px solid #65432f;border-radius:8px 14px 14px 8px;background:#65432f;box-shadow:0 2px 0 #e3d1ae,0 4px 0 #f9eed4,0 6px 0 #c6b291,0 9px 0 #f1dfbd,0 13px 0 #503321,0 14px 0 #352316;overflow:visible}
+.album-book::after{content:'';position:absolute;z-index:4;top:0;bottom:0;left:50%;width:38px;transform:translateX(-50%);background:linear-gradient(90deg,#72583b00,#71503918 20%,#4c342c45 48%,#fff8de28 65%,#71503900);pointer-events:none}
+.album-view .album-page{margin:0;border:0;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;min-width:0;min-height:0;padding:clamp(16px,4vw,52px) clamp(14px,3vw,42px);background:linear-gradient(90deg,#f2e4c9,#fcf4df 13%,#fbf2db 78%,#e8d8b9);color:#594a39;border-radius:4px 0 0 5px;box-shadow:inset 0 2px 1px #fff9e8,inset 0 -2px 1px #b8a18155}
+.album-book>.album-page:nth-child(2),.album-turn-sheet .sheet-front{border-radius:0 7px 7px 0;background:linear-gradient(90deg,#e5d3af,#fcf3dd 18%,#fbf2dc 87%,#eadbbf)}
+.album-photo-mount{position:relative;width:85%;max-width:min(100%,53dvh);aspect-ratio:195/187;flex-shrink:0;border:clamp(5px,1vw,13px) solid #fffdf4;outline:1px solid #d9ccb4;box-shadow:1px 5px 8px #513a2524;transform:rotate(-3deg);background:#e8dfce}
+.album-page:nth-child(even) .album-photo-mount{transform:rotate(3deg)}
+.album-photo-mount::before,.album-photo-mount::after{content:'';position:absolute;width:22px;height:22px;pointer-events:none;z-index:1}
+.album-photo-mount::before{top:-8px;left:-8px;background:linear-gradient(135deg,#dbc69f 49%,#b8a17c 50%,transparent 53%)}
+.album-photo-mount::after{bottom:-8px;right:-8px;background:linear-gradient(315deg,#dbc69f 49%,#b8a17c 50%,transparent 53%)}
+.album-photo-mount img{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.album-portrait{background-image:url('assets/room-clean-v4.png');background-size:856.92% auto;background-position:27.913% 21.353%}
+.album-empty{background:linear-gradient(145deg,#e9dfcc,#ded1b7);outline:1px solid #d1c1a6;outline-offset:-12px;opacity:.7}
+.album-empty span{display:none}
+.album-view .album-page h3{font:italic 400 clamp(16px,2.5vw,30px)/1.3 'Lora',Georgia,serif;margin:clamp(12px,2vw,28px) 0 0;text-align:center;transform:rotate(-2deg)}
+.album-view .album-page p{font-size:12px;line-height:1.5;text-align:center;margin:8px 0 0;max-width:260px}
+.album-page-number{position:absolute;bottom:clamp(12px,2vw,25px);font:italic 12px Georgia,serif;color:#a59275}
+.album-corner{position:absolute;z-index:6;bottom:-4px;width:19%;height:30%;min-width:44px;min-height:44px;border:0;background:transparent;border-radius:0;touch-action:none;cursor:grab;pointer-events:auto;outline-offset:5px}
+.album-corner:active{cursor:grabbing}.corner-prev{left:0}.corner-next{right:0}
+.album-corner::after{content:'';position:absolute;bottom:10px;width:clamp(22px,4vw,48px);height:clamp(22px,4vw,48px);opacity:.55;transition:opacity .2s,transform .2s;filter:drop-shadow(1px 1px 2px #5b43272b)}
+.corner-next::after{right:8px;background:linear-gradient(135deg,transparent 47%,#b8a488 49%,#fff4d7 52%,#e0cba6 100%);transform-origin:right bottom}
+.corner-prev::after{left:8px;background:linear-gradient(225deg,transparent 47%,#b8a488 49%,#fff4d7 52%,#e0cba6 100%);transform-origin:left bottom}
+.album-corner:hover::after,.album-corner:focus-visible::after{opacity:1;transform:scale(1.15)}
+.album-corner:disabled{opacity:0;pointer-events:none;cursor:default}
+.album-turn-sheet{position:absolute;top:0;bottom:0;width:50%;z-index:5;transform-style:preserve-3d;pointer-events:none;will-change:transform}
+.album-turn-sheet .album-page{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:0 3px 30px #432d2640}
+.album-turn-sheet::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#38261618,transparent 25%,#38261612);backface-visibility:hidden;pointer-events:none}
 .sheet-back{transform:rotateY(180deg)}
-.turn-forward{left:50%;transform-origin:left center;animation:album-forward .58s ease-in-out forwards}
-.turn-back{left:0;transform-origin:right center;animation:album-back .58s ease-in-out forwards}
-@keyframes album-forward{to{transform:rotateY(-180deg)}}
-@keyframes album-back{to{transform:rotateY(180deg)}}
-@media(max-width:640px){.album-view .paper{padding:30px 12px 20px}.album-book{min-height:300px;border-width:4px}.album-view .album-page{padding:18px 12px 36px}.album-photo-mount{border-width:5px}.album-empty span{font-size:11px;padding:10px}.album-empty{outline-offset:-10px}.album-view .album-page h3{font-size:15px;margin-top:18px}.album-view .album-page p{font-size:10px}.album-navigation button{padding:8px 10px}.album-navigation button span{display:none}.album-intro{font-size:12px}.album-spreads{gap:6px}}
+.turn-forward{left:50%;transform-origin:left center}
+.turn-back{left:0;transform-origin:right center}
+@keyframes album-lift{from{opacity:0;transform:translateY(8%) scale(.88)}to{opacity:1;transform:none}}
+@media(max-width:640px) and (orientation:portrait){.album-stage{width:94vw;aspect-ratio:1.08}.album-book{border-width:6px}.album-view .album-page{padding:18px 12px 36px}.album-photo-mount{width:94%;border-width:5px}.album-view .album-page h3{font-size:16px;margin-top:18px}.album-book::after{width:24px}.album-view .close{right:12px;top:12px}.album-photo-mount::before,.album-photo-mount::after{width:14px;height:14px}.album-photo-mount::before{top:-5px;left:-5px}.album-photo-mount::after{bottom:-5px;right:-5px}}
