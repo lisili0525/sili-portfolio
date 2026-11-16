@@ -2,6 +2,20 @@
 
 Updated: November 16, 2026
 
+## Continuation update — November 16, 2026
+
+This update supersedes the older implementation and GitHub status below.
+
+- Created and verified **private** repository https://github.com/lisili0525/sili-portfolio. `origin` is configured and `main` tracks `origin/main`. Initial prototype commit: `6af4060`.
+- Git author confirmed by Sili: `Sili Li <lslhwzyshpy@gmail.com>`. GitHub CLI is installed at `C:/Program Files/GitHub CLI/gh.exe` and authenticated as `lisili0525`. Network and `.git` writes need approved execution in this environment. Elevated Git uses a per-command `-c safe.directory='C:/Users/lslhw/Sili Website'` because the initial Git directory belongs to the sandbox account. Do not create another repository.
+- Generated `assets/room-clean-v1.png` and `assets/sili-poses-v1.png` using the built-in image tool and approved room reference. See `assets/README.md` for full prompts, dimensions, and limitations. The clean background preserves the portrait and furniture. Cats are temporarily absent pending separate assets.
+- Added `piano.js`: separate Sili layer, approach to bench, seated playing/idle, Stop playing, interruption by another destination, reduced motion, inactivity pause with explicit resume, and an empty personal-recording slot. Dialog content opens immediately; closing it alone leaves the performance running.
+- Sound controls are hidden until a real recording is configured. Future configured audio supports mute/session preference, blocked-playback fallback, explicit resume, and no looping. No substitute recording has been added.
+- Movement currently covers only the piano journey. Other destinations open immediately and return Sili to the center. No floor navigation, keyboard movement, or cat routines yet. Walking is a single stride pose with a small bob; playing is a single pose with a subtle sway.
+- Syntax and simulated lifecycle checks passed. PNG dimensions and transparency were verified. Real browser visual checks remain outstanding: desktop/mobile composition, sprite/bench alignment, keyboard/touch, fullscreen, reduced motion, and actual browser audio policies. Browser automation previously stopped because it could not reliably identify the current Chrome URL; no browser verification is claimed.
+- Next: review piano alignment, then prepare cat assets and implement independent behavior. No website deployment has occurred.
+## Original handoff (historical context)
+
 ## Current stage
 
 The project has an approved visual direction, a detailed PRD, and a working local interaction prototype. It has not been deployed or uploaded to GitHub. Animation implementation has not started.

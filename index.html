@@ -6,6 +6,7 @@
   <meta name="description" content="Step inside Sili Li's little house: mathematics, code, coffee, music, and life.">
   <title>Sili Li — A little house</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="piano.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body>
@@ -15,7 +16,8 @@
   <main>
     <div class="room-frame">
       <section class="room" aria-label="Sili's illustrated room. Select an object to explore.">
-        <img class="room-art" src="concepts/little-house-v3-cartoon.png" alt="A warmly lit cartoon room with Sili holding coffee, a piano, espresso station, technical desk, tennis rackets, a couple portrait, and Viola and Java at the window." width="1672" height="941">
+        <img class="room-art" src="assets/room-clean-v1.png" alt="Sili Li's warmly lit cartoon room, with a piano, espresso station, technical desk, tennis rackets, and a framed couple portrait." width="1672" height="941">
+        <div id="sili" class="sili" data-pose="idle" aria-hidden="true"><div class="sili-sprite"></div></div>
         <button class="object piano" data-entry="music"><span>At the piano</span></button>
         <button class="object coffee" data-entry="coffee"><span>Something brewing</span></button>
         <button class="object photos" data-entry="photos"><span>People & moments</span></button>
@@ -27,6 +29,7 @@
     </div>
     <nav id="destinations" aria-label="Room destinations" hidden></nav>
   </main>
+  <aside id="performance" aria-label="Piano performance" hidden><span id="performance-status" role="status"></span><button id="sound" hidden>Sound on</button><button id="resume-recording" hidden>Play recording</button><button id="stop-playing">Stop playing</button></aside>
   <dialog id="detail" aria-labelledby="detail-title"><button class="close" aria-label="Close and return to the room">×</button><div class="paper"><p class="eyebrow" id="detail-label"></p><h2 id="detail-title"></h2><div id="detail-body"></div></div></dialog>
 </body>
 </html>

@@ -1,28 +1,24 @@
-# Sili's little house
+﻿# Sili's little house
 
-First local interaction prototype. Open `index.html` in a browser. No installation or build step is needed. An internet connection is optional for the Google Fonts; local serif and sans-serif fallbacks are provided.
+A buildless HTML/CSS/JavaScript portfolio. Open `index.html` in a browser; no dependency installation is needed. Google Fonts are optional, with local fallbacks.
 
-## What works
+Private source repository: https://github.com/lisili0525/sili-portfolio
 
-- Seven clickable room areas with keyboard-accessible controls.
-- Focused content dialogs, Escape/close/outside-click dismissal, and focus restoration.
-- A destination list, automatically visible on phones.
-- Responsive room art and reduced-motion styling.
+## Current experience
 
-The room fills the browser viewport without page scrolling. Artwork and hotspots scale together using cover sizing; peripheral objects may be cropped on narrow screens and remain accessible through the floating Explore menu. Long content scrolls only inside its dialog. Browser visual verification of the fullscreen revision is still pending.
+- Edge-to-edge, non-scrolling room with seven accessible object controls and a floating Explore menu.
+- Content dialogs with Escape, close button, outside-click dismissal, and focus restoration.
+- Separate clean room and transparent Sili character layers, preserving the approved cartoon direction.
+- Piano selection opens the music collection immediately while Sili approaches the bench and changes to a playing pose. Closing the dialog leaves him playing. Stop playing or another destination ends the performance.
+- Reduced motion skips walking and uses a still seated pose. Hiding the page pauses the performance; resuming requires a button press.
+- No audio is configured. `pianoRecording` at the top of `piano.js` reserves `src`, `title`, and `note` for Sili's own future recording. With audio supplied, the performance offers mute and explicit playback fallback, remembers mute during the session, and stops at recording end without looping.
 
-## Animation plan
+The first animation uses a single stride pose with a small bob and a seated playing pose with a small sway. Viola and Java are temporarily absent from the scene while their separate assets are prepared; their descriptions remain available. The original concept art is retained under `concepts/`. See `assets/README.md` for asset dimensions and generation prompts.
 
-The concept PNG is a single flattened image. Its people and cats cannot move independently. Do not animate that entire image to simulate character movement.
+## Verification
 
-1. Create a clean room background without Sili or cats; preserve the framed couple portrait.
-2. Export separate transparent character art: Sili idle/walk; Viola sit/walk/window hop; Java sit/walk/play/window watch.
-3. Put the characters in positioned layers above the background and define floor routes, perches, and window entry points.
-4. Start with idle breathing/blinking and simple movement. Add walking frame cycles next, followed by the cats' different behaviors.
-5. Make reduced motion, ambient pause, keyboard access, and interruptible movement part of each step.
+JavaScript syntax and simulated piano lifecycle checks passed: interruption, stop, reduced motion, mute, page inactivity, explicit resume, and recording end. Asset dimensions and true sprite transparency were checked. These checks do not replace real browser visual, keyboard, touch, fullscreen, or audio-policy verification. Desktop and portrait-phone review, especially bench alignment and cropped piano access, remains required before release.
 
-No animation software expertise is required from Sili. The next review should check object placement, content, and mobile usability before producing the separate art assets.
+## Next milestones
 
-## Content still pending
-
-Real photos, detailed project artifacts, milestone dates, coffee journal entries, contact URLs, and a public résumé. No placeholder contact destinations or unavailable music players are published in this prototype.
+Review piano placement and mobile framing; add separate Viola and Java assets and autonomous routines; extend Sili's movement to other destinations and optional floor/keyboard navigation. Public contact links, photos, project evidence, milestones, and recordings still need Sili's input. No website deployment has been performed.
