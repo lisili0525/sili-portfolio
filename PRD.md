@@ -116,14 +116,13 @@ Each entry should identify the question or problem, Sili's contribution, methods
 
 Coursework can support short explorations of modern algebra, analysis, numerical methods, linear algebra, algorithms, and computation. A transcript-style grade list is not required. Treat cybersecurity as an interest unless supporting work is supplied.
 
-### 3.5 Photo wall
+### 3.5 Table photo album
 
-Clicking the wall opens an intimate printed-photo collection. Photos can lift forward, overlap, or flip with scroll gestures within the collection. Provide previous/next buttons, keyboard controls, and swipe alternatives; do not capture scrolling globally.
+Only the framed Rachel-and-Sili portrait stays on the wall. Remove the other wall photographs; retain the calendar as a calendar. An open photo album lies flat on the foreground round table and is clickable. The coffee/espresso cabinet sits farther right, leaving visible space beside the piano.
 
-Suggested launch collection: seven photos, adjustable after selection. Mix tennis, home coffee or cafés, piano/music, and meaningful everyday or travel moments. Use short captions explaining why each matters. Photos of Sili may appear inside the collection at his discretion; the initial introduction uses the cartoon character.
+Clicking the album opens an eight-page book, shown as four two-page spreads. Provide animated page turns, Previous/Next buttons, left/right arrow keys, swipe alternatives, page numbers and a live spread counter. Disable page-turn motion for reduced motion. Escape, the close icon and outside-click return to the room. The wall portrait also opens the album, starting at page one.
 
-Sili has many photos but has not selected the public set. All real photos and captions remain pending. Include only photos Sili chooses for public sharing, with permission for identifiable companions where appropriate.
-
+Page one uses the existing approved couple illustration, clearly described as an illustration. The remaining seven page spaces await Sili's selected photographs and captions; do not invent personal photos or memories. Keep each page configurable with a reviewed image, accessible description and caption. Scrolling stays inside the content dialog.
 ### 3.6 Tennis equipment
 
 A bucket of tennis balls and a few rackets open a small tennis vignette: a short personal note and selected photos. Link related images to the photo collection rather than duplicating a separate gallery. No claims about rankings, competition, or playing history without supplied details.

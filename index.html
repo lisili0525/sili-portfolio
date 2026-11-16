@@ -7,6 +7,7 @@
   <title>Sili Li — A little house</title>
   <link rel="stylesheet" href="styles.css">
   <script src="piano.js" defer></script>
+  <script src="album.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body>
@@ -16,12 +17,13 @@
   <main>
     <div class="room-frame">
       <section class="room" aria-label="Sili's illustrated room. Select an object to explore.">
-        <img class="room-art" src="assets/room-clean-v2.png" alt="Sili Li's warmly lit cartoon room, with a piano, espresso station, technical desk, tennis rackets, and a framed couple portrait." width="1672" height="941">
+        <img class="room-art" src="assets/room-clean-v3.png" alt="Sili Li's warmly lit cartoon room, with a piano, espresso station, technical desk, tennis rackets, a framed couple portrait, and an open photo album on the foreground table." width="1672" height="941">
         <div id="sili" class="sili" data-pose="idle" aria-hidden="true"><div class="sili-sprite"></div></div>
-        <img class="piano-foreground" src="assets/room-clean-v2.png" alt="" aria-hidden="true" width="1672" height="941">
+        <img class="piano-foreground" src="assets/room-clean-v3.png" alt="" aria-hidden="true" width="1672" height="941">
         <button class="object piano" data-entry="music"><span>At the piano</span></button>
         <button class="object coffee" data-entry="coffee"><span>Something brewing</span></button>
-        <button class="object photos" data-entry="photos"><span>People & moments</span></button>
+        <button class="object photos" data-entry="photos" data-album-first="true"><span>Rachel & me</span></button>
+        <button class="object album" data-entry="photos"><span>Open the photo album</span></button>
         <button class="object calendar" data-entry="milestones"><span>Along the way</span></button>
         <button class="object tennis" data-entry="tennis"><span>On the court</span></button>
         <button class="object desk" data-entry="notebook"><span>Inside my notebook</span></button>

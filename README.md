@@ -6,7 +6,7 @@ Private source repository: https://github.com/lisili0525/sili-portfolio
 
 ## Current experience
 
-- Edge-to-edge, non-scrolling room with seven accessible object controls and a floating Explore menu.
+- Edge-to-edge, non-scrolling room with eight accessible object controls and a floating Explore menu.
 - Content dialogs with Escape, close button, outside-click dismissal, and focus restoration.
 - Separate clean room and transparent Sili character layers, preserving the approved cartoon direction.
 - Piano selection opens the music collection immediately while Sili approaches the bench and changes to a playing pose. Closing the dialog leaves him playing. Stop playing or another destination ends the performance.
@@ -14,6 +14,12 @@ Private source repository: https://github.com/lisili0525/sili-portfolio
 - No audio is configured. `pianoRecording` at the top of `piano.js` reserves `src`, `title`, and `note` for Sili's own future recording. With audio supplied, the performance offers mute and explicit playback fallback, remembers mute during the session, and stops at recording end without looping.
 
 The first animation uses a single stride pose with a small bob and a seated playing pose facing into the keyboard. Viola and Java are temporarily absent from the scene while their separate assets are prepared; their descriptions remain available. The original concept art is retained under `concepts/`. See `assets/README.md` for asset dimensions and generation prompts.
+
+## Photo album
+
+The open album on the foreground table and the Rachel-and-Sili wall portrait both open an eight-page book (four spreads). Page one contains the approved couple illustration; seven photo spaces await selected personal photos. Use Previous/Next, arrow keys, spread selectors or touch swipes. Reduced motion skips page turns. Configure reviewed images and captions in `albumPages` at the top of `album.js`.
+
+The active room artwork is `assets/room-clean-v3.png`: other wall photos are removed and the coffee cabinet is shifted right. Piano geometry and calibrated Sili scale are preserved.
 
 ## Verification
 

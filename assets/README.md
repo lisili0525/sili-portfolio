@@ -1,6 +1,16 @@
 # Animation assets
 
-Current room: `room-clean-v2.png` (1672 × 941), superseding v1. The piano is taller and wider, with a higher keyboard and larger, lower bench. Two small prints moved to the central wall to make room. Both the background and clipped foreground use this same file.
+## Current room and album
+
+`room-clean-v3.png` is the active 1672 × 941 room background and furniture foreground. The decorative wall photographs are removed, the couple portrait and calendar remain, the espresso cabinet is shifted about 125px right, and an open album lies on the foreground table. Piano geometry and character calibration are preserved. The miniature album images in the room remain decorative concept illustrations, not selected personal photographs.
+
+Generated with the built-in image tool, with v2 as edit target. Final prompt:
+
+> Use case: precise-object-edit. Edit this exact 1672x941 cartoon room background, keep full canvas and approved warm simplified outlined cartoon style. Make three specific changes: (1) remove BOTH small clipped landscape prints on central wall around x680..885 y375..475; fill with plain matching wall. The framed Rachel-and-Sili couple portrait at x394..625 y145..365 MUST stay unchanged. Keep calendar with its landscape illustration, since it is a calendar, not a photograph. (2) Move the entire espresso coffee cabinet and everything on it about 125 pixels RIGHT, from x380..690 to x505..815. Preserve its size, espresso machine, grinder, cup, bean jar and plant; reconstruct wall/floor where it stood. Leave a clear visible gap from enlarged piano. (3) On foreground round wooden coffee table at bottom center, replace the stack of closed books with a prominent OPEN photo album lying flat, two cream pages spread on the tabletop in perspective, with a few simple photo mounts, no legible text. Album centered around x885 y885 and approximately 260 pixels wide, fully visible above bottom edge. Keep the table plant to the right of album; give album enough exposed tabletop to be clearly clickable. Do not alter enlarged piano, bench, their exact geometry, window, tennis equipment, desk or other furniture. No people/cats. Do not add other wall photos. Preserve composition, colors and lighting elsewhere; no crop or zoom.
+
+The album UI uses the existing framed illustration through CSS cropping, plus seven empty photo mounts. Add reviewed personal images through `albumPages` in `album.js`.
+
+Previous room: `room-clean-v2.png` (1672 × 941), superseding v1. The piano is taller and wider, with a higher keyboard and larger, lower bench. Two small prints moved to the central wall to make room. V3 removes these prints and retains the enlarged piano.
 
 Character scale is measured from the opaque head silhouettes, rather than the differently padded sprite frames. Standing and walking at 58% room height have a 197.5px head width; seated idle and playing at 53.35% produce the same width. The frame height changes for source calibration, not to make Sili smaller when sitting. Height transitions are removed. Three local layer renders were visually reviewed; browser verification remains outstanding.
 

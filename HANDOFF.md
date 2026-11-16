@@ -6,6 +6,9 @@ Updated: November 16, 2026
 
 This update supersedes the older implementation and GitHub status below.
 
+- Album milestone: current background is `assets/room-clean-v3.png`. Removed the two remaining decorative wall photos, preserved the couple portrait and calendar, moved the espresso cabinet right, and put an open album on the foreground table. Both room images (base and piano foreground) use v3. Coffee and album hotspots align to the new art. Piano geometry and character scale are unchanged.
+- `album.js` implements eight individual pages/four spreads, page-turn animation, buttons, arrow keys, touch swipes, spread selectors and reduced motion. The portrait opens page one; the table album and Explore entry remember the last spread. Page one contains the approved illustration; the other seven are empty photo mounts pending reviewed images/captions. Closing or switching views cancels turn timers and removes handlers. Navigation/lifecycle simulations passed; real browser visual/touch checks remain pending.
+
 - Proportion correction: the active background is now `assets/room-clean-v2.png`, with a larger upright piano, raised keyboard and repositioned/larger bench. The two small prints moved to the central wall to clear the piano. The framed portrait and overall room style remain. Standing/walking use 58% source-frame height; seated poses use 53.35% to compensate for different source padding and head proportions. All four head silhouettes measure approximately 197.5 room pixels wide. Never restore the old 34% seated height or animate character size during movement. The piano hotspot and furniture foreground mask match v2. Standing, playing and seated idle layer compositions were rendered and visually inspected; actual browser verification remains pending.
 
 - Created and verified **private** repository https://github.com/lisili0525/sili-portfolio. `origin` is configured and `main` tracks `origin/main`. Initial prototype commit: `6af4060`.
