@@ -21,7 +21,7 @@ The first animation uses a single stride pose with a small bob and a rear-facing
 
 The open album on the foreground table and the Rachel-and-Sili wall portrait both open an eight-page book (four spreads). Slot 1 contains the supplied festive-photo cartoon; slot 3 contains the supplied tennis-photo cartoon. The seaside cartoon is in slot 4, with the two cat cartoons together in slots 5–6. Slot 2 holds the family portrait; slots 7–8 show Sili bench pressing and Rachel dancing hip-hop. All eight spaces are filled. The original wall portrait stays only on the wall. The book appears directly over the room with no panel, heading or toolbar. Sili approaches the foreground table, reaches for the album and lifts it before the book opens. Reduced motion opens it immediately. Click or drag its lower corners, or use arrow keys. The page follows the drag, then completes the turn or returns. Reduced motion skips page turns. Configure reviewed images and captions in `albumPages` at the top of `album.js`.
 
-The active room artwork is `assets/room-clean-v6.png`: the coffee-cabinet plant and bottom-right leaves are removed, and matching tieback curtains frame the outward-opening casement window. Other wall photos are removed and the coffee cabinet is shifted right. Piano geometry and calibrated Sili scale are preserved.
+The active room artwork is `assets/room-clean-v7.png`: the coffee-cabinet plant and bottom-right leaves are removed, and matching tieback curtains frame the outward-opening casement window. Other wall photos are removed and the coffee cabinet is shifted right. Piano geometry and calibrated Sili scale are preserved.
 
 ## Verification
 

@@ -135,3 +135,9 @@ Prompt: Remove only the coffee-cabinet plant, window-left vine, and extreme bott
 `room-clean-v6.png` is the active base background, edited from v5 with the built-in image generation tool. The two green casement sashes now swing outward into the garden. Outer jamb hinges remain fixed, free edges recede and shorten in perspective, and the interior sill stays clear. Curtains, furniture and the previous plant removals are preserved. Existing localized depth layers do not intersect this edit.
 
 Prompt: Correct only the two olive green glazed casement leaves to open outward away from the interior viewer. Anchor hinges at the outer jambs, shorten distant free edges, slope the upper edges down and lower edges up toward those edges, and preserve the broad central opening. Retain full-room framing, curtains, sill, scenery, furniture, plants, colors and hand-drawn style. Add no characters or text.
+
+## Room background v7
+
+`room-clean-v7.png` is the active base background, edited from v6 with the built-in image generation tool. Window width is reduced slightly, targeting approximately five percent, while the original height, vertical placement, outward-opening sashes and full-length curtains are preserved. The larger window reductions were discarded. Existing localized depth layers do not intersect the changed side margins.
+
+Prompt: Narrow the original wide window assembly only very slightly, to approximately 95 percent of its original width. Move each side inward by approximately 15 pixels on the full canvas. Preserve original height and top/bottom positions exactly. Keep a broad horizontal opening, outward-opening sash perspective and natural curtain folds. Preserve all surrounding furniture, room framing, plants, colors and hand-drawn style. Add no characters or text.
