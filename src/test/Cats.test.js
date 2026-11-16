@@ -41,7 +41,7 @@ it('both cats explore every requested surface, return safely and keep Java indoo
   expect(departures).toBeGreaterThanOrEqual(2);expect(returns).toBeGreaterThanOrEqual(2);
   for(const pose of ['walk','hop','groom','sleep','sit','watch'])expect(poses.has(pose),pose).toBe(true);
   controller.destroy();expect(frames.size).toBe(0);
-});
+},30000);
 it('keeps occupied furniture clear, still explores other stops, and resets safely for reduced motion',()=>{
   const {root,controller,elements}=setup(31);
   root.querySelector('.room').dataset.activity='notebook';

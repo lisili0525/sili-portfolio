@@ -72,6 +72,8 @@ Small content windows use warm cream with readable opaque text; music mode place
 
 ## Validation and remaining work
 
+The thirty-minute cat simulation has an explicit 30-second test timeout for slower CI runners, retaining every simulated step and assertion.
+
 Current release: 40 Vitest tests across six suites pass; production build and git diff --check pass. Coverage includes arrival-gated dialogs, immediate uninterrupted piano browsing, stale/cancelled/repeated requests, album turns/pickup, music lifecycle, cat meetings/reservations, window access and scene state. Native local-browser review confirmed normal arrival gating, ongoing piano playing while coffee content is open, removal of floating labels, visual mask fixes and corrected calendar scale.
 
 This does not establish exhaustive behavior on every machine. Remaining manual QA includes representative Safari/Chrome/mobile fullscreen and touch/drag, audible autoplay policies, all animated mask/depth combinations and final art approval. Optional manual navigation, browser-history/deep links, additional recordings and richer frame animation remain future work. Continue refining existing interactions before unrelated additions.
