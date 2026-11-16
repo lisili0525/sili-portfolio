@@ -1,4 +1,6 @@
 import { memo } from "react";
+import { ObjectHotspot } from "./ObjectHotspot.jsx";
+import { hotspots } from "../data/hotspots.js";
 
 export const Room = memo(function Room({ roomRef, onEntry }) {
   return (
@@ -18,13 +20,7 @@ export const Room = memo(function Room({ roomRef, onEntry }) {
         <img className="table-foreground" src="assets/room-clean-v4.png" alt="" aria-hidden="true" width="1672" height="941" />
         <img className="table-empty-foreground" src="assets/room-table-empty-v1.png" alt="" aria-hidden="true" width="1672" height="941" />
         <img className="piano-foreground" src="assets/room-clean-v4.png" alt="" aria-hidden="true" width="1672" height="941" />
-        <button type="button" className="object piano" aria-label="At the piano" data-entry="music" onClick={(event) => onEntry("music", event.currentTarget)}><span>At the piano</span></button>
-        <button type="button" className="object coffee" aria-label="Something brewing" data-entry="coffee" onClick={(event) => onEntry("coffee", event.currentTarget)}><span>Something brewing</span></button>
-        <button type="button" className="object photos" aria-label="Rachel & me" data-entry="photos" data-album-first="true" onClick={(event) => onEntry("photos", event.currentTarget)}><span>Rachel & me</span></button>
-        <button type="button" className="object album" aria-label="Open the photo album" data-entry="photos" onClick={(event) => onEntry("photos", event.currentTarget)}><span>Open the photo album</span></button>
-        <button type="button" className="object calendar" aria-label="Along the way" data-entry="milestones" onClick={(event) => onEntry("milestones", event.currentTarget)}><span>Along the way</span></button>
-        <button type="button" className="object tennis" aria-label="On the court" data-entry="tennis" onClick={(event) => onEntry("tennis", event.currentTarget)}><span>On the court</span></button>
-        <button type="button" className="object desk" aria-label="Inside my notebook" data-entry="notebook" onClick={(event) => onEntry("notebook", event.currentTarget)}><span>Inside my notebook</span></button>
+        {hotspots.map(hotspot => <ObjectHotspot key={hotspot.id} hotspot={hotspot} onEntry={onEntry} />)}
       </section>
     </div>
   </main>
