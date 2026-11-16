@@ -2,7 +2,7 @@
 
 A buildless HTML/CSS/JavaScript portfolio. Open `index.html` in a browser; no dependency installation is needed. Google Fonts are optional, with local fallbacks.
 
-Private source repository: https://github.com/lisili0525/sili-portfolio
+Source repository: https://github.com/lisili0525/sili-portfolio
 
 ## Current experience
 
@@ -29,7 +29,7 @@ JavaScript syntax and simulated piano lifecycle checks passed: interruption, sto
 
 ## Next milestones
 
-Review the physical album, cat routes, piano placement and mobile framing; review the new destination activities and later add optional floor/keyboard navigation. Public contact links, photos, project evidence, milestones, and recordings still need Sili's input. No website deployment has been performed.
+Review the physical album, cat routes, piano placement and mobile framing; review the new destination activities and later add optional floor/keyboard navigation. Public contact links, photos, project evidence, milestones, and recordings still need Sili's input. GitHub Pages deployment is configured below.
 
 Controlled logic checks are in `checks/album.cjs` and `checks/cats.cjs` (run from the repository root with Node). They passed in the available JavaScript runtime; they do not verify browser layout, touch or focus. Browser access was unavailable in the latest continuation.
 
@@ -46,3 +46,9 @@ Latest review: both sleeping cats were checked in original and mirrored facing w
 ## Responsive sizing
 
 The complete 1672 × 941 room fits inside the viewport, with borders when screen proportions differ. Artwork, characters and hotspots scale together. CSS recalculates sizing on window resizing, orientation changes and fullscreen transitions. Standard `vh` declarations precede dynamic `dvh` units for older browsers. Fullscreen supports both standard and WebKit methods and stays hidden when unsupported. Chrome, Edge, Firefox and Safari on desktop, plus mobile browsers, are the intended targets; real-device visual and interaction review is still required.
+
+## Deployment
+
+Public website: https://lisili0525.github.io/sili-portfolio/
+
+Pushing to `main` runs the interaction checks, builds the public files with `node scripts/build-static.cjs`, and deploys `dist/` through GitHub Actions. The artifact includes the seven website files and referenced assets, excluding project notes and unused artwork. You can also run the Deploy personal website workflow manually. A custom domain can be connected later through the repository’s Pages settings and your domain provider’s DNS settings.
