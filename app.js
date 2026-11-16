@@ -84,24 +84,31 @@ document.addEventListener('focusin', event => {
 
 const fullscreen=document.querySelector('#fullscreen');
 const screenStatus=document.querySelector('#screen-status');
-if(document.fullscreenEnabled && document.documentElement.requestFullscreen){
+const screenRoot=document.documentElement || {};
+const requestScreen=screenRoot.requestFullscreen || screenRoot.webkitRequestFullscreen;
+const exitScreen=document.exitFullscreen || document.webkitExitFullscreen;
+const activeScreen=()=>document.fullscreenElement || document.webkitFullscreenElement;
+const screenEnabled=document.fullscreenEnabled ?? document.webkitFullscreenEnabled;
+if(screenEnabled && requestScreen && exitScreen){
   fullscreen.hidden=false;
   fullscreen.addEventListener('click',async()=>{
     fullscreen.disabled=true;
     try{
-      if(document.fullscreenElement)await document.exitFullscreen();
-      else await document.documentElement.requestFullscreen();
+      if(activeScreen())await exitScreen.call(document);
+      else await requestScreen.call(screenRoot);
       screenStatus.textContent='';
     }catch(error){
       screenStatus.textContent='Fullscreen is unavailable in this browser view. Try opening the page in a separate browser window.';
       fullscreen.title=screenStatus.textContent;
     }finally{fullscreen.disabled=false;}
   });
-  document.addEventListener('fullscreenchange',()=>{
-    const active=Boolean(document.fullscreenElement);
+  const updateScreen=()=>{
+    const active=Boolean(activeScreen());
     fullscreen.setAttribute('aria-pressed',String(active));
     fullscreen.setAttribute('aria-label',active?'Exit fullscreen':'Enter fullscreen');
     fullscreen.querySelector('.fullscreen-label').textContent=active?'Exit fullscreen':'Fullscreen';
     fullscreen.title=active?'Exit fullscreen (Esc)':'Enter fullscreen';
-  });
+  };
+  document.addEventListener('fullscreenchange',updateScreen);
+  document.addEventListener('webkitfullscreenchange',updateScreen);
 }

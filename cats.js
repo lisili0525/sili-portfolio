@@ -1,7 +1,6 @@
 // Room coordinates are percentages, measured at each cat's paws.
 (() => {
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
-  const button = document.querySelector('#ambient');
   const dialog = document.querySelector('#detail');
   const random = (min, max) => min + Math.random() * (max - min);
   const rest = (pose, min, max = min) => ({ pose, duration: random(min, max) });
@@ -15,8 +14,6 @@
     y: random(83, 86)
   };
   const spawns = [firstSpawn, secondSpawn];
-  let paused = false;
-  try { paused = sessionStorage.getItem('sili-ambient-paused') === 'true'; } catch {}
   const cats = ['viola', 'java'].map((name, i) => ({
     name, layer: document.querySelector(`#${name}`),
     el: document.querySelector(`#${name} .cat`),
@@ -100,10 +97,6 @@
   }
 
   function update() {
-    button.textContent = paused ? 'Resume cats' : 'Pause cats';
-    button.setAttribute('aria-pressed', String(paused));
-    button.disabled = motion.matches;
-    button.title = motion.matches ? 'Cats are resting with reduced motion enabled' : 'Pause or resume ambient cat movement';
     if (motion.matches) {
       cats.forEach((cat, i) => {
         cat.queue = []; cat.action = null; cat.outside = false;
@@ -113,17 +106,12 @@
       });
     }
   }
-  button.addEventListener('click', () => {
-    paused = !paused;
-    try { sessionStorage.setItem('sili-ambient-paused', String(paused)); } catch {}
-    update();
-  });
   motion.addEventListener('change', update);
   let previous;
   function frame(now) {
     const dt = previous === undefined ? 0 : Math.min((now - previous) / 1000, .05);
     previous = now;
-    if (!paused && !motion.matches && !document.hidden && !dialog.open) cats.forEach(cat => tick(cat, dt));
+    if (!motion.matches && !document.hidden && !dialog.open) cats.forEach(cat => tick(cat, dt));
     requestAnimationFrame(frame);
   }
   cats.forEach(cat => { cat.el.dataset.pose = 'sit'; paint(cat); });

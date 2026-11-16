@@ -7,7 +7,7 @@ function element() {
     classList: { toggle() {}, remove() {} }, events: {},
     addEventListener(name, fn) { this.events[name] = fn; }, setAttribute() {} };
 }
-const nodes = Object.fromEntries(['#ambient', '#detail', '#viola', '#java', '#viola .cat', '#java .cat'].map(id => [id, element()]));
+const nodes = Object.fromEntries(['#detail', '#viola', '#java', '#viola .cat', '#java .cat'].map(id => [id, element()]));
 const motion = { matches: false, addEventListener(name, fn) { this.change = fn; } };
 let callback;
 let seed = 17;
@@ -35,10 +35,6 @@ document.hidden = true;
 advance(10);
 assert.deepEqual(positions(), initial, 'inactive page must freeze both cats');
 document.hidden = false;
-nodes['#ambient'].events.click();
-advance(10);
-assert.deepEqual(positions(), initial, 'manual pause must freeze both cats');
-nodes['#ambient'].events.click();
 let departures = 0, returns = 0, wasOutside = false, javaWatches = 0;
 const foregroundFrames = [0, 0];
 const poses = new Set();
@@ -68,5 +64,4 @@ const resting = positions();
 advance(20);
 assert.deepEqual(positions(), resting, 'reduced motion stays still');
 assert.equal(nodes['#viola'].hidden, false);
-assert.equal(nodes['#ambient'].disabled, true);
-console.log(`PASS: random separated spawns; foreground time ${foregroundFrames.map(n => Math.round(n / 240)).join('/')}%; ${departures} departures, ${returns} returns; pause, inactivity, reduced motion.`);
+console.log(`PASS: random separated spawns; foreground time ${foregroundFrames.map(n => Math.round(n / 240)).join('/')}%; ${departures} departures, ${returns} returns; dialog suspension, inactivity, reduced motion.`);
