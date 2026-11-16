@@ -200,3 +200,17 @@ dialog.album-view::backdrop{background:#24180f65;backdrop-filter:blur(4px)}
 .sili[data-pose="activity"][data-activity="desk"][data-desk-mode="computer"] .sheet-computer{visibility:visible}
 .sili[data-pose="activity"][data-activity="desk"][data-desk-mode="writing"] .sheet-writing{visibility:visible}
 .sili[data-pose="activity"][data-activity="interactions"] .sheet-interactions{visibility:visible}
+
+/* Transparent controls register with the three painted beam icons. */
+.room-contact{position:absolute;inset:0;z-index:30;pointer-events:none}
+.contact-links{position:absolute;left:85.75%;top:1.4%;width:12.6%;height:5.5%;display:flex;justify-content:space-between;pointer-events:auto}
+.contact-links>a,.contact-links>button{position:relative;display:block;width:28%;height:100%;min-height:28px;border:1px solid transparent;border-radius:10px;background:transparent;text-decoration:none;transition:background .18s,box-shadow .18s,transform .18s,border-color .18s}
+.contact-links span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.contact-links>a:hover,.contact-links>button:hover,.contact-links>button[aria-expanded="true"]{background:#fff0c526;border-color:#ffe1a770;box-shadow:0 0 15px #ffe4a64d;transform:translateY(-2px)}
+.contact-links>a:active,.contact-links>button:active{transform:translateY(1px) scale(.96)}
+.contact-links>a:focus-visible,.contact-links>button:focus-visible{outline:2px solid #fff2bc;outline-offset:2px}
+.email-card{position:absolute;right:2%;top:8.5%;width:310px;max-width:calc(100% - 24px);padding:20px 22px 12px;border:1px solid #d5c4a9;border-radius:12px;background:#faf3e6fa;box-shadow:0 10px 35px #35241340;pointer-events:auto;animation:contact-reveal .18s ease-out}
+.email-card p{margin:0 0 9px}.email-address{font-size:15px;user-select:text;overflow-wrap:anywhere;text-underline-offset:4px}.email-actions{display:flex;align-items:center;gap:14px;margin-top:18px;font-size:12px}.email-actions button{padding:6px 9px;border:1px solid #d5c4a9;border-radius:7px;background:#eee4d1}.email-card .email-status{font-size:12px;min-height:20px;margin:8px 0 0;color:#596148}
+@keyframes contact-reveal{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:700px){.contact-links{left:auto;right:12px;top:12px;width:auto;height:44px;gap:4px;padding:0 4px;background:#faf3e6f0;border:1px solid #d5c4a9;border-radius:12px}.contact-links>a,.contact-links>button{width:auto;min-width:48px;display:grid;place-items:center;padding:0 8px;font-size:12px}.contact-links span{position:static;width:auto;height:auto;overflow:visible;clip-path:none}.email-card{right:12px;top:66px}}
+@media(prefers-reduced-motion:reduce){.contact-links>a,.contact-links>button{transition:none}.email-card{animation:none}.contact-links>a:hover,.contact-links>button:hover,.contact-links>button[aria-expanded="true"],.contact-links>a:active,.contact-links>button:active{transform:none}}

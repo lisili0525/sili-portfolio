@@ -62,7 +62,7 @@ describe('shared person/cat meetings',()=>{
   });
   it('starts a short Java play session from the existing introduction, then releases both participants',async()=>{
     render(<App />);fireEvent.click(screen.getByRole('button',{name:/Explore/}));
-    fireEvent.click(within(screen.getByRole('navigation')).getByRole('button',{name:'Viola & Java'}));
+    fireEvent.click(within(screen.getByRole('navigation',{name:'Room destinations'})).getByRole('button',{name:'Viola & Java'}));
     await act(async()=>advance(25));
     fireEvent.click(screen.getByRole('button',{name:'Play with Java'}));
     waitFor(contact,25);expect(actor().dataset.catPhase).toBe('playing');
@@ -91,7 +91,7 @@ describe('shared person/cat meetings',()=>{
 describe('interaction interruptions',()=>{
   async function play(){
     fireEvent.click(screen.getByRole('button',{name:/Explore/}));
-    fireEvent.click(within(screen.getByRole('navigation')).getByRole('button',{name:'Viola & Java'}));
+    fireEvent.click(within(screen.getByRole('navigation',{name:'Room destinations'})).getByRole('button',{name:'Viola & Java'}));
     await act(async()=>advance(25));
     fireEvent.click(screen.getByRole('button',{name:'Play with Java'}));waitFor(contact,25);
   }

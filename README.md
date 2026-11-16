@@ -48,7 +48,7 @@ The complete room fits inside the viewport with borders when screen proportions 
 
 ## Build and deployment
 
-Live site: https://lisili0525.github.io/sili-portfolio/
+Live site: https://silispace.net/
 
 The GitHub Actions workflow installs locked dependencies, runs tests and builds with Vite before deploying `dist/`. Relative build URLs support both GitHub Pages project paths and custom-domain roots. The artwork plugin copies only runtime-referenced artwork; Vite handles CSS sprite assets. Project notes, checks, unused artwork and local dependencies are excluded from the deployment artifact. `node scripts/build-static.cjs` remains a compatibility entry point for the Vite build.
 

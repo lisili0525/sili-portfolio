@@ -1,4 +1,5 @@
 import { memo, useState } from 'react';
+import { ContactLinks } from './ContactLinks.jsx';
 import { CoffeeStation } from '../scene/modules/CoffeeStation.jsx';
 import { RoomWindow } from '../scene/modules/RoomWindow.jsx';
 import { RoomLighting } from '../scene/modules/RoomLighting.jsx';
@@ -18,7 +19,7 @@ export const Room=memo(function Room({roomRef,onEntry}){
       <RoomWindow windowOpen={windowOpen} onWindowChange={setWindowOpen} curtainsOpen={curtainsOpen} onCurtainsChange={setCurtainsOpen} repair={false} />
       <TennisCorner onEntry={onEntry} /><WindowStool /><Sofa />
       <CoffeeTable onEntry={onEntry} /><Workstation onEntry={onEntry} /><Plants /><ToyMouse />
-      <WorkingChair /><Residents onEntry={onEntry} /><RoomDepthLayers />
+      <WorkingChair /><Residents onEntry={onEntry} /><RoomDepthLayers /><ContactLinks />
     </section>
   </div></main>;
 });

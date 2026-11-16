@@ -181,7 +181,7 @@ Potential starting milestones include graduation and the research internship. Si
 
 - Keep “Sili Li” and a short introduction visible or immediately accessible without a hidden game mechanic.
 - Provide persistent, discreet controls for GitHub, LinkedIn, email, and résumé, with accessible names and understandable focus/hover states.
-- Exact profile URLs and preferred public email are pending. Do not infer them from usernames or automatically publish résumé contact details.
+- Approved public contacts: lslhwzyshpy@gmail.com, https://github.com/lisili0525 and https://www.linkedin.com/in/sili-li-3b7337150/. The three painted upper-right icons have aligned interactive controls. GitHub/LinkedIn open new tabs; email toggles a contact card with mailto and clipboard actions. Hover/press feedback respects reduced motion; small screens use readable text controls.
 - Use a web-ready résumé supplied or reviewed by Sili before release.
 
 ### 3.10 Opening and closing content
@@ -256,7 +256,7 @@ The piano interaction and supplied “One Summer’s Day” audio are implemente
 | Selected milestones and verified dates | Pending |
 | Personal notes for the three music pieces | Optional, pending |
 | Personal music recordings | One Summer’s Day supplied and integrated; more tracks optional, audible browser QA pending |
-| GitHub, LinkedIn, preferred email, public résumé | Pending |
+| GitHub, LinkedIn, preferred email, public résumé | Contact links supplied and implemented; public résumé pending |
 
 Reference documents: Sili_Li_Academic_Resume.pdf and Math Coursework - Sili Li.pdf, supplied by Sili from his Graduate Application folder. These inform content; they are not automatically public website assets.
 
