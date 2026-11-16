@@ -8,7 +8,7 @@ Owner: Sili Li
 
 This section is authoritative for the current release. Implementation details and operational handoff are in HANDOFF.md. Code and project documents remain English-only.
 
-- Delivery: React 19 with Vite, a static dist build, and a GitHub Pages workflow triggered by main. The user authorized publishing all current improvements. The website is https://silispace.net/. The owner configured this custom domain on November 16, 2026; hosting remains GitHub Pages.
+- Delivery: React 19 with Vite, a static dist build, and a GitHub Pages workflow triggered by main. Every future push and deployment requires explicit owner approval; see Publishing approval. The website is https://silispace.net/. The owner configured this custom domain on November 16, 2026; hosting remains GitHub Pages.
 - Scene: all furniture, decorations, residents, lighting and depth passes have independent module ownership and shared placement/support metadata. Preserve the approved composition, outward-opening window, matching curtains and revised foliage/window dimensions. Modularization enables incremental animation, but large rearrangements still require artwork/occlusion review.
 - Window: glass and curtains open/close independently through the illustration. Open glass enables breeze; closed glass stops it. Drawn curtains remove direct sunlight. Cats cannot cross closed glass or drawn curtains; outdoor Viola waits. Protect in-progress portal crossings.
 - Effects: coffee preparation coordinates steam/flow/pulse; lamp toggles, camera flashes, and paper/screen/plant/light effects remain subtle. The bookcase plant remains static until its isolated artwork is clean. All decorative motion respects inactivity and reduced motion.
@@ -181,7 +181,7 @@ Potential starting milestones include graduation and the research internship. Si
 
 - Keep “Sili Li” and a short introduction visible or immediately accessible without a hidden game mechanic.
 - Provide persistent, discreet controls for GitHub, LinkedIn, email, and résumé, with accessible names and understandable focus/hover states.
-- Approved public contacts: lslhwzyshpy@gmail.com, https://github.com/lisili0525 and https://www.linkedin.com/in/sili-li-3b7337150/. The three painted upper-right icons have aligned interactive controls. GitHub/LinkedIn open new tabs; email toggles a contact card with mailto and clipboard actions. Hover/press feedback respects reduced motion; small screens use readable text controls.
+- Approved public profiles: https://github.com/lisili0525 and https://www.linkedin.com/in/sili-li-3b7337150/. The owner withdrew email publication on November 16, 2026; do not expose an email address, envelope control or contact card. GitHub/LinkedIn open new tabs. Hover/press feedback respects reduced motion; small screens use readable text controls.
 - Use a web-ready résumé supplied or reviewed by Sili before release.
 
 ### 3.10 Opening and closing content
@@ -256,8 +256,12 @@ The piano interaction and supplied “One Summer’s Day” audio are implemente
 | Selected milestones and verified dates | Pending |
 | Personal notes for the three music pieces | Optional, pending |
 | Personal music recordings | One Summer’s Day supplied and integrated; more tracks optional, audible browser QA pending |
-| GitHub, LinkedIn, preferred email, public résumé | Contact links supplied and implemented; public résumé pending |
+| GitHub, LinkedIn, preferred email, public résumé | GitHub/LinkedIn implemented; email removed at owner request; public résumé pending |
 
 Reference documents: Sili_Li_Academic_Resume.pdf and Math Coursework - Sili Li.pdf, supplied by Sili from his Graduate Application folder. These inform content; they are not automatically public website assets.
 
-The React website is published through GitHub Pages. The user authorized documenting, pushing and deploying all current changes. Do not publish unselected private source references or invent missing content.
+The React website is published through GitHub Pages. Local implementation and validation may proceed, but pushing and deployment require explicit owner approval for each release. Do not publish unselected private source references or invent missing content.
+
+## Publishing approval
+
+The owner authorized publishing the email removal on November 16, 2026. After that release, obtain explicit owner approval before every push or deployment. Complete local changes and validation first, then present the result for approval. Earlier blanket publishing permissions are revoked.

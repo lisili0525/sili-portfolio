@@ -7,7 +7,7 @@ Website: https://silispace.net/
 
 ## Current delivery
 
-The application is a React 19 / Vite 8 illustrated-room portfolio, published through GitHub Pages from main. The user authorized synchronizing all current changes, pushing them, and deploying this release. Earlier private-only, buildless, local-only and no-deployment notes are obsolete. Keep code, comments, documentation and generated prompts in English, even when discussing changes in Chinese. Never discard unrelated work or force-push.
+The application is a React 19 / Vite 8 illustrated-room portfolio, published through GitHub Pages from main. Publishing requires explicit owner approval for each update; see Required publishing approval below. Earlier private-only, buildless, local-only and no-deployment notes are obsolete. Keep code, comments, documentation and generated prompts in English, even when discussing changes in Chinese. Never discard unrelated work or force-push.
 
 This handoff describes the final implementation; PRD.md records product requirements. Deployment status is established by the matching GitHub Actions run and remote commit, rather than a speculative success statement in this document.
 
@@ -88,4 +88,8 @@ Keep tmp/, dependencies, build output and secrets ignored. Verify remote HEAD an
 
 ## Public contact controls — November 16, 2026
 
-ContactLinks.jsx owns transparent controls aligned to the three painted beam icons in Room. The owner supplied the public Gmail, GitHub and LinkedIn destinations recorded in PRD.md. Email toggles a card with mailto, copy feedback and manual-copy fallback; Escape restores trigger focus, and outside click/focus dismisses it. Profile links open new tabs with noopener/noreferrer. CSS provides restrained hover/press feedback, reduced-motion handling and a text-button layout below 700px. Local browser checks confirmed the card layout at desktop and narrow widths, clipboard success and Escape dismissal. Existing 40 tests pass; cat meeting tests now identify the Room destinations navigation by name because the room has a second navigation landmark. Résumé publication remains pending.
+ContactLinks.jsx owns transparent controls aligned to the GitHub and LinkedIn beam icons. The email address, contact card and envelope control were removed at the owner's request. An SVG crop of neighboring plain beam artwork covers the retired painted envelope without changing the source illustration. Profile links retain hover/press feedback, new-tab protection and readable text controls below 700px. Résumé publication remains pending.
+
+## Required publishing approval
+
+The owner explicitly authorized immediate publication of the email-removal release only. All subsequent pushes and deployments require fresh explicit owner approval after local implementation and validation. This supersedes every earlier blanket publishing authorization in this handoff or PRD. Do not push or deploy future updates merely because the requested local changes are complete.
