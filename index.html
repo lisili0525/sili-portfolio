@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Step inside Sili Li's little house: mathematics, code, coffee, music, and life.">
+  <title>Sili Li — A little house</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <button id="explore" aria-expanded="false" aria-controls="destinations">Explore <span aria-hidden="true">↗</span></button>
+  <button id="fullscreen" type="button" aria-label="Enter fullscreen" aria-pressed="false" hidden><span aria-hidden="true">⛶</span> <span class="fullscreen-label">Fullscreen</span></button>
+  <p id="screen-status" class="sr-only" role="status"></p>
+  <main>
+    <div class="room-frame">
+      <section class="room" aria-label="Sili's illustrated room. Select an object to explore.">
+        <img class="room-art" src="concepts/little-house-v3-cartoon.png" alt="A warmly lit cartoon room with Sili holding coffee, a piano, espresso station, technical desk, tennis rackets, a couple portrait, and Viola and Java at the window." width="1672" height="941">
+        <button class="object piano" data-entry="music"><span>At the piano</span></button>
+        <button class="object coffee" data-entry="coffee"><span>Something brewing</span></button>
+        <button class="object photos" data-entry="photos"><span>People & moments</span></button>
+        <button class="object calendar" data-entry="milestones"><span>Along the way</span></button>
+        <button class="object tennis" data-entry="tennis"><span>On the court</span></button>
+        <button class="object desk" data-entry="notebook"><span>Inside my notebook</span></button>
+        <button class="object cats" data-entry="cats"><span>Meet Viola & Java</span></button>
+      </section>
+    </div>
+    <nav id="destinations" aria-label="Room destinations" hidden></nav>
+  </main>
+  <dialog id="detail" aria-labelledby="detail-title"><button class="close" aria-label="Close and return to the room">×</button><div class="paper"><p class="eyebrow" id="detail-label"></p><h2 id="detail-title"></h2><div id="detail-body"></div></div></dialog>
+</body>
+</html>

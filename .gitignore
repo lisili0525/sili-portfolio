@@ -1,0 +1,16 @@
+# Local dependencies and generated build output
+node_modules/
+dist/
+.cache/
+
+# Local secrets and machine-specific settings
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+*.log
+
+# Temporary work files
+tmp/
+temp/
