@@ -28,7 +28,7 @@ Cats do not plan new trips through closed glass or drawn curtains. Outdoor Viola
 - `window-closed-v1.png` and `curtains-closed-v1.png`: matching illustrated closed poses.
 - `room-module-underpainting-v2.png`: a bare coffee/window repair source used by isolated modules and the bare window frame.
 
-`shared/SceneArtwork.jsx` creates transparent visual pieces with SVG alpha masks and a narrow edge dilation. It preserves original raster detail without repeatedly generating foreground artwork. Furniture is grouped into sensible components; related books/leaves can be split further within their owning module. The modules preserve the approved layout and calibrated support points. Large rearrangements still require reviewing masks, occluded surfaces and contact/depth geometry together.
+`shared/SceneArtwork.jsx` creates transparent visual pieces with SVG alpha masks and a narrow white boundary stroke. Avoid feMorphology edge-expansion filters here: each animated full-stage filter adds a costly offscreen surface and can produce missing strips or disappearing props on affected browsers. It preserves original raster detail without repeatedly generating foreground artwork. Furniture is grouped into sensible components; related books/leaves can be split further within their owning module. The modules preserve the approved layout and calibrated support points. Large rearrangements still require reviewing masks, occluded surfaces and contact/depth geometry together.
 
 Generation prompts and saved asset paths are in `assets/modular-room-prompts.md`. All artwork editing used the built-in image generation tool.
 

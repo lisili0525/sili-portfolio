@@ -34,7 +34,7 @@ The supplied One Summer's Day recording is the only track. Never autoplay on ini
 
 ## Modular scene and visual corrections
 
-Independent modules cover piano/bench, coffee equipment/cabinet, portrait/calendar, tennis equipment, stool, bookcase, workstation/chair/laptop/notebook/stationery/lamp/books, sofa, table/album, wall shelf/camera, toy mouse, plants, lighting and residents. SVG masks preserve the approved raster artwork; future per-object animation should stay in its owning module.
+Independent modules cover piano/bench, coffee equipment/cabinet, portrait/calendar, tennis equipment, stool, bookcase, workstation/chair/laptop/notebook/stationery/lamp/books, sofa, table/album, wall shelf/camera, toy mouse, plants, lighting and residents. SVG alpha masks use a plain white boundary stroke rather than feMorphology edge filters, avoiding filtered full-stage surfaces during animation; future per-object animation should stay in its owning module.
 
 The approved room source is assets/room-clean-v7.png. Reconstructed occluded surfaces are in room-hidden-surfaces-v1.png; neutral architecture and independent sunlight are separate assets. Closed glass and curtain states have versioned sources. Generation provenance is in assets/modular-room-prompts.md. Historical artwork remains unless explicitly deleted by the user.
 
