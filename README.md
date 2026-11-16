@@ -7,17 +7,19 @@ Private source repository: https://github.com/lisili0525/sili-portfolio
 ## Current experience
 
 - Edge-to-edge, non-scrolling room with eight accessible object controls and a floating Explore menu.
+- Explore closes with Escape (returning focus to its toggle), an outside click, or focus moving to another room control.
+- Click either moving cat to meet Viola & Java, or use Explore. Their click targets follow them; the old fixed window target is removed. They continue moving autonomously.
 - Content dialogs with Escape, close button, outside-click dismissal, and focus restoration.
 - Separate clean room and transparent Sili character layers, preserving the approved cartoon direction.
-- Piano selection opens the music collection immediately while Sili approaches the bench and changes to a playing pose. Closing the dialog leaves him playing. Stop playing or another destination ends the performance.
+- Piano selection opens the music collection while Sili approaches the bench, then plays the supplied “One Summer’s Day” recording. Closing the dialog leaves him playing. During an active performance, other objects open content while Sili stays at the piano with animated hands. Album content opens directly during music, with no pickup. Stop or recording end restores normal object activities and album pickup; mute keeps the performance active. Music-list, mute and stop controls are available within other content views too. Selecting a recording restarts it.
 - Reduced motion skips walking and uses a still seated pose. Hiding the page pauses the performance; resuming requires a button press.
-- No audio is configured. `pianoRecording` at the top of `piano.js` reserves `src`, `title`, and `note` for Sili's own future recording. With audio supplied, the performance offers mute and explicit playback fallback, remembers mute during the session, and stops at recording end without looping.
+- `pianoRecordings` at the top of `piano.js` currently contains only “One Summer’s Day”, using `assets/music/one-summers-day.m4a`. Add future supplied recordings there. Mute is remembered during the session; the recording stops at its end without looping. If playback after the approach is blocked, use Play recording in the music list. Inactive-page resume remains explicit.
 
-The first animation uses a single stride pose with a small bob and a seated playing pose facing into the keyboard. Viola and Java are temporarily absent from the scene while their separate assets are prepared; their descriptions remain available. The original concept art is retained under `concepts/`. See `assets/README.md` for asset dimensions and generation prompts.
+The first animation uses a single stride pose with a small bob and a rear-facing seated piano animation with five playing frames, alternating slight hand lifts, and a separate idle frame. Head and seat registration remain fixed. Viola and Java now use separate transparent six-pose sprite sheets and independent ambient routines. Viola leaves and returns through the window via the stool; Java plays indoors and can watch from the sill. Pause cats, inactive-page suspension, content-view suspension and reduced-motion resting poses are implemented. Their visual placement is awaiting browser review. The original concept art is retained under `concepts/`. See `assets/README.md` for asset dimensions and generation prompts.
 
 ## Photo album
 
-The open album on the foreground table and the Rachel-and-Sili wall portrait both open an eight-page book (four spreads). Page one contains the approved couple illustration; seven photo spaces await selected personal photos. The book appears directly over the room with no panel, heading or toolbar. Click or drag its lower corners, or use arrow keys. The page follows the drag, then completes the turn or returns. Reduced motion skips page turns. Configure reviewed images and captions in `albumPages` at the top of `album.js`.
+The open album on the foreground table and the Rachel-and-Sili wall portrait both open an eight-page book (four spreads). Slot 1 contains the supplied festive-photo cartoon; slot 3 contains the supplied tennis-photo cartoon. The seaside cartoon is in slot 4, with the two cat cartoons together in slots 5–6. Slot 2 holds the family portrait; slots 7–8 show Sili bench pressing and Rachel dancing hip-hop. All eight spaces are filled. The original wall portrait stays only on the wall. The book appears directly over the room with no panel, heading or toolbar. Sili approaches the foreground table, reaches for the album and lifts it before the book opens. Reduced motion opens it immediately. Click or drag its lower corners, or use arrow keys. The page follows the drag, then completes the turn or returns. Reduced motion skips page turns. Configure reviewed images and captions in `albumPages` at the top of `album.js`.
 
 The active room artwork is `assets/room-clean-v4.png`: other wall photos are removed and the coffee cabinet is shifted right. Piano geometry and calibrated Sili scale are preserved.
 
@@ -27,4 +29,16 @@ JavaScript syntax and simulated piano lifecycle checks passed: interruption, sto
 
 ## Next milestones
 
-Review piano placement and mobile framing; add separate Viola and Java assets and autonomous routines; extend Sili's movement to other destinations and optional floor/keyboard navigation. Public contact links, photos, project evidence, milestones, and recordings still need Sili's input. No website deployment has been performed.
+Review the physical album, cat routes, piano placement and mobile framing; review the new destination activities and later add optional floor/keyboard navigation. Public contact links, photos, project evidence, milestones, and recordings still need Sili's input. No website deployment has been performed.
+
+Controlled logic checks are in `checks/album.cjs` and `checks/cats.cjs` (run from the repository root with Node). They passed in the available JavaScript runtime; they do not verify browser layout, touch or focus. Browser access was unavailable in the latest continuation.
+
+## Sili’s room activities
+
+Coffee: rear-facing preparation, relaxed counter lean, occasional sips, and cup placement before departure. Desk: seated typing, notebook writing and thinking pauses. Album: foreground approach, pickup before opening, and return to the table on close. Calendar, tennis and cats have destination poses too. New selections interrupt old journeys; inactivity freezes progress and reduced motion uses immediate arrivals/still poses. Smaller content windows use translucent backgrounds and opaque text, leaving the activity visible. The book keeps its physical presentation.
+
+`checks/actions.cjs` tests integrated interruption and prop cleanup; `checks/piano.cjs` checks piano controls. Static pose compositions were inspected, but real browser animation, mask rendering, translucent readability and mobile framing remain unverified.
+
+Workstation artwork uses `sili-computer-v3.png` and the approved, unchanged `sili-writing-v2.png`. The separate chair is pulled slightly away from the desk, with a depth mask covering receding legs. The work routine alternates the two still illustrations; the old shared desk sheet is no longer active. Static compositions were reviewed, while actual browser rendering and visual approval remain pending.
+
+Latest review: both sleeping cats were checked in original and mirrored facing with the existing 9% edge clip; no detached paw appears in the static preview. `checks/sleeping-cats.ps1` reproduces the alpha check and writes `tmp/sleeping-cats-review.png`. It uses Windows System.Drawing; no PNG source is changed. All five controlled JavaScript suites passed, including expanded Explore dismissal checks in `checks/dialogs.cjs`. The browser access host remains unavailable, so these results do not verify live CSS masks, native focus behavior, animation timing or touch/mobile layout.

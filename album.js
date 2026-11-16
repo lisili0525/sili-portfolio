@@ -1,8 +1,13 @@
 // Eight individual pages, displayed as four spreads. Add reviewed photos here.
-const albumPages = [
-  { kind: 'portrait', title: 'Rachel & me', caption: '' },
-  ...Array.from({ length: 7 }, () => ({ title: '', caption: '' }))
-];
+const albumPages = Array.from({ length: 8 }, () => ({ title: '', caption: '' }));
+albumPages[0] = { src: 'assets/album-festive-v1.png', alt: 'Cartoon of Sili and Rachel holding colorful paper dragons, in black, ivory and red festive clothing against a red backdrop.', title: '', caption: '' };
+albumPages[1] = { src: 'assets/album-family-v2.png', alt: 'Cartoon family portrait: Rachel holds orange-tabby Java on the left, and Sili holds black-and-white Viola on the right, sitting together on a cozy couch.', title: '', caption: '' };
+albumPages[2] = { src: 'assets/album-tennis-v1.png', alt: 'Cartoon tennis-court selfie of Sili in a navy hoodie and Rachel in a pale visor and blue jacket, with a red-stringed racket in the foreground.', title: '', caption: '' };
+albumPages[3] = { src: 'assets/album-pier-v1.png', alt: 'Cartoon of Rachel in a cap and orange sunglasses beside Sili at a seaside railing, with a Ferris wheel and pier behind them.', title: '', caption: '' };
+albumPages[4] = { src: 'assets/album-java-v1.png', alt: 'Cartoon of an orange tabby lying belly-up on beige carpet with curled paws and a clothes hanger beside her hind legs.', title: '', caption: '' };
+albumPages[5] = { src: 'assets/album-viola-v1.png', alt: 'Cartoon of a black-and-white tuxedo cat lying on a wooden floor beside a yellow-green tennis ball and looking up.', title: '', caption: '' };
+albumPages[6] = { src: 'assets/album-bench-press-v1.png', alt: 'Cartoon illustration of Sili bench pressing a barbell in a warmly lit gym, wearing a navy athletic shirt and gray trousers.', title: '', caption: '' };
+albumPages[7] = { src: 'assets/album-hip-hop-v1.png', alt: 'Cartoon illustration of Rachel dancing hip-hop in a sunny studio, wearing a loose navy-and-cream shirt, sage joggers and cream sneakers.', title: '', caption: '' };
 
 (() => {
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
@@ -23,14 +28,11 @@ const albumPages = [
     const picture = document.createElement('div');
     picture.className = 'album-photo-mount';
     if (data.src) {
+      picture.classList.add('album-filled');
       const img = document.createElement('img');
       img.src = data.src;
       img.alt = data.alt || data.title;
       picture.append(img);
-    } else if (data.kind === 'portrait') {
-      picture.classList.add('album-portrait');
-      picture.setAttribute('role', 'img');
-      picture.setAttribute('aria-label', 'The illustrated portrait of Rachel and Sili from the room wall');
     } else {
       picture.classList.add('album-empty');
       const note = document.createElement('span');
@@ -68,6 +70,11 @@ const albumPages = [
     pending = null;
     turning = false;
     render();
+  }
+  function positionSheet(sheet, progress, direction) {
+    // A shallow lower-edge lift and changing shade soften the rigid hinge.
+    sheet.style.transform = `rotateY(${-direction * progress * 180}deg) rotateX(${Math.sin(progress * Math.PI) * -3}deg)`;
+    sheet.style.setProperty('--turn-shade', Math.sin(progress * Math.PI) * .25);
   }
   function beginTurn(next) {
     if (!root || turning || next < 0 || next > 3 || next === spread) return null;
@@ -111,11 +118,11 @@ const albumPages = [
     const rect = book.getBoundingClientRect();
     direction ||= event.clientX < rect.left + rect.width / 2 ? -1 : 1;
     if (spread + direction < 0 || spread + direction > 3) return;
-    drag = { start: event.clientX, direction, width: rect.width, progress: 0, started: false };
+    drag = { start: event.clientX, direction, width: rect.width, progress: 0, started: false, pointerId: event.pointerId };
     event.currentTarget.setPointerCapture?.(event.pointerId);
   }
   function pointerMove(event) {
-    if (!drag) return;
+    if (!drag || event.pointerId !== drag.pointerId) return;
     const distance = (drag.start - event.clientX) * drag.direction;
     if (!drag.started && distance > 8) {
       drag.started = true;
@@ -123,20 +130,21 @@ const albumPages = [
     }
     if (!drag.started) return;
     event.preventDefault();
-    drag.progress = Math.max(0, Math.min(1, distance / (drag.width * .65)));
+    drag.progress = Math.max(0, Math.min(1, distance / (drag.width * .85)));
     const sheet = root.querySelector('.album-turn-sheet');
-    if (sheet) sheet.style.transform = `rotateY(${-drag.direction * drag.progress * 180}deg)`;
+    if (sheet) positionSheet(sheet, drag.progress, drag.direction);
   }
-  function pointerUp() {
-    if (!drag) return;
+  function pointerUp(event) {
+    if (!drag || event.pointerId !== drag.pointerId) return;
     if (drag.started) {
       ignoreClickUntil = Date.now() + 350;
-      if (motion.matches) { if (drag.progress > .16) turn(spread + drag.direction); }
-      else settle(drag.progress > .16);
+      if (motion.matches) { if (drag.progress > .3) turn(spread + drag.direction); }
+      else settle(drag.progress > .3);
     }
     drag = null;
   }
-  function pointerCancel() {
+  function pointerCancel(event) {
+    if (drag && event.pointerId !== drag.pointerId) return;
     if (drag?.started && !motion.matches) settle(false);
     drag = null;
   }
@@ -145,9 +153,11 @@ const albumPages = [
     target.addEventListener('pointermove', pointerMove);
     target.addEventListener('pointerup', pointerUp);
     target.addEventListener('pointercancel', pointerCancel);
-  }  function destroy() {
+    target.addEventListener('lostpointercapture', pointerCancel);
+  }
+  function destroy() {
     clearTimeout(timer);
-    if (pending !== null) spread = pending;
+    // Keep the last fully revealed spread if the book closes mid-turn.
     pending = null;
     turning = false;
     cleanup();
@@ -155,6 +165,7 @@ const albumPages = [
     root?.remove();
     root = null;
     drag = null;
+    ignoreClickUntil = 0;
   }
   function mount(container, firstPage = false) {
     destroy();
@@ -168,7 +179,8 @@ const albumPages = [
     previous.addEventListener('click', () => { if (Date.now() >= ignoreClickUntil) turn(spread - 1); });
     next.addEventListener('click', () => { if (Date.now() >= ignoreClickUntil) turn(spread + 1); });
     wireDrag(previous, -1);
-    wireDrag(next, 1);    const keydown = event => {
+    wireDrag(next, 1);
+    const keydown = event => {
       if (event.altKey || event.ctrlKey || event.metaKey || /INPUT|TEXTAREA|SELECT/.test(event.target.tagName)) return;
       if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
         event.preventDefault();
@@ -178,7 +190,6 @@ const albumPages = [
     const keyboardScope = container.closest('dialog') || container;
     keyboardScope.addEventListener('keydown', keydown);
     cleanup = () => keyboardScope.removeEventListener('keydown', keydown);
-    wireDrag(root.querySelector('.album-book'));
     container.append(root);
     render();
   }
