@@ -12,7 +12,7 @@ function artwork() {
         for (const entry of fs.readdirSync(directory, {withFileTypes:true})) {
           const file = path.join(directory, entry.name);
           if (entry.isDirectory() && entry.name !== 'test') read(file);
-          else if (/\.(jsx?|css)$/.test(file)) sources.push(fs.readFileSync(file, 'utf8'));
+          else if (/\.jsx?$/.test(file)) sources.push(fs.readFileSync(file, 'utf8'));
         }
       }
       read('src');

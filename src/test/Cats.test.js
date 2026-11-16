@@ -74,3 +74,25 @@ it('evacuates a perch for a new person activity even while a content dialog is o
   expect(elements.some(element=>element.parentElement.dataset.surface==='coffee-counter')).toBe(false);
   controller.destroy();expect(frames.size).toBe(0);
 });
+it('never routes through closed glass or closed curtains, then resumes window visits when reopened',()=>{
+  const {root,controller,elements}=setup(47);const room=root.querySelector('.room');
+  room.dataset.windowOpen='false';room.dataset.curtainsOpen='false';
+  for(let i=0;i<10000;i++) {
+    advance(.05);
+    for(const element of elements)expect(['stool','window','outside'].includes(element.parentElement.dataset.surface)).toBe(false);
+    expect(root.querySelector('#viola').hidden).toBe(false);
+  }
+  room.dataset.windowOpen='true';room.dataset.curtainsOpen='true';
+  let visited=false;
+  for(let i=0;i<12000&&!visited;i++){advance(.05);visited=elements.some(element=>element.parentElement.dataset.surface==='window');}
+  expect(visited).toBe(true);controller.destroy();
+});
+it('keeps outdoor Viola outside a closed window and lets her return after it reopens',()=>{
+  const {root,controller}=setup();const room=root.querySelector('.room'),viola=root.querySelector('#viola');
+  let outside=false;
+  for(let i=0;i<30000&&!outside;i++){advance(.05);outside=viola.hidden;}
+  expect(outside).toBe(true);
+  room.dataset.windowOpen='false';advance(90);expect(viola.hidden).toBe(true);
+  room.dataset.windowOpen='true';room.dataset.curtainsOpen='true';advance(60);expect(viola.hidden).toBe(false);
+  controller.destroy();
+});

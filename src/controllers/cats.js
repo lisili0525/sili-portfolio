@@ -1,3 +1,5 @@
+import { paceRoaming, roamingRates } from '../data/catBehavior.js';
+import { canReachCat } from '../data/catInteraction.js';
 import { catSurfaces, catExcursions } from '../data/catSurfaces.js';
 
 export function createCatController(root) {
@@ -20,8 +22,8 @@ export function createCatController(root) {
     name,layer:root.querySelector(`#${name}`),el:root.querySelector(`#${name} .cat`),
     ...(index ? second : first),home:index ? second : first,
     surface:'floor',facing:Math.random()<.5 ? -1 : 1,
-    queue:[],action:null,elapsed:0,outside:false,delay:random(3,8),
-    tour:shuffled(Object.keys(catExcursions)),trips:0,windowTripDue:false,groups:[]
+    queue:[],action:null,elapsed:0,outside:false,delay:random(3,8)/roamingRates[name],
+    tour:shuffled(Object.keys(catExcursions)),trips:0,windowTripDue:false,groups:[],interaction:null,clicks:0,departing:false
   }));
   function release(cat) {
     for(const group of cat.groups) if(reservations.get(group)===cat.name) reservations.delete(group);
@@ -33,6 +35,7 @@ export function createCatController(root) {
   function usable(route,cat) {
     const groups=groupsFor(route);
     if(groups.some(group=>reservations.has(group)&&reservations.get(group)!==cat.name)) return false;
+    if(groups.includes('window')&&(room?.dataset.windowOpen==='false'||room?.dataset.curtainsOpen==='false')) return false;
     if(groups.includes('piano')&&(actor?.classList.contains('at-piano')||room?.dataset.activity==='music')) return false;
     if(groups.includes('workstation')&&room?.dataset.activity==='notebook') return false;
     if(groups.includes('counter')&&room?.dataset.activity==='coffee') return false;
@@ -76,7 +79,7 @@ export function createCatController(root) {
     cat.route=route;
     cat.trips++;
     if(cat.name==='viola'&&cat.trips%6===0) cat.windowTripDue=true;
-    return actions;
+    return paceRoaming(actions,roamingRates[cat.name]);
   }
   function plan(cat) {
     if(cat.windowTripDue&&usable(catExcursions.window,cat)) return excursion(cat,'window',true);
@@ -92,10 +95,11 @@ export function createCatController(root) {
     // Keep exploring available furniture even if a person occupies one stop.
     const deferred=new Set(cat.tour);
     cat.tour.push(...shuffled(Object.keys(catExcursions).filter(id=>!deferred.has(id))));
-    return [rest('sit',2,4)];
+    return [rest('sit',2/roamingRates[cat.name],4/roamingRates[cat.name])];
   }
   function clearForPerson(cat) {
-    if(cat.evacuating||!cat.groups.length||usable(cat.route,cat)) return;
+    if(cat.outside||cat.evacuating||!cat.groups.length||usable(cat.route,cat)) return;
+    if(cat.interaction){cat.interaction.phase='cancelled';cat.interaction=null;cat.el.dataset.interaction='';}
     // Finish an in-flight hop, then leap down to clear the person's activity.
     cat.evacuating=true;
     if(cat.action?.x===undefined) cat.action=null;
@@ -140,9 +144,149 @@ export function createCatController(root) {
     paint(cat);
     if(progress===1) {action.end?.();cat.action=null;}
   }
+
+  let interactionId=0;
+  function facePerson(cat,actorX) {
+    cat.facing=actorX<cat.x?-1:1;
+    cat.el.dataset.pose='sit';paint(cat);
+  }
+  function descent(cat,complete) {
+    const route=cat.route||[];
+    const index=route.indexOf(cat.surface);
+    const actions=[];
+    let from={x:cat.x,y:cat.y,width:cat.width,floor:cat.surface==='floor'};
+    if(index>0) for(const id of route.slice(0,index).reverse()) {
+      actions.push(travel(id,from));from=catSurfaces[id];
+    }
+    if(!from.floor) {
+      const spot=cat.home;
+      actions.push({...spot,surface:'floor',pose:'hop',duration:1.2,arc:4});
+    }
+    actions.push({pose:'sit',duration:.4,end:()=>{release(cat);complete?.();}});
+    return actions;
+  }
+  function releaseInteraction(cat,session,immediate=false) {
+    if(cat.interaction!==session) return;
+    session.elapsed=0;
+    if(immediate){session.phase='cancelled';cat.interaction=null;cat.el.dataset.interaction='';return;}
+    if(cat.action?.x!==undefined){session.phase='cancel-landing';return;}
+    if(session.mode==='play'&&session.anchor&&Math.hypot(cat.x-session.anchor.x,cat.y-session.anchor.y)>.05){
+      session.phase='settle-play';session.settleFrom={x:cat.x,y:cat.y};return;
+    }
+    session.phase='farewell';cat.el.dataset.interaction='farewell';cat.el.dataset.pose='sit';
+    cat.facing=cat.x<50?1:-1;paint(cat);
+  }
+  function depart(cat,session) {
+    session.phase='departed';cat.interaction=null;cat.action=null;cat.departing=true;
+    cat.el.dataset.interaction='leaving';
+    const finish=()=>{release(cat);cat.departing=false;cat.el.dataset.interaction='';};
+    if(motion.matches){finish();return;}
+    if(cat.surface!=='floor') cat.queue=descent(cat,finish);
+    else {
+      release(cat);
+      const direction=cat.facing;
+      cat.queue=[{x:Math.max(15,Math.min(86,cat.x+direction*5)),y:cat.y,width:cat.width,
+        surface:'floor',pose:'walk',duration:1.35,arc:0,end:finish},rest('groom',2,4),rest('sit',2,4)];
+    }
+  }
+  function tickInteraction(cat,dt) {
+    const session=cat.interaction;
+    if(!session) return;
+    session.elapsed+=dt;
+    if(session.phase==='cancel-landing'){
+      if(cat.action) tick(cat,dt);
+      if(!cat.action) releaseInteraction(cat,session);
+      return;
+    }
+    if(session.phase==='settle-play'){
+      const progress=Math.min(1,session.elapsed/.35);
+      cat.x=session.settleFrom.x+(session.anchor.x-session.settleFrom.x)*progress;
+      cat.y=session.settleFrom.y+(session.anchor.y-session.settleFrom.y)*progress;paint(cat);
+      if(progress===1) releaseInteraction(cat,session);
+      return;
+    }
+    if(session.phase==='landing') {
+      // Finish a jump; a walking cat first decelerates to its next safe step.
+      if(cat.action) tick(cat,dt);
+      if(cat.action) return;
+      const needsFloor=!canReachCat(cat)||(session.mode==='play'&&cat.surface!=='floor');
+      if(needsFloor&&!motion.matches) {
+        session.phase='inviting';session.elapsed=0;
+        cat.queue=descent(cat,()=>{session.phase='attention';session.elapsed=0;facePerson(cat,session.actorX);});
+        cat.el.dataset.interaction='invited';
+      } else {session.phase='attention';session.elapsed=0;facePerson(cat,session.actorX);}
+      return;
+    }
+    if(session.phase==='inviting') {tick(cat,dt);return;}
+    if(session.phase==='attention') {
+      cat.el.dataset.interaction='attention';
+      if(session.elapsed >= (session.wasSleeping ? .9 : .55)) {session.phase='ready';session.elapsed=0;}
+      return;
+    }
+    if(session.phase==='ready') {
+      // Abandoned approaches cannot reserve a cat forever.
+      if(session.elapsed>14) releaseInteraction(cat,session);
+      return;
+    }
+    if(session.phase==='contact') {
+      const time=session.elapsed;
+      if(session.mode==='play'&&!motion.matches) {
+        const progress=Math.max(0,Math.min(1,(time-1.3)/2));
+        const bounce=Math.sin(progress*Math.PI*2);
+        cat.x=session.anchor.x+(session.actorX<session.anchor.x?-1:1)*Math.sin(progress*Math.PI)*1.8;
+        cat.y=session.anchor.y-Math.abs(bounce)*1.3;
+        cat.el.dataset.pose=time<1.3?'sit':time<3.3?'hop':time<4.5?'groom':'sit';
+      } else cat.el.dataset.pose=time>2.5&&time<3.4?'groom':'sit';
+      paint(cat);
+      if(time>=session.duration) {Object.assign(cat,session.anchor);releaseInteraction(cat,session);}
+      return;
+    }
+    if(session.phase==='farewell'&&session.elapsed>=1.4) depart(cat,session);
+  }
+  function beginInteraction({name,mode,actor={x:48.5,y:84}}={}) {
+    let cat=name?cats.find(cat=>cat.name===name):cats.filter(cat=>!cat.outside&&!cat.layer.hidden&&!cat.action?.portal)
+      .sort((a,b)=>Math.hypot(a.x-actor.x,(a.y-actor.y)*.5)-Math.hypot(b.x-actor.x,(b.y-actor.y)*.5))[0];
+    if(!cat||cat.outside||cat.layer.hidden||cat.action?.portal||cat.evacuating) return null;
+    if(cat.interaction&&['landing','inviting','attention','ready','contact'].includes(cat.interaction.phase)) {
+      const session=cat.interaction;
+      if(session.phase==='contact'&&session.mode==='pet') session.duration=Math.min(11,Math.max(session.duration,session.elapsed+2));
+      return session.handle;
+    }
+    for(const other of cats) if(other!==cat&&other.interaction) releaseInteraction(other,other.interaction);
+    cat.clicks++;
+    const session={id:++interactionId,phase:'landing',elapsed:0,mode:mode||(cat.name==='java'&&cat.clicks%2===0?'play':'pet'),
+      actorX:actor.x,wasSleeping:cat.el.dataset.pose==='sleep',duration:cat.name==='viola'?6.5:5.8};
+    cat.interaction=session;cat.delay=0;cat.queue=[];cat.departing=false;
+    cat.el.dataset.interaction='attention';
+    if(cat.action?.x!==undefined&&cat.action.pose==='walk') {
+      const target=cat.action;
+      const distance=Math.hypot(target.x-cat.x,target.y-cat.y)||1;
+      const step=Math.min(1.3,distance);
+      cat.action={...target,x:cat.x+(target.x-cat.x)/distance*step,y:cat.y+(target.y-cat.y)/distance*step,
+        fromX:cat.x,fromY:cat.y,duration:.35,end:undefined};
+      cat.fromX=cat.x;cat.fromY=cat.y;cat.fromWidth=cat.width;cat.elapsed=0;
+    } else if(cat.action?.x===undefined) cat.action=null;
+    const handle={
+      id:session.id,name:cat.name,mode:session.mode,
+      snapshot:()=>({name:cat.name,x:cat.x,y:cat.y,width:cat.width,surface:cat.surface,
+        phase:session.phase,ready:session.phase==='ready'||session.phase==='contact',outside:cat.outside}),
+      contact(actorPosition) {
+        if(cat.interaction!==session||session.phase!=='ready') return false;
+        session.phase='contact';session.elapsed=0;session.actorX=actorPosition.x;
+        session.anchor={x:cat.x,y:cat.y,width:cat.width};
+        cat.el.dataset.interaction=session.mode==='play'?'playing':'petting';
+        facePerson(cat,actorPosition.x);return true;
+      },
+      cancel:()=>releaseInteraction(cat,session)
+    };
+    session.handle=handle;return handle;
+  }
+
   function update() {
     if(!motion.matches) return;
     cats.forEach((cat,index)=>{
+      if(cat.interaction){cat.interaction.phase='cancelled';cat.interaction=null;}
+      cat.el.dataset.interaction='';cat.departing=false;
       release(cat);cat.queue=[];cat.action=null;cat.outside=false;cat.evacuating=false;
       Object.assign(cat,cat.home,{surface:'floor'});
       cat.layer.hidden=false;cat.layer.classList.remove('at-window');
@@ -154,13 +298,15 @@ export function createCatController(root) {
   let frameId,disposed=false,previous;
   function frame(now) {
     const dt=previous===undefined?0:Math.min((now-previous)/1000,.05);previous=now;
-    if(!motion.matches&&!document.hidden) cats.forEach(cat=>{
+    if(!document.hidden) cats.forEach(cat=>{
+      if(cat.outside&&(room?.dataset.windowOpen==='false'||room?.dataset.curtainsOpen==='false')) return;
       clearForPerson(cat);
-      if(!dialog.open||cat.evacuating) tick(cat,dt);
+      if(cat.interaction) {tickInteraction(cat,dt);return;}
+      if(!motion.matches&&(!dialog.open||cat.evacuating||cat.departing)) tick(cat,dt);
     });
     if(!disposed) frameId=requestAnimationFrame(frame);
   }
   cats.forEach(cat=>{cat.el.dataset.pose='sit';paint(cat);});update();
   frameId=requestAnimationFrame(frame);
-  return {destroy(){disposed=true;cancelAnimationFrame(frameId);abort.abort();cats.forEach(release);}};
+  return {beginInteraction,destroy(){disposed=true;cancelAnimationFrame(frameId);abort.abort();cats.forEach(cat=>{if(cat.interaction)cat.interaction.phase='cancelled';release(cat);});}};
 }

@@ -57,3 +57,19 @@ No backend, database or account integration is required. Music uses the supplied
 ## Cat exploration
 
 Landing anchors and stepping-stone routes are configured in `src/data/catSurfaces.js`. Both cats cycle through shuffled tours so each available destination is visited before repeating. Furniture groups are reserved for one cat at a time; character activities temporarily exclude their corresponding furniture. Cats descend before another excursion, scale with depth, and use eased jump arcs. Viola retains occasional outdoor trips and returns through the window, while Java remains indoors. Opening content normally freezes cat activity; a cat on furniture needed by the person first jumps down to clear it. Reduced motion returns both cats to still floor poses.
+
+## Modular room scene
+
+The local room now assembles physical props as independent scene modules over an empty architectural backdrop. Furniture/decor definitions and support anchors live in `src/scene/furnitureCatalog.js` and `src/scene/sceneObjects.js`. Components cover the piano and bench, coffee station and cabinet, portrait/calendar, tennis equipment, stool, bookcase/books, workstation and chair, sofa, table/album, shelf/camera, toy mouse, plants and lighting. Resident animation and foreground depth passes also have dedicated components.
+
+Click the window glass to open/close it, and click a curtain to draw/open the curtains. Wind moves fabric and plants only while the window is open; drawn curtains fade the direct floor sunlight. Cats cannot leave through closed glass or drawn curtains, and outdoor Viola waits for access to reopen. Click the desk lamp to toggle it and the shelf camera for a local flash. Other effects remain subtle and respect reduced motion and page inactivity.
+
+Open http://127.0.0.1:5173/ to inspect the complete room, or http://127.0.0.1:5173/?demo=modules for enlarged coffee/window examples. This expanded modular scene has not been published. Implementation, artwork boundaries and image provenance are documented in `src/scene/README.md` and `assets/modular-room-prompts.md`.
+
+## Person and cat interaction
+
+Click a cat directly to greet her in the scene. The cat slows or lands first, turns toward the person, and holds a bounded shared meeting. Sofa/chair/floor contacts use the selected cat's actual position and a mirrored crouching pose; inaccessible high perches use a safe descent before contact. No fixed window-pointing fallback is used. A repeated click can extend a pet briefly, while Java alternates with short playful hops on later meetings. Explore's cat introduction also offers Pet Viola and Play with Java. Escape ends the meeting; the person withdraws before the cat turns and walks away. Switching destinations or cats cancels the old session, and inactive tabs pause its clock. Direct cat interaction interrupts piano performance; ordinary content browsing still preserves music.
+
+## Autonomous cat pacing
+
+Relative roaming rates are configured in `src/data/catBehavior.js`: Viola uses 0.5 of the former outing frequency and Java uses 0.7. Additional time is distributed across visible resting pauses based on the complete route duration. Walking, jumps, outdoor waiting and direct person/cat interaction timing remain unchanged. Shared furniture reservations can still affect the exact observed frequency.

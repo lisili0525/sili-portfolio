@@ -11,7 +11,7 @@ const clickObject = name => fireEvent.click(within(document.querySelector('.room
 describe('React room integration',() => {
   it('mounts one pair of animation clocks under StrictMode and disposes both on unmount',() => {
     const app=mount(); expect(frames.size).toBe(2);
-    expect(screen.getByRole('img',{name:/warmly lit/}).getAttribute('src')).toContain('v7');
+    expect(screen.getByRole('img',{name:/warmly lit/}).getAttribute('src')).toContain('architecture');
     expect(screen.queryByText('Pause cats')).toBeNull();
     app.unmount(); expect(frames.size).toBe(0); expect(audios.every(audio=>audio.paused)).toBe(true);
   });
@@ -22,11 +22,15 @@ describe('React room integration',() => {
     fireEvent.click(explore); act(()=>screen.getByRole('button',{name:'Start piano playing'}).focus());
     expect(explore.getAttribute('aria-expanded')).toBe('false');
   });
-  it('navigates coffee to notebook without restarting from dialog content clicks',() => {
+  it('waits for arrival before opening coffee and notebook content',async() => {
     mount(); clickObject('Something brewing');
+    expect(document.querySelector('#detail').open).toBe(false);
+    await act(async()=>advance(12));
     expect(screen.getByRole('heading',{name:'Something brewing'})).toBeTruthy();
     fireEvent.click(screen.getByText(/I enjoy making/)); expect(document.querySelector('#detail').open).toBe(true);
     fireEvent.click(screen.getByRole('button',{name:/Open the technical notebook/}));
+    expect(document.querySelector('#detail').open).toBe(false);
+    await act(async()=>advance(12));
     expect(screen.getByRole('heading',{name:'Inside my notebook'})).toBeTruthy();
     tick(12); expect(document.querySelector('#sili').dataset.activity).toBe('desk');
     fireEvent.click(screen.getByRole('button',{name:'Close and return to the room'}));
@@ -34,7 +38,7 @@ describe('React room integration',() => {
   });
   it('interrupts album pickup and opens only the most recent selection',async() => {
     mount(); clickObject('Open the photo album'); tick(.5); clickObject('Something brewing');
-    await act(async()=>{}); tick(12);
+    await act(async()=>advance(12));
     expect(screen.queryByLabelText('Eight-page photo album')).toBeNull();
     expect(screen.getByRole('heading',{name:'Something brewing'})).toBeTruthy();
   });
@@ -49,17 +53,30 @@ describe('React room integration',() => {
     clickObject('Rachel & me'); await act(async()=>advance(15));
     expect(screen.getByText('Pages 1–2 of 8')).toBeTruthy();
   });
-  it('keeps playing while browsing and opens the album without a second pickup',async() => {
+  it('keeps playing while other content opens immediately without another journey',async() => {
     mount(); fireEvent.click(screen.getByRole('button',{name:'Start piano playing'}));
     await act(async()=>advance(12));
-    expect(screen.getByRole('button',{name:'Stop piano playing'})).toBeTruthy();
     expect(audios.at(-1).play).toHaveBeenCalled();
     clickObject('Something brewing');
-    expect(screen.getByRole('button',{name:'Stop music'})).toBeTruthy();
+    await act(async()=>{});
+    expect(screen.getByRole('heading',{name:'Something brewing'})).toBeTruthy();
+    expect(audios.at(-1).paused).toBe(false);
     clickObject('Open the photo album'); await act(async()=>{});
     expect(screen.getByLabelText('Eight-page photo album')).toBeTruthy();
     expect(document.querySelector('#sili').classList.contains('at-piano')).toBe(true);
-    fireEvent.click(screen.getByRole('button',{name:'Stop music'})); expect(audios.at(-1).paused).toBe(true);
+    expect(audios.at(-1).paused).toBe(false);
+  });
+  it('cancels pending content with Escape and ignores repeated clicks during travel',async() => {
+    mount(); clickObject('Something brewing'); tick(.5);
+    clickObject('Something brewing');
+    expect(document.querySelector('#detail').open).toBe(false);
+    fireEvent.keyDown(document,{key:'Escape'});
+    await act(async()=>advance(15));
+    expect(document.querySelector('#detail').open).toBe(false);
+    clickObject('At the piano'); tick(.5); clickObject('At the piano');
+    expect(document.querySelector('#detail').open).toBe(false);
+    await act(async()=>advance(12));
+    expect(screen.getByRole('heading',{name:'At the piano'})).toBeTruthy();
   });
   it('handles autoplay rejection, explicit resume, mute and recording end',async() => {
     mount(); const audio=audios.at(-1); audio.play.mockRejectedValueOnce(Error('blocked'));
@@ -81,6 +98,8 @@ describe('React room integration',() => {
   });
   it('honors reduced motion and freezes cats while content is open',async() => {
     mount(); tick(30); clickObject('Something brewing');
+    // A perched cat first clears the counter for the person, then rests.
+    await act(async()=>advance(12));
     const positions=()=>[...document.querySelectorAll('.cat')].map(cat=>cat.style.cssText);
     const before=positions(); tick(20); expect(positions()).toEqual(before);
     act(()=>media.forEach(item=>{item.matches=true;item.dispatchEvent(new Event('change'));}));

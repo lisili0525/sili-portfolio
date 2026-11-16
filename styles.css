@@ -6,8 +6,6 @@
 .object:hover,.object:focus-visible{border:0;background:transparent;outline:none;box-shadow:none}
 .object:hover .object-shape path,.object:focus-visible .object-shape path{stroke:#fff2bcb3;filter:drop-shadow(0 0 4px #fff2bc)}
 .object:focus-visible .object-shape path{stroke:#fff2bc;stroke-width:2px}
-.object .object-label{position:absolute;left:var(--tooltip-x);top:var(--tooltip-y);transform:translate(-50%,calc(-100% + 6px));white-space:nowrap;border-radius:5px;background:#faf3e6;color:#453a2b;box-shadow:0 3px 15px #33251128;padding:6px 12px;font-size:12px;opacity:0;transition:opacity .15s,transform .15s;pointer-events:none}
-.object:hover .object-label,.object:focus-visible .object-label{opacity:1;transform:translate(-50%,calc(-100% - 7px))}
 .room-caption{display:flex;justify-content:space-between;padding:10px 8px 1px;font-size:11px;color:#615641}.room-caption i{display:inline-block;width:6px;height:6px;background:#718059;border-radius:50%;margin-right:7px}footer{width:min(1280px,92%);margin:23px auto 30px;display:flex;justify-content:space-between;color:var(--muted);font-size:11px}#destinations:not([hidden]){display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:24px}#destinations button{background:#ebe7db;border:1px solid #d9d3c4;padding:9px 15px;border-radius:30px}dialog{border:1px solid #d9cdb7;padding:0;width:min(630px,92vw);max-height:85vh;max-height:85dvh;background:#faf6eb;color:var(--ink);border-radius:12px;box-shadow:0 25px 100px #201b1740}dialog::backdrop{background:#28261f83;backdrop-filter:blur(5px)}.paper{padding:42px clamp(24px,6vw,52px)}.close{position:sticky;float:right;top:10px;margin:10px 10px -45px 0;width:36px;height:36px;border-radius:50%;border:1px solid #d5c9b5;background:#faf6eb;font-size:25px;line-height:1}.paper h2{font:400 34px/1.2 'Lora',Georgia,serif;margin:12px 0 25px}.paper h3{font:500 20px 'Lora',Georgia,serif;margin:25px 0 8px}.paper p{color:#656452}.paper article+article{border-top:1px solid #e2d9c8;margin-top:20px;padding-top:5px}.paper .note{font-size:12px;color:#837966;border-left:2px solid #d4bd95;padding-left:12px}.piece{padding:14px 0;border-bottom:1px solid #e2d9c8}.piece strong,.piece small{display:block}.piece small{color:var(--muted)}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 
@@ -173,3 +171,18 @@ dialog.album-view::backdrop{background:#24180f65;backdrop-filter:blur(4px)}
 /* Cats remain above furniture patches on their supported landing surfaces. */
 .cat::before{content:"";position:absolute;left:34%;bottom:10%;width:32%;height:5%;border-radius:50%;background:#35241322;filter:blur(2px);pointer-events:none}
 .cat[data-airborne="true"]::before{opacity:0}
+
+/* Cat meetings share a bounded session; these cues never move the hit target. */
+.sili[data-cat-target][data-pose="activity"] .sili-sprite{transform:scaleX(var(--interaction-facing,1))}
+.sili[data-cat-phase="petting"][data-pose="activity"] .sili-sprite{transform-origin:50% 94%;animation:gentle-pet 1.1s ease-in-out infinite alternate}
+.sili[data-cat-phase="playing"][data-pose="activity"] .sili-sprite{transform-origin:50% 94%;animation:gentle-pet .7s ease-in-out infinite alternate}
+@keyframes gentle-pet{from{transform:scaleX(var(--interaction-facing,1)) rotate(-.3deg)}to{transform:scaleX(var(--interaction-facing,1)) rotate(.45deg) translateY(1px)}}
+.cat[data-interaction="petting"] .cat-sprite{transform-origin:50% 88%;animation:cat-nuzzle 1.6s ease-in-out infinite alternate}
+@keyframes cat-nuzzle{to{transform:scaleX(var(--facing,1)) rotate(1.1deg) translateY(1px)}}
+.cat[data-interaction="attention"] .cat-sprite{transition:filter .25s}
+.cat[data-interaction="petting"]::after{content:"";position:absolute;left:67%;top:18%;width:5%;height:5%;border:1px solid #f8dbab99;border-left:0;border-bottom:0;border-radius:50%;opacity:0;pointer-events:none;animation:quiet-purr 2.2s ease-out infinite}
+@keyframes quiet-purr{25%{opacity:.65}100%{opacity:0;transform:translate(7px,-5px) scale(1.5)}}
+@media(prefers-reduced-motion:reduce){.sili[data-cat-target] .sili-sprite,.cat[data-interaction] .cat-sprite{animation:none!important}.cat[data-interaction]::after{display:none}}
+
+/* The pointing cell has extra padding; preserve standing height and foot position. */
+.sili[data-activity="interactions"][data-activity-frame="5"] .sili-sprite{transform:scale(1.1);transform-origin:50% 95.66%}

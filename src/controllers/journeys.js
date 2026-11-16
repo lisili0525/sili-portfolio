@@ -1,3 +1,4 @@
+import { catMeetingPoint } from '../data/catInteraction.js';
 // Interruptible room journeys. Coordinates describe Sili's feet in room percent.
 export function createJourneyController(root, services) {
   const sili = root.querySelector('#sili');
@@ -8,6 +9,7 @@ export function createJourneyController(root, services) {
   let x = 48.5, y = 84, activity = '', ready = false;
   let heldCup = false, heldBook = false, queue = [], current = null, resolveSelection = null;
   let previous, elapsed = 0, generation = 0;
+  let catSession=null, pendingSelection=null;
   const random = (a, b) => a + Math.random() * (b - a);
   const pose = (group, frame, duration, extra = {}) => ({ group, frame, duration, ...extra });
   const walk = (px, py) => ({ x: px, y: py, duration: Math.max(.35, Math.hypot(px - x, py - y) / 22), walking: true });
@@ -41,9 +43,13 @@ export function createJourneyController(root, services) {
     sili.dataset.activity = group || '';
     sili.dataset.deskMode = group === 'desk' && (frame === 3 || frame === 4) ? 'writing' : 'computer';
     sili.style.setProperty('--activity-frame', frame);
+    sili.dataset.activityFrame = String(frame);
+    sili.dispatchEvent(new CustomEvent('room:pose',{bubbles:true,detail:{group,frame}}));
     position();
   }
   function cancel() {
+    if(catSession) catSession.handle.cancel();
+    catSession=null;delete sili.dataset.catTarget;delete sili.dataset.catPhase;
     generation++;
     queue = []; current = null;
     resolveSelection?.(false); resolveSelection = null;
@@ -77,6 +83,14 @@ export function createJourneyController(root, services) {
     room.classList.remove('piano-view');
     if (key === 'music') { camera(13.2); return; }
     visual(null);
+    if(key==='cats'){
+      const handle=services.cats?.beginInteraction({name:options.cat,mode:options.catInteraction,actor:{x,y}});
+      if(!handle){activity='';room.dataset.activity='';arrived();status.textContent='The cat is busy jumping. Try again once she has landed.';return;}
+      catSession={handle,phase:'waiting',elapsed:0};
+      sili.dataset.catTarget=handle.name;sili.dataset.catPhase='waiting';
+      status.textContent=`Sili is going to meet ${handle.name==='viola'?'Viola':'Java'}. Press Escape to give her space.`;
+      return;
+    }
     if (y > 89) queue.push(walk(x, 84));
     const finish = { duration: 0, end: arrived };
     if (key === 'coffee') {
@@ -89,27 +103,25 @@ export function createJourneyController(root, services) {
       queue.push(walk(53, 84), walk(53, 96), pose('interactions', 0, .65),
         pose('interactions', 1, .6, { start: () => book(true) }), pose('interactions', 2, .35), finish);
     } else {
-      const targets = { milestones: [43, 80, 5], tennis: [58, 84, 3], cats: [62, 84, 4] };
-      let [px, py, frame] = targets[key] || [48.5, 84, 5];
-      if (key === 'cats') {
-        const cats = [...root.querySelectorAll('.cat-layer:not([hidden]):not(.perched) .cat')];
-        const nearby = options.cat ? cats.find(cat => cat.dataset.cat === options.cat) : cats.sort((a, b) => Math.abs(parseFloat(a.style.left) - x) - Math.abs(parseFloat(b.style.left) - x))[0];
-        if (nearby) { px = Math.max(26, parseFloat(nearby.style.left) - 8); py = parseFloat(nearby.style.top) + 1; }
-        else { px = 65; py = 84; frame = 5; }
-      }
+      const targets = { milestones: [43, 80, 5], tennis: [58, 84, 3] };
+      const [px, py, frame] = targets[key] || [48.5, 84, 5];
       queue.push(walk(px, py), pose('interactions', frame, .4), finish);
     }
   }
   function select(key, options = {}) {
-    // Browsing is independent of an active recording performance. Returning a
-    // successful selection also lets the album open without a physical pickup.
-    if (key !== 'music' && services.piano.keepsPiano) return Promise.resolve(true);
-    if (key === activity && ((ready && !(key === 'cats' && options.cat)) || (key === 'music' && services.piano.isEngaged))) return Promise.resolve(true);
+    // Content opens only after the selected destination reports arrival.
+    if(key===activity&&!ready&&resolveSelection&&key!=='cats') return pendingSelection;
+    if(key==='cats'&&options.direct&&services.piano.keepsPiano) services.piano.stop();
+    if(key!=='music'&&services.piano.keepsPiano) return Promise.resolve(true);
+    if(key==='cats'&&catSession&&!['farewell','departed','cancelled','cancel-landing','settle-play'].includes(catSession.handle.snapshot().phase)&&(!options.cat||catSession.handle.name===options.cat)){
+      services.cats.beginInteraction({name:catSession.handle.name,actor:{x,y}});return Promise.resolve(true);
+    }
+    if (key === activity && ((ready && key !== 'cats') || (key === 'music' && services.piano.isEngaged))) return Promise.resolve(true);
     const previousActivity = activity;
     cancel(); ready = false; activity = key;
     room.dataset.activity = key;
     status.textContent = key === 'photos' ? 'Sili is picking up the photo album. Press Escape to cancel.' : '';
-    const result = new Promise(resolve => { resolveSelection = resolve; });
+    const result = pendingSelection = new Promise(resolve => { resolveSelection = resolve; });
     // Return the cup at the counter using the existing rear pose. The discarded
     // cup-placement frame has an unnatural head angle and must not be shown.
     if (heldCup) queue.push(pose('coffee', 0, .4, { start: () => cup(false) }));
@@ -145,6 +157,44 @@ export function createJourneyController(root, services) {
     if (activity === 'coffee' && ready) visual('coffee', 2);
     if (activity === 'notebook' && ready) visual('desk', 0);
   }
+
+  function updateCatInteraction(dt) {
+    const session=catSession;
+    if(!session) return;
+    const target=session.handle.snapshot();
+    sili.dataset.catSurface=target.surface;
+    if(['cancelled','departed','farewell','cancel-landing','settle-play'].includes(target.phase)) {
+      if(session.phase!=='ending') {
+        queue=[];current=null;session.phase='ending';session.elapsed=0;
+        sili.dataset.catPhase='ending';visual('interactions',0);
+      }
+      session.elapsed+=dt;
+      if(session.elapsed>.4) visual(null);
+      if(session.elapsed>1.1) {
+        catSession=null;activity='';room.dataset.activity='';ready=true;
+        delete sili.dataset.catTarget;delete sili.dataset.catPhase;delete sili.dataset.catSurface;
+        resolveSelection?.(true);resolveSelection=null;status.textContent='';
+      }
+      return;
+    }
+    if(session.phase==='waiting'&&target.ready&&!current&&!queue.length) {
+      const point=catMeetingPoint(target,x);
+      session.phase='approaching';sili.dataset.catPhase='approaching';
+      const request=generation;
+      queue.push(walk(point.x,point.y),{duration:0,end:()=>{
+        if(request!==generation||catSession!==session) return;
+        const currentTarget=session.handle.snapshot();
+        const corrected=catMeetingPoint(currentTarget,x);
+        if(!currentTarget.ready||Math.hypot(corrected.x-x,corrected.y-y)>2) {session.phase='waiting';return;}
+        if(!session.handle.contact({x,y})) {session.phase='waiting';return;}
+        session.phase='contact';sili.dataset.catPhase=session.handle.mode==='play'?'playing':'petting';
+        sili.style.setProperty('--interaction-facing',String(point.facing));
+        visual('interactions',4);arrived();
+      }});
+      if(motion.matches) drain();
+    }
+  }
+
   let frameId;
   let disposed = false;
   const abort = new AbortController();
@@ -153,6 +203,7 @@ export function createJourneyController(root, services) {
     const dt = previous === undefined ? 0 : Math.min((now - previous) / 1000, .05);
     previous = now;
     if (!document.hidden && !(activity === 'music' && services.piano.isPaused)) {
+      updateCatInteraction(dt);
       if (!current && !queue.length) idleCycle();
       if (!current && queue.length) begin(queue.shift());
       if (current) {
@@ -172,12 +223,19 @@ export function createJourneyController(root, services) {
     if (motion.matches) { if (ready) { queue = []; current = null; } drain(); }
   }, { signal: abort.signal });
   document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && activity === 'photos' && !ready) {
-      cancel(); activity = ''; book(false); visual(null); status.textContent = '';
+    if(event.key==='Escape'&&catSession){
+      catSession.handle.cancel();queue=[];current=null;visual(null);
+    }
+    if (event.key === 'Escape' && activity && activity !== 'cats' && !ready) {
+      const wasMusic=activity==='music';
+      cancel(); activity = ''; room.dataset.activity=''; book(false); cup(false);
+      if(wasMusic) services.piano.stop();
+      visual(null); status.textContent = '';
     }
   }, { signal: abort.signal });
   const api = {
     select, walkPiano,
+    stopCatInteraction:()=>{if(catSession)catSession.handle.cancel();},
     resumePiano: () => {
       if (current?.walking) { visual(null); sili.dataset.pose = 'walk'; }
     },

@@ -1,0 +1,39 @@
+.scene-module{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.scene-artwork{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+/* Wind is derived from the window state, not an independent breeze switch. */
+.window-left-curtain{transform-origin:55.62% 14.88%;animation:curtain-left-sway var(--left-curtain-duration,6.2s) ease-in-out infinite;transform-box:view-box}
+.window-right-curtain{transform-origin:82.78% 14.88%;animation:curtain-right-sway var(--right-curtain-duration,7.1s) ease-in-out infinite;transform-box:view-box}
+@keyframes curtain-left-sway{0%,100%{transform:rotate(0deg)}50%{transform:rotate(-1.05deg)}}
+@keyframes curtain-right-sway{0%,100%{transform:rotate(0deg)}50%{transform:rotate(.9deg)}}
+.window-left-sash,.window-right-sash,.window-closed-glass,.curtain-open-piece,.curtain-closed-piece{transition:transform .85s cubic-bezier(.2,.65,.25,1),opacity .7s ease}
+.window-left-sash{transform-origin:57.2% 32%;transform-box:view-box}
+.window-right-sash{transform-origin:81% 32%;transform-box:view-box}
+.window-closed-glass{opacity:0}
+.window-module[data-window-open="false"] .window-closed-glass{opacity:1}
+.window-module[data-window-open="false"] .window-left-sash,.window-module[data-window-open="false"] .window-right-sash{opacity:0;transform:scaleX(.2)}
+.window-module[data-window-open="false"] .window-left-curtain,.window-module[data-window-open="false"] .window-right-curtain{animation:none;transform:none}
+.curtain-closed-piece{opacity:0;transform-box:view-box}
+.curtain-closed-left{transform-origin:52.8% 14.8%;transform:scaleX(.2)}
+.curtain-closed-right{transform-origin:86% 14.8%;transform:scaleX(.2)}
+.window-module[data-curtains-open="false"] .curtain-open-piece{opacity:0}
+.window-module[data-curtains-open="false"] .curtain-closed-piece{opacity:1;transform:scaleX(1)}
+.curtain-fabric-left{transform-origin:53% 14.8%;transform-box:view-box;animation:closed-curtain-breathe 6.8s ease-in-out infinite alternate}
+.curtain-fabric-right{transform-origin:86% 14.8%;transform-box:view-box;animation:closed-curtain-breathe 7.4s ease-in-out infinite alternate-reverse}
+@keyframes closed-curtain-breathe{to{transform:skewX(.18deg)}}
+.machine-indicator{fill:#c6b991;opacity:.25;transition:fill .25s,opacity .25s}
+.machine-steam{opacity:.28}
+.machine-steam path{fill:none;stroke:#fff7e3;stroke-width:2.2;stroke-linecap:round;animation:espresso-steam var(--steam-duration,3.4s) ease-out infinite;transform-box:fill-box;transform-origin:center bottom}
+.machine-steam path:nth-child(2){animation-delay:-1.2s}.machine-steam path:nth-child(3){animation-delay:-2.3s}
+@keyframes espresso-steam{0%{opacity:0;transform:translateY(6px) scaleX(.7)}25%{opacity:.8}100%{opacity:0;transform:translate(4px,-15px) scaleX(1.3)}}
+.coffee-stream{fill:none;stroke:#70401f;stroke-width:1.6;stroke-linecap:round;stroke-dasharray:4 2;opacity:0}
+.coffee-module.is-brewing .machine-indicator{fill:#c0df8a;opacity:.95;filter:drop-shadow(0 0 3px #c0df8a);animation:brew-indicator-pulse var(--brew-pulse-duration,1.2s) ease-in-out infinite alternate}
+.coffee-module.is-brewing .machine-steam{opacity:.85}
+.coffee-module.is-brewing .coffee-stream{opacity:.8;animation:espresso-flow .4s linear infinite}
+.coffee-module.is-brewing .coffee-machine-piece{animation:machine-vibration .12s ease-in-out infinite alternate}
+@keyframes espresso-flow{to{stroke-dashoffset:-6}}
+@keyframes machine-vibration{to{transform:translateX(.3px)}}
+.scene-module[data-motion="still"] .scene-artwork,.scene-module[data-motion="still"] .scene-artwork *,.scene-module[data-motion="still"] .object-shape path{animation-play-state:paused!important}
+.scene-module[data-motion="still"] .machine-steam,.scene-module[data-motion="still"] .coffee-stream{opacity:0}
+@media(prefers-reduced-motion:reduce){.scene-module .scene-artwork,.scene-module .scene-artwork *,.scene-module .object-shape path{animation:none!important}.scene-module .machine-steam,.scene-module .coffee-stream{display:none}}
+
+@keyframes brew-indicator-pulse{to{opacity:.6}}

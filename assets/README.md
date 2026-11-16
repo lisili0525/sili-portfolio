@@ -141,3 +141,11 @@ Prompt: Correct only the two olive green glazed casement leaves to open outward 
 `room-clean-v7.png` is the active base background, edited from v6 with the built-in image generation tool. Window width is reduced slightly, targeting approximately five percent, while the original height, vertical placement, outward-opening sashes and full-length curtains are preserved. The larger window reductions were discarded. Existing localized depth layers do not intersect the changed side margins.
 
 Prompt: Narrow the original wide window assembly only very slightly, to approximately 95 percent of its original width. Move each side inward by approximately 15 pixels on the full canvas. Preserve original height and top/bottom positions exactly. Keep a broad horizontal opening, outward-opening sash perspective and natural curtain folds. Preserve all surrounding furniture, room framing, plants, colors and hand-drawn style. Add no characters or text.
+
+## Modular scene underpainting
+
+`room-module-underpainting-v2.png` is a local-demo clean plate generated with the built-in image generation tool from room-clean-v7.png. Coffee equipment and curtains are removed behind the independent SVG-masked artwork layers; the active room artwork itself stays unchanged. The final prompt and layer contracts are recorded in src/scene/README.md. The first clean-plate candidate was discarded because it retained the grinder and jar under the movable equipment group.
+
+## Whole-room modular asset plates
+
+The local modular scene uses room-architecture-v2.png for empty neutral architecture, room-architecture-v1.png for a separate sunlight pass, room-hidden-surfaces-v1.png for occluded furniture repairs, and window-closed-v1.png / curtains-closed-v1.png for closed states. Original foreground pieces still come from approved room-clean-v7.png through SVG masks. All new plates were edited using the built-in image generation tool. Exact prompts and saved asset paths are recorded in modular-room-prompts.md.

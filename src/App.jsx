@@ -8,25 +8,31 @@ import { useFullscreen } from './hooks/useFullscreen.js';
 
 export function App() {
   const rootRef = useRef(null), roomRef = useRef(null), dialogRef = useRef(null), exploreRef = useRef(null), navRef = useRef(null);
-  const origin = useRef(null), request = useRef(0), mounted = useRef(false);
+  const origin = useRef(null), request = useRef(0), mounted = useRef(false), switchingDialog = useRef(false);
   const [entry,setEntry] = useState(null), [menu,setMenu] = useState(false), [spread,setSpread] = useState(0);
   const {services,piano} = useRoomRuntime(rootRef);
   const screen = useFullscreen();
   const closeMenu = useCallback((restore = false) => { setMenu(false); if (restore) exploreRef.current?.focus(); },[]);
   const openEntry = useCallback(async (key,trigger) => {
     if (!entries[key]) return;
+    if(key==='cats'&&trigger?.dataset.cat){
+      request.current++;setMenu(false);origin.current=trigger;
+      if(dialogRef.current.open) { switchingDialog.current=true; dialogRef.current.close(); }
+      setEntry(null);
+      void services.current.actions.select('cats',{cat:trigger.dataset.cat,catInteraction:trigger.dataset.catInteraction,direct:true});
+      return;
+    }
     const id = ++request.current;
     const focus = trigger?.closest('#destinations') ? exploreRef.current : trigger;
     if (!dialogRef.current.open) origin.current = focus || exploreRef.current;
     setMenu(false);
-    if (key === 'photos') {
-      if (dialogRef.current.open) { dialogRef.current.close(); setEntry(null); }
-      origin.current = focus || exploreRef.current;
-      origin.current?.focus();
-      const pickedUp = await services.current.actions.select(key);
-      if (!mounted.current || !pickedUp || request.current !== id) return;
-      if (trigger?.dataset.albumFirst === 'true') setSpread(0);
-    } else void services.current.actions.select(key,{cat:trigger?.dataset.cat});
+    if (dialogRef.current.open) { switchingDialog.current=true; dialogRef.current.close(); }
+    setEntry(null);
+    origin.current = focus || exploreRef.current;
+    origin.current?.focus();
+    const arrived = await services.current.actions.select(key,{cat:trigger?.dataset.cat});
+    if (!mounted.current || !arrived || request.current !== id) return;
+    if (key === 'photos' && trigger?.dataset.albumFirst === 'true') setSpread(0);
     setEntry(key);
   },[services]);
   useEffect(() => {
@@ -51,7 +57,8 @@ export function App() {
     return () => { document.removeEventListener('click',closeOutside); document.removeEventListener('focusin',closeOutside); document.removeEventListener('keydown',key); };
   },[menu,closeMenu]);
   function closed() {
-    // A queued close from switching to photos must not close a newer dialog.
+    // Programmatic closes must not cancel the next destination or restore old focus.
+    if (switchingDialog.current) { switchingDialog.current=false; return; }
     if (dialogRef.current.open) return;
     setEntry(null); services.current.actions.closeAlbum(); origin.current?.focus();
   }

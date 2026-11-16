@@ -1,100 +1,79 @@
 # Sili's Little House — Project Handoff
 
-Updated: November 16, 2026 (Asia/Shanghai)
-Workspace: C:\Users\lslhw\Sili Website
-Repository: https://github.com/lisili0525/sili-portfolio — verified private through authenticated GitHub API on November 16, 2026; keep private.
+Updated: November 16, 2026 (America/Chicago)
+Workspace: /Users/lisili/sili-portfolio
+Repository: https://github.com/lisili0525/sili-portfolio
+Website: https://lisili0525.github.io/sili-portfolio/
 
-## Current state
+## Current delivery
 
-Buildless HTML/CSS/JavaScript illustrated-room portfolio. Open index.html locally; no installation or build is required. No public deployment has been requested or performed. The user has now requested updating this handoff/PRD and committing/pushing all project changes to the existing repository. This snapshot accompanies that synchronization; inspect Git status and log for the actual commit/push state. The previous committed base was 7fd83dd. Never reset or discard uncommitted work.
+The application is a React 19 / Vite 8 illustrated-room portfolio, published through GitHub Pages from main. The user authorized synchronizing all current changes, pushing them, and deploying this release. Earlier private-only, buildless, local-only and no-deployment notes are obsolete. Keep code, comments, documentation and generated prompts in English, even when discussing changes in Chinese. Never discard unrelated work or force-push.
 
-This document describes the current implementation, replacing accumulated historical notes. PRD.md contains current requirements and separately identifies future scope. README.md explains local use. Original artwork and earlier asset versions are retained unless the user specifically requested deletion.
+This handoff describes the final implementation; PRD.md records product requirements. Deployment status is established by the matching GitHub Actions run and remote commit, rather than a speculative success statement in this document.
 
-## Preserve these decisions
+## Architecture and commands
 
-- The approved warm cartoon room fills a non-scrolling viewport, with no outer header, introduction, frame or footer. Only content windows scroll. Base: assets/room-clean-v4.png, 1671 × 941, rendered on a 1672 × 941 stage. Do not replace the room wholesale.
-- Preserve enlarged piano/bench and Sili's base apparent head width of about 197.5 room pixels. Foreground album approach deliberately enlarges him by up to 18%, without distorting proportions.
-- The original couple portrait stays only on the wall. The calendar and its landscape illustration remain. The coffee cabinet is farther right; the diagonal open album stays naturally placed beside the foreground table plant.
-- Active workstation assets: assets/sili-computer-v3.png and the approved assets/sili-writing-v2.png. Writing must remain unchanged; SHA-256: 14f250c62b13b4a95745eefb276dbb5dad67f4f660608fe9d92449cd2822a90d.
-- Small content windows now have 92% opaque warm-cream backgrounds and opaque text. The physical flipping album is excluded. Desktop windows move to the right during music so the piano stays visible.
-- Cats remain autonomous with separated random foreground starts. Clicking a cat opens content; it does not steer the animal.
-- Keep GitHub private. User source photos and academic reference PDFs are not production assets and must not be automatically copied/uploaded. Only requested generated illustrations and the supplied music file were added.
+- App.jsx owns content, Explore, focus, dialog sequencing, album spread state and fullscreen controls.
+- useRoomRuntime starts and disposes the piano, cat and journey controllers. React StrictMode must retain only the existing two continuous animation clocks.
+- controllers/journeys.js owns interruptible person movement, props, activity poses and arrival promises. controllers/piano.js owns recording/performance state. controllers/cats.js owns autonomous routes and coordinated meetings.
+- components/Room.jsx composes independent scene modules over assets/room-architecture-v2.png. src/scene/README.md describes ownership, state and artwork sources. /?demo=modules provides enlarged coffee/window previews.
+- src/scene/furnitureCatalog.js and sceneObjects.js share the 1672 x 941 world, module placement, artwork masks and furniture support anchors. src/data/catSurfaces.js derives resident destinations from those anchors.
+- styles.css retains calibrated actor/depth geometry; scene.css and roomAnimations.css own module effects. Keep foreground passes as direct siblings of the person where CSS depth selectors require it.
+- npm ci installs dependencies; npm run dev serves localhost; npm test runs Vitest; npm run build emits dist; npm run preview serves the production build. Use a Node version allowed by package.json; deployment uses Node 24.
+- .github/workflows/deploy-pages.yml installs, tests, builds and publishes dist on pushes to main. Vite uses a relative base and emits only referenced production artwork. Do not deploy source files or the repository root as the site artifact.
 
-## Interaction and music modes
+## Interaction and popup rules
 
-Seven content entries: music, coffee, notebook, photos, milestones, tennis and cats. Explore reaches cropped objects. Native buttons support keyboard activation. Delegated navigation must remain closest('button[data-entry]'); do not broaden it to arbitrary data-entry ancestors, because the dialog itself uses that attribute for presentation and would reopen after closing.
+Seven content entries remain: piano/music, coffee, notebook, photos, calendar/milestones, tennis and resident cats. Illustrated objects retain tight contour highlights and accessible native controls. All floating object-name labels have been removed, including At the piano and Rachel & me. Window/curtain controls are on the artwork; no floating state toolbar is allowed. Explore provides alternative access to all entries.
 
-Without an active recording performance, object selections run interruptible journeys and poses. Coffee brews, leans and sips; desk alternates computer/writing with pauses; album approaches, reaches, lifts, opens and returns on close. Calendar/tennis/cats use destination poses. Closing coffee/desk content leaves the activity running. New selections cancel stale arrivals and album-opening promises. Escape cancels pending pickup. Hidden-page journeys freeze; reduced motion skips finite travel/cleanup and uses still poses.
+Normally, content opens only after Sili reaches the selected destination and completes its initial interaction. Coffee waits through preparation, notebook waits for seating, album waits for pickup, and calendar/tennis wait for their arrival pose. Music content waits for piano arrival. New selections close old content, cancel obsolete journeys and suppress stale dialog promises. Repeated clicks on the same pending destination reuse its arrival promise. Escape cancels pending journeys. Programmatic dialog close events cannot cancel the next destination or restore obsolete focus.
 
-During an active recording performance, browsing opens any content without moving Sili away from the piano. He keeps animated playing hands; reduced motion retains a still seated pose. Album opens directly without pickup or room-book removal. Music-list, mute and stop controls remain available inside other content and the album. Stop, recording end or media error releases this mode so subsequent object selections run normal activities again. Muting retains performance mode. Inactivity pauses audio and requires explicit resume.
+During an engaged piano performance, other content opens immediately and Sili keeps playing. This also preserves the existing paused/approach performance behavior. The album opens without physical pickup in this mode. Compact music controls remain accessible in content. Direct cat greeting is a physical interaction and can interrupt the performance; browsing the resident introduction does not. Closing content never stops music.
 
-piano.js exposes keepsPiano for actions.js. It holds the recording performance during approach, playing and inactivity pause, including autoplay fallback and mute. Opening the music list during approach must not cancel the walk. Audio begins only after arrival, following visitor activation; if blocked, a Play recording button is shown. No audio on initial page load. Track selection restarts the piece, closing content leaves it playing, and recording end does not loop. Late play promises cannot restart sound after stop/departure.
+The supplied One Summer's Day recording is the only track. Never autoplay on initial load. Start at arrival after visitor activation; show explicit playback fallback if blocked. Mute keeps performance mode; Stop or recording end releases it. Hiding the page pauses music and requires explicit resume. Reject late play promises after stop/disposal.
 
-Current recording collection: pianoRecordings in piano.js, with only One Summer’s Day. assets/music/one-summers-day.m4a is the supplied file copied unchanged: 1,991,438 bytes, AAC-LC/mp4a, stereo 44.1kHz, about 137.35 seconds. Original remains in Downloads. Mute preference is stored for the session. The earlier three listening/playing interests remain background content in the PRD, not extra playable tracks.
+## Modular scene and visual corrections
 
-Explore closes with Escape (focus returns to its toggle), outside clicks, or focus leaving it. Dialog close/Escape/outside dismissal return focus. Album controls and compact music controls must not trigger outside dismissal. Native browser behavior still needs live QA.
+Independent modules cover piano/bench, coffee equipment/cabinet, portrait/calendar, tennis equipment, stool, bookcase, workstation/chair/laptop/notebook/stationery/lamp/books, sofa, table/album, wall shelf/camera, toy mouse, plants, lighting and residents. SVG masks preserve the approved raster artwork; future per-object animation should stay in its owning module.
 
-## Album: authoritative contents and depth
+The approved room source is assets/room-clean-v7.png. Reconstructed occluded surfaces are in room-hidden-surfaces-v1.png; neutral architecture and independent sunlight are separate assets. Closed glass and curtain states have versioned sources. Generation provenance is in assets/modular-room-prompts.md. Historical artwork remains unless explicitly deleted by the user.
 
-Four spreads/eight pages, all filled. No surrounding panel, heading or page toolbar. Keep cover thickness, binding, paper, photo mounts, outer page numbers and discreet close. Click/drag lower corners or use arrow keys; a partial turn can finish or return. Closing mid-turn remembers the last fully revealed spread. Wall portrait opens the first spread.
+The original room revisions removed the vine beside the espresso machine, the window vine and the lower-right foliage, added matching left/right curtains, corrected outward-opening casements and tuned window width while retaining its height. Preserve the approved final composition.
 
-| Slot | Active image | Content |
-| --- | --- | --- |
-| 1 | assets/album-festive-v1.png | Supplied festive couple photo as cartoon |
-| 2 | assets/album-family-v2.png | Rachel holding orange Java; Sili holding tuxedo Viola |
-| 3 | assets/album-tennis-v1.png | First generated tennis cartoon, explicitly selected by user |
-| 4 | assets/album-pier-v1.png | Supplied seaside couple photo as cartoon |
-| 5 | assets/album-java-v1.png | Orange tabby belly-up with hanger |
-| 6 | assets/album-viola-v1.png | Tuxedo cat beside tennis ball |
-| 7 | assets/album-bench-press-v1.png | Requested Sili bench-press illustration |
-| 8 | assets/album-hip-hop-v1.png | Requested Rachel hip-hop illustration |
+Latest mask corrections restore full desk legs and remove floating floor-colored rectangles, retain the right curtain's dark edge, fill bookcase/book gaps, restore the piano's left side and the album's lower-left cover. The bookcase plant is deliberately static until it can be isolated without carrying wall/shelf fragments; do not casually re-enable its wind class. Other airflow effects remain active. Piano hover geometry follows the corrected cabinet. The painted yellow rail has a local sepia/saturation/brightness treatment for warmer, subdued brass, not a black stripe or glowing yellow band.
 
-Slots 2, 7 and 8 are original requested cartoon scenes, not documentary photographs of specific events. No dates or personal captions were invented. Prompts/provenance: assets/album-prompts.md. Full square artwork fits using contain. The original wall-portrait crop is absent from the album. Later tennis v2/v3 project images were deleted at the user's request; do not restore them. Family v1 is preserved history; active v2 shortens Sili's supporting upper arm, raises/defines its elbow and rebalances the hand. User visual approval of that correction is pending.
+Window glass and curtains toggle independently. Fabric breeze depends on open glass; closing the glass stops it. Drawn curtains remove direct sunlight and add subtle shade. Cats cannot cross closed glass or drawn curtains, and outdoor Viola waits until access returns. Do not close either state during an active crossing. Lamp toggles locally; camera flashes locally; coffee preparation drives steam/flow/pulse. Other paper, screen, plant and lighting effects stay restrained and honor inactivity/reduced motion.
 
-Normal pickup anchor: 53 / 96 via 53 / 84 (room percent). Perspective grows along the central lane, capped at 1.18× at y94, with feet anchored using scaled source padding. The actual tabletop silhouette, not a broad rug/floor patch, hides shoes/lower legs. The empty-table patch removes the decorative room book while held and restores it afterward. Leaving the foreground reverses scale. Desk positioning is outside the perspective lane; piano arrival clears inline height before using its calibrated CSS.
+## Character calibration
 
-## Workstation and room calibration
+Standing/walking uses sili-poses-v1.png, four 543 x 724 cells at 58% stage height. Activity atlases use calibrated 576px cells at 58.4%. Keep the approved apparent head scale and grounded feet. The calendar pointing cell (interactions frame 5) has more transparent padding: scale its sprite by 1.1 around 50% / 95.66%, without moving its feet or scaling every interaction pose.
 
-Separate 576 × 576 transparent desk pictures. Both use a measured 207px head region and hip registration around source 288 / 460; frame height is 58.4% of room height. Desk anchor: 81.4593 / 90.1027 via 69 / 84. World seated hip contact: 1362 / 762. Do not shrink seated Sili to fit furniture or restore obsolete shared desk sheets/left-facing computer legs.
+Piano seated/playing uses sili-piano-v4.png at its existing 51.91% height and bench registration. Workstation computer-v3 and writing-v2 keep their approved seated calibration. Do not shrink actors to compensate for furniture. The chair is a separate alpha asset; foreground occlusion remains calibrated.
 
-The separate chair is pulled slightly away from the desk: world left/top 1238 / 629, height 311px. Layering: unchanged base, localized assets/room-desk-chair-clear-v1.png patch, transparent assets/desk-chair-v1.png rear, Sili, then desk apron/leg overlap and chair front. Use assets/desk-front-mask-v1.svg with per-pose leg restrictions; avoid torso/arm clipping. Chair alpha gaps must stay genuinely transparent, not copied floor pixels.
+Foreground album pickup uses 53 / 96 via 53 / 84 and up to 18% perspective growth with anchored feet. The real tabletop silhouette hides the lower legs; the empty-table source removes the room book while held. Return on close/departure; leave piano-mode browsing exempt from pickup. Coffee uses only brew A/B, lean and sip cells in sili-coffee-v3.png; never restore the rejected twisted-head placement pose.
 
-assets/desk-chair-depth-v2.svg has an internal luminance mask that produces actual transparency. It is also embedded in styles.css for local-file support: update source SVG and both CSS data URLs together. Contact-opening lower/right points include 435.695,316.000 / 336.227,344.360 / 208.338,344.360, tightened to hide the seat-contact leg sliver. Latest chair/computer composition and seam correction still need user approval; writing posture is approved.
+## Cats and person interaction
 
-Standing/walking: assets/sili-poses-v1.png, four 543 × 724 cells, height 58%; one stride and restrained bob, not a full gait. Piano seated: assets/sili-piano-v4.png, six 512px cells; idle plus five hand poses. Height 51.91%, left 13.2%, bottom 15.46%. Keep assets/piano-bench-mask.svg and its embedded CSS aligned. Do not restore older seated calibration.
+Viola and Java are female, visually distinct and autonomous. Java remains indoors; Viola can leave and return through the visible window route. Both visit piano bench/top, coffee counter/table, bookcase, work desk/chair, sofa and window using shared support anchors, reservations and stepped hops. Occupied furniture clears safely for the person.
 
-## Coffee and cats
+src/data/catBehavior.js sets roaming rates to Viola 0.5 and Java 0.7 relative to the previous baseline. Longer indoor rests reduce excursion frequency by 50% and 30%; walking/jumping speed, greeting responsiveness and outdoor waiting are not slowed.
 
-Active coffee atlas: assets/sili-coffee-v3.png, four 576px cells (2304 × 576): brew A/B, lean and sip. The rejected twisted-head cup-placement frame is physically absent. CSS uses 400% sizing and 33.3333333333% frame steps; controller restricts indices to 0–3. Departure briefly uses rear frame 0 for 0.4s and restores assets/station-cup-v1.png before walking. Do not restore the rejected cell. Leaning sips recur after roughly 12–24 seconds. These are key poses, not fluid hand animation.
+Direct cat clicks greet in-scene, without opening a biography. Explore retains Viola & Java, Pet Viola and Play with Java. Stable interaction handles expose identity, live geometry, readiness, contact, cancellation and departure. Journeys approach the actual cat; never fall back to pointing at a fixed window while the cat is elsewhere. Low perches may stay; high perches descend through known steps. Repeated contact is bounded; play includes short playful hops. Finish airborne movement on cancellation and let Sili withdraw before roaming resumes. Escape releases a greeting naturally.
 
-Viola and Java are female. Each has a separate 2172 × 362 six-pose atlas. Viola is quiet/brave, with occasional floor → stool → sill → visible window departure/return. Java is playful indoors and sometimes watches from the window; she does not follow outdoors. Foreground time in controlled simulations is roughly 80–85% Viola / 87–88% Java. Manual pause remembers session preference; content dialogs and page inactivity suspend cats; reduced motion uses indoor still poses.
+Native cat buttons follow their current positions; hidden outdoor Viola has no visible/tabbable target. Preserve the sleeping-pose crop that excludes the adjacent atlas paw. Ambient movement pauses for content/inactive pages, with safe clearance/meeting exceptions. Reduced motion uses still indoor poses. The manual Pause cats button was removed at the user's request.
 
-Each .cat is a native button carrying data-entry=cats and its identity. The former fixed window hotspot is removed; Explore still reaches resident content. Button positions follow cats.js; hidden Viola has no visible/tabbable target. Full-room cat layers remain pointer-transparent. Without music, Sili approaches the clicked floor cat or looks up near the stool for a perched cat. Cats are never repositioned by clicks.
+## Album and content preservation
 
-Sleeping sprites keep clip-path: inset(0 9% 0 0), excluding the adjacent hopping paw before mirroring. At alpha > 8/255, body ends are Viola 296 / Java 292 and stray paw starts 338 / 337; crop starts 329.42 in the 362px cell. Static original/mirrored previews retain bodies and tails. PNGs and other poses remain unchanged.
+The physical album has four spreads/eight pages, click/drag corners, arrow-key navigation, reduced-motion handling, accessible spread counter, discreet close and remembered fully revealed spread. Wall portrait opens spread one. Do not add a surrounding panel or toolbar.
 
-## Verification and next work
+Slots: festive couple, family-v2, first selected tennis illustration, seaside couple, Java, Viola, Sili bench pressing, Rachel hip-hop. Slots 2/7/8 are requested imagined illustrations, not documentary evidence. Do not invent personal dates/captions. Keep original wall portrait on the wall. Deleted later tennis variants must not return.
 
-Controlled suites: checks/album.cjs, piano.cjs, recordings.cjs, actions.cjs, cats.cjs and dialogs.cjs. They cover page turns, interruption, cup cleanup, desk calibration, foreground album depth, clicked cat identity, focus/dismissal handlers, recording list, mute/stop/end/error, inactivity, late play promises, independent music browsing and reduced motion. checks/sleeping-cats.ps1 checks alpha separation and writes an ignored static contact sheet. Run Node checks from repository root. Node is not on the current shell PATH; connected Node REPL with node:vm was used without installing software.
+Small content windows use warm cream with readable opaque text; music mode places content to the right so the piano stays visible. Project descriptions, milestone dates, contact/profile destinations and resume publication require reviewed source facts. Source photos and academic reference PDFs are not automatically production assets. Preserve the approved writing asset; SHA-256: 14f250c62b13b4a95745eefb276dbb5dad67f4f660608fe9d92449cd2822a90d.
 
-Final synchronization checks on November 16, 2026: all six controlled Node suites and the sleeping-cat alpha check passed. Also checked: script syntax, 22 local asset references, CSS brace balance, PNG dimensions, approved writing hash, audio copy hash, embedded chair SVG consistency and git diff --check. Static compositions were inspected; they are not browser screenshots.
+## Validation and remaining work
 
-Browser access host was unavailable. Prior native Edge inspection failed with its portfolio window minimized, and Chrome access was denied. Do not bypass restrictions or repeatedly pursue blocked tools. Not agent-verified live: audible audio/decoding, autoplay policy, actual animation timing, CSS mask rendering, mobile camera/framing, touch/drag, native modal focus, fullscreen and final composition. Report these limits plainly.
+Current release: 40 Vitest tests across six suites pass; production build and git diff --check pass. Coverage includes arrival-gated dialogs, immediate uninterrupted piano browsing, stale/cancelled/repeated requests, album turns/pickup, music lifecycle, cat meetings/reservations, window access and scene state. Native local-browser review confirmed normal arrival gating, ongoing piano playing while coffee content is open, removal of floating labels, visual mask fixes and corrected calendar scale.
 
-Next: obtain visual feedback on family v2, workstation chair/computer seam, album/table depth and cat routes/click areas. Test music while browsing, mobile layouts and native keyboard/touch in a real browser when available. Improve current interactions before unrelated features. Optional WASD/floor navigation, richer frame animation, browser-history routing and shareable content URLs remain future work.
+This does not establish exhaustive behavior on every machine. Remaining manual QA includes representative Safari/Chrome/mobile fullscreen and touch/drag, audible autoplay policies, all animated mask/depth combinations and final art approval. Optional manual navigation, browser-history/deep links, additional recordings and richer frame animation remain future work. Continue refining existing interactions before unrelated additions.
 
-Pending editorial content: coffee stories/equipment, project evidence/links, selected milestones/verified dates, reviewed public contact destinations and résumé. Additional music tracks/captions are optional. Do not invent claims, dates, links or benchmarks. Academic reference PDFs inform writing but are not public assets.
-
-## Git and maintenance
-
-Use the existing main/origin repository only. The user authorized pushing all current project changes, including versioned assets, music and checks, to that private repository. Keep tmp/, temp/, dependencies and machine-local secrets ignored. No public site deployment or visibility change is authorized. Check Git status/remotes/privacy before mutations and verify remote HEAD after pushing. Never force-push or discard work to resolve divergence. Network/.git writes may require native approval; an ownership exception must be limited to this exact repository, never a global wildcard.
-
-index.html loads piano → album → actions → app → cats. app.js manages content; actions.js owns journeys/props/camera; piano.js owns recording/performance mode; album.js owns pages/turns; cats.js owns autonomous inhabitants. styles.css owns stage scaling, depth masks, opacity and controls. Asset history/prompts are in assets/README.md, activity-prompts.md and album-prompts.md. Current code and this snapshot outrank older prompt descriptions. Ignored tmp/ previews may not exist on another checkout.
-
-## React migration (November 16, 2026)
-
-This section supersedes earlier references to root-level JavaScript scripts and checks. The app now uses React and Vite, with source under src/. React owns the UI, dialog content, navigation, album turns and playback controls. Scoped animation controllers retain calibrated artwork geometry and are started/disposed by useRoomRuntime. The legacy root scripts and simulated-DOM CJS suites have been replaced by Vitest React integration and controller checks. Use npm ci, npm run dev, npm test and npm run build. The user authorized publishing the React migration. The GitHub Pages workflow now installs dependencies, runs Vitest and builds with Vite before deploying dist/.
-
-## Expanded cat routes
-
-Cat furniture anchors and routes are in src/data/catSurfaces.js. Both inhabitants now tour piano bench/top, coffee counter/table, bookcase, workstation desk/chair, sofa and window using stepping stones and depth-scaled hops. Reservations prevent shared furniture overlap. Person activity prompts a safe descent even while its content dialog is open. Controller checks simulate thirty minutes and cover every destination, indoor Java, outdoor Viola, bounds, reservations, occupied furniture and reduced-motion cleanup.
+Keep tmp/, dependencies, build output and secrets ignored. Verify remote HEAD and the matching Pages workflow after publishing. Custom domains can be added to GitHub Pages; no alternate host is inherently required. Do not configure or purchase a domain without the selected domain and authorization.

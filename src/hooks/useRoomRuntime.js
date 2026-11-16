@@ -9,10 +9,10 @@ export function useRoomRuntime(rootRef) {
   useEffect(() => {
     const runtime = services.current;
     runtime.piano = createPianoController(rootRef.current, runtime, setPiano);
+    runtime.cats = createCatController(rootRef.current);
     runtime.actions = createJourneyController(rootRef.current, runtime);
-    const cats = createCatController(rootRef.current);
     return () => {
-      cats.destroy(); runtime.actions.destroy(); runtime.piano.destroy();
+      runtime.actions.destroy(); runtime.cats.destroy(); runtime.piano.destroy();
     };
   }, [rootRef]);
   return {services, piano};

@@ -1,25 +1,27 @@
 # Sili Li's Little House — Personal Portfolio PRD
 
-Status: implemented private prototype; current requirements and remaining release work
+Status: React implementation published through GitHub Pages; current release requirements
 Date: November 16, 2026
 Owner: Sili Li
 
 ## Current confirmed behavior — November 16, 2026
 
-- Album contents: 1 festive couple, 2 family portrait (active album-family-v2.png with corrected Sili right arm), 3 first generated tennis cartoon, 4 seaside couple, 5 Java, 6 Viola, 7 Sili bench pressing, 8 Rachel dancing hip-hop. All slots filled. Slots 2/7/8 are requested imagined illustrations; do not invent documentary event claims, dates or captions. Later tennis variants were deleted at the user’s request.
-- Approved writing pose remains unchanged. Latest chair/computer composition and family-arm correction still await final user visual approval. Controlled logic/static checks do not replace browser verification.
+This section is authoritative for the current release. Implementation details and operational handoff are in HANDOFF.md. Code and project documents remain English-only.
 
-- Cat entry update: clicking either moving cat opens “Meet Viola & Java”; replace the old fixed window hotspot. Use keyboard-accessible controls attached to each cat and retain the Explore entry. Cats remain autonomous; clicks do not steer them. Without music, Sili visits the clicked floor cat or looks toward its perch. During music, content opens without interrupting the piano performance.
-- Latest content-window preference: use a 92% opaque warm cream background for small windows, replacing the earlier half-transparent treatment. Positioning already preserves the animation view. Keep the physical album treatment unchanged.
-
-- Music/browsing update: during an active recording performance, content navigation never moves Sili away from the piano; he continues hand animation (still seated with reduced motion). Album opens without pickup in this mode. Stop or recording end releases normal object journeys/animations; mute retains performance mode. Keep music-list, mute and stop controls accessible inside open content views. This supersedes the earlier destination-stops-recording behavior.
-- Recording update: Sili supplied “One Summer’s Day” as M4A. Connect it to the piano and provide a clickable music list, reachable while playing, containing only that recording for now. Keep mute, explicit resume after inactivity, fallback Play when browser playback is blocked, and stop at the recording end or explicit Stop. Browsing content does not stop the performance.
-- Coffee: Sili prepares it facing away from the visitor, then stays near the brewing station with a relaxed, casual lean and occasional sips. On another destination selection, he places the cup on the station before leaving.
-- Worktable: sit at the actual chair in matching perspective and scale, mostly type on the laptop, occasionally write in the notebook and pause to think.
-- Photo album: approach the foreground table, reach for and lift the album, then open the flipping book. This is the user-requested exception to immediate content opening; reduced motion skips the travel and pickup delay. Return the book to the table on close or departure.
-- Album perspective: Sili grows as he approaches the viewer, keeping consistent body proportions and grounded feet through reach, pickup and return. Foreground pickup is 18% larger than his normal room scale; preserve separately approved workstation and piano calibration.
-- Other content windows: 92% opaque warm-cream backgrounds with opaque readable text, positioned to keep the current activity visible. The flipping album retains its physical paper presentation.
-- Activity transitions are interruptible; stale pickups must never open an album after a different selection. Pause progress while the page is inactive and use still poses with reduced motion.
+- Delivery: React 19 with Vite, a static dist build, and a GitHub Pages workflow triggered by main. The user authorized publishing all current improvements. The website is https://lisili0525.github.io/sili-portfolio/. A custom domain remains optional; GitHub Pages supports it without changing hosts.
+- Scene: all furniture, decorations, residents, lighting and depth passes have independent module ownership and shared placement/support metadata. Preserve the approved composition, outward-opening window, matching curtains and revised foliage/window dimensions. Modularization enables incremental animation, but large rearrangements still require artwork/occlusion review.
+- Window: glass and curtains open/close independently through the illustration. Open glass enables breeze; closed glass stops it. Drawn curtains remove direct sunlight. Cats cannot cross closed glass or drawn curtains; outdoor Viola waits. Protect in-progress portal crossings.
+- Effects: coffee preparation coordinates steam/flow/pulse; lamp toggles, camera flashes, and paper/screen/plant/light effects remain subtle. The bookcase plant remains static until its isolated artwork is clean. All decorative motion respects inactivity and reduced motion.
+- Visual quality: desk legs, right curtain outline, bookcase/books, piano left side and album lower-left cover must have complete, aligned masks without floating fragments. Piano hover follows its actual cabinet contour; its rail is warm subdued brass. Calendar pointing preserves standing apparent size and foot position rather than shrinking on pose change.
+- Discovery: tight object-contour glow is the only visible hover/focus cue. Remove floating name labels such as At the piano and Rachel & me, and window/curtain state bubbles. Keep meaningful accessible names, keyboard activation and Explore access.
+- Popup timing: outside piano performance mode, show all content only after the selected destination's initial interaction completes. Coffee prepares, notebook seats, album lifts, calendar/tennis reach their pose, and music reaches the bench. Reduced motion skips finite travel. New selections cancel stale results; repeated pending clicks do not restart travel; Escape cancels pending interaction/content.
+- Piano exception: during an engaged recording performance, other content opens immediately and Sili keeps playing, including album browsing without pickup. Keep compact music controls accessible. Direct cat greeting is a physical action and may interrupt music; browsing the resident introduction does not. Closing content never stops a performance.
+- Recording: only the supplied One Summer's Day M4A is playable. No initial autoplay; arrival starts playback after activation with an explicit fallback when blocked. Mute preserves performance; explicit Stop/end releases it; inactive-page pause requires explicit resume.
+- Cats: direct clicks greet the actual selected cat in-scene, without a biography popup. Explore retains the introduction and Pet Viola / Play with Java. Stable live targets, reachable perches, high-perch descent, bounded pet/play, smooth jump cancellation and farewell prevent false pointing or abrupt departure. Cats tour all supported furniture with reservations; Java stays indoors and Viola uses the window route.
+- Cat pacing: Viola's roaming frequency is 50% lower and Java's 30% lower than the previous baseline, achieved through longer indoor rests rather than slower locomotion. No Pause cats button. Ambient activity pauses for reading/inactivity, with safe-clearance/meeting exceptions; reduced motion uses still indoor poses.
+- Album: four spreads/eight filled pages, physical paper presentation, pointer/keyboard turns and last completed spread memory. Wall portrait starts at page one. Contents remain festive couple, family-v2, selected first tennis cartoon, seaside couple, Java, Viola, bench press and hip-hop. Imagined illustrations are not documentary claims; do not invent captions/dates.
+- Calibration: retain approved desk/writing/piano registration and foreground album perspective growth up to 18%. The calendar pointing cell needs a local 1.1 scale correction around its feet. Do not resize unrelated poses to compensate for source padding.
+- Validation: 40 automated tests, production build and diff checks pass. Local browser review covers arrival gating and uninterrupted piano browsing plus recent visual refinements. Exhaustive machine/browser/touch/audio testing is still pending; do not claim universal device verification.
 
 ## 1. Project overview
 
@@ -45,7 +47,7 @@ Sili recently graduated from the University of Wisconsin–Madison with a bachel
 - Visitors can identify Sili, his education, and his interests without opening every object.
 - A visitor can discover a technical project and reach its available evidence within two object/content selections.
 - GitHub, LinkedIn, email, and résumé are reachable directly from the room.
-- The room is enjoyable to explore, with no puzzles, mandatory movement, or waiting required to access information.
+- The room is enjoyable to explore without puzzles or manual-positioning requirements. Content follows brief automatic interactions; reduced motion skips finite travel.
 - All essential content remains usable by keyboard, touch, screen reader, and with reduced motion.
 
 ## 2. Skills required
@@ -161,8 +163,8 @@ Two autonomous cartoon cats inhabit the room:
 - Java's characteristic window behavior is a long watchful pause while Viola is outside, followed by returning indoors to play. Do not give Java the same routine of confident outdoor trips. Her indoor behavior should favor playful bursts, toy chasing, and pouncing between rests; Viola favors quiet observation and resting. Use a small dedicated cat toy rather than implying Java plays with full-size tennis balls.
 - Give the cats independent schedules. Avoid synchronized loops; occasional shared proximity is sufficient for launch, with elaborate social behavior deferred.
 - Define valid floor routes, perch points, and a window entry/exit route. Use consistent depth ordering so furniture can naturally occlude a cat without clipping through it.
-- Clicking either cat opens the resident content through a keyboard-accessible button that follows that cat. Remove the obsolete window hotspot; retain Explore access. Full-room cat layers do not intercept clicks. Cats remain autonomous, cannot be steered and must not block reading or other required navigation.
-- Pause simulation while the page is inactive and suspend ambient movement while a content view is open. With reduced motion, show resting cats without roaming or animated jumps. Provide a discreet ambient-animation pause option.
+- Clicking either cat starts a direct in-scene greeting through a keyboard-accessible button that follows that cat. Remove the obsolete window hotspot; retain Explore access. Full-room cat layers do not intercept clicks. Cats remain autonomous, cannot be steered and must not block reading or other required navigation.
+- Pause simulation while the page is inactive and suspend ambient movement while a content view is open. With reduced motion, show resting cats without roaming or animated jumps. Do not show a manual Pause cats button.
 - Required asset states: idle/sit, walk, groom, sleep, and window hop, with appropriate facing variants; additionally Viola needs exit/return states and Java needs window-watching and playful chase/pounce states. Share animation structure where practical while preserving each cat's appearance.
 
 Source photos are private design references unless separately selected for publication. Generated room/cat illustrations and prototype pose animation are implemented; final live browser review is pending.
@@ -224,7 +226,7 @@ The piano interaction and supplied “One Summer’s Day” audio are implemente
 - All seven entries open and close with pointer, touch and keyboard; live native browser/touch verification is pending.
 - The couple portrait appears on the wall and opens through the photo collection; its illustration uses the supplied likeness references.
 - Viola and Java remain visually distinguishable and act independently. Viola leaves and returns via the window without teleporting; Java can watch for her from the sill and then resume indoor play.
-- Cat movement never blocks object activation, reading, or character navigation; background activity pauses when hidden, and ambient motion can be paused.
+- Cat movement never blocks object activation, reading, or character navigation; background activity pauses when hidden, and motion respects reduced-motion preferences.
 - Direct object activation works without manual character positioning or puzzles.
 - Contact links and résumé resolve to reviewed destinations; no placeholder URLs ship.
 - All project descriptions, milestone dates, and music credits are checked against supplied content.
@@ -236,7 +238,7 @@ The piano interaction and supplied “One Summer’s Day” audio are implemente
 - Focus is visible, controls have meaningful names, and text remains readable over textures.
 - Reduced-motion preference removes walking delays and decorative motion without losing content.
 - Keep decorative grain and lighting lightweight; load detailed media on demand. Verify responsiveness on a representative phone and desktop before release.
-- Browser Back closes/restores content predictably, and technical entries support shareable URLs.
+- Browser-history navigation and shareable technical-entry URLs remain future enhancements.
 
 ## 6. Content and assets still needed
 
@@ -256,4 +258,4 @@ The piano interaction and supplied “One Summer’s Day” audio are implemente
 
 Reference documents: Sili_Li_Academic_Resume.pdf and Math Coursework - Sili Li.pdf, supplied by Sili from his Graduate Application folder. These inform content; they are not automatically public website assets.
 
-Website code and assets are implemented as a private prototype. The user requested committing/pushing project changes to the existing private GitHub repository. No public deployment or visibility change is authorized.
+The React website is published through GitHub Pages. The user authorized documenting, pushing and deploying all current changes. Do not publish unselected private source references or invent missing content.
