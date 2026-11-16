@@ -3,7 +3,7 @@
 Updated: November 16, 2026 (America/Chicago)
 Workspace: /Users/lisili/sili-portfolio
 Repository: https://github.com/lisili0525/sili-portfolio
-Website: https://lisili0525.github.io/sili-portfolio/
+Website: https://silispace.net/
 
 ## Current delivery
 
@@ -30,7 +30,7 @@ Normally, content opens only after Sili reaches the selected destination and com
 
 During an engaged piano performance, other content opens immediately and Sili keeps playing. This also preserves the existing paused/approach performance behavior. The album opens without physical pickup in this mode. Compact music controls remain accessible in content. Direct cat greeting is a physical interaction and can interrupt the performance; browsing the resident introduction does not. Closing content never stops music.
 
-The supplied One Summer's Day recording is the only track. Never autoplay on initial load. Start at arrival after visitor activation; show explicit playback fallback if blocked. Mute keeps performance mode; Stop or recording end releases it. Hiding the page pauses music and requires explicit resume. Reject late play promises after stop/disposal.
+The supplied One Summer's Day recording is the only track. On November 16, 2026, its asset was replaced byte-for-byte with the owner's revised M4A (136.04 seconds, stereo AAC at 44.1kHz), keeping the title and assets/music/one-summers-day.m4a path. Never autoplay on initial load. Start at arrival after visitor activation; show explicit playback fallback if blocked. Mute keeps performance mode; Stop or recording end releases it. Hiding the page pauses music and requires explicit resume. Reject late play promises after stop/disposal.
 
 ## Modular scene and visual corrections
 
@@ -84,4 +84,4 @@ Current release: 40 Vitest tests across six suites pass; production build and gi
 
 This does not establish exhaustive behavior on every machine. Remaining manual QA includes representative Safari/Chrome/mobile fullscreen and touch/drag, audible autoplay policies, all animated mask/depth combinations and final art approval. Optional manual navigation, browser-history/deep links, additional recordings and richer frame animation remain future work. Continue refining existing interactions before unrelated additions.
 
-Keep tmp/, dependencies, build output and secrets ignored. Verify remote HEAD and the matching Pages workflow after publishing. Custom domains can be added to GitHub Pages; no alternate host is inherently required. Do not configure or purchase a domain without the selected domain and authorization.
+Keep tmp/, dependencies, build output and secrets ignored. Verify remote HEAD and the matching Pages workflow after publishing. The owner configured silispace.net as the custom domain on November 16, 2026; GitHub Pages remains the host. Preserve the existing domain configuration.

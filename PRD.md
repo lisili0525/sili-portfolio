@@ -8,7 +8,7 @@ Owner: Sili Li
 
 This section is authoritative for the current release. Implementation details and operational handoff are in HANDOFF.md. Code and project documents remain English-only.
 
-- Delivery: React 19 with Vite, a static dist build, and a GitHub Pages workflow triggered by main. The user authorized publishing all current improvements. The website is https://lisili0525.github.io/sili-portfolio/. A custom domain remains optional; GitHub Pages supports it without changing hosts.
+- Delivery: React 19 with Vite, a static dist build, and a GitHub Pages workflow triggered by main. The user authorized publishing all current improvements. The website is https://silispace.net/. The owner configured this custom domain on November 16, 2026; hosting remains GitHub Pages.
 - Scene: all furniture, decorations, residents, lighting and depth passes have independent module ownership and shared placement/support metadata. Preserve the approved composition, outward-opening window, matching curtains and revised foliage/window dimensions. Modularization enables incremental animation, but large rearrangements still require artwork/occlusion review.
 - Window: glass and curtains open/close independently through the illustration. Open glass enables breeze; closed glass stops it. Drawn curtains remove direct sunlight. Cats cannot cross closed glass or drawn curtains; outdoor Viola waits. Protect in-progress portal crossings.
 - Effects: coffee preparation coordinates steam/flow/pulse; lamp toggles, camera flashes, and paper/screen/plant/light effects remain subtle. The bookcase plant remains static until its isolated artwork is clean. All decorative motion respects inactivity and reduced motion.
@@ -92,7 +92,7 @@ Initial selections supplied by Sili:
 - “Without His Cross” — Joseph M. Martin; a Christian choral piece Sili plays.
 - Chopin's Étude, Op. 10, No. 3.
 
-The sole current playable recording is the supplied “One Summer’s Day”, stored unchanged as assets/music/one-summers-day.m4a (AAC-LC, stereo 44.1kHz, approximately 2:17). The earlier three pieces are supplied listening/playing interests, not playable entries. Render the clickable list from pianoRecordings in piano.js. Start audio only after visitor activation and piano arrival; never on page load.
+The sole current playable recording is the supplied “One Summer’s Day”, stored unchanged as assets/music/one-summers-day.m4a (AAC, stereo 44.1kHz, approximately 2:16; revised recording supplied November 16, 2026). The earlier three pieces are supplied listening/playing interests, not playable entries. Render the clickable list from pianoRecordings in piano.js. Start audio only after visitor activation and piano arrival; never on page load.
 
 #### Sili plays the piano
 
