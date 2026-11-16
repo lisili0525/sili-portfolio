@@ -28,7 +28,7 @@ Cats do not plan new trips through closed glass or drawn curtains. Outdoor Viola
 - `window-closed-v1.png` and `curtains-closed-v1.png`: matching illustrated closed poses.
 - `room-module-underpainting-v2.png`: a bare coffee/window repair source used by isolated modules and the bare window frame.
 
-`shared/SceneArtwork.jsx` creates transparent visual pieces with SVG alpha masks and a narrow white boundary stroke. Avoid feMorphology edge-expansion filters here: each animated full-stage filter adds a costly offscreen surface and can produce missing strips or disappearing props on affected browsers. It preserves original raster detail without repeatedly generating foreground artwork. Furniture is grouped into sensible components; related books/leaves can be split further within their owning module. The modules preserve the approved layout and calibrated support points. Large rearrangements still require reviewing masks, occluded surfaces and contact/depth geometry together.
+`shared/SceneArtwork.jsx` creates transparent visual pieces with geometric SVG clip paths. Small translated copies provide the previous edge padding without alpha-mask textures or morphology filters. Avoid full-stage animated mask buffers: Chrome continued to flicker after filter removal, so both the filter and alpha-mask rendering paths are now replaced. It preserves original raster detail without repeatedly generating foreground artwork. Furniture is grouped into sensible components; related books/leaves can be split further within their owning module. The modules preserve the approved layout and calibrated support points. Large rearrangements still require reviewing masks, occluded surfaces and contact/depth geometry together.
 
 Generation prompts and saved asset paths are in `assets/modular-room-prompts.md`. All artwork editing used the built-in image generation tool.
 
@@ -43,3 +43,5 @@ Run `npm test` and `npm run build`. Integration checks cover scene ownership, un
 ## Shared cat meetings
 
 The cat controller exposes beginInteraction handles with stable identity, live snapshots, readiness, contact and cancellation. Journey control uses these snapshots and src/data/catInteraction.js to calculate a reachable hand/feet anchor rather than querying only floor cats or using a fixed pointing fallback. The handle owns attention, invitation/descent, contact, play settling, farewell and departure. An active jump finishes before cancellation, and the person leaves the petting pose before roaming resumes. Direct clicks stay in the room; biographies remain in Explore. No additional floating interaction toolbar is introduced.
+
+Character atlases remain mounted on separate sprite surfaces, with initial decode warming. Pose switches select visibility while preserving the existing frame geometry, mirroring and foot registration. Journey control consumes zero-duration route markers within a single tick.

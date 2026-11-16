@@ -205,7 +205,12 @@ export function createJourneyController(root, services) {
     if (!document.hidden && !(activity === 'music' && services.piano.isPaused)) {
       updateCatInteraction(dt);
       if (!current && !queue.length) idleCycle();
-      if (!current && queue.length) begin(queue.shift());
+      // Route/cleanup markers must not leave a transient idle pose on screen.
+      let boundaries=0;
+      while(!current&&queue.length&&boundaries++<80) {
+        begin(queue.shift());
+        if(current.duration===0) complete();
+      }
       if (current) {
         elapsed += dt;
         if (current.walking) {

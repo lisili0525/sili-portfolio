@@ -34,7 +34,7 @@ The supplied One Summer's Day recording is the only track. Never autoplay on ini
 
 ## Modular scene and visual corrections
 
-Independent modules cover piano/bench, coffee equipment/cabinet, portrait/calendar, tennis equipment, stool, bookcase, workstation/chair/laptop/notebook/stationery/lamp/books, sofa, table/album, wall shelf/camera, toy mouse, plants, lighting and residents. SVG alpha masks use a plain white boundary stroke rather than feMorphology edge filters, avoiding filtered full-stage surfaces during animation; future per-object animation should stay in its owning module.
+Independent modules cover piano/bench, coffee equipment/cabinet, portrait/calendar, tennis equipment, stool, bookcase, workstation/chair/laptop/notebook/stationery/lamp/books, sofa, table/album, wall shelf/camera, toy mouse, plants, lighting and residents. SVG artwork uses geometric clip paths with small offset copies for edge padding, avoiding full-stage alpha-mask buffers and morphology filters during animation; future per-object animation should stay in its owning module.
 
 The approved room source is assets/room-clean-v7.png. Reconstructed occluded surfaces are in room-hidden-surfaces-v1.png; neutral architecture and independent sunlight are separate assets. Closed glass and curtain states have versioned sources. Generation provenance is in assets/modular-room-prompts.md. Historical artwork remains unless explicitly deleted by the user.
 
@@ -45,6 +45,8 @@ Latest mask corrections restore full desk legs and remove floating floor-colored
 Window glass and curtains toggle independently. Fabric breeze depends on open glass; closing the glass stops it. Drawn curtains remove direct sunlight and add subtle shade. Cats cannot cross closed glass or drawn curtains, and outdoor Viola waits until access returns. Do not close either state during an active crossing. Lamp toggles locally; camera flashes locally; coffee preparation drives steam/flow/pulse. Other paper, screen, plant and lighting effects stay restrained and honor inactivity/reduced motion.
 
 ## Character calibration
+
+All six person atlases stay mounted on separate sprite surfaces and are decoded at startup. Activity changes select visibility instead of replacing a background image. Zero-duration route markers are consumed within the same animation tick, without a transient idle frame.
 
 Standing/walking uses sili-poses-v1.png, four 543 x 724 cells at 58% stage height. Activity atlases use calibrated 576px cells at 58.4%. Keep the approved apparent head scale and grounded feet. The calendar pointing cell (interactions frame 5) has more transparent padding: scale its sprite by 1.1 around 50% / 95.66%, without moving its feet or scaling every interaction pose.
 
@@ -73,6 +75,8 @@ Small content windows use warm cream with readable opaque text; music mode place
 ## Validation and remaining work
 
 The thirty-minute cat simulation has an explicit 30-second test timeout for slower CI runners, retaining every simulated step and assertion.
+
+Chrome local-browser checks additionally covered clipped scene rendering and coffee-to-desk-to-calendar transitions after the follow-up flicker report. This is visual spot-checking, not frame-by-frame proof on all devices.
 
 Current release: 40 Vitest tests across six suites pass; production build and git diff --check pass. Coverage includes arrival-gated dialogs, immediate uninterrupted piano browsing, stale/cancelled/repeated requests, album turns/pickup, music lifecycle, cat meetings/reservations, window access and scene state. Native local-browser review confirmed normal arrival gating, ongoing piano playing while coffee content is open, removal of floating labels, visual mask fixes and corrected calendar scale.
 
