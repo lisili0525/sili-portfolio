@@ -123,3 +123,9 @@ User approved `sili-writing-v2.png`; it is retained byte for byte. `sili-compute
 - `desk-front-mask-v1.svg`: actual desk front/apron depth, further limited to the appropriate leg area for each pose so it cannot erase Sili’s torso.
 
 Seated hip anchor is now world1362/762, controller81.4593%/90.1027%; head calibration remains197.5 room pixels. Approved writing image is repositioned with the seat, not repainted. Static compositions inspected at tmp/desk-chair-revised-computer.png and tmp/desk-chair-revised-writing.png. Browser depth/masking remains unverified; visual approval of this revision is pending. All generation prompts are in activity-prompts.md.
+
+## Room background v5
+
+`room-clean-v5.png` is the active base background. Edited with the built-in image generation tool from `room-clean-v4.png`. Removed the trailing plant beside the espresso machine, replaced the window vine with a matching left tieback curtain, and removed the large bottom-right foreground leaves. All other plants and furniture were preserved. Localized chair-clear, album and piano depth layers retain their existing sources because their visible clips do not intersect the edited regions.
+
+Prompt: Remove only the coffee-cabinet plant, window-left vine, and extreme bottom-right leaves. Replace the window-left vine with a cream peach tieback curtain mirroring the existing right curtain. Preserve room framing, furniture positions, other plants, colors and hand-drawn style. Add no characters or text.
