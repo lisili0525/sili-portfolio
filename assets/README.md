@@ -1,5 +1,19 @@
 # Animation assets
 
+Current room: `room-clean-v2.png` (1672 × 941), superseding v1. The piano is taller and wider, with a higher keyboard and larger, lower bench. Two small prints moved to the central wall to make room. Both the background and clipped foreground use this same file.
+
+Character scale is measured from the opaque head silhouettes, rather than the differently padded sprite frames. Standing and walking at 58% room height have a 197.5px head width; seated idle and playing at 53.35% produce the same width. The frame height changes for source calibration, not to make Sili smaller when sitting. Height transitions are removed. Three local layer renders were visually reviewed; browser verification remains outstanding.
+
+## Furniture proportion edit prompts
+
+Built-in image generation, using v1 as edit target. First pass:
+
+> Use case: precise-object-edit. Edit target: exact attached clean cartoon room, 1672x941. Correct ONLY the undersized upright piano and its bench on the far left, making them adult-size relative to the coffee cabinet, desk and room. Piano should occupy x=0..380 approximately, top around y=315, keyboard playing surface around y=550, bottom near y=770. Make it a taller substantial upright piano with natural full keyboard proportions, still dark warm wood in exactly same outlined simplified cartoon style. Bench should have seating surface around y=675, span roughly x=75..365, front apron/cream draped blanket around y=705..760 and sturdy legs reaching floor y=830. Retain the cream draped blanket on bench. Keep music book on the piano. If necessary relocate the two small clipped landscape prints that were immediately above the old piano to the empty central wall (x=710..875,y=420..570), rather than overlap the taller piano. Preserve the framed couple portrait, coffee cabinet and all its appliances, window, tennis gear, desk, foreground sofa/rug, room name/icons, lighting, outlines, palette and exact full canvas composition everywhere else. Do not add people or cats. Do not zoom or crop. Enlarge furniture only; preserve all other room geometry and matching cartoon style.
+
+Final refinement, using the first pass as edit target:
+
+> Edit ONLY the piano bench at lower left in this exact 1672x941 room. The bench is too high relative to the keyboard for a full-size seated character: lower its entire seat and cream draped blanket by about 40 pixels, so the seat top is at y=695 rather than y=655; keep the bench width x=80..380, keep sturdy legs extending down to floor about y=835. The piano keyboard stays at y=570, leaving about 125 pixels between keyboard and bench seat. Preserve the newly enlarged piano exactly, as well as every other object, room proportions, colors, outline style and full image framing. Do not add any characters or cats. Change just this bench geometry and reconstruct the small exposed floor/piano area naturally.
+
 Generated with the built-in image generation tool on November 16, 2026, using `concepts/little-house-v3-cartoon.png` as the reference. Original concept files are preserved.
 
 - `room-clean-v1.png`: 1672 × 941, same room composition without live Sili or the cats. The framed couple portrait stays intact.
