@@ -29,7 +29,7 @@ npm run preview
 - `src/hooks/useRoomRuntime.js` creates and disposes the room controllers with React's lifecycle.
 - `src/hooks/useFullscreen.js` manages standard and WebKit fullscreen with state and effect cleanup.
 - `src/controllers/journeys.js` preserves the calibrated action sequences and prop cleanup. It animates only the stable sprite refs rather than rebuilding React UI each frame.
-- `src/controllers/cats.js` runs autonomous cat routes, with reduced motion, content-dialog suspension and inactive-tab suspension.
+- `src/controllers/cats.js` runs autonomous cat routes across the floor, piano bench and top, coffee counter and table, bookcase, desk, chair, sofa and window, with reduced motion and inactive-tab suspension.
 - `src/controllers/piano.js` owns the audio resource and performance lifecycle, publishing playback snapshots to React.
 - `src/data/` holds the JSX content and album image metadata.
 - `styles.css` preserves the approved visual design, sprite sheets and depth masks.
@@ -44,7 +44,7 @@ The complete room fits inside the viewport with borders when screen proportions 
 
 ## Validation
 
-`npm test` runs React integration tests and controller regression checks in jsdom. Coverage includes StrictMode cleanup, navigation and focus, interrupted album pickup, album boundaries and pointer cancellation, music during browsing, autoplay rejection, mute, recording end, inactive-tab resume, reduced motion, standard/WebKit fullscreen and repeated cat trips. These checks do not verify actual audio decoding, native dialog behavior, CSS masks or rendering on every physical device.
+`npm test` runs React integration tests and controller regression checks in jsdom. Coverage includes StrictMode cleanup, navigation and focus, interrupted album pickup, album boundaries and pointer cancellation, music during browsing, autoplay rejection, mute, recording end, inactive-tab resume, reduced motion, standard/WebKit fullscreen, repeated furniture tours, perch reservations and safe evacuation for person activities. These checks do not verify actual audio decoding, native dialog behavior, CSS masks or rendering on every physical device.
 
 ## Build and deployment
 
@@ -53,3 +53,7 @@ Live site: https://lisili0525.github.io/sili-portfolio/
 The GitHub Actions workflow installs locked dependencies, runs tests and builds with Vite before deploying `dist/`. Relative build URLs support both GitHub Pages project paths and custom-domain roots. The artwork plugin copies only runtime-referenced artwork; Vite handles CSS sprite assets. Project notes, checks, unused artwork and local dependencies are excluded from the deployment artifact. `node scripts/build-static.cjs` remains a compatibility entry point for the Vite build.
 
 No backend, database or account integration is required. Music uses the supplied `assets/music/one-summers-day.m4a` recording. Browsing other content keeps an active performance at the piano; stopping releases the character for other activities. Inactive-tab resume remains explicit.
+
+## Cat exploration
+
+Landing anchors and stepping-stone routes are configured in `src/data/catSurfaces.js`. Both cats cycle through shuffled tours so each available destination is visited before repeating. Furniture groups are reserved for one cat at a time; character activities temporarily exclude their corresponding furniture. Cats descend before another excursion, scale with depth, and use eased jump arcs. Viola retains occasional outdoor trips and returns through the window, while Java remains indoors. Opening content normally freezes cat activity; a cat on furniture needed by the person first jumps down to clear it. Reduced motion returns both cats to still floor poses.

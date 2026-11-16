@@ -94,3 +94,7 @@ index.html loads piano → album → actions → app → cats. app.js manages co
 ## React migration (November 16, 2026)
 
 This section supersedes earlier references to root-level JavaScript scripts and checks. The app now uses React and Vite, with source under src/. React owns the UI, dialog content, navigation, album turns and playback controls. Scoped animation controllers retain calibrated artwork geometry and are started/disposed by useRoomRuntime. The legacy root scripts and simulated-DOM CJS suites have been replaced by Vitest React integration and controller checks. Use npm ci, npm run dev, npm test and npm run build. The user authorized publishing the React migration. The GitHub Pages workflow now installs dependencies, runs Vitest and builds with Vite before deploying dist/.
+
+## Expanded cat routes
+
+Cat furniture anchors and routes are in src/data/catSurfaces.js. Both inhabitants now tour piano bench/top, coffee counter/table, bookcase, workstation desk/chair, sofa and window using stepping stones and depth-scaled hops. Reservations prevent shared furniture overlap. Person activity prompts a safe descent even while its content dialog is open. Controller checks simulate thirty minutes and cover every destination, indoor Java, outdoor Viola, bounds, reservations, occupied furniture and reduced-motion cleanup.

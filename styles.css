@@ -142,7 +142,7 @@ dialog.album-view::backdrop{background:#24180f65;backdrop-filter:blur(4px)}
 
 /* Autonomous inhabitants; each accessible button travels with its sprite. */
 .cat-layer{position:absolute;inset:0;z-index:3;pointer-events:none}
-.cat-layer.perched{z-index:1}
+.cat-layer.perched{z-index:3}
 .cat-layer[hidden]{display:none}
 .cat-layer.at-window{clip-path:polygon(60% 19%,77% 19%,77% 49%,60% 49%)}
 .cat{position:absolute;width:14%;aspect-ratio:1;transform:translate(-50%,-88%);pointer-events:auto;display:block;padding:0;border:0;border-radius:16px;background:transparent;line-height:1}
@@ -169,3 +169,7 @@ dialog.album-view::backdrop{background:#24180f65;backdrop-filter:blur(4px)}
 .sili[data-activity="desk"][data-desk-mode="computer"]~.desk-foreground{clip-path:polygon(77.23677% 77.63185%,82.14407% 77.63185%,84.25535% 74.18463%,87.05136% 72.56241%,88.07847% 74.08324%,88.30672% 83.20824%,89.44795% 85.84435%,88.64909% 89.19018%,85.62482% 89.89991%,84.31241% 87.56796%,82.37232% 89.19018%,80.88871% 88.58185%,80.43222% 86.45268%,81.00284% 83.00546%,78.94862% 81.89018%,77.23677% 80.16657%)}
 
 .sili[data-activity="desk"][data-desk-mode="writing"]~.desk-foreground{clip-path:polygon(77.12265% 77.12491%,82.14407% 77.12491%,84.36947% 73.98185%,88.82027% 69.92629%,90.24681% 70.73741%,90.76037% 72.76518%,90.36094% 83.10685%,91.67335% 86.04713%,90.81743% 89.29157%,88.07847% 89.89991%,86.76606% 87.77074%,85.05421% 89.19018%,82.77175% 89.29157%,81.97288% 87.36518%,81.97288% 85.13463%,82.82881% 82.09296%,79.46218% 82.09296%,77.17971% 80.06518%)}
+
+/* Cats remain above furniture patches on their supported landing surfaces. */
+.cat::before{content:"";position:absolute;left:34%;bottom:10%;width:32%;height:5%;border-radius:50%;background:#35241322;filter:blur(2px);pointer-events:none}
+.cat[data-airborne="true"]::before{opacity:0}
