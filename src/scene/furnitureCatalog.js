@@ -29,30 +29,34 @@ export const furniture = {
     part('red-racket','M988 497 Q990 490 997 493 L1005 496 L1006 504 L986 576 Q1006 613 995 654 Q985 696 963 707 Q938 714 924 694 Q915 672 925 640 Q931 609 951 580 L976 549 Z'),part('blue-racket',hit('tennis').paths[1]),part('ball-basket',hit('tennis').paths[2])
   ],{hotspot:hit('tennis')}),
   stool:object('window-stool',{x:1070,y:535},[
-    part('wooden-stool','M1091 536 L1192 536 L1199 542 L1197 554 L1187 555 L1205 711 L1197 718 L1188 715 L1178 678 L1097 678 L1086 716 L1073 716 L1075 702 L1099 555 L1089 554 Z')
+    part('stool-top','M1091 538 L1105 534 L1182 534 L1195 538 L1196 554 L1090 555 Z',{edgePadding:1}),
+    part('stool-left-leg','M1100 554 L1116 554 L1090 714 L1081 717 L1072 714 Z',{edgePadding:1}),
+    part('stool-right-leg','M1170 554 L1187 554 L1205 713 L1198 717 L1188 714 Z',{edgePadding:1}),
+    part('stool-step','M1082 601 L1194 600 L1199 606 L1199 622 L1078 623 L1077 607 Z',{edgePadding:1}),
+    part('stool-lower-rung','M1092 669 L1183 669 L1185 682 L1090 682 Z',{edgePadding:1})
   ],{supports:{step:{x:1145.32,y:606.945,width:9.6,group:'window'}}}),
   bookcase:object('bookcase',{x:1495,y:188},[
     part('wooden-bookcase','M1505 225 L1672 185 L1672 852 L1645 852 L1643 580 L1505 580 Z')
   ],{supports:{top:{x:1588.4,y:211.725,width:8.4,group:'bookcase'},step:{x:1596.76,y:442.27,width:8.4,group:'bookcase'}}}),
   desk:object('work-desk',{x:1210,y:580},[
-    part('desk-frame','M1214 591 L1387 567 L1672 671 L1672 722 L1552 725 L1252 657 L1211 640 Z M1241 640 L1285 655 L1259 804 L1244 815 Q1230 815 1210 808 L1208 801 Z M1516 715 L1579 715 L1558 913 Q1544 927 1528 927 Q1510 926 1491 915 L1490 911 Z',{source:'assets/room-hidden-surfaces-v1.png'})
+    part('desk-frame','M1213 596 L1296 583 L1460 568 L1560 582 L1672 598 L1672 717 L1552 725 L1211 623 Z M1241 640 L1285 655 L1259 804 L1244 815 Q1230 815 1210 808 L1208 801 Z M1516 715 L1579 715 L1558 913 Q1544 927 1528 927 Q1510 926 1491 915 L1490 911 Z',{source:'assets/room-hidden-surfaces-v1.png'})
   ],{supports:{top:{x:1554.96,y:663.405,width:10,group:'workstation'}}}),
   computer:object('computer',{x:1296,y:497},[
-    part('laptop',hit('desk').paths[0])
+    part('laptop',hit('desk').paths[0],{source:'assets/room-hidden-surfaces-v1.png'})
   ],{hotspot:{...hit('desk'),id:'computer',label:'Use the computer',paths:[hit('desk').paths[0]]}}),
   notebook:object('desk-notebook',{x:1370,y:570},[
-    part('open-notebook',hit('desk').paths[1]),
-    part('writing-pen','M1460 655 L1504 620 Q1514 617 1513 628 L1474 664 L1463 666 Z',{animation:'pen-idle'})
+    part('open-notebook','M1401 568 L1478 572 L1501 575 L1567 602 L1556 641 L1552 653 L1538 665 L1460 650 L1437 651 L1368 638 Z',{source:'assets/room-hidden-surfaces-v1.png',edgePadding:1}),
+    part('writing-pen','M1460 655 L1504 620 Q1514 617 1513 628 L1474 664 L1463 666 Z',{animation:'pen-idle',source:'assets/room-hidden-surfaces-v1.png'})
   ],{hotspot:{...hit('desk'),id:'desk',paths:[hit('desk').paths[1]]}}),
   stationery:object('stationery',{x:1275,y:531},[
-    part('pencils','M1284 550 L1281 535 L1285 532 L1291 545 L1296 531 L1300 534 L1298 547 L1310 534 L1315 536 L1309 550 Z'),
-    part('pencil-cup',hit('desk').paths[2])
+    part('pencils','M1284 550 L1281 535 L1285 532 L1291 545 L1296 531 L1300 534 L1298 547 L1310 534 L1315 536 L1309 550 Z',{source:'assets/room-hidden-surfaces-v1.png'}),
+    part('pencil-cup',hit('desk').paths[2],{source:'assets/room-hidden-surfaces-v1.png'})
   ]),
   lamp:object('desk-lamp',{x:1420,y:376},[
-    part('lamp','M1424 435 L1440 411 L1466 402 L1474 384 Q1484 375 1496 384 L1500 399 L1578 456 L1582 468 L1556 558 L1576 570 L1578 588 L1533 595 L1519 588 L1520 578 L1539 568 L1562 470 L1492 417 L1506 449 L1499 466 L1479 468 Z')
+    part('lamp','M1424 435 L1440 411 L1466 402 L1474 384 Q1484 375 1496 384 L1500 399 L1578 456 L1582 468 L1556 558 L1576 570 L1578 588 L1533 595 L1519 588 L1520 578 L1539 568 L1562 470 L1492 417 L1506 449 L1499 466 L1479 468 Z',{source:'assets/room-hidden-surfaces-v1.png'})
   ]),
   deskBooks:object('desk-books',{x:1560,y:579},[
-    part('book-stack','M1594 579 L1664 582 L1672 608 L1663 615 L1669 632 L1672 655 L1657 668 L1578 654 L1568 641 L1575 623 L1563 616 L1568 600 L1587 601 Z')
+    part('book-stack','M1594 579 L1664 582 L1672 608 L1663 615 L1669 632 L1672 655 L1657 668 L1578 654 L1568 641 L1575 623 L1563 616 L1568 600 L1587 601 Z',{source:'assets/room-hidden-surfaces-v1.png'})
   ]),
   sofa:object('sofa',{x:0,y:799},[
     part('sofa-body','M0 821 Q45 796 99 809 L129 817 Q206 809 251 823 L298 823 Q401 827 435 854 L456 891 L468 941 L0 941 Z'),

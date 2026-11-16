@@ -12,10 +12,10 @@ function ExpandedClip({id,paths,padding}) {
   </clipPath>;
 }
 
-export function SceneArtwork({path, className='', children, style, source=originalArtwork, dataPart, contentClassName}) {
+export function SceneArtwork({path, className='', children, style, source=originalArtwork, dataPart, contentClassName, edgePadding=3.5}) {
   const id=`piece-${useId().replace(/[^a-zA-Z0-9]/g,'')}`;
   return <svg className={`scene-artwork ${className}`} data-part={dataPart} style={style} viewBox={`0 0 ${roomSpace.width} ${roomSpace.height}`} preserveAspectRatio="none" aria-hidden="true" focusable="false">
-    <defs><ExpandedClip id={id} paths={[path]} padding={3.5} /></defs>
+    <defs><ExpandedClip id={id} paths={[path]} padding={edgePadding} /></defs>
     <g className={contentClassName}><image href={source} width={roomSpace.width} height={roomSpace.height} preserveAspectRatio="none" clipPath={`url(#${id})`} /></g>
     {children}
   </svg>;
