@@ -64,7 +64,7 @@ The local room now assembles physical props as independent scene modules over an
 
 Click the window glass to open/close it, and click a curtain to draw/open the curtains. Wind moves fabric and plants only while the window is open; drawn curtains fade the direct floor sunlight. Cats cannot leave through closed glass or drawn curtains, and outdoor Viola waits for access to reopen. Click the desk lamp to toggle it and the shelf camera for a local flash. Other effects remain subtle and respect reduced motion and page inactivity.
 
-Open http://127.0.0.1:5173/ to inspect the complete room, or http://127.0.0.1:5173/?demo=modules for enlarged coffee/window examples. This expanded modular scene has not been published. Implementation, artwork boundaries and image provenance are documented in `src/scene/README.md` and `assets/modular-room-prompts.md`.
+Open http://127.0.0.1:5173/ to inspect the complete room, or http://127.0.0.1:5173/?demo=modules for enlarged coffee/window examples. The expanded modular scene is included in the GitHub Pages release. Implementation, artwork boundaries and image provenance are documented in `src/scene/README.md` and `assets/modular-room-prompts.md`.
 
 ## Person and cat interaction
 

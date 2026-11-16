@@ -65,7 +65,7 @@ These are capabilities needed to build the site, distinct from the skills presen
 | Content editing | Turn verified projects and interests into concise personal stories |
 | Performance and verification | Optimize assets and verify navigation, animation, and responsiveness |
 
-Implementation uses buildless HTML/CSS/JavaScript. A full game engine, backend, and content management system are not requirements.
+Implementation uses React 19 and Vite with scoped animation controllers and a static production build. A full game engine, backend, and content management system are not requirements.
 
 ## 3. Key features
 
