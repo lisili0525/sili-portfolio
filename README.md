@@ -1,4 +1,4 @@
-﻿# Sili's little house
+# Sili's little house
 
 A buildless HTML/CSS/JavaScript portfolio. Open `index.html` in a browser; no dependency installation is needed. Google Fonts are optional, with local fallbacks.
 
@@ -13,7 +13,7 @@ Private source repository: https://github.com/lisili0525/sili-portfolio
 - Reduced motion skips walking and uses a still seated pose. Hiding the page pauses the performance; resuming requires a button press.
 - No audio is configured. `pianoRecording` at the top of `piano.js` reserves `src`, `title`, and `note` for Sili's own future recording. With audio supplied, the performance offers mute and explicit playback fallback, remembers mute during the session, and stops at recording end without looping.
 
-The first animation uses a single stride pose with a small bob and a seated playing pose with a small sway. Viola and Java are temporarily absent from the scene while their separate assets are prepared; their descriptions remain available. The original concept art is retained under `concepts/`. See `assets/README.md` for asset dimensions and generation prompts.
+The first animation uses a single stride pose with a small bob and a seated playing pose facing into the keyboard. Viola and Java are temporarily absent from the scene while their separate assets are prepared; their descriptions remain available. The original concept art is retained under `concepts/`. See `assets/README.md` for asset dimensions and generation prompts.
 
 ## Verification
 

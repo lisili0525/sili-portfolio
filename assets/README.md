@@ -7,6 +7,14 @@ Generated with the built-in image generation tool on November 16, 2026, using `c
 
 These are initial production candidates. The walk currently uses one stride pose with a small bob, and playing uses one pose with a small sway. They are not frame-by-frame gait or finger animation. Browser visual review of bench alignment is still required. Cats will get separate assets in the next milestone.
 
+## Piano perspective correction
+
+`sili-piano-v2.png` (1774 × 887 RGBA) supersedes the two seated cells in v1. Its two 887 × 887 cells face diagonally into the keyboard, showing the back of Sili's head and hoodie. The idle cell has a small horizontal registration adjustment to align it with the playing cell. Neither is mirrored. The stool front and draped blanket render in front of his legs through a CSS-clipped copy of `room-clean-v1.png`; no new furniture is drawn. Broad whole-body sway is removed to keep the seat and keyboard contact stable. The seated layer composition was visually checked using a local render; real browser verification remains outstanding.
+
+Generated with the built-in image tool using the clean room as perspective reference and v1 sprites as identity reference. Final prompt:
+
+> Use case: stylized-concept. Create a transparent character sprite sheet with TWO equal cells side by side, one Sili seated idle and one Sili seated playing piano. Image 1 is room perspective reference: upright piano at left against back wall, bench in foreground; a pianist sitting on the bench must face diagonally AWAY from viewer toward UPPER LEFT, into the keyboard. Image 2 is character identity reference ONLY; its seated side-profile angle is WRONG and must be changed. Show the BACK of navy hoodie and back/right side of oversized head, with just a small sliver of left-facing cheek, not an entire side profile face. Hips and knees point diagonally upper-left into the piano; legs recede toward piano under keyboard rather than hanging toward viewer. Character proportions, swept brown hair, tan trousers, cream sneakers, warm bold outlined simple cartoon style match reference. Both poses identical scale, head and hip position. Cell 1 hands resting near lap, cell 2 both arms extending diagonally upper-left, fingers touching an invisible keyboard at waist height. Full seated body on invisible bench, compact body, oversized head. No bench, no piano, no room, no text, no background shadow; genuine transparent alpha. Leave generous transparent margins and center each complete figure in its cell. TWO figures only. Perspective must show back three-quarter view, never flat side-on.
+
 ## Final prompts
 
 ### Clean background

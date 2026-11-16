@@ -13,7 +13,7 @@ This update supersedes the older implementation and GitHub status below.
 - Sound controls are hidden until a real recording is configured. Future configured audio supports mute/session preference, blocked-playback fallback, explicit resume, and no looping. No substitute recording has been added.
 - Movement currently covers only the piano journey. Other destinations open immediately and return Sili to the center. No floor navigation, keyboard movement, or cat routines yet. Walking is a single stride pose with a small bob; playing is a single pose with a subtle sway.
 - Syntax and simulated lifecycle checks passed. PNG dimensions and transparency were verified. Real browser visual checks remain outstanding: desktop/mobile composition, sprite/bench alignment, keyboard/touch, fullscreen, reduced motion, and actual browser audio policies. Browser automation previously stopped because it could not reliably identify the current Chrome URL; no browser verification is claimed.
-- Next: review piano alignment, then prepare cat assets and implement independent behavior. No website deployment has occurred.
+- Piano correction: `assets/sili-piano-v2.png` replaces the seated poses with a rear three-quarter view facing the keyboard. A clipped copy of the original room renders the stool front and blanket above his legs. Playing and seated idle use aligned positions without mirrored side-profile art or broad sway. A local layer-composition render was visually inspected; it is not a browser screenshot. Browser checks remain outstanding. No website deployment has occurred.
 ## Original handoff (historical context)
 
 ## Current stage
