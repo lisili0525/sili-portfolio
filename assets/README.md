@@ -1,5 +1,11 @@
 # Animation assets
 
+## Album placement refinement
+
+Current room: `room-clean-v4.png` (1671 × 941, rendered on the existing 1672 × 941 scene stage), used for background, piano foreground and portrait crop. The album is angled casually on the tabletop, with perspective, slightly curved pages and contact shadow; its hotspot has matching new bounds. Generated with the built-in image tool using v3 as edit target. Final prompt:
+
+> Use case: precise-object-edit. Edit ONLY the open photo album lying on foreground round table at bottom center of this exact 1672x941 room. It currently looks unnaturally straight, centered and parallel to image bottom. Reposition the same open album casually on a diagonal, rotating it about 15 degrees counterclockwise ON the tabletop plane, with its spine angled and its left side closer to the viewer. Use convincing perspective foreshortening: a lightly skewed open spread lying flat, subtle curved pages near gutter, slightly uneven page edges, small soft contact shadow. Keep it open with the same decorative photo mounts. Shift the album slightly left/back on the tabletop as needed so all corners remain fully visible within the image and it does not overlap the plant. This is a small natural placement correction, not a new book design. Preserve the entire rest of image exactly: table shape and location, plant, piano/bench geometry, coffee cabinet, couple portrait, calendar, window, desk, rug, colors, warm light and approved cartoon outlines. No zoom, crop, people, cats or new objects.
+
 ## Current room and album
 
 `room-clean-v3.png` is the active 1672 × 941 room background and furniture foreground. The decorative wall photographs are removed, the couple portrait and calendar remain, the espresso cabinet is shifted about 125px right, and an open album lies on the foreground table. Piano geometry and character calibration are preserved. The miniature album images in the room remain decorative concept illustrations, not selected personal photographs.

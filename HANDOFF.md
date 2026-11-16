@@ -6,6 +6,8 @@ Updated: November 16, 2026
 
 This update supersedes the older implementation and GitHub status below.
 
+- Album placement refinement: active room background/foreground is `assets/room-clean-v4.png`. The open album is placed diagonally and slightly left on the table with natural perspective and page curvature. The album hotspot follows its new bounds. The eight-page book interaction and character calibration are unchanged.
+
 - Album milestone: current background is `assets/room-clean-v3.png`. Removed the two remaining decorative wall photos, preserved the couple portrait and calendar, moved the espresso cabinet right, and put an open album on the foreground table. Both room images (base and piano foreground) use v3. Coffee and album hotspots align to the new art. Piano geometry and character scale are unchanged.
 - `album.js` implements eight individual pages/four spreads, page-turn animation, buttons, arrow keys, touch swipes, spread selectors and reduced motion. The portrait opens page one; the table album and Explore entry remember the last spread. Page one contains the approved illustration; the other seven are empty photo mounts pending reviewed images/captions. Closing or switching views cancels turn timers and removes handlers. Navigation/lifecycle simulations passed; real browser visual/touch checks remain pending.
 
