@@ -1,9 +1,9 @@
 // Interruptible room journeys. Coordinates describe Sili's feet in room percent.
-(() => {
-  const sili = document.querySelector('#sili');
-  const room = document.querySelector('.room');
-  const mug = document.querySelector('#station-cup');
-  const status = document.querySelector('#journey-status');
+export function createJourneyController(root, services) {
+  const sili = root.querySelector('#sili');
+  const room = root.querySelector('.room');
+  const mug = root.querySelector('#station-cup');
+  const status = root.querySelector('#journey-status');
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   let x = 48.5, y = 84, activity = '', ready = false;
   let heldCup = false, heldBook = false, queue = [], current = null, resolveSelection = null;
@@ -73,7 +73,7 @@
     }
   }
   function route(key, options = {}) {
-    window.siliPiano.select(key);
+    services.piano.select(key);
     room.classList.remove('piano-view');
     if (key === 'music') { camera(13.2); return; }
     visual(null);
@@ -92,7 +92,7 @@
       const targets = { milestones: [43, 80, 5], tennis: [58, 84, 3], cats: [62, 84, 4] };
       let [px, py, frame] = targets[key] || [48.5, 84, 5];
       if (key === 'cats') {
-        const cats = [...document.querySelectorAll('.cat-layer:not([hidden]):not(.perched) .cat')];
+        const cats = [...root.querySelectorAll('.cat-layer:not([hidden]):not(.perched) .cat')];
         const nearby = options.cat ? cats.find(cat => cat.dataset.cat === options.cat) : cats.sort((a, b) => Math.abs(parseFloat(a.style.left) - x) - Math.abs(parseFloat(b.style.left) - x))[0];
         if (nearby) { px = Math.max(26, parseFloat(nearby.style.left) - 8); py = parseFloat(nearby.style.top) + 1; }
         else { px = 65; py = 84; frame = 5; }
@@ -103,8 +103,8 @@
   function select(key, options = {}) {
     // Browsing is independent of an active recording performance. Returning a
     // successful selection also lets the album open without a physical pickup.
-    if (key !== 'music' && window.siliPiano.keepsPiano) return Promise.resolve(true);
-    if (key === activity && ((ready && !(key === 'cats' && options.cat)) || (key === 'music' && window.siliPiano.isEngaged))) return Promise.resolve(true);
+    if (key !== 'music' && services.piano.keepsPiano) return Promise.resolve(true);
+    if (key === activity && ((ready && !(key === 'cats' && options.cat)) || (key === 'music' && services.piano.isEngaged))) return Promise.resolve(true);
     const previousActivity = activity;
     cancel(); ready = false; activity = key;
     room.dataset.activity = key;
@@ -145,11 +145,14 @@
     if (activity === 'coffee' && ready) visual('coffee', 2);
     if (activity === 'notebook' && ready) visual('desk', 0);
   }
+  let frameId;
+  let disposed = false;
+  const abort = new AbortController();
   let runningFrame = false;
   function frame(now) {
     const dt = previous === undefined ? 0 : Math.min((now - previous) / 1000, .05);
     previous = now;
-    if (!document.hidden && !(activity === 'music' && window.siliPiano.isPaused)) {
+    if (!document.hidden && !(activity === 'music' && services.piano.isPaused)) {
       if (!current && !queue.length) idleCycle();
       if (!current && queue.length) begin(queue.shift());
       if (current) {
@@ -163,17 +166,17 @@
         if (motion.matches || elapsed >= current.duration) complete();
       }
     }
-    requestAnimationFrame(frame);
+    if (!disposed) frameId = requestAnimationFrame(frame);
   }
   motion.addEventListener('change', () => {
     if (motion.matches) { if (ready) { queue = []; current = null; } drain(); }
-  });
+  }, { signal: abort.signal });
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape' && activity === 'photos' && !ready) {
       cancel(); activity = ''; book(false); visual(null); status.textContent = '';
     }
-  });
-  window.siliActions = {
+  }, { signal: abort.signal });
+  const api = {
     select, walkPiano,
     resumePiano: () => {
       if (current?.walking) { visual(null); sili.dataset.pose = 'walk'; }
@@ -189,5 +192,6 @@
     get activity() { return activity; }
   };
   // One continuous clock avoids timer bursts after an inactive tab returns.
-  if (!runningFrame) { runningFrame = true; requestAnimationFrame(frame); }
-})();
+  if (!runningFrame) { runningFrame = true; frameId = requestAnimationFrame(frame); }
+  return { ...api, get activity() { return activity; }, destroy() { disposed = true; cancelAnimationFrame(frameId); abort.abort(); cancel(); } };
+}

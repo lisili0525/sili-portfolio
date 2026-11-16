@@ -19,14 +19,13 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '24'
+      - name: Install dependencies
+        run: npm ci
       - name: Check interactions
-        run: |
-          for check in checks/*.cjs; do
-            node "$check" || exit 1
-          done
+        run: npm test
       - name: Build public files
-        run: node scripts/build-static.cjs
+        run: npm run build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

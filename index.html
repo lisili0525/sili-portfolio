@@ -1,52 +1,13 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Step inside Sili Li's little house: mathematics, code, coffee, music, and life.">
-  <title>Sili Li — A little house</title>
-  <link rel="stylesheet" href="styles.css?v=room-fit-15">
-  <script src="piano.js?v=piano-browsing-12" defer></script>
-  <script src="album.js?v=family-arm-17" defer></script>
-  <script src="actions.js?v=cat-hotspots-14" defer></script>
-  <script src="app.js?v=fullscreen-compat-15" defer></script>
-  <script src="cats.js?v=automatic-cats-15" defer></script>
-</head>
-<body>
-  <button id="explore" aria-expanded="false" aria-controls="destinations">Explore <span aria-hidden="true">↗</span></button>
-  <button id="fullscreen" type="button" aria-label="Enter fullscreen" aria-pressed="false" hidden><span aria-hidden="true">⛶</span> <span class="fullscreen-label">Fullscreen</span></button>
-  <p id="screen-status" class="sr-only" role="status"></p>
-  <p id="journey-status" class="sr-only" role="status" aria-live="polite"></p>
-  <button id="music-toggle" type="button" aria-label="Start piano playing" aria-pressed="false" title="Start piano playing"><span aria-hidden="true">♪</span></button>
-  <button id="music-library" type="button" data-entry="music" aria-haspopup="dialog" hidden>Music list</button>
-  <main>
-    <div class="room-frame">
-      <section class="room" aria-label="Sili's illustrated room. Select an object to explore.">
-        <img class="room-art" src="assets/room-clean-v7.png" alt="Sili Li's warmly lit cartoon room, with a piano, espresso station, technical desk, tennis rackets, a framed couple portrait, and an open photo album on the foreground table." width="1672" height="941">
-        <img class="desk-chair-clear" src="assets/room-desk-chair-clear-v1.png" alt="" aria-hidden="true" width="1672" height="941">
-        <div id="viola" class="cat-layer"><button type="button" class="cat" data-entry="cats" data-cat="viola" aria-label="Meet Viola & Java: Viola" title="Meet Viola & Java"><span class="cat-sprite" aria-hidden="true"></span></button></div>
-        <div id="java" class="cat-layer"><button type="button" class="cat" data-entry="cats" data-cat="java" aria-label="Meet Viola & Java: Java" title="Meet Viola & Java"><span class="cat-sprite" aria-hidden="true"></span></button></div>
-        <img class="album-table-patch" src="assets/room-table-empty-v1.png" alt="" aria-hidden="true" width="1672" height="941">
-        <div id="station-cup" class="station-cup" aria-hidden="true"></div>
-        <img class="desk-chair desk-chair-back" src="assets/desk-chair-v1.png" alt="" aria-hidden="true" width="629" height="772">
-        <div id="sili" class="sili" data-pose="idle" aria-hidden="true"><div class="sili-sprite"></div></div>
-        <img class="desk-foreground" src="assets/room-desk-chair-clear-v1.png" alt="" aria-hidden="true" width="1672" height="941">
-        <img class="desk-chair desk-chair-front" src="assets/desk-chair-v1.png" alt="" aria-hidden="true" width="629" height="772">
-        <img class="table-foreground" src="assets/room-clean-v4.png" alt="" aria-hidden="true" width="1672" height="941">
-        <img class="table-empty-foreground" src="assets/room-table-empty-v1.png" alt="" aria-hidden="true" width="1672" height="941">
-        <img class="piano-foreground" src="assets/room-clean-v4.png" alt="" aria-hidden="true" width="1672" height="941">
-        <button class="object piano" data-entry="music"><span>At the piano</span></button>
-        <button class="object coffee" data-entry="coffee"><span>Something brewing</span></button>
-        <button class="object photos" data-entry="photos" data-album-first="true"><span>Rachel & me</span></button>
-        <button class="object album" data-entry="photos"><span>Open the photo album</span></button>
-        <button class="object calendar" data-entry="milestones"><span>Along the way</span></button>
-        <button class="object tennis" data-entry="tennis"><span>On the court</span></button>
-        <button class="object desk" data-entry="notebook"><span>Inside my notebook</span></button>
-      </section>
-    </div>
-    <nav id="destinations" aria-label="Room destinations" hidden></nav>
-  </main>
-  <aside id="performance" aria-label="Piano recordings" hidden><h3>Recordings</h3><ul id="music-tracks" aria-label="Choose a recording"></ul><p id="performance-status" role="status"></p><button id="sound" type="button" hidden>Sound on</button><button id="resume-recording" type="button" hidden>Play recording</button></aside>
-  <dialog id="detail" aria-labelledby="detail-title"><button class="close" aria-label="Close and return to the room">×</button><div class="paper"><p class="eyebrow" id="detail-label"></p><h2 id="detail-title"></h2><div id="detail-body"></div></div><div id="music-browse-controls" class="music-browse-controls" role="group" aria-label="Piano controls" hidden><button type="button" data-entry="music">Music list</button><button id="browse-sound" type="button" aria-pressed="true">Sound on</button><button id="browse-stop" type="button">Stop music</button></div></dialog>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Step inside Sili Li's little house: mathematics, code, coffee, music, and life." />
+    <title>Sili Li — A little house</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>

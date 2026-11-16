@@ -1,0 +1,97 @@
+export const recordings = [{src:'assets/music/one-summers-day.m4a', title:'One Summer’s Day'}];
+
+export function createPianoController(root, services, onChange) {
+  const sili = root.querySelector('#sili');
+  const room = root.querySelector('.room');
+  const motion = matchMedia('(prefers-reduced-motion: reduce)');
+  const abort = new AbortController();
+  const audio = new Audio(recordings[0].src);
+  audio.preload = 'none';
+  let state = 'idle', selectedTrack = 0, muted = false;
+  let playbackBlocked = false, mediaError = false, pendingArrival = false;
+  let playRequest = 0, disposed = false;
+  try { muted = sessionStorage.getItem('sili-muted') === 'true'; } catch { /* Storage is optional. */ }
+  audio.muted = muted;
+  const pose = value => { sili.dataset.pose = value; };
+  const engaged = () => ['walking','playing','paused'].includes(state);
+  function update() {
+    if (disposed) return;
+    onChange({state, selectedTrack, muted, playbackBlocked, mediaError, engaged:engaged(),
+      status:mediaError ? 'This recording could not be played. Select the piece to try again.'
+        : state === 'walking' ? 'On the way to the piano…'
+        : state === 'paused' ? 'Performance paused — select Resume to continue.'
+        : playbackBlocked ? 'Select Play recording to hear the music.'
+        : `${state === 'playing' ? 'Now playing' : 'Selected'} · ${recordings[selectedTrack].title}`});
+  }
+  async function playAudio() {
+    if (disposed || state !== 'playing') return;
+    const request = ++playRequest;
+    try {
+      await audio.play();
+      if (disposed || state !== 'playing') { audio.pause(); return; }
+      if (request === playRequest) { playbackBlocked = false; update(); }
+    } catch {
+      if (!disposed && state === 'playing' && request === playRequest) { playbackBlocked = true; update(); }
+    }
+  }
+  function arrive() {
+    if (disposed) return;
+    pendingArrival = false;
+    sili.classList.add('at-piano');
+    pose(motion.matches ? 'seated' : 'playing');
+    state = 'playing'; update(); void playAudio();
+  }
+  function stop() {
+    services.actions?.cancelPiano();
+    pendingArrival = false; state = 'seated'; playRequest++; playbackBlocked = false;
+    pose(sili.classList.contains('at-piano') ? 'seated' : 'idle');
+    sili.classList.remove('walking', 'inactive');
+    audio.pause(); audio.currentTime = 0; update();
+  }
+  function select(key) {
+    if (key !== 'music') {
+      stop(); room.classList.remove('piano-view'); sili.classList.remove('at-piano'); pose('idle'); return;
+    }
+    room.classList.add('piano-view');
+    if (engaged()) return;
+    mediaError = false; state = 'walking'; update(); services.actions.walkPiano(arrive);
+  }
+  function resume() {
+    if (document.hidden) return;
+    mediaError = false; playbackBlocked = false;
+    if (pendingArrival) { pendingArrival = false; state = 'walking'; services.actions.resumePiano(); update(); }
+    else { state = 'playing'; pose(motion.matches ? 'seated' : 'playing'); update(); void playAudio(); }
+    sili.classList.remove('inactive');
+  }
+  function chooseTrack(index) {
+    if (document.hidden || !recordings[index]) return;
+    playRequest++; mediaError = false; playbackBlocked = false; audio.pause();
+    if (index !== selectedTrack) { selectedTrack = index; audio.src = recordings[index].src; }
+    audio.currentTime = 0;
+    if (state === 'paused') resume();
+    else if (state === 'playing') { update(); void playAudio(); }
+    else if (state === 'walking') update();
+    else services.actions.select('music');
+  }
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden || !['walking','playing'].includes(state)) return;
+    pendingArrival = state === 'walking'; audio.pause(); playRequest++; playbackBlocked = false;
+    state = 'paused'; sili.classList.add('inactive');
+    if (!pendingArrival) pose('seated'); update();
+  }, {signal:abort.signal});
+  motion.addEventListener('change', () => {
+    if (state === 'playing') pose(motion.matches ? 'seated' : 'playing');
+  }, {signal:abort.signal});
+  audio.addEventListener('ended', stop, {signal:abort.signal});
+  audio.addEventListener('error', () => { mediaError = true; stop(); }, {signal:abort.signal});
+  update();
+  return {
+    get isPaused() { return state === 'paused'; },
+    get isEngaged() { return engaged(); },
+    get keepsPiano() { return engaged(); },
+    select, stop, chooseTrack, resume,
+    toggle() { if (document.hidden) return; if (state === 'paused') resume(); else if (engaged()) stop(); else services.actions.select('music'); },
+    toggleSound() { muted = !muted; audio.muted = muted; try { sessionStorage.setItem('sili-muted',String(muted)); } catch { /* Storage is optional. */ } update(); },
+    destroy() { disposed = true; playRequest++; abort.abort(); audio.pause(); audio.removeAttribute('src'); audio.load(); }
+  };
+}

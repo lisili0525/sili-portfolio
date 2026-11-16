@@ -1,7 +1,7 @@
 // Room coordinates are percentages, measured at each cat's paws.
-(() => {
+export function createCatController(root) {
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
-  const dialog = document.querySelector('#detail');
+  const dialog = root.querySelector('#detail');
   const random = (min, max) => min + Math.random() * (max - min);
   const rest = (pose, min, max = min) => ({ pose, duration: random(min, max) });
   const move = (x, y, duration, pose = 'walk', arc = 0, portal = false) =>
@@ -15,8 +15,8 @@
   };
   const spawns = [firstSpawn, secondSpawn];
   const cats = ['viola', 'java'].map((name, i) => ({
-    name, layer: document.querySelector(`#${name}`),
-    el: document.querySelector(`#${name} .cat`),
+    name, layer: root.querySelector(`#${name}`),
+    el: root.querySelector(`#${name} .cat`),
     x: spawns[i].x, y: spawns[i].y, home: spawns[i], facing: Math.random() < .5 ? -1 : 1,
     queue: [], action: null, elapsed: 0, outside: false,
     delay: random(4, 18)
@@ -106,15 +106,18 @@
       });
     }
   }
-  motion.addEventListener('change', update);
+  const abort = new AbortController();
+  motion.addEventListener('change', update, { signal: abort.signal });
+  let frameId, disposed = false;
   let previous;
   function frame(now) {
     const dt = previous === undefined ? 0 : Math.min((now - previous) / 1000, .05);
     previous = now;
     if (!motion.matches && !document.hidden && !dialog.open) cats.forEach(cat => tick(cat, dt));
-    requestAnimationFrame(frame);
+    if (!disposed) frameId = requestAnimationFrame(frame);
   }
   cats.forEach(cat => { cat.el.dataset.pose = 'sit'; paint(cat); });
   update();
-  requestAnimationFrame(frame);
-})();
+  frameId = requestAnimationFrame(frame);
+  return { destroy() { disposed = true; cancelAnimationFrame(frameId); abort.abort(); } };
+}
