@@ -49,7 +49,7 @@ describe('whole-room object ownership',()=>{
     const ids=[...document.querySelectorAll('[data-scene-object]')].map(element=>element.dataset.sceneObject);
     for(const id of ['piano','piano-bench','wall-portrait','calendar','coffee-cabinet','coffee-station','room-window','tennis-corner','window-stool','bookcase','work-desk','computer','desk-notebook','stationery','desk-lamp','desk-books','work-chair','sofa','coffee-table','table-album','wall-shelf','toy-mouse','shelf-plant','bookcase-plant','desk-plant','table-plant','sofa-plant','sunlight','sili','viola','java'])expect(ids.includes(id),id).toBe(true);
     expect(new Set(ids).size).toBe(ids.length);
-    expect(document.querySelector('.room-art').getAttribute('src')).toContain('architecture-v2');
+    expect(document.querySelector('.room-art').getAttribute('src')).toContain('architecture-v3');
   });
   it('toggles the lamp independently without navigating away or affecting window state',()=>{
     render(<App />);

@@ -19,7 +19,7 @@ describe('React room integration',() => {
     mount(); const explore=screen.getByRole('button',{name:/Explore/});
     fireEvent.click(explore); expect(explore.getAttribute('aria-expanded')).toBe('true');
     fireEvent.keyDown(document,{key:'Escape'}); expect(explore.getAttribute('aria-expanded')).toBe('false'); expect(document.activeElement).toBe(explore);
-    fireEvent.click(explore); act(()=>screen.getByRole('button',{name:'Start piano playing'}).focus());
+    fireEvent.click(explore); act(()=>screen.getByRole('button',{name:'Open piano recordings'}).focus());
     expect(explore.getAttribute('aria-expanded')).toBe('false');
   });
   it('waits for arrival before opening coffee and notebook content',async() => {
@@ -54,7 +54,7 @@ describe('React room integration',() => {
     expect(screen.getByText('Pages 1–2 of 8')).toBeTruthy();
   });
   it('keeps playing while other content opens immediately without another journey',async() => {
-    mount(); fireEvent.click(screen.getByRole('button',{name:'Start piano playing'}));
+    mount(); fireEvent.click(screen.getByRole('button',{name:'Open piano recordings'}));
     await act(async()=>advance(12));
     expect(audios.at(-1).play).toHaveBeenCalled();
     clickObject('Something brewing');
@@ -81,20 +81,43 @@ describe('React room integration',() => {
   it('handles autoplay rejection, explicit resume, mute and recording end',async() => {
     mount(); const audio=audios.at(-1); audio.play.mockRejectedValueOnce(Error('blocked'));
     clickObject('At the piano'); await act(async()=>advance(12));
-    expect(screen.getByRole('button',{name:'Play recording'})).toBeTruthy();
-    await act(async()=>fireEvent.click(screen.getByRole('button',{name:'Play recording'})));
-    fireEvent.click(screen.getByRole('button',{name:'Sound on'})); expect(audio.muted).toBe(true);
+    expect(screen.getByRole('button',{name:'Play',exact:true})).toBeTruthy();
+    await act(async()=>fireEvent.click(screen.getByRole('button',{name:'Play',exact:true})));
+    fireEvent.click(screen.getByRole('button',{name:'Mute',exact:true})); expect(audio.muted).toBe(true);
     act(()=>audio.dispatchEvent(new Event('ended')));
-    expect(screen.getByRole('button',{name:'Start piano playing'})).toBeTruthy();
+    expect(screen.getByRole('button',{name:'Open piano recordings'})).toBeTruthy();
+  });
+  it('keeps mute independent and resumes paused audio at the same position',async() => {
+    mount(); fireEvent.click(screen.getByRole('button',{name:'Open piano recordings'}));
+    await act(async()=>advance(12));
+    const audio=audios.at(-1), actor=document.querySelector('#sili');
+    audio.currentTime=41.3;
+    fireEvent.click(screen.getByRole('button',{name:'Mute',exact:true}));
+    expect(audio.muted).toBe(true); expect(audio.paused).toBe(false);
+    expect(actor.dataset.pose).toBe('playing'); expect(actor.classList.contains('inactive')).toBe(false);
+    fireEvent.click(screen.getByRole('button',{name:'Pause',exact:true}));
+    expect(audio.paused).toBe(true); expect(audio.currentTime).toBe(41.3);
+    expect(actor.classList.contains('inactive')).toBe(true);
+    fireEvent.click(screen.getByRole('button',{name:'Close and return to the room'}));
+    fireEvent.click(screen.getByRole('button',{name:'Open piano recordings'}));
+    await act(async()=>{});
+    expect(audio.paused).toBe(true); expect(audio.currentTime).toBe(41.3);
+    await act(async()=>fireEvent.click(screen.getByRole('button',{name:'Play',exact:true})));
+    expect(audio.paused).toBe(false); expect(audio.currentTime).toBe(41.3); expect(audio.muted).toBe(true);
+    expect(actor.classList.contains('inactive')).toBe(false);
+    fireEvent.click(screen.getByRole('button',{name:'Unmute',exact:true}));
+    expect(audio.muted).toBe(false); expect(audio.paused).toBe(false);
+    expect(screen.queryByText('Music list')).toBeNull();
+    expect(screen.queryByText('Stop playing')).toBeNull();
   });
   it('pauses on tab inactivity and requires explicit resume',async() => {
     mount(); clickObject('At the piano'); await act(async()=>advance(12));
     act(()=>{document.hidden=true; document.dispatchEvent(new Event('visibilitychange'));});
     expect(audios.at(-1).paused).toBe(true);
     act(()=>{document.hidden=false; document.dispatchEvent(new Event('visibilitychange'));});
-    expect(screen.getByRole('button',{name:'Resume recording'})).toBeTruthy();
-    await act(async()=>fireEvent.click(screen.getByRole('button',{name:'Resume recording'})));
-    expect(screen.getByRole('button',{name:'Stop piano playing'})).toBeTruthy();
+    expect(screen.getByRole('button',{name:'Play',exact:true})).toBeTruthy();
+    await act(async()=>fireEvent.click(screen.getByRole('button',{name:'Play',exact:true})));
+    expect(screen.getByRole('button',{name:'Open piano recordings'})).toBeTruthy();
   });
   it('honors reduced motion and freezes cats while content is open',async() => {
     mount(); tick(30); clickObject('Something brewing');

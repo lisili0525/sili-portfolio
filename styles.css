@@ -36,14 +36,12 @@ html,body{width:100%;height:100%;overflow:hidden;overscroll-behavior:none}body{b
 @keyframes walk-step{to{transform:scaleX(-1) translateY(-1.5%) rotate(-1deg)}}
 /* The room has a compact music toggle; recording controls stay in the dialog. */
 #music-toggle{position:fixed;right:20px;bottom:70px;z-index:3;width:44px;height:44px;display:grid;place-items:center;border:1px solid #d5c4a9;border-radius:50%;background:#faf3e6ed;color:#786b55;box-shadow:0 3px 16px #35241330;font:26px/1 Georgia,serif}
-#music-toggle[aria-pressed="true"]{color:#46543c;background:#edf0df;border-color:#a9b295}
-#music-toggle[aria-pressed="false"]::after{content:'';position:absolute;width:23px;height:1px;background:currentColor;transform:rotate(-45deg);opacity:.65}
+#music-toggle[data-playing="true"]{color:#46543c;background:#edf0df;border-color:#a9b295}
+#music-toggle[data-playing="false"]::after{content:'';position:absolute;width:23px;height:1px;background:currentColor;transform:rotate(-45deg);opacity:.65}
 #music-toggle:focus-visible{outline:2px solid #fff2bc;outline-offset:4px}
 #performance{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
 #performance[hidden],#performance button[hidden]{display:none}
 #performance button{border:1px solid #d5c9b5;background:#eae2d2;border-radius:8px;padding:7px 12px}
-#music-library{position:fixed;right:20px;bottom:126px;z-index:3;padding:7px 13px;background:#faf3e6ed;border:1px solid #d5c4a9;border-radius:20px;box-shadow:0 3px 16px #35241320;font-size:12px}
-#music-library[hidden]{display:none}
 #performance{display:block}
 #performance h3{margin-top:20px}
 #music-tracks{list-style:none;margin:0 0 12px;padding:0}
@@ -56,7 +54,6 @@ html,body{width:100%;height:100%;overflow:hidden;overscroll-behavior:none}body{b
 .album-view .music-browse-controls{position:fixed;bottom:max(12px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);width:max-content;max-width:calc(100vw - 24px);border:1px solid #d5c4a9;border-radius:24px;box-shadow:0 4px 18px #35241330}
 @media(min-width:701px){dialog.with-piano[data-entry]:not(.album-view){left:auto;right:24px}}
 @media(max-width:640px){#music-toggle{right:12px;bottom:max(64px,calc(env(safe-area-inset-bottom) + 56px))}}
-@media(max-width:640px){#music-library{right:12px;bottom:max(116px,calc(env(safe-area-inset-bottom) + 108px))}}
 @media(prefers-reduced-motion:reduce){.sili{transition:none}}
 
 /* The album is the object itself: no surrounding window or toolbar. */
@@ -201,14 +198,16 @@ dialog.album-view::backdrop{background:#24180f65;backdrop-filter:blur(4px)}
 .sili[data-pose="activity"][data-activity="desk"][data-desk-mode="writing"] .sheet-writing{visibility:visible}
 .sili[data-pose="activity"][data-activity="interactions"] .sheet-interactions{visibility:visible}
 
-/* Transparent controls register with the two remaining painted beam icons. */
-.room-contact{position:absolute;inset:0;z-index:30;pointer-events:none}
-.contact-beam-repair{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.contact-links{position:absolute;left:90.25%;top:1.4%;width:8.1%;height:5.5%;display:flex;justify-content:space-between;pointer-events:auto}
-.contact-links>a{position:relative;display:block;width:44%;height:100%;min-height:28px;border:1px solid transparent;border-radius:10px;background:transparent;text-decoration:none;transition:background .18s,box-shadow .18s,transform .18s,border-color .18s}
-.contact-links span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
-.contact-links>a:hover{background:#fff0c526;border-color:#ffe1a770;box-shadow:0 0 15px #ffe4a64d;transform:translateY(-2px)}
-.contact-links>a:active{transform:translateY(1px) scale(.96)}
-.contact-links>a:focus-visible{outline:2px solid #fff2bc;outline-offset:2px}
-@media(max-width:700px){.contact-links{left:auto;right:12px;top:12px;width:auto;height:44px;gap:4px;padding:0 4px;background:#faf3e6f0;border:1px solid #d5c4a9;border-radius:12px}.contact-links>a{width:auto;min-width:48px;display:grid;place-items:center;padding:0 8px;font-size:12px}.contact-links span{position:static;width:auto;height:auto;overflow:visible;clip-path:none}}
-@media(prefers-reduced-motion:reduce){.contact-links>a{transition:none}.contact-links>a:hover,.contact-links>a:active{transform:none}}
+/* Independent ceramic profile tiles sit above the clean room background. */
+.contact-links{position:absolute;z-index:30;right:2.1%;top:1.2%;display:flex;gap:clamp(12px,1.3vw,22px)}
+.profile-tile{display:grid;place-items:center;width:clamp(40px,3.1vw,52px);aspect-ratio:1;border:1px solid #b99b70;border-top-color:#fff7df;border-left-color:#fcebc7;border-radius:11px;background:linear-gradient(145deg,#fff5de 0%,#f3e2bc 70%,#decca4 100%);color:#795236;box-shadow:inset 0 1px 1px #fffdf3,0 3px 0 #9b764f,0 5px 7px #26120759;text-decoration:none;transition:transform .18s ease,box-shadow .18s ease,filter .18s ease;transform:translateY(0)}
+.profile-tile svg{display:block;width:64%;height:64%;filter:drop-shadow(0 1px 0 #fff6dfb3)}
+.profile-tile:hover{transform:translateY(-3px) rotate(-2deg);filter:brightness(1.05);box-shadow:inset 0 1px 1px #fffdf3,0 5px 0 #9b764f,0 9px 12px #26120766}
+.profile-linkedin:hover{transform:translateY(-3px) rotate(2deg)}
+.profile-tile:active{transform:translateY(2px);box-shadow:inset 0 1px 3px #9b764f40,0 1px 0 #9b764f,0 2px 3px #26120759}
+.profile-tile:focus-visible{outline:3px solid #fff2bc;outline-offset:5px}
+@media(max-width:700px){.contact-links{right:12px;top:10px;gap:12px}.profile-tile{width:44px}}
+@media(prefers-reduced-motion:reduce){.profile-tile{transition:none}.profile-tile:hover,.profile-linkedin:hover,.profile-tile:active{transform:none}}
+
+.playback-actions{display:flex;gap:8px;flex-wrap:wrap}
+.room:has(.sili.inactive) .piano-keylights rect{animation-play-state:paused}

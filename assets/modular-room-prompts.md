@@ -42,3 +42,13 @@ Final prompt:
 
 Precise lighting cleanup of this empty architectural room background. Remove ONLY the bright diagonal window-grid sunlight patches on the lower-left wooden floor. Reconstruct continuous warm wooden floorboards with soft ambient light, no direct sunbeams or sharp lattice shadows. Preserve exact peach wall, floorboard perspective, colors, baseboard, beams, header lettering and icons, room dimensions and camera. No furniture, window, plants, objects, characters or new text. This is the neutral floor background; sunlight will be rendered separately.
 
+
+## Clean beam for independent profile tiles — November 16, 2026
+
+Saved asset: `assets/room-architecture-v3.png`
+Source: `assets/room-architecture-v2.png`
+Method: built-in image_gen edit, opaque background. The original v2 asset is preserved.
+
+Final prompt:
+
+Use case: precise-object-edit. Edit target: the supplied illustrated room architecture background. Remove ONLY the three cream contact icons at the upper right on the dark wooden ceiling beam (envelope, GitHub cat, LinkedIn in). Repaint their former areas as uninterrupted naturally continuous warm dark brown wood, preserving the horizontal grain, lighting gradient, long dark horizontal seam, and orange beam trim. Absolutely no rectangular patches, color discontinuities, borders, residual icon fragments, or new symbols. Keep the Sili Li lettering at upper left exactly intact. Preserve the exact full composition, architecture, wall, floor, beams, black outlines, colors, canvas aspect ratio and registration of every other part. Output the entire same background with a clean empty wooden beam at upper right. This is a production background behind precisely positioned game furniture, so no rearrangement, cropping, extra objects, or redesign.

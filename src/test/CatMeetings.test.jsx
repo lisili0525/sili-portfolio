@@ -76,7 +76,7 @@ describe('shared person/cat meetings',()=>{
     app.unmount();expect(frames.size).toBe(0);
   });
   it('direct cat interaction interrupts piano playing while ordinary browsing remains independent',async()=>{
-    render(<App />);fireEvent.click(screen.getByRole('button',{name:'Start piano playing'}));
+    render(<App />);fireEvent.click(screen.getByRole('button',{name:'Open piano recordings'}));
     await act(async()=>advance(12));meet('java');tick(.5);
     expect(audios.at(-1).paused).toBe(true);waitFor(contact,20);expect(actor().dataset.catTarget).toBe('java');
   });

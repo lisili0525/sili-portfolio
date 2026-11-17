@@ -63,15 +63,13 @@ export function App() {
     setEntry(null); services.current.actions.closeAlbum(); origin.current?.focus();
   }
   const active = ['walking','playing'].includes(piano.state);
-  const musicLabel = piano.state === 'paused' ? 'Resume piano playing' : active ? 'Stop piano playing' : 'Start piano playing';
   const content = entry ? entries[entry] : null;
   return <div ref={rootRef} className="app">
     <button ref={exploreRef} id="explore" aria-expanded={menu} aria-controls="destinations" onClick={() => setMenu(value => !value)}>Explore <span aria-hidden="true">↗</span></button>
     <button id="fullscreen" type="button" aria-label={screen.active ? 'Exit fullscreen' : 'Enter fullscreen'} aria-pressed={screen.active} hidden={!screen.supported} disabled={screen.busy} onClick={screen.toggle}><span aria-hidden="true">⛶</span> <span className="fullscreen-label">{screen.active ? 'Exit fullscreen' : 'Fullscreen'}</span></button>
     <p id="screen-status" className="sr-only" role="status">{screen.status}</p>
     <p id="journey-status" className="sr-only" role="status" aria-live="polite" />
-    <button id="music-toggle" type="button" aria-label={musicLabel} aria-pressed={active} title={musicLabel} onClick={() => services.current.piano.toggle()}><span aria-hidden="true">♪</span></button>
-    <button id="music-library" type="button" aria-haspopup="dialog" hidden={!piano.engaged} onClick={event => openEntry('music',event.currentTarget)}>Music list</button>
+    <button id="music-toggle" type="button" aria-label="Open piano recordings" aria-haspopup="dialog" data-playing={active} title="Open piano recordings" onClick={event => openEntry('music',event.currentTarget)}><span aria-hidden="true">♪</span></button>
     <Room roomRef={roomRef} onEntry={openEntry} />
     <nav ref={navRef} id="destinations" aria-label="Room destinations" hidden={!menu}>{Object.entries(entries).map(([key,value]) => <button key={key} type="button" onClick={event => openEntry(key,event.currentTarget)}>{value.title}</button>)}</nav>
     <dialog ref={dialogRef} id="detail" aria-labelledby="detail-title" data-entry={entry || undefined}
