@@ -4,9 +4,8 @@ import { albumPages } from '../data/album.js';
 function Page({index, className = ''}) {
   const data = albumPages[index];
   return <article className={`album-page ${className}`} aria-label={`Page ${index+1}`}>
-    <div className="album-photo-mount album-filled"><img src={data.src} alt={data.alt} /></div>
+    <div className="album-photo-mount album-filled"><img src={data.src} alt={data.alt} />{['top-left','top-right','bottom-left','bottom-right'].map(corner=><span key={corner} className={`photo-corner ${corner}`} aria-hidden="true" />)}</div>
     {data.title && <h3>{data.title}</h3>}{data.caption && <p>{data.caption}</p>}
-    <span className="album-page-number">{String(index+1).padStart(2,'0')}</span>
   </article>;
 }
 
@@ -28,7 +27,7 @@ export function PhotoAlbum({spread, onSpread}) {
     if (!value) return;
     if (reduced.current.matches) { finish(commit,value.target); return; }
     changeTurn({...value, progress:commit ? 1 : 0, settling:true});
-    timer.current = setTimeout(() => finish(commit,value.target),640);
+    timer.current = setTimeout(() => finish(commit,value.target),560);
   }
   function start(direction) {
     const from = currentSpread.current, target = from+direction;
@@ -84,10 +83,11 @@ export function PhotoAlbum({spread, onSpread}) {
   }}>
     <div className="album-stage"><div ref={bookRef} className="album-book" aria-busy={Boolean(turn)}>
       <Page index={left} /><Page index={right} />
+      <div className="album-binding" aria-hidden="true" />
       {turn && <div className={`album-turn-sheet ${forward ? 'turn-forward' : 'turn-back'}`} aria-hidden="true" style={{
-        transform:`rotateY(${-turn.direction*turn.progress*180}deg) rotateX(${turn.settling ? 0 : Math.sin(turn.progress*Math.PI)*-3}deg)`,
-        transition:turn.settling ? 'transform 620ms cubic-bezier(.2,.65,.25,1)' : 'none',
-        '--turn-shade':Math.sin(turn.progress*Math.PI)*.25
+        transform:`rotateY(${-turn.direction*turn.progress*180}deg)`,
+        transition:turn.settling ? 'transform 540ms cubic-bezier(.25,.65,.3,1)' : 'none',
+        '--turn-shade':Math.sin(turn.progress*Math.PI)*.12
       }}><Page index={forward ? turn.from*2+1 : turn.from*2} className="sheet-front" /><Page index={forward ? turn.target*2 : turn.target*2+1} className="sheet-back" /></div>}
     </div>
     {[-1,1].map(direction => <button key={direction} type="button" className={`album-corner ${direction === 1 ? 'corner-next' : 'corner-prev'}`}
