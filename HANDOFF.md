@@ -5,6 +5,51 @@ Workspace: /Users/lisili/sili-portfolio
 Repository: https://github.com/lisili0525/sili-portfolio
 Website: https://silispace.net/
 
+
+## Workstation split publication — November 16, 2026
+
+The owner explicitly authorized committing and pushing all current local changes and checking the deployed website. This release includes the computer/notebook content split, its regression tests, the saved computer concept, and the desktop-first architecture proposal in `update.md`. The concept and architecture proposal remain documentation only; the personalized computer UI, notebook page turning, and renderer migration are not implemented. Earlier unpublished/no-push statements below describe the historical state before this authorization. Future publishing still requires explicit owner approval. Deployment success must be established from the matching GitHub Pages workflow and live-site checks.
+
+## Computer concept review — November 16, 2026 (local, not implemented)
+
+The owner responded positively to the latest computer concept and asked to save this discussion and image for continuation. This accepts a visual direction for further work, not authorization to implement the personalized computer view, push, or deploy. Resume with the computer; the notebook is a later, separate task.
+
+Latest concept: [Computer project view v3](concepts/computer-project-view-v3.png).
+
+![Computer project view v3](concepts/computer-project-view-v3.png)
+
+### Confirmed direction and feedback
+
+- Opening an object should feel like an enlarged view of that actual object. The owner referenced the existing album only for its viewport occupancy, not its appearance or book interaction.
+- Only computer and notebook are in scope. The album is considered finished for now: do not alter it until the owner explicitly requests a change. Other content views remain unchanged.
+- Keep the same cartoon drawing language as the room. Different object shapes are welcome; uniform shells are not a requirement.
+- The computer contains CoffeeHeads and biomedical machine learning; the notebook contains SVD & PCA and cloud microphysics modeling. No new source information is supplied. Explicit English placeholder content is acceptable; do not invent results or evidence.
+- Computer projects should open like individual folders. Keep desktop folder icons small, ordinary and simple, with ample empty desktop space. Do not display “Sili’s Computer” or another decorative desktop heading. Earlier oversized pictorial folders and busy floral/cloud decoration were rejected.
+- The open-project window can be richer than the desktop. The current concept includes an overview, a compact architecture diagram, implementation notes and a clearly marked interface placeholder. These illustrate layout only; the diagram and mock screenshot are not independently verified project evidence or final content requirements.
+- Perspective must correspond to sitting in the existing work chair and looking at the laptop. Behind the laptop: the wooden bookshelf on the right, a small area of warm wall, and part of the cream curtain on the left. Do not substitute a generic room background or repeat the original wide room composition.
+- Notebook should eventually support page turning. Its personalized design and behavior have not been discussed in detail or implemented.
+
+### Concept provenance and implementation boundaries
+
+The saved PNG was generated with the built-in imagegen tool, not the CLI. References: `assets/room-workstation-no-pen-v1.png` for room layout/style and the previous simplified two-state computer concept for interface direction. The old room reference is a visual reference only; it does not authorize restoring its obsolete contact icons or other superseded artwork.
+
+Prompt specification: create one landscape, nearly front-facing enlarged laptop project view; preserve warm outlined 2D cartoon rendering; laptop fills roughly 85–90% of the width; retain a little keyboard/desk; align curtain/wall/bookshelf background with the seated viewpoint; show two small CoffeeHeads and Machine Learning folders on muted sage wallpaper; open a large cream CoffeeHeads window with modest typography, overview, compact React/Spring Boot/PostgreSQL/Redis diagram, implementation notes, next steps and a labeled interface placeholder; omit desktop heading, ornamental wallpaper, album motifs and invented results. English text only.
+
+This PNG is a concept reference under `concepts/`, not a production UI asset. It is not imported by the app. Final responsive layout, scrolling, inner-window navigation and close behavior, keyboard focus and music-control placement still require a concrete plan and owner approval before implementation. Preserve all existing music/mute/pause/saved-progress behavior, arrival gating, Escape, focus restoration and reduced motion. Generated foreground plants, stationery and exact dimensions are incidental, not approved changes to room composition.
+
+The module split below is already implemented locally. No personalized computer UI, notebook page-turn UI, push or deployment has occurred. Existing 50-test/build validation applies to the split, not to this raster concept or future UI.
+
+## Local workstation split — November 16, 2026 (unpublished)
+
+The owner approved separating the computer and notebook before designing their personalized views. There are now eight content entries. The computer opens `computer`, rendered by `src/components/content/ComputerContent.jsx`, with CoffeeHeads and biomedical machine learning. The notebook retains `notebook`, rendered by `src/components/content/NotebookContent.jsx`, with SVD & PCA and cloud microphysics modeling. Both have separate Explore destinations. The coffee journal's technical link opens the computer. English placeholder notes are explicit; they make no new project claims.
+
+Both entries retain the existing cream content shell and shared workstation journey, seating, departure and reduced-motion behavior. Dialog focus, Escape, arrival gating and piano browsing remain shared. The photo album is out of scope and must not be changed unless the owner explicitly requests it.
+
+Next: continue from the saved computer concept review above and agree on an implementation plan. Notebook page turning is a later, separate design task. Neither final personalized view is implemented or approved. The enlarged presentation should occupy the viewport similarly in scale to the existing album, without making the computer resemble an album. No push or deployment is authorized.
+
+Validation: all 50 tests across six suites pass, production build passes, and diff checks pass. New integration checks cover separate content and Explore entries, workstation arrival, focus return, pending Escape cancellation, reduced motion and uninterrupted music browsing. Native browser verification of this split has not been performed.
+
+
 ## Current delivery
 
 The application is a React 19 / Vite 8 illustrated-room portfolio, published through GitHub Pages from main. Publishing requires explicit owner approval for each update; see Required publishing approval below. Earlier private-only, buildless, local-only and no-deployment notes are obsolete. Keep code, comments, documentation and generated prompts in English, even when discussing changes in Chinese. Never discard unrelated work or force-push.
@@ -24,7 +69,7 @@ This handoff describes the final implementation; PRD.md records product requirem
 
 ## Interaction and popup rules
 
-Seven content entries remain: piano/music, coffee, notebook, photos, calendar/milestones, tennis and resident cats. Illustrated objects retain tight contour highlights and accessible native controls. All floating object-name labels have been removed, including At the piano and Rachel & me. Window/curtain controls are on the artwork; no floating state toolbar is allowed. Explore provides alternative access to all entries.
+Eight local content entries remain: piano/music, coffee, computer, notebook, photos, calendar/milestones, tennis and resident cats. Illustrated objects retain tight contour highlights and accessible native controls. All floating object-name labels have been removed, including At the piano and Rachel & me. Window/curtain controls are on the artwork; no floating state toolbar is allowed. Explore provides alternative access to all entries.
 
 Normally, content opens only after Sili reaches the selected destination and completes its initial interaction. Coffee waits through preparation, notebook waits for seating, album waits for pickup, and calendar/tennis wait for their arrival pose. Music content waits for piano arrival. New selections close old content, cancel obsolete journeys and suppress stale dialog promises. Repeated clicks on the same pending destination reuse its arrival promise. Escape cancels pending journeys. Programmatic dialog close events cannot cancel the next destination or restore obsolete focus.
 

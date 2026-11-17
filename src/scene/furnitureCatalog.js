@@ -44,7 +44,7 @@ export const furniture = {
   ],{supports:{top:{x:1554.96,y:663.405,width:10,group:'workstation'}}}),
   computer:object('computer',{x:1296,y:497},[
     part('laptop',hit('desk').paths[0],{source:workstationArtwork})
-  ],{hotspot:{...hit('desk'),id:'computer',label:'Use the computer',paths:[hit('desk').paths[0]]}}),
+  ],{hotspot:{...hit('desk'),id:'computer',entry:'computer',label:'Use the computer',paths:[hit('desk').paths[0]]}}),
   notebook:object('desk-notebook',{x:1370,y:570},[
     part('open-notebook','M1401 568 L1478 572 L1501 575 L1567 602 L1556 641 L1552 653 L1538 665 L1460 650 L1437 651 L1368 638 Z',{source:workstationArtwork,edgePadding:1}),
     part('writing-pen','M1473 655 L1513 623 Q1521 615 1527 623 Q1531 628 1525 633 L1488 666 Q1481 672 1475 666 Q1470 662 1473 655 Z',{animation:'pen-idle',source:'assets/room-hidden-surfaces-v1.png',edgePadding:0})

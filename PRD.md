@@ -4,6 +4,28 @@ Status: React implementation published through GitHub Pages; current release req
 Date: November 16, 2026
 Owner: Sili Li
 
+
+## Confirmed personalized-view direction — November 16, 2026 (not implemented)
+
+- Scope: computer and notebook only, developed separately with the computer first. The existing album must remain unchanged unless explicitly requested by the owner.
+- Present each as an enlarged view of the actual room object, occupying the main viewport. The album is a scale reference only. Preserve the room's unified cartoon drawing style.
+- Computer: small project folders for CoffeeHeads and biomedical machine learning, simple desktop with no “Sili’s Computer” heading or decorative clutter. Opening a folder reveals a richer project window. Placeholder copy/diagrams/images must remain distinguishable from verified project evidence.
+- Computer background: seated work-chair viewpoint, with the existing bookshelf to the right, a little wall and cream curtain to the left. Maintain spatial continuity with the room.
+- Notebook: SVD & PCA and cloud microphysics modeling, with page turning as the desired later interaction. Detailed design remains pending.
+- Preserve music state and reachable controls, arrival-gated opening, keyboard focus, Escape and reduced-motion behavior.
+- Latest positively reviewed concept: [Computer project view v3](concepts/computer-project-view-v3.png). See HANDOFF.md for feedback and provenance. The concept is not integrated into the app. A concrete implementation plan still requires owner approval; pushing and deployment require separate explicit approval.
+
+## Local workstation split — November 16, 2026 (unpublished)
+
+The owner approved separating the computer and notebook before designing their personalized views. There are now eight content entries. The computer opens `computer`, rendered by `src/components/content/ComputerContent.jsx`, with CoffeeHeads and biomedical machine learning. The notebook retains `notebook`, rendered by `src/components/content/NotebookContent.jsx`, with SVD & PCA and cloud microphysics modeling. Both have separate Explore destinations. The coffee journal's technical link opens the computer. English placeholder notes are explicit; they make no new project claims.
+
+Both entries retain the existing cream content shell and shared workstation journey, seating, departure and reduced-motion behavior. Dialog focus, Escape, arrival gating and piano browsing remain shared. The photo album is out of scope and must not be changed unless the owner explicitly requests it.
+
+Next: agree on an implementation plan using the saved computer concept direction. Notebook page turning is a later, separate design task. Neither final personalized view is implemented or approved. The enlarged presentation should occupy the viewport similarly in scale to the existing album, without making the computer resemble an album. No push or deployment is authorized.
+
+Validation: all 50 tests across six suites pass, production build passes, and diff checks pass. New integration checks cover separate content and Explore entries, workstation arrival, focus return, pending Escape cancellation, reduced motion and uninterrupted music browsing. Native browser verification of this split has not been performed.
+
+
 ## Current confirmed behavior — November 16, 2026
 
 This section is authoritative for the current release. Implementation details and operational handoff are in HANDOFF.md. Code and project documents remain English-only.

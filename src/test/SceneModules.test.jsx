@@ -27,7 +27,7 @@ describe('independent room modules',()=>{
     for(let i=0;i<120;i++) {act(()=>advance(.05));if(coffee.dataset.brewing==='true'){brewing=true;break;}}
     expect(brewing).toBe(true);
     await act(async()=>advance(12));
-    fireEvent.click(screen.getByRole('button',{name:/Open the technical notebook/}));
+    fireEvent.click(screen.getByRole('button',{name:/Open the computer projects/}));
     act(()=>advance(12));expect(coffee.dataset.brewing).toBe('false');
     expect(document.querySelectorAll('#station-cup')).toHaveLength(1);
   });

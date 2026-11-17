@@ -4,6 +4,7 @@ const walkingSpeed = 14;
 // A longer gait cycle softens the steps without slowing travel.
 const walkCycleDistance = 12;
 const walkFrames = 6;
+const isWorkstation = key => key === 'computer' || key === 'notebook';
 // Interruptible room journeys. Coordinates describe Sili's feet in room percent.
 export function createJourneyController(root, services) {
   const sili = root.querySelector('#sili');
@@ -81,7 +82,7 @@ export function createJourneyController(root, services) {
   function idleCycle() {
     if (!ready || motion.matches) return;
     if (activity === 'coffee') queue.push(pose('coffee', 2, random(12, 24)), pose('coffee', 3, 1.3), pose('coffee', 2, 1));
-    if (activity === 'notebook') {
+    if (isWorkstation(activity)) {
       queue.push(pose('desk', 1, random(8, 14)), pose('desk', 3, random(4, 7)), pose('desk', 0, random(2, 4)));
     }
   }
@@ -104,7 +105,7 @@ export function createJourneyController(root, services) {
       queue.push(walk(38.5, 84.4),
         pose('coffee', 0, 1.2), pose('coffee', 1, .7), pose('coffee', 0, .65), pose('coffee', 1, .8),
         pose('coffee', 2, .6, { start: () => cup(true) }), finish);
-    } else if (key === 'notebook') {
+    } else if (isWorkstation(key)) {
       queue.push(walk(69, 84), walk(81.4593, 90.1027), pose('desk', 0, .5), pose('desk', 1, .5), finish);
     } else if (key === 'photos') {
       queue.push(walk(53, 84), walk(53, 96), pose('interactions', 0, .65),
@@ -133,7 +134,7 @@ export function createJourneyController(root, services) {
     // cup-placement frame has an unnatural head angle and must not be shown.
     if (heldCup) queue.push(pose('coffee', 0, .4, { start: () => cup(false) }));
     if (heldBook) queue.push(pose('interactions', 1, .45, { end: () => book(false) }));
-    if (previousActivity === 'notebook') queue.push(pose('desk', 0, .35));
+    if (isWorkstation(previousActivity)) queue.push(pose('desk', 0, .35));
     queue.push({ duration: 0, end: () => route(key, options) });
     if (motion.matches) drain();
     return result;
@@ -162,7 +163,7 @@ export function createJourneyController(root, services) {
       complete();
     }
     if (activity === 'coffee' && ready) visual('coffee', 2);
-    if (activity === 'notebook' && ready) visual('desk', 0);
+    if (isWorkstation(activity) && ready) visual('desk', 0);
   }
 
   function updateCatInteraction(dt) {

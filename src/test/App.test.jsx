@@ -22,19 +22,57 @@ describe('React room integration',() => {
     fireEvent.click(explore); act(()=>screen.getByRole('button',{name:/^(Mute|Unmute) music$/}).focus());
     expect(explore.getAttribute('aria-expanded')).toBe('false');
   });
-  it('waits for arrival before opening coffee and notebook content',async() => {
+  it('waits for arrival before opening coffee and computer content',async() => {
     mount(); clickObject('Something brewing');
     expect(document.querySelector('#detail').open).toBe(false);
     await act(async()=>advance(12));
     expect(screen.getByRole('heading',{name:'Something brewing'})).toBeTruthy();
     fireEvent.click(screen.getByText(/I enjoy making/)); expect(document.querySelector('#detail').open).toBe(true);
-    fireEvent.click(screen.getByRole('button',{name:/Open the technical notebook/}));
+    fireEvent.click(screen.getByRole('button',{name:/Open the computer projects/}));
     expect(document.querySelector('#detail').open).toBe(false);
     await act(async()=>advance(12));
-    expect(screen.getByRole('heading',{name:'Inside my notebook'})).toBeTruthy();
+    expect(screen.getByRole('heading',{name:'Inside my computer'})).toBeTruthy();
     tick(12); expect(document.querySelector('#sili').dataset.activity).toBe('desk');
     fireEvent.click(screen.getByRole('button',{name:'Close and return to the room'}));
     expect(document.querySelector('#detail').open).toBe(false);
+  });
+  it('separates workstation content and Explore destinations while preserving focus and arrival',async()=>{
+    mount(); const computer=within(document.querySelector('.room')).getByRole('button',{name:'Use the computer',hidden:true});
+    fireEvent.click(computer);
+    expect(document.querySelector('#detail').open).toBe(false);
+    await act(async()=>advance(15));
+    expect(document.querySelector('#detail').dataset.entry).toBe('computer');
+    expect(screen.getByRole('heading',{name:'CoffeeHeads'})).toBeTruthy();
+    expect(screen.queryByRole('heading',{name:'SVD & PCA'})).toBeNull();
+    fireEvent.click(screen.getByRole('button',{name:'Close and return to the room'}));
+    expect(document.activeElement).toBe(computer);
+    clickObject('Inside my notebook'); await act(async()=>advance(15));
+    expect(document.querySelector('#detail').dataset.entry).toBe('notebook');
+    expect(screen.getByRole('heading',{name:'SVD & PCA'})).toBeTruthy();
+    expect(screen.queryByRole('heading',{name:'CoffeeHeads'})).toBeNull();
+    fireEvent.click(screen.getByRole('button',{name:'Close and return to the room'}));
+    fireEvent.click(screen.getByRole('button',{name:/Explore/}));
+    const nav=within(document.querySelector('#destinations'));
+    expect(nav.getByRole('button',{name:'Inside my computer'})).toBeTruthy();
+    expect(nav.getByRole('button',{name:'Inside my notebook'})).toBeTruthy();
+  });
+  it('preserves piano browsing and reduced-motion cancellation for both workstation entries',async()=>{
+    mount(); clickObject('Use the computer'); tick(.1);
+    fireEvent.keyDown(document,{key:'Escape'}); await act(async()=>advance(15));
+    expect(document.querySelector('#detail').open).toBe(false);
+    act(()=>media.forEach(item=>{item.matches=true;item.dispatchEvent(new Event('change'));}));
+    clickObject('Use the computer'); await act(async()=>{});
+    expect(document.querySelector('#detail').dataset.entry).toBe('computer');
+    clickObject('Inside my notebook'); await act(async()=>{});
+    expect(document.querySelector('#detail').dataset.entry).toBe('notebook');
+    clickObject('At the piano'); await act(async()=>{});
+    const audio=audios.at(-1); audio.currentTime=23;
+    for(const [name,key] of [['Use the computer','computer'],['Inside my notebook','notebook']]) {
+      clickObject(name); await act(async()=>{});
+      expect(document.querySelector('#detail').dataset.entry).toBe(key);
+      expect(document.querySelector('#sili').classList.contains('at-piano')).toBe(true);
+      expect(audio.paused).toBe(false); expect(audio.currentTime).toBe(23);
+    }
   });
   it('interrupts album pickup and opens only the most recent selection',async() => {
     mount(); clickObject('Open the photo album'); tick(.5); clickObject('Something brewing');

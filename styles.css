@@ -61,12 +61,12 @@ html,body{width:100%;height:100%;overflow:hidden;overscroll-behavior:none}body{b
 /* Nearly opaque content improves readability; positioning keeps activities visible. */
 dialog:not(.album-view){position:fixed;inset:50% 24px auto auto;transform:translateY(-50%);margin:0;width:min(480px,calc(100vw - 32px));max-height:82vh;max-height:82dvh;background:rgba(255,249,233,.92);color:#302b22;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);border-color:#fff5ddb3;box-shadow:0 12px 45px #30231833}
 dialog:not(.album-view)::backdrop{background:#24180f0d;backdrop-filter:none}
-dialog[data-entry="notebook"]:not(.album-view),dialog[data-entry="cats"]:not(.album-view){right:auto;left:24px}
+dialog[data-entry="computer"]:not(.album-view),dialog[data-entry="notebook"]:not(.album-view),dialog[data-entry="cats"]:not(.album-view){right:auto;left:24px}
 dialog:not(.album-view) .paper{padding:30px 32px}
 dialog:not(.album-view) .paper p,dialog:not(.album-view) .paper small{color:#252016;font-weight:500}
 dialog:not(.album-view) .paper .note{color:#30291e}
 dialog:not(.album-view) .close{background:#fff8e2bd}
-@media(max-width:700px){dialog:not(.album-view),dialog[data-entry="notebook"]:not(.album-view),dialog[data-entry="cats"]:not(.album-view){inset:auto 12px max(12px,env(safe-area-inset-bottom));transform:none;width:calc(100vw - 24px);max-height:43vh;max-height:43dvh}dialog:not(.album-view) .paper{padding:24px}}
+@media(max-width:700px){dialog:not(.album-view),dialog[data-entry="computer"]:not(.album-view),dialog[data-entry="notebook"]:not(.album-view),dialog[data-entry="cats"]:not(.album-view){inset:auto 12px max(12px,env(safe-area-inset-bottom));transform:none;width:calc(100vw - 24px);max-height:43vh;max-height:43dvh}dialog:not(.album-view) .paper{padding:24px}}
 
 /* Activity sheets share a 207px head in padded 576px cells: 197.5 room pixels. */
 .sili.is-activity{height:58.4%;aspect-ratio:1;transition:none}
