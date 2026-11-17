@@ -1,4 +1,5 @@
 import { hotspots } from '../data/hotspots.js';
+const workstationArtwork='assets/room-workstation-no-pen-v1.png';
 const hit=id=>hotspots.find(hotspot=>hotspot.id===id);
 const part=(id,path,extra={})=>({id,path,...extra});
 const object=(id,origin,parts,extra={})=>({id,origin,position:{...origin},parts,...extra});
@@ -39,24 +40,24 @@ export const furniture = {
     part('wooden-bookcase','M1505 225 L1672 185 L1672 852 L1645 852 L1643 580 L1505 580 Z')
   ],{supports:{top:{x:1588.4,y:211.725,width:8.4,group:'bookcase'},step:{x:1596.76,y:442.27,width:8.4,group:'bookcase'}}}),
   desk:object('work-desk',{x:1210,y:580},[
-    part('desk-frame','M1213 596 L1296 583 L1460 568 L1560 582 L1672 598 L1672 717 L1552 725 L1211 623 Z M1241 640 L1285 655 L1259 804 L1244 815 Q1230 815 1210 808 L1208 801 Z M1516 715 L1579 715 L1558 913 Q1544 927 1528 927 Q1510 926 1491 915 L1490 911 Z',{source:'assets/room-hidden-surfaces-v1.png'})
+    part('desk-frame','M1213 596 L1296 583 L1460 568 L1560 582 L1672 598 L1672 717 L1552 725 L1211 623 Z M1241 640 L1285 655 L1259 804 L1244 815 Q1230 815 1210 808 L1208 801 Z M1516 715 L1579 715 L1558 913 Q1544 927 1528 927 Q1510 926 1491 915 L1490 911 Z',{source:workstationArtwork})
   ],{supports:{top:{x:1554.96,y:663.405,width:10,group:'workstation'}}}),
   computer:object('computer',{x:1296,y:497},[
-    part('laptop',hit('desk').paths[0],{source:'assets/room-hidden-surfaces-v1.png'})
+    part('laptop',hit('desk').paths[0],{source:workstationArtwork})
   ],{hotspot:{...hit('desk'),id:'computer',label:'Use the computer',paths:[hit('desk').paths[0]]}}),
   notebook:object('desk-notebook',{x:1370,y:570},[
-    part('open-notebook','M1401 568 L1478 572 L1501 575 L1567 602 L1556 641 L1552 653 L1538 665 L1460 650 L1437 651 L1368 638 Z',{source:'assets/room-hidden-surfaces-v1.png',edgePadding:1}),
-    part('writing-pen','M1460 655 L1504 620 Q1514 617 1513 628 L1474 664 L1463 666 Z',{animation:'pen-idle',source:'assets/room-hidden-surfaces-v1.png'})
+    part('open-notebook','M1401 568 L1478 572 L1501 575 L1567 602 L1556 641 L1552 653 L1538 665 L1460 650 L1437 651 L1368 638 Z',{source:workstationArtwork,edgePadding:1}),
+    part('writing-pen','M1473 655 L1513 623 Q1521 615 1527 623 Q1531 628 1525 633 L1488 666 Q1481 672 1475 666 Q1470 662 1473 655 Z',{animation:'pen-idle',source:'assets/room-hidden-surfaces-v1.png',edgePadding:0})
   ],{hotspot:{...hit('desk'),id:'desk',paths:[hit('desk').paths[1]]}}),
   stationery:object('stationery',{x:1275,y:531},[
-    part('pencils','M1284 550 L1281 535 L1285 532 L1291 545 L1296 531 L1300 534 L1298 547 L1310 534 L1315 536 L1309 550 Z',{source:'assets/room-hidden-surfaces-v1.png'}),
-    part('pencil-cup',hit('desk').paths[2],{source:'assets/room-hidden-surfaces-v1.png'})
+    part('pencils','M1284 550 L1281 535 L1285 532 L1291 545 L1296 531 L1300 534 L1298 547 L1310 534 L1315 536 L1309 550 Z',{source:workstationArtwork}),
+    part('pencil-cup',hit('desk').paths[2],{source:workstationArtwork})
   ]),
   lamp:object('desk-lamp',{x:1420,y:376},[
-    part('lamp','M1424 435 L1440 411 L1466 402 L1474 384 Q1484 375 1496 384 L1500 399 L1578 456 L1582 468 L1556 558 L1576 570 L1578 588 L1533 595 L1519 588 L1520 578 L1539 568 L1562 470 L1492 417 L1506 449 L1499 466 L1479 468 Z',{source:'assets/room-hidden-surfaces-v1.png'})
+    part('lamp','M1424 435 L1440 411 L1466 402 L1474 384 Q1484 375 1496 384 L1500 399 L1578 456 L1582 468 L1556 558 L1576 570 L1578 588 L1533 595 L1519 588 L1520 578 L1539 568 L1562 470 L1492 417 L1506 449 L1499 466 L1479 468 Z',{source:workstationArtwork})
   ]),
   deskBooks:object('desk-books',{x:1560,y:579},[
-    part('book-stack','M1594 579 L1664 582 L1672 608 L1663 615 L1669 632 L1672 655 L1657 668 L1578 654 L1568 641 L1575 623 L1563 616 L1568 600 L1587 601 Z',{source:'assets/room-hidden-surfaces-v1.png'})
+    part('book-stack','M1594 579 L1664 582 L1672 608 L1663 615 L1669 632 L1672 655 L1657 668 L1578 654 L1568 641 L1575 623 L1563 616 L1568 600 L1587 601 Z',{source:workstationArtwork})
   ]),
   sofa:object('sofa',{x:0,y:799},[
     part('sofa-body','M0 821 Q45 796 99 809 L129 817 Q206 809 251 823 L298 823 Q401 827 435 854 L456 891 L468 941 L0 941 Z'),

@@ -57,3 +57,5 @@ The dedicated transparent sili-walk-v2.png atlas supplies six small-step phases 
 The interaction-only desk foreground reuses the desk-frame artwork path and source with zero padding. Pose-specific clips may restrict that silhouette further, but must not replace it with broad floor-containing mask polygons. This keeps the tabletop/legs identical before and after selecting the computer or notebook.
 
 Enable the desk foreground only for the actor's seated desk activity, never from the room's notebook destination alone. During approach the pose clip is not set, so enabling the whole desk silhouette would cover the chair back.
+
+Workstation parts use room-workstation-no-pen-v1.png as a shared pen-free underlay. The loose writing-pen part alone samples the original source with a tight complete clip. Hide that part for the desk/writing pose via the room state selector; all other desktop parts, including the owned foreground, keep the same clean source. This prevents baked-in duplicate pens and state-dependent image seams.

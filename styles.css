@@ -230,3 +230,6 @@ dialog.album-view::backdrop{background:#24180f65;backdrop-filter:blur(4px)}
 @media(max-width:640px){#piano-playback{right:68px}}
 
 .room-music-controls{display:contents}
+
+/* The clean workstation underlay contains no loose pen; writing holds this prop. */
+.room:has(.sili[data-activity="desk"][data-desk-mode="writing"]) [data-part="writing-pen"]{visibility:hidden}
