@@ -9,17 +9,17 @@ export function createPianoController(root, services, onChange) {
   audio.preload = 'none';
   let state = 'idle', selectedTrack = 0, muted = false;
   let playbackBlocked = false, mediaError = false, pendingArrival = false;
-  let playRequest = 0, disposed = false;
+  let playRequest = 0, disposed = false, hasPausedProgress = false;
   try { muted = sessionStorage.getItem('sili-muted') === 'true'; } catch { /* Storage is optional. */ }
   audio.muted = muted;
   const pose = value => { sili.dataset.pose = value; };
   const engaged = () => ['walking','playing','paused'].includes(state);
   function update() {
     if (disposed) return;
-    onChange({state, selectedTrack, muted, playbackBlocked, mediaError, engaged:engaged(),
+    onChange({state, selectedTrack, muted, playbackBlocked, mediaError, hasPausedProgress, atPiano:sili.classList.contains('at-piano'), engaged:engaged(),
       status:mediaError ? 'This recording could not be played. Select the piece to try again.'
         : state === 'walking' ? 'On the way to the piano…'
-        : state === 'paused' ? 'Paused — select Play to continue.'
+        : ['paused','saved'].includes(state) ? 'Paused — continue where you left off or start over.'
         : playbackBlocked ? 'Select Play to hear the music.'
         : `${state === 'playing' ? 'Now playing' : 'Selected'} · ${recordings[selectedTrack].title}`});
   }
@@ -38,40 +38,50 @@ export function createPianoController(root, services, onChange) {
     if (disposed) return;
     pendingArrival = false;
     sili.classList.add('at-piano');
-    pose(motion.matches ? 'seated' : 'playing');
-    state = 'playing'; update(); void playAudio();
+    if (hasPausedProgress) {
+      state = 'paused'; pose('seated'); sili.classList.add('inactive'); update();
+    } else {
+      pose(motion.matches ? 'seated' : 'playing');
+      state = 'playing'; update(); void playAudio();
+    }
   }
   function stop() {
     services.actions?.cancelPiano();
-    pendingArrival = false; state = 'seated'; playRequest++; playbackBlocked = false;
+    hasPausedProgress = false; pendingArrival = false; state = 'seated'; playRequest++; playbackBlocked = false;
     pose(sili.classList.contains('at-piano') ? 'seated' : 'idle');
     sili.classList.remove('walking', 'inactive');
     audio.pause(); audio.currentTime = 0; update();
   }
   function select(key) {
     if (key !== 'music') {
-      stop(); room.classList.remove('piano-view'); sili.classList.remove('at-piano'); pose('idle'); return;
+      if (hasPausedProgress) saveProgress(); else stop();
+      room.classList.remove('piano-view'); sili.classList.remove('at-piano'); pose('idle'); return;
     }
     room.classList.add('piano-view');
     if (engaged()) return;
     mediaError = false; state = 'walking'; update(); services.actions.walkPiano(arrive);
   }
+  function saveProgress() {
+    pendingArrival = false; state = 'saved'; playRequest++; playbackBlocked = false;
+    audio.pause(); sili.classList.remove('at-piano','walking','inactive');
+    room.classList.remove('piano-view'); update();
+  }
   function pause() {
     if (!['walking','playing'].includes(state)) return;
-    pendingArrival = state === 'walking';
+    hasPausedProgress = true; pendingArrival = state === 'walking';
     audio.pause(); playRequest++; playbackBlocked = false;
     state = 'paused'; sili.classList.add('inactive'); update();
   }
   function resume() {
     if (document.hidden) return;
-    mediaError = false; playbackBlocked = false;
+    hasPausedProgress = false; mediaError = false; playbackBlocked = false;
     if (pendingArrival) { pendingArrival = false; state = 'walking'; services.actions.resumePiano(); update(); }
     else { state = 'playing'; pose(motion.matches ? 'seated' : 'playing'); update(); void playAudio(); }
     sili.classList.remove('inactive');
   }
   function chooseTrack(index) {
     if (document.hidden || !recordings[index]) return;
-    playRequest++; mediaError = false; playbackBlocked = false; audio.pause();
+    hasPausedProgress = false; playRequest++; mediaError = false; playbackBlocked = false; audio.pause();
     if (index !== selectedTrack) { selectedTrack = index; audio.src = recordings[index].src; }
     audio.currentTime = 0;
     if (state === 'paused') resume();
@@ -91,8 +101,10 @@ export function createPianoController(root, services, onChange) {
   return {
     get isPaused() { return state === 'paused'; },
     get isEngaged() { return engaged(); },
-    get keepsPiano() { return engaged(); },
+    get keepsPiano() { return state === 'playing' || (state === 'walking' && !hasPausedProgress); },
     select, stop, chooseTrack, resume, pause,
+    restart() { chooseTrack(selectedTrack); },
+    cancelApproach() { if (hasPausedProgress) saveProgress(); else stop(); },
     togglePlayback() {
       if (document.hidden) return;
       if (state === 'paused' || playbackBlocked) resume();

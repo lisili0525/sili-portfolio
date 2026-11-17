@@ -1,0 +1,13 @@
+# Sili six-frame walking cycle
+
+Saved asset: `assets/sili-walk-v2.png`
+Reference: `assets/sili-poses-v1.png`
+Method: built-in image_gen with true transparent background.
+Layout: 1536 × 1024, three columns × two rows, 512px square cells.
+
+The initial generated draft was rejected for darker perceived skin and exaggerated arm/knee motion; it was never integrated. This revision keeps the original light warm peach skin, low arm swing and short walking steps. The original atlases remain unchanged.
+
+Final prompt:
+
+Create a production-ready transparent PNG animation sprite sheet for the SAME Sili character in the reference. Reference is the identity/color/style source: preserve his LIGHT warm peach skin exactly, bright cream-peach face, soft coral cheek blush, dark brown wavy hair, navy hoodie with cream drawstrings, tan pants and cream sneakers. Neutral soft lighting, no skin darkening, no brown overlay, no cast shadow or halo. Large rounded head and compact body, warm dark cartoon outlines as in the original. SIX frames of a NATURAL relaxed small-step walking cycle facing RIGHT, mild three-quarter side view. Exactly 3 columns x 2 rows, equal square cells. Each body centered at the identical local x coordinate; same head size, face, head position, hip position and planted-foot ground line. Head top at 6% and planted sole at 90% cell height. Read order: 1 right foot a little forward, left foot a little back; 2 weight on right leg, left heel just lifts; 3 left foot passes LOW beneath hips next to planted right ankle; 4 left foot a little forward, right foot a little back; 5 weight on left leg, right heel just lifts; 6 right foot passes LOW beneath hips next to planted left ankle. The feet in contact poses have no more than one shoe-length clear space between them. Both soles stay near ground; lifted ankle is at most half a shoe-height higher than planted ankle. Knees bend only slightly. Arms hang loosely beside hips with TINY opposing swings, hands remain near upper thighs and below waist, elbows never raised, no bent arms held in front of chest. Torso upright, no forward lunge. This is ordinary gentle walking, NOT jogging, NOT marching, NOT lifting knees, NOT stepping over obstacles, NOT dancing. Each frame differs subtly in the legs and low arm swing. Cycle frame 6 must lead naturally into frame 1. Keep character registration steady in all six cells; no leaning sideways or shifting progressively across columns. Fully isolated characters on true transparency, no scenery, no gradients in transparent regions, no shadows, no ground, no labels, no borders, no grid.
+

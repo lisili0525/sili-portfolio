@@ -1,12 +1,13 @@
 import { useEffect } from 'react';
 import standing from '../../../assets/sili-poses-v1.png';
+import walking from '../../../assets/sili-walk-v2.png';
 import piano from '../../../assets/sili-piano-v4.png';
 import coffee from '../../../assets/sili-coffee-v3.png';
 import computer from '../../../assets/sili-computer-v3.png';
 import writing from '../../../assets/sili-writing-v2.png';
 import interactions from '../../../assets/sili-interactions-v1.png';
 
-const characterSheets={standing,piano,coffee,computer,writing,interactions};
+const characterSheets={standing,walking,piano,coffee,computer,writing,interactions};
 
 export function Residents({onEntry}) {
   useEffect(()=>{

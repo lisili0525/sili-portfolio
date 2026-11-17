@@ -42,6 +42,34 @@ it('both cats explore every requested surface, return safely and keep Java indoo
   for(const pose of ['walk','hop','groom','sleep','sit','watch'])expect(poses.has(pose),pose).toBe(true);
   controller.destroy();expect(frames.size).toBe(0);
 },30000);
+it('sorts rear perches, foreground perches and resting floor cats around the person',()=>{
+  const {root,controller,elements}=setup();
+  const actor=root.querySelector('#sili'); actor.dataset.depthY='84';
+  const checked=new Set();
+  for(let i=0;i<36000;i++) {
+    advance(.05);
+    for(const element of elements) {
+      if(element.dataset.airborne==='true'||element.parentElement.hidden)continue;
+      const surface=element.parentElement.dataset.surface;
+      if(['coffee-counter','piano-top','piano-bench','piano-keys','bookshelf','bookshelf-step','desk','chair','stool','window'].includes(surface)) {
+        expect(element.parentElement.dataset.depth,surface).toBe('behind');checked.add(surface);
+      }
+      if(['coffee-table','sofa'].includes(surface)) {
+        expect(element.parentElement.dataset.depth,surface).toBe('front');checked.add(surface);
+      }
+    }
+    if(checked.size===12)break;
+  }
+  for(const surface of ['coffee-counter','piano-top','piano-bench','piano-keys','bookshelf','bookshelf-step','desk','chair','stool','window','coffee-table','sofa'])expect(checked.has(surface),surface).toBe(true);
+  root.querySelector('#detail').open=true;
+  const positions=elements.map(element=>element.style.cssText);
+  actor.dataset.depthY='99';advance(.1);
+  for(const element of elements)expect(element.parentElement.dataset.depth).toBe('behind');
+  expect(elements.map(element=>element.style.cssText)).toEqual(positions);
+  actor.dataset.depthY='0';advance(.1);
+  for(const element of elements)expect(element.parentElement.dataset.depth).toBe('front');
+  controller.destroy();
+},30000);
 it('keeps occupied furniture clear, still explores other stops, and resets safely for reduced motion',()=>{
   const {root,controller,elements}=setup(31);
   root.querySelector('.room').dataset.activity='notebook';

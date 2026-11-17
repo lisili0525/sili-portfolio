@@ -63,19 +63,29 @@ export function App() {
     setEntry(null); services.current.actions.closeAlbum(); origin.current?.focus();
   }
   const active = ['walking','playing'].includes(piano.state);
+  const musicAction = piano.muted ? 'Unmute' : 'Mute';
+  const canPause = piano.state === 'playing' && !piano.playbackBlocked;
+  const showPlayback = piano.atPiano && ['playing','paused'].includes(piano.state);
   const content = entry ? entries[entry] : null;
+  const musicButtons = <div className="room-music-controls">
+    <button id="music-toggle" className="music-sound-toggle" type="button" aria-label={`${musicAction} music`} aria-pressed={piano.muted} data-playing={active} data-muted={piano.muted} onClick={() => services.current.piano.toggleSound()}><span className="music-glyph" aria-hidden="true">♪</span></button>
+    {showPlayback && <button id="piano-playback" type="button" aria-label={canPause ? 'Pause piano' : 'Play piano'} onClick={() => services.current.piano.togglePlayback()}>
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">{canPause ? <path d="M6 4h4v16H6zM14 4h4v16h-4z" /> : <path d="M7 3l15 9-15 9z" />}</svg>
+    </button>}
+  </div>;
   return <div ref={rootRef} className="app">
     <button ref={exploreRef} id="explore" aria-expanded={menu} aria-controls="destinations" onClick={() => setMenu(value => !value)}>Explore <span aria-hidden="true">↗</span></button>
     <button id="fullscreen" type="button" aria-label={screen.active ? 'Exit fullscreen' : 'Enter fullscreen'} aria-pressed={screen.active} hidden={!screen.supported} disabled={screen.busy} onClick={screen.toggle}><span aria-hidden="true">⛶</span> <span className="fullscreen-label">{screen.active ? 'Exit fullscreen' : 'Fullscreen'}</span></button>
     <p id="screen-status" className="sr-only" role="status">{screen.status}</p>
     <p id="journey-status" className="sr-only" role="status" aria-live="polite" />
-    <button id="music-toggle" type="button" aria-label="Open piano recordings" aria-haspopup="dialog" data-playing={active} title="Open piano recordings" onClick={event => openEntry('music',event.currentTarget)}><span aria-hidden="true">♪</span></button>
+    {!entry && musicButtons}
+    <p className="piano-arrival-hint" role="status" aria-live="polite" aria-hidden={piano.state !== 'walking'} data-visible={piano.state === 'walking'}>Settling in for a little music…</p>
     <Room roomRef={roomRef} onEntry={openEntry} />
     <nav ref={navRef} id="destinations" aria-label="Room destinations" hidden={!menu}>{Object.entries(entries).map(([key,value]) => <button key={key} type="button" onClick={event => openEntry(key,event.currentTarget)}>{value.title}</button>)}</nav>
     <dialog ref={dialogRef} id="detail" aria-labelledby="detail-title" data-entry={entry || undefined}
       className={[entry === 'photos' ? 'album-view' : '', piano.engaged ? 'with-piano' : ''].filter(Boolean).join(' ')}
       onClose={closed} onCancel={() => { request.current++; }} onClick={event => {
-        if (entry === 'photos') { if (!event.target.closest('.album-stage,.close,.music-browse-controls')) dialogRef.current.close(); return; }
+        if (entry === 'photos') { if (!event.target.closest('.album-stage,.close,.music-browse-controls,.room-music-controls')) dialogRef.current.close(); return; }
         if (event.target !== event.currentTarget) return;
         const rect = event.currentTarget.getBoundingClientRect();
         if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialogRef.current.close();
@@ -86,7 +96,8 @@ export function App() {
           {entry === 'photos' ? <PhotoAlbum spread={spread} onSpread={setSpread} /> : entry === 'music' ? <><p>Music is part of my life, both listening and playing.</p><p className="note">Choose a recording below. Selecting a piece starts it from the beginning.</p><PianoControls piano={piano} controller={services} /></> : content ? content.body : null}
         </div>
       </div>
-      {piano.engaged && entry && entry !== 'music' && <PianoControls piano={piano} controller={services} compact onMusic={event => openEntry('music',event.currentTarget)} />}
+      {piano.engaged && entry && entry !== 'music' && <PianoControls piano={piano} controller={services} compact />}
+      {entry && musicButtons}
     </dialog>
   </div>;
 }

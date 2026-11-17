@@ -16,6 +16,25 @@ beforeEach(()=>{let seed=17;vi.spyOn(Math,'random').mockImplementation(()=>((see
 afterEach(()=>vi.restoreAllMocks());
 
 describe('shared person/cat meetings',()=>{
+  it('keeps counter Viola behind Sili while he crosses from the center to the piano',async()=>{
+    render(<App />);
+    waitFor(()=>cat('viola').parentElement.dataset.surface==='coffee-counter'&&cat('viola').dataset.airborne!=='true',700);
+    expect(cat('viola').parentElement.dataset.depth).toBe('behind');
+    fireEvent.click(screen.getByRole('button',{name:'At the piano',exact:true}));
+    let crossed=false;
+    for(let i=0;i<80;i++) {
+      tick(.05);
+      if(actor().dataset.pose==='walk'&&Math.abs(parseFloat(actor().style.left)-parseFloat(cat('viola').style.left))<2) {
+        crossed=true;
+        expect(cat('viola').parentElement.dataset.surface).toBe('coffee-counter');
+        expect(cat('viola').parentElement.dataset.depth).toBe('behind');
+        expect(cat('viola').parentElement.style.zIndex).toBe('1');
+      }
+    }
+    expect(crossed).toBe(true);
+    await act(async()=>advance(10));
+    expect(actor().classList.contains('at-piano')).toBe(true);
+  });
   it('pets the actual sofa cat instead of falling back to a window-pointing pose',()=>{
     render(<App />);
     waitFor(()=>cat('java').parentElement.dataset.surface==='sofa'&&cat('java').dataset.airborne!=='true',700);
@@ -76,7 +95,7 @@ describe('shared person/cat meetings',()=>{
     app.unmount();expect(frames.size).toBe(0);
   });
   it('direct cat interaction interrupts piano playing while ordinary browsing remains independent',async()=>{
-    render(<App />);fireEvent.click(screen.getByRole('button',{name:'Open piano recordings'}));
+    render(<App />);fireEvent.click(screen.getByRole('button',{name:'At the piano',exact:true}));
     await act(async()=>advance(12));meet('java');tick(.5);
     expect(audios.at(-1).paused).toBe(true);waitFor(contact,20);expect(actor().dataset.catTarget).toBe('java');
   });

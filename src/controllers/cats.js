@@ -111,7 +111,7 @@ export function createCatController(root) {
   function start(cat) {
     if(!cat.queue.length) cat.queue=plan(cat);
     cat.action=cat.queue.shift(); cat.elapsed=0;
-    cat.fromX=cat.x;cat.fromY=cat.y;cat.fromWidth=cat.width;
+    cat.fromX=cat.x;cat.fromY=cat.y;cat.fromWidth=cat.width;cat.fromDepthY=cat.depthY??cat.y;
     const action=cat.action;
     cat.outside=Boolean(action.outside);
     cat.layer.hidden=cat.outside;
@@ -120,7 +120,18 @@ export function createCatController(root) {
     cat.el.dataset.pose=action.pose;
     cat.layer.dataset.destination=action.surface||cat.surface;
   }
+  function paintDepth(cat) {
+    // Keep the existing person/foreground passes: rear residents share the
+    // person's plane but precede it in DOM order; nearer residents sit above it.
+    // Use the supported foot position, not the visual height of a jumping cat.
+    const actorDepth=Number(actor?.dataset.depthY ?? 84);
+    const depth=cat.depthY??cat.y;
+    const inFront=depth>=actorDepth;
+    cat.layer.style.zIndex=inFront?'3':'1';
+    cat.layer.dataset.depth=inFront?'front':'behind';
+  }
   function paint(cat) {
+    paintDepth(cat);
     cat.layer.classList.toggle('perched',cat.surface!=='floor'&&cat.surface!=='outside');
     cat.layer.dataset.surface=cat.surface;
     cat.el.style.left=`${cat.x}%`;cat.el.style.top=`${cat.y}%`;cat.el.style.width=`${cat.width}%`;
@@ -135,6 +146,7 @@ export function createCatController(root) {
     if(action.x!==undefined) {
       const eased=action.pose==='hop'?progress*progress*(3-2*progress):progress;
       cat.x=cat.fromX+(action.x-cat.fromX)*eased;
+      cat.depthY=cat.fromDepthY+(action.y-cat.fromDepthY)*eased;
       cat.y=cat.fromY+(action.y-cat.fromY)*eased-Math.sin(progress*Math.PI)*action.arc;
       cat.width=cat.fromWidth+(action.width-cat.fromWidth)*eased;
       cat.el.dataset.airborne=String(action.pose==='hop'&&progress<1);
@@ -201,7 +213,7 @@ export function createCatController(root) {
     if(session.phase==='settle-play'){
       const progress=Math.min(1,session.elapsed/.35);
       cat.x=session.settleFrom.x+(session.anchor.x-session.settleFrom.x)*progress;
-      cat.y=session.settleFrom.y+(session.anchor.y-session.settleFrom.y)*progress;paint(cat);
+      cat.y=session.settleFrom.y+(session.anchor.y-session.settleFrom.y)*progress;cat.depthY=session.anchor.y;paint(cat);
       if(progress===1) releaseInteraction(cat,session);
       return;
     }
@@ -234,6 +246,7 @@ export function createCatController(root) {
         const progress=Math.max(0,Math.min(1,(time-1.3)/2));
         const bounce=Math.sin(progress*Math.PI*2);
         cat.x=session.anchor.x+(session.actorX<session.anchor.x?-1:1)*Math.sin(progress*Math.PI)*1.8;
+        cat.depthY=session.anchor.y;
         cat.y=session.anchor.y-Math.abs(bounce)*1.3;
         cat.el.dataset.pose=time<1.3?'sit':time<3.3?'hop':time<4.5?'groom':'sit';
       } else cat.el.dataset.pose=time>2.5&&time<3.4?'groom':'sit';
@@ -264,7 +277,7 @@ export function createCatController(root) {
       const step=Math.min(1.3,distance);
       cat.action={...target,x:cat.x+(target.x-cat.x)/distance*step,y:cat.y+(target.y-cat.y)/distance*step,
         fromX:cat.x,fromY:cat.y,duration:.35,end:undefined};
-      cat.fromX=cat.x;cat.fromY=cat.y;cat.fromWidth=cat.width;cat.elapsed=0;
+      cat.fromX=cat.x;cat.fromY=cat.y;cat.fromWidth=cat.width;cat.fromDepthY=cat.depthY??cat.y;cat.elapsed=0;
     } else if(cat.action?.x===undefined) cat.action=null;
     const handle={
       id:session.id,name:cat.name,mode:session.mode,
@@ -288,7 +301,7 @@ export function createCatController(root) {
       if(cat.interaction){cat.interaction.phase='cancelled';cat.interaction=null;}
       cat.el.dataset.interaction='';cat.departing=false;
       release(cat);cat.queue=[];cat.action=null;cat.outside=false;cat.evacuating=false;
-      Object.assign(cat,cat.home,{surface:'floor'});
+      Object.assign(cat,cat.home,{surface:'floor',depthY:cat.home.y});
       cat.layer.hidden=false;cat.layer.classList.remove('at-window');
       cat.el.dataset.pose=index?'sleep':'sit';cat.el.dataset.airborne='false';paint(cat);
     });
@@ -304,6 +317,8 @@ export function createCatController(root) {
       if(cat.interaction) {tickInteraction(cat,dt);return;}
       if(!motion.matches&&(!dialog.open||cat.evacuating||cat.departing)) tick(cat,dt);
     });
+    // Depth must follow a moving person even while the cat rests or reading pauses it.
+    cats.forEach(paintDepth);
     if(!disposed) frameId=requestAnimationFrame(frame);
   }
   cats.forEach(cat=>{cat.el.dataset.pose='sit';paint(cat);});update();

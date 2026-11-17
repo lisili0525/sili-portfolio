@@ -45,3 +45,15 @@ Run `npm test` and `npm run build`. Integration checks cover scene ownership, un
 The cat controller exposes beginInteraction handles with stable identity, live snapshots, readiness, contact and cancellation. Journey control uses these snapshots and src/data/catInteraction.js to calculate a reachable hand/feet anchor rather than querying only floor cats or using a fixed pointing fallback. The handle owns attention, invitation/descent, contact, play settling, farewell and departure. An active jump finishes before cancellation, and the person leaves the petting pose before roaming resumes. Direct clicks stay in the room; biographies remain in Explore. No additional floating interaction toolbar is introduced.
 
 Character atlases remain mounted on separate sprite surfaces, with initial decode warming. Pose switches select visibility while preserving the existing frame geometry, mirroring and foot registration. Journey control consumes zero-duration route markers within a single tick.
+
+## Resident depth
+
+The person publishes grounded depthY through the journey controller. Cats compare their supported foot position against it, using stage layer 1 behind the person (DOM order) or layer 3 in front. Existing furniture foreground passes remain layer 2 and the chair back remains layer 1 before residents. Jump arcs affect visual height, not the interpolated sort position. Depth is refreshed on the existing cat clock even when ambient cat movement is paused. Preserve Residents ordering: cat layers before Sili, and calibrated foreground passes as direct siblings.
+
+## Person walking
+
+The dedicated transparent sili-walk-v2.png atlas supplies six small-step phases in a 3 x 2 grid. It stays mounted and decoded beside the original standing and activity sheets. Ground offsets account for each cell's painted sole baseline without changing the world-space feet or actor depth. The journey controller uses distance-driven frames and a speed of 14 world-percent units/second instead of 22. Keep direction mirroring on the outer sprite and registration calibration on sheet-walking; do not re-enable the old single-pose wobble.
+
+The interaction-only desk foreground reuses the desk-frame artwork path and source with zero padding. Pose-specific clips may restrict that silhouette further, but must not replace it with broad floor-containing mask polygons. This keeps the tabletop/legs identical before and after selecting the computer or notebook.
+
+Enable the desk foreground only for the actor's seated desk activity, never from the room's notebook destination alone. During approach the pose clip is not set, so enabling the whole desk silhouette would cover the chair back.

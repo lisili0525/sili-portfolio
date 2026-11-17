@@ -1,4 +1,9 @@
 import { catMeetingPoint } from '../data/catInteraction.js';
+
+const walkingSpeed = 14;
+// A longer gait cycle softens the steps without slowing travel.
+const walkCycleDistance = 12;
+const walkFrames = 6;
 // Interruptible room journeys. Coordinates describe Sili's feet in room percent.
 export function createJourneyController(root, services) {
   const sili = root.querySelector('#sili');
@@ -8,11 +13,12 @@ export function createJourneyController(root, services) {
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   let x = 48.5, y = 84, activity = '', ready = false;
   let heldCup = false, heldBook = false, queue = [], current = null, resolveSelection = null;
-  let previous, elapsed = 0, generation = 0;
+  let previous, elapsed = 0, generation = 0, walkedDistance = 0;
   let catSession=null, pendingSelection=null;
+  sili.dataset.depthY = String(y);
   const random = (a, b) => a + Math.random() * (b - a);
   const pose = (group, frame, duration, extra = {}) => ({ group, frame, duration, ...extra });
-  const walk = (px, py) => ({ x: px, y: py, duration: Math.max(.35, Math.hypot(px - x, py - y) / 22), walking: true });
+  const walk = (px, py) => ({ x: px, y: py, duration: Math.max(.35, Math.hypot(px - x, py - y) / walkingSpeed), walking: true });
   const cup = held => { heldCup = held; mug.hidden = held; };
   const book = held => { heldBook = held; room.classList.toggle('album-lifted', held); };
 
@@ -22,6 +28,7 @@ export function createJourneyController(root, services) {
     room.style.setProperty('--room-focus', `${Math.max(margin, Math.min(100 - margin, px))}%`);
   }
   function position() {
+    sili.dataset.depthY = String(y);
     room.classList.toggle('near-album', y > 89 && x > 39 && x < 65);
     // Grow toward the foreground table, anchored at the feet. Keep the desk's
     // separately calibrated chair position and scale outside this central lane.
@@ -63,7 +70,7 @@ export function createJourneyController(root, services) {
     current = action; elapsed = 0;
     action.fromX = x; action.fromY = y;
     if (action.walking) {
-      action.duration = Math.max(.35, Math.hypot(action.x - x, action.y - y) / 22);
+      action.duration = Math.max(.35, Math.hypot(action.x - x, action.y - y) / walkingSpeed);
       visual(null);
       sili.dataset.pose = 'walk';
       sili.style.setProperty('--walk-facing', action.x < x ? -1 : 1);
@@ -137,7 +144,7 @@ export function createJourneyController(root, services) {
     queue.push({ duration: 0, end: () => {
       sili.style.left = ''; sili.style.bottom = ''; sili.style.height = '';
       sili.classList.remove('is-activity');
-      x = 13.2; y = 82.3;
+      x = 13.2; y = 82.3; sili.dataset.depthY = String(y);
       onArrival(); arrived();
     } });
     if (motion.matches) drain();
@@ -215,8 +222,14 @@ export function createJourneyController(root, services) {
         elapsed += dt;
         if (current.walking) {
           const p = motion.matches ? 1 : Math.min(1, elapsed / current.duration);
+          const previousX=x, previousY=y;
           x = current.fromX + (current.x - current.fromX) * p;
           y = current.fromY + (current.y - current.fromY) * p;
+          walkedDistance += Math.hypot(x-previousX,y-previousY);
+          const frame = Math.floor(walkedDistance / (walkCycleDistance / walkFrames)) % walkFrames;
+          sili.dataset.walkFrame = String(frame);
+          sili.style.setProperty('--walk-column',frame % 3);
+          sili.style.setProperty('--walk-row',Math.floor(frame / 3));
           position();
         }
         if (motion.matches || elapsed >= current.duration) complete();
@@ -234,7 +247,7 @@ export function createJourneyController(root, services) {
     if (event.key === 'Escape' && activity && activity !== 'cats' && !ready) {
       const wasMusic=activity==='music';
       cancel(); activity = ''; room.dataset.activity=''; book(false); cup(false);
-      if(wasMusic) services.piano.stop();
+      if(wasMusic) services.piano.cancelApproach();
       visual(null); status.textContent = '';
     }
   }, { signal: abort.signal });

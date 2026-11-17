@@ -1,13 +1,15 @@
 import { recordings } from '../controllers/piano.js';
 
-export function PianoControls({piano, controller, compact = false, onMusic}) {
+export function PianoControls({piano, controller, compact = false}) {
   const canPause = ['walking','playing'].includes(piano.state) && !piano.playbackBlocked;
   const controls = <>
     <button type="button" aria-pressed={piano.muted} onClick={() => controller.current.piano.toggleSound()}>{piano.muted ? 'Unmute' : 'Mute'}</button>
-    <button type="button" onClick={() => controller.current.piano.togglePlayback()}>{canPause ? 'Pause' : 'Play'}</button>
+    {piano.state === 'paused' ? <>
+      <button type="button" onClick={() => controller.current.piano.resume()}>Continue</button>
+      <button type="button" onClick={() => controller.current.piano.restart()}>Start over</button>
+    </> : <button type="button" onClick={() => controller.current.piano.togglePlayback()}>{canPause ? 'Pause' : 'Play'}</button>}
   </>;
   if (compact) return <div id="music-browse-controls" className="music-browse-controls" role="group" aria-label="Piano controls">
-    <button type="button" aria-label="Open piano recordings" title="Open piano recordings" onClick={onMusic}><span aria-hidden="true">♪</span></button>
     {controls}
   </div>;
   return <aside id="performance" aria-label="Piano recordings">

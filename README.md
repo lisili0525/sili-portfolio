@@ -25,7 +25,7 @@ npm run preview
 - `src/App.jsx` owns navigation, content dialogs, focus restoration and album selection.
 - `src/components/Room.jsx` renders the stable room, character and cat layers and accessible object buttons.
 - `src/components/PhotoAlbum.jsx` renders the eight-page album, pointer-driven page turns and keyboard controls using React state.
-- `src/components/PianoControls.jsx` renders recordings with Mute/Unmute and Pause/Play controls from the playback state.
+- `src/components/PianoControls.jsx` renders recordings with Mute/Unmute and Pause and Continue/Start over controls from the playback state.
 - `src/hooks/useRoomRuntime.js` creates and disposes the room controllers with React's lifecycle.
 - `src/hooks/useFullscreen.js` manages standard and WebKit fullscreen with state and effect cleanup.
 - `src/controllers/journeys.js` preserves the calibrated action sequences and prop cleanup. It animates only the stable sprite refs rather than rebuilding React UI each frame.
@@ -52,7 +52,7 @@ Live site: https://silispace.net/
 
 The GitHub Actions workflow installs locked dependencies, runs tests and builds with Vite before deploying `dist/`. Relative build URLs support both GitHub Pages project paths and custom-domain roots. The artwork plugin copies only runtime-referenced artwork; Vite handles CSS sprite assets. Project notes, checks, unused artwork and local dependencies are excluded from the deployment artifact. `node scripts/build-static.cjs` remains a compatibility entry point for the Vite build.
 
-No backend, database or account integration is required. Music uses the supplied `assets/music/one-summers-day.m4a` recording. Browsing other content keeps an active performance at the piano; Pause freezes audio and character motion while preserving progress, and Play continues from that position. Recording end releases the character for other activities. Inactive-tab resume remains explicit.
+No backend, database or account integration is required. Music uses the supplied `assets/music/one-summers-day.m4a` recording. Browsing other content keeps an active performance at the piano; Pause freezes audio and character motion while preserving progress, and Continue resumes from that position. While paused, other objects trigger normal physical interactions; returning to the piano offers Continue or Start over. Recording end releases the character for other activities. Inactive-tab resume remains explicit.
 
 ## Cat exploration
 
