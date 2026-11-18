@@ -1,3 +1,4 @@
+import { books } from './assets/books.js';
 import { hotspots } from '../data/hotspots.js';
 const workstationArtwork='assets/room-workstation-no-pen-v1.png';
 const hit=id=>hotspots.find(hotspot=>hotspot.id===id);
@@ -6,7 +7,7 @@ const object=(id,origin,parts,extra={})=>({id,origin,position:{...origin},parts,
 
 // Every movable/decorative prop has its own artwork mask and ownership record.
 export const furniture = {
-  rug:object('rug',{x:400,y:820},[part('woven-rug','M436 824 L1151 823 L1284 941 L371 941 Z')]),
+  rug:object('rug',{x:400,y:820},[part('woven-rug','M498 824 L1171 824 L1253 941 L420 941 Z')]),
   piano:object('piano',{x:0,y:355},[
     part('cabinet','M10 365 Q8 361 17 361 L363 360 Q372 361 371 368 L370 378 L359 382 L360 479 L368 486 L371 519 L386 548 Q396 551 395 566 L393 605 Q391 622 382 633 L377 780 L358 782 L352 771 L62 776 L52 782 L14 782 L12 637 L0 617 L0 559 L10 546 L12 382 L12 380 Z',{source:'assets/room-hidden-surfaces-v1.png'}),
     part('keyboard','M42 549 L367 542 L392 558 L391 596 L40 604 Z'),
@@ -16,7 +17,7 @@ export const furniture = {
   workChair:object('work-chair',{x:1238,y:629},[],{image:'assets/desk-chair-v1.png',height:311,supports:{seat:{x:1362.68,y:766.915,width:10.5,group:'workstation'}}}),
   pianoBench:object('piano-bench',{x:80,y:675},[
     part('wooden-bench',hit('piano').paths[1]),
-    part('bench-blanket','M149 679 Q218 665 294 675 Q326 683 332 701 L329 757 L320 772 L294 780 L219 787 L201 781 L199 707 Z')
+    part('bench-blanket','M151 679 L192 676 L252 675 L293 674 L313 683 L330 694 L335 709 L336 742 L332 749 L327 749 L326 760 L321 762 L316 759 L315 767 L309 770 L304 766 L303 771 L297 774 L292 770 L290 774 L284 777 L279 773 L277 777 L271 779 L266 775 L264 779 L258 781 L253 777 L251 781 L245 782 L240 778 L238 782 L232 783 L227 779 L225 782 L219 783 L214 779 L213 782 L207 782 L202 777 L201 708 L192 695 L173 687 Z')
   ],{supports:{seat:{x:239.096,y:698.222,width:11.2,group:'piano'}}}),
   portrait:object('wall-portrait',{x:390,y:145},[part('frame-and-portrait',hit('photos').paths[0])],{hotspot:hit('photos')}),
   calendar:object('calendar',{x:646,y:142},[
@@ -37,18 +38,19 @@ export const furniture = {
     part('stool-lower-rung','M1092 669 L1183 669 L1185 682 L1090 682 Z',{edgePadding:1})
   ],{supports:{step:{x:1145.32,y:606.945,width:9.6,group:'window'}}}),
   bookcase:object('bookcase',{x:1495,y:188},[
-    part('wooden-bookcase','M1505 225 L1672 185 L1672 852 L1645 852 L1643 580 L1505 580 Z')
+    part('wooden-bookcase','M1543 215 L1672 185 L1672 581 L1541 559 Z'),
+    ...books.filter(book=>book.owner==='bookcase').map(book=>({...book}))
   ],{supports:{top:{x:1588.4,y:211.725,width:8.4,group:'bookcase'},step:{x:1596.76,y:442.27,width:8.4,group:'bookcase'}}}),
   desk:object('work-desk',{x:1210,y:580},[
     part('desk-frame','M1213 596 L1296 583 L1460 568 L1560 582 L1672 598 L1672 717 L1552 725 L1211 623 Z M1241 640 L1285 655 L1259 804 L1244 815 Q1230 815 1210 808 L1208 801 Z M1516 715 L1579 715 L1558 913 Q1544 927 1528 927 Q1510 926 1491 915 L1490 911 Z',{source:workstationArtwork})
   ],{supports:{top:{x:1554.96,y:663.405,width:10,group:'workstation'}}}),
   computer:object('computer',{x:1296,y:497},[
-    part('laptop',hit('desk').paths[0],{source:workstationArtwork})
-  ],{hotspot:{...hit('desk'),id:'computer',entry:'computer',label:'Use the computer',paths:[hit('desk').paths[0]]}}),
+    part('laptop','M1297 593 L1327 579 L1359 505 Q1361 497 1373 499 L1471 502 Q1482 503 1478 516 L1456 575 L1483 597 L1440 627 L1351 613 L1297 604 Z',{source:workstationArtwork})
+  ],{hotspot:{...hit('desk'),id:'workstation',entry:'workstation',label:'At my workstation',paths:[hit('desk').paths[0],hit('desk').paths[1]]}}),
   notebook:object('desk-notebook',{x:1370,y:570},[
     part('open-notebook','M1401 568 L1478 572 L1501 575 L1567 602 L1556 641 L1552 653 L1538 665 L1460 650 L1437 651 L1368 638 Z',{source:workstationArtwork,edgePadding:1}),
     part('writing-pen','M1473 655 L1513 623 Q1521 615 1527 623 Q1531 628 1525 633 L1488 666 Q1481 672 1475 666 Q1470 662 1473 655 Z',{animation:'pen-idle',source:'assets/room-hidden-surfaces-v1.png',edgePadding:0})
-  ],{hotspot:{...hit('desk'),id:'desk',paths:[hit('desk').paths[1]]}}),
+  ]),
   stationery:object('stationery',{x:1275,y:531},[
     part('pencils','M1284 550 L1281 535 L1285 532 L1291 545 L1296 531 L1300 534 L1298 547 L1310 534 L1315 536 L1309 550 Z',{source:workstationArtwork}),
     part('pencil-cup',hit('desk').paths[2],{source:workstationArtwork})
@@ -57,7 +59,7 @@ export const furniture = {
     part('lamp','M1424 435 L1440 411 L1466 402 L1474 384 Q1484 375 1496 384 L1500 399 L1578 456 L1582 468 L1556 558 L1576 570 L1578 588 L1533 595 L1519 588 L1520 578 L1539 568 L1562 470 L1492 417 L1506 449 L1499 466 L1479 468 Z',{source:workstationArtwork})
   ]),
   deskBooks:object('desk-books',{x:1560,y:579},[
-    part('book-stack','M1594 579 L1664 582 L1672 608 L1663 615 L1669 632 L1672 655 L1657 668 L1578 654 L1568 641 L1575 623 L1563 616 L1568 600 L1587 601 Z',{source:workstationArtwork})
+    ...books.filter(book=>book.owner==='desk-books').reverse().map(book=>({...book}))
   ]),
   sofa:object('sofa',{x:0,y:799},[
     part('sofa-body','M0 821 Q45 796 99 809 L129 817 Q206 809 251 823 L298 823 Q401 827 435 854 L456 891 L468 941 L0 941 Z'),
@@ -72,7 +74,7 @@ export const furniture = {
   ],{hotspot:hit('album')}),
   wallShelf:object('wall-shelf',{x:5,y:162},[
     part('shelf','M5 248 L366 247 L375 253 L374 267 L348 270 L338 306 L325 306 L326 270 L20 272 L6 266 Z'),
-    part('shelf-books','M213 181 L231 181 L233 167 L260 166 L274 163 L285 173 L286 249 L211 250 Z'),
+    ...books.filter(book=>book.owner==='wall-shelf').map(book=>({...book})),
     part('camera','M300 210 L312 209 L315 201 L329 201 L332 207 L351 210 L356 218 L359 243 L351 249 L298 247 L293 240 L294 218 Z')
   ]),
   mouse:object('toy-mouse',{x:1050,y:733},[

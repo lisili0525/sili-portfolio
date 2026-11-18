@@ -1,0 +1,33 @@
+// Compatibility IDs preserve controller ownership while artwork is replaced.
+// Multiple old fragments can become one complete new object; unused fragments
+// are intentionally empty rather than retaining historical room pixels.
+export const regeneratedAliases = {
+  'rug--woven-rug':'rug',
+  'piano--cabinet':'piano', 'piano--keyboard':null, 'piano--brass-trim':null,
+  'piano--sheet-music':'sheet-music',
+  'piano-bench--wooden-bench':'piano-bench', 'piano-bench--bench-blanket':'bench-throw',
+  'wall-portrait--frame-and-portrait':'wall-portrait',
+  'calendar--hanging-loop':null, 'calendar--calendar-page':'calendar',
+  'coffee-cabinet--cabinet-and-counter':'coffee-cabinet',
+  'tennis-corner--red-racket':'red-racket','tennis-corner--blue-racket':'blue-racket','tennis-corner--ball-basket':'ball-basket',
+  'window-stool--stool-top':'stool','window-stool--stool-left-leg':null,'window-stool--stool-right-leg':null,'window-stool--stool-step':null,'window-stool--stool-lower-rung':null,
+  'bookcase--wooden-bookcase':'bookcase',
+  'work-desk--desk-frame':'desk','work-desk--foreground':'desk',
+  'computer--laptop':'laptop', 'desk-notebook--open-notebook':'notebook','desk-notebook--writing-pen':'pen',
+  'stationery--pencils':['pencil-1','pencil-2','pencil-3'],'stationery--pencil-cup':'pencil-cup',
+  'desk-lamp--lamp':'desk-lamp',
+  'sofa--sofa-body':'sofa','sofa--sofa-cushion':'sofa-cushion','sofa--sofa-throw':'sofa-throw',
+  'coffee-table--round-coffee-table':'coffee-table','table-album--physical-album':'physical-album',
+  'wall-shelf--shelf':'wall-shelf','wall-shelf--camera':'camera','toy-mouse--mouse-toy':'toy-mouse',
+  'shelf-plant--plant-pot':null,'shelf-plant--trailing-leaves':'shelf-plant',
+  'bookcase-plant--leaf-cascade':'bookcase-plant','desk-plant--desk-leaves':'desk-plant',
+  'table-plant--pot':null,'table-plant--leaves':'table-plant','sofa-plant--floor-leaves':'floor-plant',
+  'coffee-station--machine':'espresso-machine','coffee-station--grinder':'grinder','coffee-station--beans':'beans-jar','coffee-station--cup':'mug',
+  'window--frame':'window-frame','window--rod':'curtain-rod','window--left-sash':'open-left-sash','window--right-sash':'open-right-sash',
+  'window--closed-glass':['closed-left-sash','closed-right-sash'],
+  'curtain--open-left':'curtain-open-left','curtain--open-right':'curtain-open-right','curtain--closed-left':'curtain-closed-pair','curtain--closed-right':'curtain-closed-pair',
+  'window--open-left-view':null,'window--open-right-view':null,'window--closed-view':null,
+  'window--open-left-pane':'glass-open-left','window--open-right-pane':'glass-open-right','window--closed-pane':'glass-closed',
+  'work-chair--complete':'chair','window--garden':'garden','room--lettering':'lettering',
+  'lighting--window-shade':'window-shade','lighting--window-sunlight':'sunlight',
+};

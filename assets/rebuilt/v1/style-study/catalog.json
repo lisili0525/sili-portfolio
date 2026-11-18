@@ -1,0 +1,562 @@
+[
+  {
+    "id": "piano",
+    "version": 1,
+    "master": "assets/rebuilt/v1/style-study/sources/piano-v1.png",
+    "file": "assets/rebuilt/v1/style-study/ready/piano-v1.png",
+    "bounds": {
+      "x": 0,
+      "y": 360,
+      "width": 395,
+      "height": 425
+    },
+    "originalFile": "assets/rebuilt/v1/ready/piano.png?v=ae744e7ac293",
+    "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-3bc7b3b7-2c9a-4cdb-8733-a76b484a79e1.png",
+    "prompt": "Use case: style-transfer. Image 1 is the edit target: an independent transparent upright piano for an interactive illustrated room. Image 2 is the authoritative STYLE REFERENCE screenshot of the owner's original website. Repaint ONLY image1's surface rendering to match the piano in image2 extremely closely: soft slightly irregular dark ink outlines, matte softly brushed warm umber/brown wooden case, broad subtle uneven painted color patches, imperfect gentle highlights, creamy keys, understated dull brass. This should look like the very same original room illustrator drew it, not a polished catalog/vector asset. Preserve image1's exact external silhouette, proportions, camera, keyboard height, key layout, legs, empty attached music rack and its openings. Preserve all structural geometry and same empty rack; do not copy the reference's book. Maintain genuine transparent alpha around the isolated piano, no room/floor/bench/person/plants, no new objects/text, no surface dirt or scratches, no random paper noise, no glow, no excessive blur. The goal is painterly soft lived-in illustration, not an overlay/filter. Keep full piano entirely visible. Output one transparent independent piano.",
+    "sourceSha256": "606abbf0a1cfdf6e8291643e5201adfc1d90006b8d324ea9c44de0b9f1cc73be",
+    "references": [
+      "assets/rebuilt/v1/references/original-site-texture-target.png",
+      "assets/rebuilt/v1/ready/piano.png"
+    ],
+    "method": "built-in imagegen style-transfer; trim/resize only"
+  },
+  {
+    "id": "garden",
+    "version": 1,
+    "master": "assets/rebuilt/v1/style-study/sources/garden-v1.png",
+    "file": "assets/rebuilt/v1/style-study/ready/garden-v1.png",
+    "bounds": {
+      "x": 954,
+      "y": 178,
+      "width": 402,
+      "height": 263
+    },
+    "originalFile": "assets/rebuilt/v1/ready/garden.png?v=3d79b84dde64",
+    "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-ca8f6ec1-74c4-461b-915a-a744578b8f24.png",
+    "prompt": "Use case: style-transfer. First input is the garden scene to repaint; second is the owner's original website, authoritative style target. Output ONLY the window garden landscape, filling a wide rectangle, no frame/curtains/room. Match the landscape visible inside the original reference window almost exactly in painting language: muted soft sage/blue-green distant hills with irregular overlapping broad painterly brush patches, softly blended atmospheric edges, powder blue sky and small cream cloud patches, loose abstract yellow/olive foliage clusters across foreground and hanging along upper edge. NO dark outline around every leaf, NO individually diagrammed flowers, NO crisp vector scallops or rounded symbolic trees. The original view is soft animated-background gouache, warm spring haze, matte layered color and slight natural painted mottling; faithfully reproduce that visual language. Keep existing overall sky/hills/foliage composition and approximate colors of first input but simplify individual leaves into broad irregular painted masses. All edges fully filled, no transparent margins, no blur filter, no noise/grain overlay, no text or new objects.\n",
+    "sourceSha256": "2308e303debabbdb0a8180047e97a47e0ab021a13913036b19f2931962f4dc3d",
+    "references": [
+      "assets/rebuilt/v1/references/original-site-texture-target.png",
+      "assets/rebuilt/v1/ready/garden.png"
+    ],
+    "method": "built-in imagegen style-transfer; trim/resize only"
+  },
+  {
+    "id": "garden",
+    "version": 2,
+    "master": "assets/rebuilt/v1/style-study/sources/garden-v2.png",
+    "file": "assets/rebuilt/v1/style-study/ready/garden-v2.png",
+    "bounds": {
+      "x": 954,
+      "y": 178,
+      "width": 402,
+      "height": 263
+    },
+    "originalFile": "assets/rebuilt/v1/ready/garden.png?v=3d79b84dde64",
+    "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-51c97912-f3a6-407f-b430-ef978ca6b2ea.png",
+    "prompt": "Use case: style-transfer correction. Image1 is a candidate garden that is TOO painterly, TOO textured and TOO scratchy. Image2 original website screenshot is authoritative. Repaint image1 to match only the garden visible through image2's window nearly exactly. Use SMOOTH FLAT IRREGULAR COLOR SHAPES like a soft anime background, very little texture and NO visible diagonal strokes. Softly overlapping blue-green sage rounded distant hill silhouettes, large irregular muted shadow patches; foreground yellow/olive flat loosely rounded leaf CLUSTERS with no outlines, no drawn leaf veins, no flower symbols, no spiky brush tips. Cream smooth cloud shapes, blue sky, modest original-reference softness. It is NOT oil paint, not an impressionist landscape, not paper texture, not vector line illustration. Match the reference garden's restrained simple flat painted shapes and layering extremely faithfully. Fill entire wide rectangle with landscape only, no frame, no room, no characters or text. Keep candidate's basic hill/sky/foliage layout but remove essentially all scratchy texture. Output clean soft matte color patches.\n",
+    "sourceSha256": "9da338bdb2884b716f8569991b8b464d536a3583ec99fc85a31e435da0fea6bf",
+    "references": [
+      "assets/rebuilt/v1/references/original-site-texture-target.png",
+      "assets/rebuilt/v1/ready/garden.png"
+    ],
+    "method": "built-in imagegen style-transfer; trim/resize only"
+  },
+  {
+    "id": "shelf-plant",
+    "version": 1,
+    "master": "assets/rebuilt/v1/style-study/sources/shelf-plant-v1.png",
+    "file": "assets/rebuilt/v1/style-study/ready/shelf-plant-v1.png",
+    "bounds": {
+      "x": 28,
+      "y": 110,
+      "width": 200,
+      "height": 300
+    },
+    "originalFile": "assets/rebuilt/v1/ready/shelf-plant.png?v=15011812f5af",
+    "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-f7f1375b-ea59-4bd8-b15d-41a31e68e36f.png",
+    "prompt": "Use case: style-transfer. First image is target transparent trailing pothos asset. Second image is owner original website, absolute rendering style reference. Repaint first asset to match original reference's upper-left pothos extremely closely: loosely painted heart-shaped olive and yellow-green leaves, warm softly uneven light, deep muted olive shadows, variable soft dark ink contour, subtle natural crookedness, matte off-white ceramic pot without sharp glossy highlights. Preserve first image's external silhouette, pot size/location, leaf group arrangement, trailing vine length and overall geometry so it swaps into its existing interactive room without layout change. Make surfaces softly painterly like the original screenshot, not clean sharp vector/cel shading. Leaves have broad irregular blended color patches, not sharply bounded inner-leaf highlights. Keep recognizable complete trailing plant and pot, genuine transparent background. No shelf, piano, books, floor/room, cast shadow, glow, noise filter or extra decoration. One isolated independent plant, no text.\n",
+    "sourceSha256": "d99e130df30a61f75cdf235545f0184ae81bde7c230de8b651ac3f6c056c8712",
+    "references": [
+      "assets/rebuilt/v1/references/original-site-texture-target.png",
+      "assets/rebuilt/v1/ready/shelf-plant.png"
+    ],
+    "method": "built-in imagegen style-transfer; trim/resize only"
+  },
+  {
+    "id": "shelf-plant",
+    "version": 2,
+    "master": "assets/rebuilt/v1/style-study/sources/shelf-plant-v2.png",
+    "file": "assets/rebuilt/v1/style-study/ready/shelf-plant-v2.png",
+    "bounds": {
+      "x": 28,
+      "y": 110,
+      "width": 200,
+      "height": 300
+    },
+    "originalFile": "assets/rebuilt/v1/ready/shelf-plant.png?v=15011812f5af",
+    "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-76b10fc8-c8b2-4fbf-8933-fc25e96e63f2.png",
+    "prompt": "Use case: style-transfer. Target is image1 ORIGINAL CLEAN transparent pothos; image2 is ORIGINAL WEBSITE screenshot style reference. Keep exactly the target's silhouette, pot/leaf placements and all geometry. Change ONLY the leaf shading to softly blended warm olive green, slight irregularity in dark outlines and matte cream pot. Match the screenshot's smooth soft cartoon shading. This is an ANIME CARTOON PROP, not watercolor or oil paint: NO paper grain, NO rough brush strokes, NO hazy cast shadow, NO glow, NO brown/yellow cloud around leaves. The only nontransparent pixels MUST be physical leaves, stems and ceramic pot. Every empty gap between leaves must be truly transparent, all outside pixels alpha zero, absolutely NO atmosphere/background/haze. Sharp alpha boundary but slightly soft natural drawn line within it. Original screenshot's upper-left plant has smooth broad leaf highlights and softly modeled forms, not conspicuous angular watercolor facets. Preserve existing visual footprint exactly. Independent full trailing plant, no furniture or text.\n",
+    "sourceSha256": "88aa23ca6a6717fd706be6551942fb493c86881bd6bf31c793ccc20cebf80fdc",
+    "references": [
+      "assets/rebuilt/v1/references/original-site-texture-target.png",
+      "assets/rebuilt/v1/ready/shelf-plant.png"
+    ],
+    "method": "built-in imagegen style-transfer; trim/resize only"
+  },
+  {
+    "id": "espresso-machine",
+    "version": 1,
+    "master": "assets/rebuilt/v1/style-study/sources/espresso-machine-v1.png",
+    "file": "assets/rebuilt/v1/style-study/ready/espresso-machine-v1.png",
+    "bounds": {
+      "x": 570,
+      "y": 411,
+      "width": 112,
+      "height": 126
+    },
+    "originalFile": "assets/rebuilt/v1/ready/espresso-machine.png?v=d60b165f32ab",
+    "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-d9a0a52d-37ff-4b6e-9f1c-b4199d79e1d8.png",
+    "prompt": "Use case: style-transfer. Image1 is target espresso-machine independent transparent prop, image2 is original-site rendering reference. Repaint target to match original reference coffee machine's smooth softly hand drawn illustration: warm creamy peach enamel, dark umber gently irregular outlines, understated soft highlight patches, softly modeled dark interior and drip tray, simple matte metal. Preserve exact image1 silhouette, all body edges/corners, portafilter direction/location, cup recess, controls and proportions. No camera/geometry redesign. Tone down perfectly geometric linework and hard digital cel shading without blurry boundaries. It should look like a prop lifted from the same artist's softly illustrated room, not a detailed shiny product catalog. True transparent background, all empty areas alpha zero; no room/floor/cup/person, NO glow or haze, NO rough watercolor/oil texture/paper grain, no text/brand. Existing control layout stays; only surface shading/line quality changes. Entire object visible.\n",
+    "sourceSha256": "82dbd3665a02e9114012657b5291569a0a43622385dc5372d3fb877f7fe6806c",
+    "references": [
+      "assets/rebuilt/v1/references/original-site-texture-target.png",
+      "assets/rebuilt/v1/ready/espresso-machine.png"
+    ],
+    "method": "built-in imagegen style-transfer; trim/resize only"
+  },
+  {
+    "id": "bench-throw",
+    "version": 1,
+    "master": "assets/rebuilt/v1/style-study/sources/bench-throw-v1.png",
+    "file": "assets/rebuilt/v1/style-study/ready/bench-throw-v1.png",
+    "bounds": {
+      "x": 149,
+      "y": 674,
+      "width": 187,
+      "height": 110
+    },
+    "originalFile": "assets/rebuilt/v1/ready/bench-throw.png?v=13f15a3c85bb",
+    "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-a0976f9e-74bf-4e46-a87f-9cccb95339ca.png",
+    "prompt": "Use case: precise-object-edit/style-transfer. Image1 is independent transparent bench blanket, image2 authoritative original website. Repaint bench blanket to look nearly identical in material/design to the cream throw on the piano bench in image2: plain cream/peach softly shaded cloth with a few long gently crooked seam/fold lines and plain short rounded dangling fringe ends. REMOVE image1's blue band and green leaf embroidery completely. No printed ornaments, no knitted cable pattern. Preserve image1's overall external silhouette, horizontal folded top roll, draped frontal panel dimensions, exact perspective and attachment shape, same visual footprint so it stays fitted to existing bench. Surface should have the reference's soft slightly irregular cartoon linework and simple smooth painted warm folds. Not watercolor/oil, NO noise/grain overlay, no dirt, glow, haze, background, room, bench or text. Genuine alpha around the entire isolated blanket including between fringe. Full blanket visible. Match original reference plain cloth illustration very closely.\n",
+    "sourceSha256": "8516d3d542a352da2012ab9774e9cbeef97fac1a8aa3be56eef5f07fbb0bec08",
+    "references": [
+      "assets/rebuilt/v1/references/original-site-texture-target.png",
+      "assets/rebuilt/v1/ready/bench-throw.png"
+    ],
+    "method": "built-in imagegen style-transfer; trim/resize only"
+  },
+  {
+    "id": "piano",
+    "version": 2,
+    "master": "assets/rebuilt/v1/style-study/sources/piano-v2.png",
+    "file": "assets/rebuilt/v1/style-study/ready/piano-v2.png",
+    "bounds": {
+      "x": 0,
+      "y": 360,
+      "width": 395,
+      "height": 425
+    },
+    "originalFile": "assets/rebuilt/v1/ready/piano.png?v=ae744e7ac293",
+    "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-40de778c-9349-489f-982b-788f24ce6e19.png",
+    "prompt": "Use case: style-transfer refinement. Image1 candidate piano has excessive diagonal brush patches. Image2 original website is authoritative style. Keep image1's exact geometry including empty upper attached rack, outline/keyboard/legs/camera. Repaint its wood as SMOOTH warm dark matte walnut with soft broad subtle color variation matching original screenshot's piano. Remove diagonal streaks and rough paint/paper texture completely. Original artwork is softly shaded cartoon with irregular dark ink contour, broad subtle blended reddish-brown highlight areas and slightly uneven smooth shading, NOT watercolor/drybrush or distressed wood. Dim brass rail to subdued old gold rather than bright yellow; creamy warm keys. No dirt/scratches, no glow or haze. Exact same external silhouette and complete independent transparent piano, alpha zero outside physical case; no bench, book, plants, floor, room, text or brand. Natural smooth cartoon softness, match reference piano's quiet dark tonal values extremely closely.\n",
+    "sourceSha256": "7e8ae94027c678538788281b94fc6bc5c2b31413edc7cf847ebc9cc47ea9a581",
+    "references": [
+      "assets/rebuilt/v1/references/original-site-texture-target.png",
+      "assets/rebuilt/v1/ready/piano.png"
+    ],
+    "method": "built-in imagegen style-transfer; trim/resize only"
+  },
+  {
+    "id": "rug",
+    "version": 1,
+    "master": "assets/rebuilt/v1/style-study/sources/rug-v1.png",
+    "file": "assets/rebuilt/v1/style-study/ready/rug-v1.png",
+    "bounds": {
+      "x": 370,
+      "y": 823,
+      "width": 915,
+      "height": 390
+    },
+    "originalFile": "assets/rebuilt/v1/ready/rug.png?v=e59682d4dc57",
+    "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-68ce20be-5eef-4d45-9b29-a0ed25fba069.png",
+    "prompt": "Use case: style-transfer. Image1 is independent transparent rug to edit; image2 is authoritative original-site screenshot. Repaint image1 to closely match the visible rug at bottom of image2: a softly illustrated woven rug with many SMALL irregular cream/peach/terracotta motifs and muted navy border, finer and more varied pattern than image1's huge clean geometric emblems. Original screenshot's rug border looks woven, understated and softened, with a slightly imperfect hand drawn repeating small diamond/flower pattern, not pristine vector tessellation. Keep the EXACT trapezoid outer silhouette, corner locations, flat floor perspective and original dimensions, so geometry stays fixed. Color palette dusty salmon/peach, subdued navy, warm cream, hint muted sage. Small varied geometric motifs throughout, not huge central medallion. Soft cartoon painting, minimal visible texture, no realistic fiber photography, no watercolor grain/oil streaks, no dirt/aging. Thin relaxed cream fringe matching reference, true transparent exterior; no floor, table, album, plants, room, people, text or shadows. Full isolated rug visible.\n",
+    "sourceSha256": "a0d4c79e96c1e7fac3e43c01613b1ee6ae1026e2fb02060984685d6c585ee2d5",
+    "references": [
+      "assets/rebuilt/v1/references/original-site-texture-target.png",
+      "assets/rebuilt/v1/ready/rug.png"
+    ],
+    "method": "built-in imagegen style-transfer; trim/resize only"
+  },
+  {
+    "id": "sofa-throw",
+    "version": 1,
+    "master": "assets/rebuilt/v1/style-study/sources/sofa-throw-v1.png",
+    "file": "assets/rebuilt/v1/style-study/ready/sofa-throw-v1.png",
+    "bounds": {
+      "x": 35,
+      "y": 821,
+      "width": 190,
+      "height": 245
+    },
+    "originalFile": "assets/rebuilt/v1/ready/sofa-throw.png?v=13b69fa12a93",
+    "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-916fc496-f9f4-4e31-b196-d52d26c20672.png",
+    "prompt": "Use case: precise-object-edit/style-transfer. First input is target independent sofa blanket; second is owner original-site screenshot, style/design reference. Match the original screenshot's cream throw on the navy sofa at bottom left very closely. REMOVE the realistic cable-knit braids and dense yarn texture entirely. Replace with plain warm cream/peach cloth, a few narrow softly crooked long vertical seam/fold lines and simple soft cartoon fold shading, short rounded fringe. Preserve target's EXACT outer silhouette and path over sofa arm/back/seat, upper curl and lower bend, same physical footprint and perspective. Do not flatten the draped shape. Soft warm hand-drawn cartoon, smooth broad shading with gentle unevenness, muted thin dark warm-brown contours, no photorealism, no pattern or embroidery, no noise, no glow/haze/background. Only the complete standalone transparent cloth, no sofa, floor, people, furniture, letters. True alpha between and around fringes.\n",
+    "sourceSha256": "cfddafcb56a4c44b720743fb3b5aa986b4b5871d021cfda0cd51681440b61e2c",
+    "references": [
+      "assets/rebuilt/v1/references/original-site-texture-target.png",
+      "assets/rebuilt/v1/ready/sofa-throw.png"
+    ],
+    "method": "built-in imagegen style-transfer; trim/resize only"
+  },
+  {
+    "id": "desk",
+    "version": 1,
+    "master": "assets/rebuilt/v1/style-study/sources/desk-v1.png",
+    "file": "assets/rebuilt/v1/style-study/ready/desk-v1.png",
+    "bounds": {
+      "x": 1202,
+      "y": 562,
+      "width": 550,
+      "height": 371
+    },
+    "originalFile": "assets/rebuilt/v1/ready/desk.png?v=a13292d82b26",
+    "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-a1225c4a-0138-431b-93b2-eab495940e73.png",
+    "prompt": "Use case: style-transfer. Image1 target independent orange wood desk, image2 owner original screenshot authoritative style. Preserve EXACT target geometry/silhouette, all four legs, joints, perspective, tabletop edge positions and proportions. Repaint only shading/line quality to match reference's desk almost exactly: warm orange-brown wood with soft slightly uneven warm color patches and quiet matte light, subtle rounded ink line irregularity, less glowing perfect pale-yellow rim highlight (make it muted and gently broken), natural soft shadow planes, no hard glossy finish. Smooth softly illustrated anime-cartoon prop; do not add prominent wood grain, scratches, knots, diagonal brush marks, watercolor, paper texture or noise. Reference is a softly drawn lived-in cartoon room, not product rendering. Keep original orange palette and complete physical footprint. True transparent alpha outside physical desk and between legs. No laptop, notebook, chair, stationery, floor, people, room, text or extra objects. Do not change perspective or proportions.\n",
+    "sourceSha256": "d9cacfbea4cdb185ea4f82e60c157f1ebac8f0bfe825600f0df2e28046472319",
+    "references": [
+      "assets/rebuilt/v1/references/original-site-texture-target.png",
+      "assets/rebuilt/v1/ready/desk.png"
+    ],
+    "method": "built-in imagegen style-transfer; trim/resize only"
+  },
+  {
+    "id": "coffee-cabinet",
+    "version": 1,
+    "master": "assets/rebuilt/v1/style-study/sources/coffee-cabinet-v1.png",
+    "file": "assets/rebuilt/v1/style-study/ready/coffee-cabinet-v1.png",
+    "bounds": {
+      "x": 500,
+      "y": 517,
+      "width": 337,
+      "height": 203
+    },
+    "originalFile": "assets/rebuilt/v1/ready/coffee-cabinet.png?v=9bd84ad340ff",
+    "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-f55f4b55-6224-4890-85bb-d3624ad1427d.png",
+    "prompt": "Use case: style-transfer. Image1 target independent orange coffee cabinet, image2 original website authoritative style reference. Preserve exactly image1's external silhouette, all door/drawer divisions and handles, tabletop and leg geometry, perspective, proportions. Repaint ONLY rendering to closely match original screenshot's orange coffee cabinet: softly uneven warm orange/ochre/burnt sienna wooden color, subtle smooth hand-painted shading, warm softly irregular dark ink outlines, muted highlights instead of perfectly straight luminous pale rim. Matte gentle everyday cartoon furniture, no shiny plastic/catalog finish. The original has broad soft color areas and informal hand lines, not drybrush, no strong wood grain, no dirt, scratches, noise, watercolor texture, glow or haze. Keep same orange hue and exact shape. True transparent exterior and gap beneath cabinet. No coffee equipment, mug, table objects, floor, room, people, labels or text. One complete independent cabinet.\n",
+    "sourceSha256": "3f19fa9260536d97729371e3538030908613cfa90fbc242e11f33d62e112468f",
+    "references": [
+      "assets/rebuilt/v1/references/original-site-texture-target.png",
+      "assets/rebuilt/v1/ready/coffee-cabinet.png"
+    ],
+    "method": "built-in imagegen style-transfer; trim/resize only"
+  },
+  {
+    "id": "table-plant",
+    "version": 1,
+    "master": "assets/rebuilt/v1/style-study/sources/table-plant-v1.png",
+    "file": "assets/rebuilt/v1/style-study/ready/table-plant-v1.png",
+    "bounds": {
+      "x": 976,
+      "y": 801,
+      "width": 147,
+      "height": 132
+    },
+    "originalFile": "assets/rebuilt/v1/ready/table-plant.png?v=f373e7d73983",
+    "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-d0408d3f-9d73-430b-b195-df97c53914bd.png",
+    "prompt": "Use case: style-transfer. Image1 target tabletop pothos transparent prop. Image2 original website screenshot is authoritative for style, in particular the plant on the foreground round table. Preserve image1 EXACT external silhouette, number/location of leaves, cream pot size/location, trailing branch length and arrangement. Repaint only surfaces: lively olive green and warm yellow-green leaves with softly blended irregular highlights, deep but gentle olive shadows, rounded slightly uneven warm ink contours; cream matte ceramic pot with softly shaped light patch. Match original screenshot's smooth softly painted cartoon plant rather than clean hard inner-leaf cel shading. Keep vivid original green hue, avoid gray/desaturated/sickly colors. No watercolor/oil texture, no rough grain, no glowing halo/haze/cast shadow. True alpha zero outside physical leaf/stem/pot, including gaps. No table, furniture, floor, other props, room, characters, text. One full independent tabletop plant.\n",
+    "sourceSha256": "e05ba5de56799fd7a572081c7526c86d0d50532a6d296064d9ba9280d3732532",
+    "references": [
+      "assets/rebuilt/v1/references/original-site-texture-target.png",
+      "assets/rebuilt/v1/ready/table-plant.png"
+    ],
+    "method": "built-in imagegen style-transfer; trim/resize only"
+  },
+  {
+    "id": "shelf-plant",
+    "version": 3,
+    "master": "assets/rebuilt/v1/style-study/sources/shelf-plant-v3.png",
+    "file": "assets/rebuilt/v1/style-study/ready/shelf-plant-v3.png",
+    "bounds": {
+      "x": 28,
+      "y": 110,
+      "width": 200,
+      "height": 300
+    },
+    "originalFile": "assets/rebuilt/v1/ready/shelf-plant.png?v=15011812f5af",
+    "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-c664a7c4-f059-4c12-bfe0-1814c66450d8.png",
+    "prompt": "Use case: style-transfer. Image1 is target clean transparent trailing shelf pothos; image2 is original website authoritative reference; image3 is a successful independently repainted tabletop plant STYLE GUIDE. Repaint ONLY image1 leaf/pot surfaces to precisely match image3's smoothly hand-painted soft olive-yellow shading and original reference's vivid upper-left plant. Preserve image1's EXACT silhouette/leaf arrangement, long trailing length and cream pot geometry. Keep warm olive-green leaves, vibrant yellow-green light patches, deeper olive shadows, softly irregular warm dark contours. Smooth gentle natural blended leaf shading, not hard flat inner-leaf polygons, not gray/desaturated. Match successful image3 texture strength and color (soft cartoon with subtle variation), no oil/watercolor strokes, no visible noise. TRUE transparent background; all outside and inter-leaf gaps alpha zero, NO surrounding haze/glow/shadow. Whole trailing plant/pot only, no shelf, room, floor, other props or text. Geometry and footprint locked to image1, surface rendering like image3.\n",
+    "sourceSha256": "5af43245af4022379b3d10a5a5f530efd914d6b99d30c1604cdfd8daceaf4eb8",
+    "references": [
+      "assets/rebuilt/v1/references/original-site-texture-target.png",
+      "assets/rebuilt/v1/ready/shelf-plant.png"
+    ],
+    "method": "built-in imagegen style-transfer; trim/resize only"
+  },
+  {
+    "id": "curtain-open-left",
+    "version": 1,
+    "master": "assets/rebuilt/v1/style-study/sources/curtain-open-left-v1.png",
+    "file": "assets/rebuilt/v1/style-study/ready/curtain-open-left-v1.png",
+    "bounds": {
+      "x": 873,
+      "y": 130,
+      "width": 106,
+      "height": 358
+    },
+    "originalFile": "assets/rebuilt/v1/ready/curtain-open-left.png?v=40fa56646e6f",
+    "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-20dcba9b-b1aa-41d7-a245-ecf0f54fa0fe.png",
+    "prompt": "Use case: style-transfer. Image1 target LEFT tied-back curtain, image2 original website authoritative style. Keep image1 exact external silhouette, top scallops, tie at same height/position, lower drape/hem, geometry and proportions. Repaint only cloth rendering to match original screenshot cream curtains almost exactly: soft warm peach/cream cloth, a few softly blended broad fold shadows, gently uneven warm brown outlines, tiny quiet natural light variation, less mechanical hard vector fold bands. Simple smooth softly drawn cartoon cloth with subtle body, NOT watercolor/paper/oil, no texture/noise pattern. Keep tie/fold geometry unchanged, no newly curled hem or missing scallops. True transparent outside physical curtain, no glow/shadow/haze, no room, window, rod, other curtain, plant or text. One complete independent LEFT curtain only. Keep alpha footprint locked to image1.\n",
+    "sourceSha256": "cd39fb99c729bb341b6fcf7394a06fd45e64d15eb1c6cd1662888c8f6f8e377d",
+    "references": [
+      "assets/rebuilt/v1/references/original-site-texture-target.png",
+      "assets/rebuilt/v1/ready/curtain-open-left.png"
+    ],
+    "method": "built-in imagegen style-transfer; trim/resize only"
+  },
+  {
+    "id": "curtain-open-right",
+    "version": 1,
+    "master": "assets/rebuilt/v1/style-study/sources/curtain-open-right-v1.png",
+    "file": "assets/rebuilt/v1/style-study/ready/curtain-open-right-v1.png",
+    "bounds": {
+      "x": 1334,
+      "y": 130,
+      "width": 106,
+      "height": 358
+    },
+    "originalFile": "assets/rebuilt/v1/ready/curtain-open-right.png?v=9be3886ec1e7",
+    "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-82340af9-2314-44f8-b7f4-869ab57efa7c.png",
+    "prompt": "Use case: style-transfer. Image1 target RIGHT tied-back curtain, image2 original website authoritative style. Keep image1 exact external silhouette, top scallops, tie at same height/position, lower drape/hem, geometry and proportions. Repaint only cloth rendering to match original screenshot cream curtains almost exactly: soft warm peach/cream cloth, a few softly blended broad fold shadows, gently uneven warm brown outlines, tiny quiet natural light variation, less mechanical hard vector fold bands. Simple smooth softly drawn cartoon cloth with subtle body, NOT watercolor/paper/oil, no texture/noise pattern. Keep tie/fold geometry unchanged, no newly curled hem or missing scallops. True transparent outside physical curtain, no glow/shadow/haze, no room, window, rod, other curtain, plant or text. One complete independent RIGHT curtain only. Keep alpha footprint locked to image1.\n",
+    "sourceSha256": "ed2909862bdd7efb73277b87de00acee3fa61e86f9a081101b603ef1313984a2",
+    "references": [
+      "assets/rebuilt/v1/references/original-site-texture-target.png",
+      "assets/rebuilt/v1/ready/curtain-open-right.png"
+    ],
+    "method": "built-in imagegen style-transfer; trim/resize only"
+  },
+  {
+    "id": "curtain-closed-pair",
+    "version": 1,
+    "master": "assets/rebuilt/v1/style-study/sources/curtain-closed-pair-v1.png",
+    "file": "assets/rebuilt/v1/style-study/ready/curtain-closed-pair-v1.png",
+    "bounds": {
+      "x": 873,
+      "y": 130,
+      "width": 567,
+      "height": 358
+    },
+    "originalFile": "assets/rebuilt/v1/ready/curtain-closed-pair.png?v=4f17c2550776",
+    "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-13929680-9c72-4d3f-9528-3936c7e0163a.png",
+    "prompt": "Use case: style-transfer. Image1 target CLOSED COHESIVE CURTAIN PAIR; image2 original website authoritative rendering style. Preserve image1 EXACT outer contour, width/height, top scallops, center meeting edge, smooth unbroken two-panel closure and floor/hem shape. Change ONLY shading to softer original screenshot curtain style: warm cream/peach cloth, subtly blended broad irregular fold light/shadow, warm slightly uneven brown hand-drawn contours, smooth quiet matte cartoon cloth. Reduce mechanical perfectly flat stripe-like fold shading without changing folds' placement or geometry. Pair remains a single cohesive illustration with a perfectly meeting center and NO gap, overlap, cut/paste seam or diagonal split. True transparent outside physical curtain only, all curtain fabric opaque. No watercolor/paper/grain, dirt, glow, cast shadow, haze, window, room, rod, furniture, text or new objects. Complete isolated closed curtain pair.\n",
+    "sourceSha256": "fa1aef8c4540014b0b073e687464c3c0eca00ec5126110dbf99faa1629d594d2",
+    "references": [
+      "assets/rebuilt/v1/references/original-site-texture-target.png",
+      "assets/rebuilt/v1/ready/curtain-closed-pair.png"
+    ],
+    "method": "built-in imagegen style-transfer; trim/resize only"
+  },
+  {
+    "id": "bookcase",
+    "version": 1,
+    "master": "assets/rebuilt/v1/style-study/sources/bookcase-v1.png",
+    "file": "assets/rebuilt/v1/style-study/ready/bookcase-v1.png",
+    "bounds": {
+      "x": 1535,
+      "y": 185,
+      "width": 190,
+      "height": 403
+    },
+    "originalFile": "assets/rebuilt/v1/ready/bookcase.png?v=6a84054b6b12",
+    "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-af56d55d-894b-4ad2-954d-e085565f4658.png",
+    "prompt": "Use case: style-transfer. Image1 target independent bookcase with integrated books; image2 original site screenshot is authoritative style. Preserve EXACT image1 silhouette, perspective, shelf/wood joints, EVERY book's location, count, width, height and color identity. Repaint only surfaces to closely match original screenshot's wooden bookcase/books: soft warm orange/umber matte wood shading, gently uneven dark ink edges, muted less perfectly uniform cream rim highlights; book spines have softly uneven color and quieter fine decorations, not pristine crisp vector rectangles. Natural gently blended cartoon highlights and shadow, a little hand-drawn irregularity while structure stays aligned. NO deliberate aging, dirt, scratches, strong grain, diagonal paint streaks, watercolor/paper texture or noise. Original warm softly illustrated lived-in room, not catalog rendering. Keep palette and all geometry locked. True transparent background outside entire object; no plants, floor, wall, room, people, added objects or text. One complete independent bookcase with same integrated books.\n",
+    "sourceSha256": "46bb7f4b3f088d54ffb0a1e62105540d7d6584d1b75a0e5cddbd8b85d6aaa2b5",
+    "references": [
+      "assets/rebuilt/v1/references/original-site-texture-target.png",
+      "assets/rebuilt/v1/ready/bookcase.png"
+    ],
+    "method": "built-in imagegen style-transfer; trim/resize only"
+  },
+  {
+    "id": "wall-shelf",
+    "version": 1,
+    "master": "assets/rebuilt/v1/style-study/sources/wall-shelf-v1.png",
+    "file": "assets/rebuilt/v1/style-study/ready/wall-shelf-v1.png",
+    "bounds": {
+      "x": 5,
+      "y": 165,
+      "width": 371,
+      "height": 142
+    },
+    "originalFile": "assets/rebuilt/v1/ready/wall-shelf.png?v=14049e982832",
+    "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-a9f9bbb9-60bc-46e9-9b21-48fe55c217f7.png",
+    "prompt": "Use case: style-transfer. Image1 independent wooden wall shelf with four integrated books; image2 original website authoritative rendering style. Preserve exact image1 outer silhouette, shelf and support geometry, all four book positions/dimensions and color identity. Repaint only shading/lines to match original reference shelf/books very closely: warm matte orange wood, softly uneven dark brown ink contours, subdued gently irregular creamy edge light instead of a hard luminous stripe, soft natural color variation, muted book spine highlights. Smooth softly hand-drawn cartoon surfaces, no oil/watercolor, strong wood grain, scratches, aging, noise/grain texture, glow or haze. Keep same overall palette, no extra decoration, no text. All physical dimensions and perspective locked to image1. True alpha outside shelf/books, no plant, camera, piano, room, floor, people or added objects. One complete independent shelf including its existing four books.\n",
+    "sourceSha256": "0f9db16ba91becf6712cb54b94564009eac3935fd1b05d934743ad416faa94f7",
+    "references": [
+      "assets/rebuilt/v1/references/original-site-texture-target.png",
+      "assets/rebuilt/v1/ready/wall-shelf.png"
+    ],
+    "method": "built-in imagegen style-transfer; trim/resize only"
+  },
+  {
+    "id": "calendar",
+    "version": 1,
+    "master": "assets/rebuilt/v1/style-study/sources/calendar-v1.png",
+    "file": "assets/rebuilt/v1/style-study/ready/calendar-v1.png",
+    "bounds": {
+      "x": 647,
+      "y": 142,
+      "width": 145,
+      "height": 192
+    },
+    "originalFile": "assets/rebuilt/v1/ready/calendar.png?v=00933b7e3e69",
+    "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-9e69bd6a-49a8-4eca-a435-6a1f51424687.png",
+    "prompt": "Use case: precise-object-edit. Image1 is a transparent hanging illustrated calendar for an interactive cozy room. Make it subtly used and gently aged: warm ivory paper with very slight uneven yellowing along edges, tiny restrained handling marks at lower corners, a barely perceptible soft bend in the lower paper edge, a few faint compressed-paper creases near the hanging rings, subtly faded printed colors. It must look cared for and used, not dirty or antique. Keep EXACT existing outer silhouette, dimensions, hanging strap/rings positions and complete structure. Preserve the small landscape illustration and entire existing dot grid/marks with their positions and count; do not add text or numbers. Keep smooth warm soft cartoon rendering consistent with the room, quiet slightly irregular ink, not realistic scanned paper, no coarse grain or sepia wash. Calendar body stays opaque, true transparent alpha outside calendar and hanger. No wall, drop shadow, glow, border outside original silhouette or new decoration. Full independent calendar asset, same perspective and geometry, only subtle paper/printing age.\n",
+    "sourceSha256": "a5180f0e63e4cac90ba3cf004a67f7a86c0c84123605d13b530830d8b977a4d1",
+    "references": [
+      "assets/rebuilt/v1/ready/calendar.png"
+    ],
+    "method": "built-in imagegen style-transfer; trim/resize only"
+  },
+  {
+    "id": "garden",
+    "version": 3,
+    "master": "assets/rebuilt/v1/style-study/sources/garden-v3.png",
+    "file": "assets/rebuilt/v1/style-study/ready/garden-v3.png",
+    "bounds": {
+      "x": 954,
+      "y": 178,
+      "width": 402,
+      "height": 263
+    },
+    "originalFile": "assets/rebuilt/v1/ready/garden.png?v=3d79b84dde64",
+    "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-6c3b722b-8d9d-44c8-8483-e103cdc007a5.png",
+    "prompt": "Use case: stylized-concept landscape refinement. Input1 is the current garden seen through a cozy illustrated-room window. It feels like flat wallpaper because foliage repeats big symbolic yellow blobs and hills are simple graphic cutouts. Repaint this view as a more believable natural outdoor space in softly illustrated semi-realistic animation-background style. Keep broad composition: blue sky in upper half, distant rolling countryside, sunlit spring greenery near the window. Introduce real landscape depth: very distant low-contrast hazy blue-green hills with subtle variations, middle-distance tree canopies with irregular sizes and spacing, small hints of meadow/terrain between them, foreground branches/leaves softly framing just the top and corners, dense natural shrubs lower down with credible overlapping leaf clusters and varied warm sunlight. Leaf forms should be observed natural foliage, not repeated flower/cloud symbols. Light is warm afternoon sun from upper left, with soft dappled foliage light and coherent shaded undersides; atmospheric perspective gives a feeling of looking OUT into a world, not at a poster. Restrained organic detail, varied natural silhouettes and lighting, realistic spatial relationships but still a gently painted cartoon room's outdoor view. No photorealistic photo collage, dramatic lens effects, scratchy oil strokes, visible paper/noise, dark outlines, flat decorative pattern, giant symbolic yellow flowers, giant clouds or oversaturation. Maintain calm muted sage/olive and soft sky-blue palette with restrained yellow-green highlights. Landscape fills entire wide rectangle; no border/frame, window, curtain, room, people, buildings or text. Output one full rectangular landscape.\n",
+    "sourceSha256": "6d16d2ee688d1bc5bd7c708cc24eca7f4adf32483f063ae1cc7944063b70aa16",
+    "references": [
+      "assets/rebuilt/v1/style-study/ready/garden-v2.png"
+    ],
+    "method": "built-in imagegen style-transfer; trim/resize only"
+  },
+  {
+    "id": "garden",
+    "version": 4,
+    "master": "assets/rebuilt/v1/style-study/sources/garden-v4.png",
+    "file": "assets/rebuilt/v1/style-study/ready/garden-v4.png",
+    "bounds": {
+      "x": 954,
+      "y": 178,
+      "width": 402,
+      "height": 263
+    },
+    "originalFile": "assets/rebuilt/v1/ready/garden.png?v=3d79b84dde64",
+    "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-b48ea9eb-177b-4cfd-b9dc-7a49636b675b.png",
+    "prompt": "Use case: style-transfer correction. Image1 current landscape is FAR TOO PHOTOREALISTIC for the room. Image2 owner original illustrated room is authoritative drawing style. Repaint image1 using the SAME SIMPLE SOFT CARTOON ILLUSTRATION LANGUAGE as image2, like the exact same background artist. Preserve believable spatial layout, perspective and natural relationships: near shrubs and a few framing branches, middle-distance trees/meadow, distant hazy rolling hills and blue sky. 'Believable' refers to SPACE AND LIGHT, not photographic detail. Simplify all foliage into varied irregular gently rounded PAINTED COLOR PATCHES, each tree canopy has just a few broad light/shadow shapes; foreground leaves are loosely suggested small clusters with no detailed veins. Distant hills use soft muted blue/sage overlapping silhouettes with atmospheric perspective. Natural asymmetry and varied scale/overlap, not repeated decorative yellow flower/cloud blobs. Soft cream clouds with simple shapes. Use warm olive/yellow-green near colors and subdued cool sage distant colors. SMOOTH MATTE 2D CARTOON background, restrained detail consistent with the original screenshot. No tiny realistic leaves/branches, photographic textures, realistic grass, bokeh, HDR, oil/watercolor strokes, grain or dark leaf outlines. Gentle broad painted shading and slight edge softness, very close to image2 garden's rendering while retaining a deeper near/middle/far space. Wide rectangle entirely filled with landscape, no window/frame/curtain/room/people/text. NOT a photograph or realistic painting.\n",
+    "sourceSha256": "dfb0df54a5bc29ed41c18c70012962f852fc181331b3742cedcda4ff11609d56",
+    "references": [
+      "assets/rebuilt/v1/style-study/sources/garden-v3.png",
+      "assets/rebuilt/v1/references/original-site-texture-target.png"
+    ],
+    "method": "built-in imagegen style-transfer; trim/resize only"
+  },
+  {
+    "id": "bookcase",
+    "version": 2,
+    "master": "assets/rebuilt/v1/style-study/sources/bookcase-v2.png",
+    "file": "assets/rebuilt/v1/style-study/ready/bookcase-v2.png",
+    "bounds": {
+      "x": 1535,
+      "y": 185,
+      "width": 190,
+      "height": 403
+    },
+    "originalFile": "assets/rebuilt/v1/ready/bookcase.png?v=6a84054b6b12",
+    "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-588cf0a8-a2c1-43ce-9221-ad3264d29891.png",
+    "prompt": "Use case: precise-object-edit. Image1 is the complete transparent cartoon bookcase with integrated books. Improve ONLY book materials, keeping the wood case and every book's exact count, shape, size, placement, perspective and cover color identity unchanged. Books should look like real cherished everyday books rendered in the same soft warm cartoon illustration: muted cloth/paper/leather-bound spines with extremely subtle uneven pigment, softly rounded hinge creases, a little natural compression at spine ends, quiet fine off-white page edges at any already visible exposed edges, modest rubbed ink on existing decorative bands. Different bindings have subtly different material response, no uniform shiny plastic or perfectly flat digital colors. Existing spine ornaments stay in place, with softer imperfect printing. Gently used, clean and cared for; no stains, dirt, torn covers, cracks, heavy aging, random text/titles, added objects or busy texture. No photorealism, visible fiber grain, oil/watercolor strokes, strong noise, glow or haze. Keep same smooth softly shaded hand-drawn room style and dark warm outlines. All wood geometry/color remains unchanged. Full independent bookcase, true transparent background outside silhouette, no room, floor, plant or shadow.\n",
+    "sourceSha256": "920b5a5d29011dbbc90380cf9c4c4bac8aa534825600872265eda3a1f34cce82",
+    "references": [
+      "assets/rebuilt/v1/style-study/ready/bookcase-v1.png"
+    ],
+    "method": "built-in imagegen style-transfer; trim/resize only"
+  },
+  {
+    "id": "wall-shelf",
+    "version": 2,
+    "master": "assets/rebuilt/v1/style-study/sources/wall-shelf-v2.png",
+    "file": "assets/rebuilt/v1/style-study/ready/wall-shelf-v2.png",
+    "bounds": {
+      "x": 5,
+      "y": 165,
+      "width": 371,
+      "height": 142
+    },
+    "originalFile": "assets/rebuilt/v1/ready/wall-shelf.png?v=14049e982832",
+    "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-434d8b45-995c-4523-b3b5-2b3bb1d05590.png",
+    "prompt": "Use case: precise-object-edit. Image1 is a transparent wooden wall shelf with four integrated books. Improve ONLY the books' material rendering, preserve the exact shelf wood and supports, and all four books' positions, proportions, shapes and original red/brown/teal/cream color identities. Give spines a soft gently used cloth/paper binding appearance: slight uneven pigment, a faint hinge crease, modest rounded spine ends and subtly softened existing printed bands/ornament. Different books have slightly varied finishes rather than uniform flat plastic. Natural everyday warmth, clean and cared for, no strong wear, dirt, damage, added letters/titles, coarse grain or ornamental additions. Smooth soft cartoon rendering consistent with current illustration; not photorealistic, no oil/watercolor strokes, noise, glow/haze. Preserve every object's geometry and silhouette, true alpha around independent shelf/books, no wall, room, plants, camera, floor or cast shadow.\n",
+    "sourceSha256": "dbaee78508a601865dc3aca7674bd26ea9e4e7dc0e9f440cb3355bb645b1a690",
+    "references": [
+      "assets/rebuilt/v1/style-study/ready/wall-shelf-v1.png"
+    ],
+    "method": "built-in imagegen style-transfer; trim/resize only"
+  },
+  {
+    "id": "desk-book-01",
+    "version": 1,
+    "master": "assets/rebuilt/v1/style-study/sources/desk-book-01-v1.png",
+    "file": "assets/rebuilt/v1/style-study/ready/desk-book-01-v1.png",
+    "bounds": {
+      "x": 1578,
+      "y": 581,
+      "width": 94,
+      "height": 44
+    },
+    "originalFile": "assets/rebuilt/v1/ready/desk-book-01.png?v=720f5b9af82b",
+    "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-20521a91-a4a8-4e2f-94c4-d9cfc92f9d87.png",
+    "prompt": "Use case: precise-object-edit. Edit this independent transparent closed RED-BROWN book to improve material warmth in a soft illustrated room. Keep EXACT geometry, external silhouette, camera/perspective, thickness, cover outline, decorative gold border, spine bands and page-block position. Replace the overly smooth plastic surface with subtly uneven matte leather/paper binding color, a quiet natural hinge crease and very slight rubbed cover-edge highlights. Warm ivory page block should suggest fine softly irregular layered paper edges rather than perfectly identical ruler stripes, no individual text. Gently used and cared for, no dirt, damage, torn pages, large scratches, heavy aging, additional marks or labels. Preserve red-brown palette. Same simple softly drawn warm cartoon style, not realistic photograph/watercolor/oil, no coarse texture/noise, glow, haze, cast shadow or background. Whole isolated independent book with true transparent exterior, no other objects.\n",
+    "sourceSha256": "47e197ab7073bff858a467b0d420cd367b27e85bbf91ecd3b78e343fcc009424",
+    "references": [
+      "assets/rebuilt/v1/ready/desk-book-01.png"
+    ],
+    "method": "built-in imagegen style-transfer; trim/resize only"
+  },
+  {
+    "id": "desk-book-02",
+    "version": 1,
+    "master": "assets/rebuilt/v1/style-study/sources/desk-book-02-v1.png",
+    "file": "assets/rebuilt/v1/style-study/ready/desk-book-02-v1.png",
+    "bounds": {
+      "x": 1575,
+      "y": 600,
+      "width": 100,
+      "height": 47
+    },
+    "originalFile": "assets/rebuilt/v1/ready/desk-book-02.png?v=e40765bd136d",
+    "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-7cd747a8-941e-41ca-b4cd-a949406f0e69.png",
+    "prompt": "Use case: precise-object-edit. Edit this independent transparent closed SAGE-GREEN book to improve material warmth in a soft illustrated room. Keep EXACT geometry, external silhouette, camera/perspective, thickness, cover outline, decorative gold border, spine bands and page-block position. Replace overly smooth flat plastic color with softly uneven matte cloth/paper binding color, a quiet natural hinge crease and very slight softened cover-edge highlights. Warm ivory page block should suggest fine softly irregular layered paper edges instead of identical ruler stripes, no text. Gently used and cared for, no stains, damage, tears, large scratches, heavy aging or added marks/labels. Preserve sage-green palette and existing ornaments. Same simple softly drawn warm cartoon style, not realistic photograph/watercolor/oil, no coarse grain/noise, glow, haze, cast shadow or background. Whole isolated independent book with true transparent exterior, no other objects.\n",
+    "sourceSha256": "ce9f616c7f4ccdfae56e0b5cacc031a3f87d213eff1ec076b8f91c5735720653",
+    "references": [
+      "assets/rebuilt/v1/ready/desk-book-02.png"
+    ],
+    "method": "built-in imagegen style-transfer; trim/resize only"
+  },
+  {
+    "id": "desk-book-03",
+    "version": 1,
+    "master": "assets/rebuilt/v1/style-study/sources/desk-book-03-v1.png",
+    "file": "assets/rebuilt/v1/style-study/ready/desk-book-03-v1.png",
+    "bounds": {
+      "x": 1575,
+      "y": 620,
+      "width": 100,
+      "height": 47
+    },
+    "originalFile": "assets/rebuilt/v1/ready/desk-book-03.png?v=dc0e31805a17",
+    "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-76b3e0f2-2ca9-4c98-abbe-e7007c04f579.png",
+    "prompt": "Use case: precise-object-edit. Edit this independent transparent closed TERRACOTTA-RED book to improve material warmth in a soft illustrated room. Keep EXACT geometry, external silhouette, camera/perspective, thickness, cover outline, decorative gold border, spine bands and page-block position. Replace overly smooth flat plastic color with subtly uneven matte paper/cloth cover color, a faint hinge crease and soft modest cover-edge highlights. Warm ivory page block should suggest fine gently irregular layered paper edges instead of identical ruler stripes, no text. Gently used and cared for, no dirt, damage, torn pages, large scratches, heavy aging or added labels. Preserve terracotta-red palette and existing gold ornaments. Same simple softly drawn warm cartoon illustration style, not photograph/watercolor/oil, no coarse grain/noise, glow, haze, cast shadow or background. Whole isolated independent book with true transparent exterior, no other objects.\n",
+    "sourceSha256": "450611797de8acdf6c7e0c434a95164f03297f8012c1a47d90df6259ea8cb605",
+    "references": [
+      "assets/rebuilt/v1/ready/desk-book-03.png"
+    ],
+    "method": "built-in imagegen style-transfer; trim/resize only"
+  }
+]

@@ -1,30 +1,26 @@
-import { useId } from 'react';
-import { originalArtwork, roomSpace, underpainting } from '../sceneObjects.js';
+import { useContext, useId } from 'react';
+import { RoomTextureContext } from './RoomTextureContext.js';
+import { styleStudy } from '../assets/styleStudy.js';
+import { MaterialFinish } from './MaterialFinish.jsx';
+import { originalArtwork, roomSpace } from '../sceneObjects.js';
+import { findArtworkAsset } from '../assets/objectAssets.js';
 
-// Geometric clipping avoids full-stage alpha-mask textures in animated layers.
-// Offset copies retain the former edge padding without filters or mask buffers.
-function ExpandedClip({id,paths,padding}) {
-  const diagonal=padding/Math.sqrt(2);
-  const offsets=[[0,0],[padding,0],[-padding,0],[0,padding],[0,-padding],
-    [diagonal,diagonal],[-diagonal,diagonal],[diagonal,-diagonal],[-diagonal,-diagonal]];
-  return <clipPath id={id} clipPathUnits="userSpaceOnUse">
-    {paths.flatMap((path,index)=>offsets.map(([x,y],copy)=><path key={`${index}-${copy}`} d={path} transform={`translate(${x} ${y})`} />))}
-  </clipPath>;
-}
-
-export function SceneArtwork({path, className='', children, style, source=originalArtwork, dataPart, contentClassName, edgePadding=3.5}) {
-  const id=`piece-${useId().replace(/[^a-zA-Z0-9]/g,'')}`;
+// Full-room rasters and clipping geometry are authoring inputs only. The browser
+// renders a small registered transparent image and retains the original motion API.
+export function SceneArtwork({path,className='',children,style,source=originalArtwork,dataPart,contentClassName,edgePadding=3.5}) {
+  const asset=findArtworkAsset(source,path,edgePadding);
+  if(!asset)throw Error('Missing transparent scene asset. Run npm run assets:export.');
   return <svg className={`scene-artwork ${className}`} data-part={dataPart} style={style} viewBox={`0 0 ${roomSpace.width} ${roomSpace.height}`} preserveAspectRatio="none" aria-hidden="true" focusable="false">
-    <defs><ExpandedClip id={id} paths={[path]} padding={edgePadding} /></defs>
-    <g className={contentClassName}><image href={source} width={roomSpace.width} height={roomSpace.height} preserveAspectRatio="none" clipPath={`url(#${id})`} /></g>
+    <g className={contentClassName}><RegisteredImages asset={asset} /></g>
     {children}
   </svg>;
 }
 
-export function BackgroundRepair({paths}) {
-  const id=`repair-${useId().replace(/[^a-zA-Z0-9]/g,'')}`;
-  return <svg className="scene-artwork background-repair" viewBox={`0 0 ${roomSpace.width} ${roomSpace.height}`} preserveAspectRatio="none" aria-hidden="true" focusable="false">
-    <defs><ExpandedClip id={id} paths={paths} padding={4} /></defs>
-    <image href={underpainting} width={roomSpace.width} height={roomSpace.height} preserveAspectRatio="none" clipPath={`url(#${id})`} />
-  </svg>;
+export function RegisteredImages({asset}) {
+  return (asset.parts || [asset]).map(part => <RegisteredPart key={part.id} part={part} />);
+}
+function RegisteredPart({part}) {
+  const imageId=useId().replace(/:/g,'');
+  const painted=useContext(RoomTextureContext)==='painted'&&styleStudy[part.id];
+  return <><image className={styleStudy[part.id]?'study-original':undefined} id={imageId} href={part.file} x={part.bounds.x} y={part.bounds.y} width={part.bounds.width} height={part.bounds.height} transform={part.transform} preserveAspectRatio="none" data-asset-id={part.id} />{painted&&<image className="study-painted" href={styleStudy[part.id]} x={part.bounds.x} y={part.bounds.y} width={part.bounds.width} height={part.bounds.height} transform={part.transform} preserveAspectRatio="none" data-style-asset={part.id} />}<MaterialFinish part={part} imageId={imageId} /></>;
 }

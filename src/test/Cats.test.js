@@ -12,6 +12,26 @@ function setup(seed=17) {
   document.body.append(root);roots.push(root);
   return {root,controller:createCatController(root),elements:[root.querySelector('#viola .cat'),root.querySelector('#java .cat')]};
 }
+it('lands an in-flight cat before pausing for an open content dialog',()=>{
+  const {root,controller,elements}=setup();let airborne;
+  for(let i=0;i<12000&&!airborne;i++){advance(.05);airborne=elements.find(el=>el.dataset.airborne==='true');}
+  expect(airborne).toBeTruthy();root.querySelector('#detail').open=true;
+  advance(3);
+  expect(airborne.dataset.airborne).toBe('false');
+  expect(airborne.dataset.pose).toBe('sit');
+  const surface=airborne.parentElement.dataset.surface;
+  if(catSurfaces[surface])expect(parseFloat(airborne.style.top)).toBeCloseTo(catSurfaces[surface].y,3);
+  const position=airborne.style.cssText;advance(10);expect(airborne.style.cssText).toBe(position);
+  controller.destroy();
+});
+it('hides Viola at the outside portal endpoint while a dialog pauses roaming',()=>{
+  const {root,controller,elements}=setup();const viola=elements[0];let leaving=false;
+  for(let i=0;i<30000&&!leaving;i++){advance(.05);leaving=viola.dataset.airborne==='true'&&viola.parentElement.dataset.destination==='outside';}
+  expect(leaving).toBe(true);root.querySelector('#detail').open=true;advance(3);
+  expect(viola.parentElement.hidden).toBe(true);
+  root.querySelector('.room').dataset.windowOpen='false';advance(30);expect(viola.parentElement.hidden).toBe(true);
+  controller.destroy();
+});
 it('both cats explore every requested surface, return safely and keep Java indoors over thirty minutes',()=>{
   const {root,controller,elements}=setup();
   expect(Math.abs(parseFloat(elements[0].style.left)-parseFloat(elements[1].style.left))).toBeGreaterThanOrEqual(16);
@@ -70,9 +90,9 @@ it('sorts rear perches, foreground perches and resting floor cats around the per
   for(const element of elements)expect(element.parentElement.dataset.depth).toBe('front');
   controller.destroy();
 },30000);
-it('keeps occupied furniture clear, still explores other stops, and resets safely for reduced motion',()=>{
+it.each(['workstation','computer','notebook'])('keeps the occupied %s workstation clear and resets safely for reduced motion',activity=>{
   const {root,controller,elements}=setup(31);
-  root.querySelector('.room').dataset.activity='notebook';
+  root.querySelector('.room').dataset.activity=activity;
   const visits=new Set();
   for(let i=0;i<18000;i++) {
     advance(.05);

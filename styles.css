@@ -4,7 +4,7 @@
 .object-shape{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
 .object-shape path{fill:transparent;stroke:transparent;stroke-width:1.5px;stroke-linecap:round;stroke-linejoin:round;pointer-events:fill;cursor:pointer;transition:stroke .15s,filter .15s}
 .object:hover,.object:focus-visible{border:0;background:transparent;outline:none;box-shadow:none}
-.object:hover .object-shape path,.object:focus-visible .object-shape path{stroke:#fff2bcb3;filter:drop-shadow(0 0 4px #fff2bc)}
+.object:not([data-feedback="expired"]):hover .object-shape path,.object[data-feedback="active"] .object-shape path{stroke:#fff2bcb3;filter:drop-shadow(0 0 4px #fff2bc)}
 .object:focus-visible .object-shape path{stroke:#fff2bc;stroke-width:2px}
 .room-caption{display:flex;justify-content:space-between;padding:10px 8px 1px;font-size:11px;color:#615641}.room-caption i{display:inline-block;width:6px;height:6px;background:#718059;border-radius:50%;margin-right:7px}footer{width:min(1280px,92%);margin:23px auto 30px;display:flex;justify-content:space-between;color:var(--muted);font-size:11px}#destinations:not([hidden]){display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:24px}#destinations button{background:#ebe7db;border:1px solid #d9d3c4;padding:9px 15px;border-radius:30px}dialog{border:1px solid #d9cdb7;padding:0;width:min(630px,92vw);max-height:85vh;max-height:85dvh;background:#faf6eb;color:var(--ink);border-radius:12px;box-shadow:0 25px 100px #201b1740}dialog::backdrop{background:#28261f83;backdrop-filter:blur(5px)}.paper{padding:42px clamp(24px,6vw,52px)}.close{position:sticky;float:right;top:10px;margin:10px 10px -45px 0;width:36px;height:36px;border-radius:50%;border:1px solid #d5c9b5;background:#faf6eb;font-size:25px;line-height:1}.paper h2{font:400 34px/1.2 'Lora',Georgia,serif;margin:12px 0 25px}.paper h3{font:500 20px 'Lora',Georgia,serif;margin:25px 0 8px}.paper p{color:#656452}.paper article+article{border-top:1px solid #e2d9c8;margin-top:20px;padding-top:5px}.paper .note{font-size:12px;color:#837966;border-left:2px solid #d4bd95;padding-left:12px}.piece{padding:14px 0;border-bottom:1px solid #e2d9c8}.piece strong,.piece small{display:block}.piece small{color:var(--muted)}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
@@ -20,12 +20,12 @@ html,body{width:100%;height:100%;overflow:hidden;overscroll-behavior:none}body{b
 /* Different source-sheet padding is calibrated to the same 197.5px head width
    in the 1672px room. Foreground perspective is applied by the journey controller. */
 .sili{--standing-height:58%;--seated-height:51.91%;position:absolute;left:48.5%;bottom:10%;height:var(--standing-height);aspect-ratio:543/724;transform:translateX(-50%);pointer-events:none;z-index:1;transition:left 1.1s linear,bottom 1.1s linear}
-.sili-sprite{width:100%;height:100%;background:url('assets/sili-poses-v1.png') 0 0/400% 100% no-repeat}
+.sili-sprite{width:100%;height:100%;background:none 0 0/400% 100% no-repeat}
 
 .sili[data-pose="seated"] .sili-sprite,.sili[data-pose="playing"] .sili-sprite{background-size:600% 100%;background-position:0 0;transform:none;animation:none}
 .sili[data-pose="playing"] .sili-sprite{background-position:20% 0;animation:piano-hands 1.35s steps(1,end) infinite}
 .sili.at-piano{left:13.2%;bottom:15.46%;height:var(--seated-height);aspect-ratio:1}
-@keyframes piano-hands{0%,100%{background-position:20% 0}16%{background-position:40% 0}31%{background-position:60% 0}49%{background-position:80% 0}65%{background-position:60% 0}82%{background-position:100% 0}}
+@keyframes piano-hands{0%,100%{background-position:20% 0}16%{background-position:60% 0}31%{background-position:80% 0}49%{background-position:100% 0}65%{background-position:60% 0}82%{background-position:20% 0}}
 .sili[data-pose="seated"],.sili[data-pose="playing"]{transition:none}
 .sili.walking{height:var(--standing-height);bottom:10%}
 .sili.walking{aspect-ratio:543/724}
@@ -61,12 +61,12 @@ html,body{width:100%;height:100%;overflow:hidden;overscroll-behavior:none}body{b
 /* Nearly opaque content improves readability; positioning keeps activities visible. */
 dialog:not(.album-view){position:fixed;inset:50% 24px auto auto;transform:translateY(-50%);margin:0;width:min(480px,calc(100vw - 32px));max-height:82vh;max-height:82dvh;background:rgba(255,249,233,.92);color:#302b22;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);border-color:#fff5ddb3;box-shadow:0 12px 45px #30231833}
 dialog:not(.album-view)::backdrop{background:#24180f0d;backdrop-filter:none}
-dialog[data-entry="computer"]:not(.album-view),dialog[data-entry="notebook"]:not(.album-view),dialog[data-entry="cats"]:not(.album-view){right:auto;left:24px}
+dialog[data-entry="workstation"]:not(.album-view),dialog[data-entry="computer"]:not(.album-view),dialog[data-entry="notebook"]:not(.album-view),dialog[data-entry="cats"]:not(.album-view){right:auto;left:24px}
 dialog:not(.album-view) .paper{padding:30px 32px}
 dialog:not(.album-view) .paper p,dialog:not(.album-view) .paper small{color:#252016;font-weight:500}
 dialog:not(.album-view) .paper .note{color:#30291e}
 dialog:not(.album-view) .close{background:#fff8e2bd}
-@media(max-width:700px){dialog:not(.album-view),dialog[data-entry="computer"]:not(.album-view),dialog[data-entry="notebook"]:not(.album-view),dialog[data-entry="cats"]:not(.album-view){inset:auto 12px max(12px,env(safe-area-inset-bottom));transform:none;width:calc(100vw - 24px);max-height:43vh;max-height:43dvh}dialog:not(.album-view) .paper{padding:24px}}
+@media(max-width:700px){dialog:not(.album-view),dialog[data-entry="workstation"]:not(.album-view),dialog[data-entry="computer"]:not(.album-view),dialog[data-entry="notebook"]:not(.album-view),dialog[data-entry="cats"]:not(.album-view){inset:auto 12px max(12px,env(safe-area-inset-bottom));transform:none;width:calc(100vw - 24px);max-height:43vh;max-height:43dvh}dialog:not(.album-view) .paper{padding:24px}}
 
 /* Activity sheets share a 207px head in padded 576px cells: 197.5 room pixels. */
 .sili.is-activity{height:58.4%;aspect-ratio:1;transition:none}
@@ -75,13 +75,11 @@ dialog:not(.album-view) .close{background:#fff8e2bd}
 .sili[data-activity="desk"] .sili-sprite{background-size:100% 100%;background-position:0 0}
 .sili[data-pose="walk"] .sili-sprite{transform:scaleX(var(--walk-facing,1));animation:none}
 .sili[data-pose="walk"]{transition:none}
-.station-cup{position:absolute;left:46.6%;top:50.5%;width:3.3%;aspect-ratio:1;background:url('assets/station-cup-v1.png') center/contain no-repeat;pointer-events:none;z-index:1}
+.station-cup{position:absolute;left:46.6%;top:50.5%;width:3.3%;aspect-ratio:1;background:none center/contain no-repeat;pointer-events:none;z-index:1}
 .station-cup[hidden]{display:none}
 .album-table-patch{display:none;position:absolute;inset:0;width:100%;height:100%;pointer-events:none;clip-path:polygon(40.7% 86.1%,54% 86.1%,59% 91%,58.6% 100%,40.7% 100%)}
 .room.album-lifted .album-table-patch{display:block}
-.desk-foreground,.table-foreground,.table-empty-foreground{display:none;position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
-/* Enable desk occlusion only after seating; a full desk pass during approach cuts the chair back. */
-.sili[data-activity="desk"]~.desk-foreground{display:block}
+.table-foreground,.table-empty-foreground{display:none;position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
 .room.near-album .table-foreground,.room.near-album.album-lifted .table-empty-foreground{display:block;clip-path:polygon(38.87560% 95.64293%,39.23445% 94.15515%,40.19139% 92.87991%,41.68660% 91.49841%,43.66029% 90.32944%,46.05263% 89.47928%,48.74402% 88.94793%,51.43541% 88.84166%,54.12679% 89.16047%,56.81818% 89.90436%,58.85167% 91.17960%,60.70574% 92.66738%,62.50000% 94.47396%,63.87560% 96.81190%,64.47368% 100.00000%,38.87560% 100.00000%)}
 .room.album-lifted .table-foreground{display:none}
 
@@ -134,9 +132,10 @@ dialog.album-view::backdrop{background:#24180f65;backdrop-filter:blur(4px)}
 .cat-layer[hidden]{display:none}
 .cat-layer.at-window{clip-path:polygon(60% 19%,77% 19%,77% 49%,60% 49%)}
 .cat{position:absolute;width:14%;aspect-ratio:1;transform:translate(-50%,-88%);pointer-events:auto;display:block;padding:0;border:0;border-radius:16px;background:transparent;line-height:1}
-.cat-sprite{display:block;width:100%;height:100%;background:url('assets/viola-poses-v1.png') 0 0/600% 100% no-repeat;transform:scaleX(var(--facing,1))}
-.cat:hover .cat-sprite,.cat:focus-visible .cat-sprite{filter:drop-shadow(0 0 4px #fff2bc)}
-#java .cat-sprite{background-image:url('assets/java-poses-v1.png')}
+.cat-sprite{display:block;width:100%;height:100%;background:none 0 0/600% 100% no-repeat;transform:scaleX(var(--facing,1))}
+.cat:not([data-feedback="expired"]):hover .cat-sprite,.cat[data-feedback="active"] .cat-sprite{filter:drop-shadow(0 0 4px #fff2bc)}
+.cat-sprite{transition:filter .2s ease;}
+#java .cat-sprite{background-image:none}
 .cat[data-pose="walk"] .cat-sprite{background-position-x:calc(var(--frame,1) * 20%)}
 .cat[data-pose="groom"] .cat-sprite{background-position-x:60%}
 .cat[data-pose="sleep"] .cat-sprite{background-position-x:80%}
@@ -152,12 +151,10 @@ dialog.album-view::backdrop{background:#24180f65;backdrop-filter:blur(4px)}
 .desk-chair-clear{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;clip-path:polygon(74% 64%,90% 64%,91% 100%,73% 100%)}
 .desk-chair{position:absolute;left:74.0430622%;top:66.8437832%;height:33.0499469%;width:auto;max-width:none;pointer-events:none}
 .desk-chair-back{z-index:1}
-.desk-chair-front{z-index:2;display:none;-webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20629%20772%22%3E%3Cdefs%3E%3Cmask%20id%3D%22chairDepth%22%20maskUnits%3D%22userSpaceOnUse%22%20x%3D%220%22%20y%3D%220%22%20width%3D%22629%22%20height%3D%22772%22%20style%3D%22mask-type%3Aluminance%22%3E%3Crect%20width%3D%22629%22%20height%3D%22772%22%20fill%3D%22white%22%2F%3E%3Cpolygon%20fill%3D%22black%22%20points%3D%22111.238%2C240.152%20300.702%2C240.152%20442.800%2C225.943%20435.695%2C316.000%20336.227%2C344.360%20208.338%2C344.360%20118.343%2C315.938%22%2F%3E%3Cg%20fill%3D%22white%22%3E%3Cpolygon%20points%3D%220%2C0%20380%2C0%20380%2C265%200%2C265%22%2F%3E%3Cpolygon%20points%3D%22229.88%2C123.6%20264.17%2C125.56%20279.84%2C152.02%20319.03%2C381.26%20314.13%2C573.28%20303.36%2C736.89%20262.21%2C750.6%20242.62%2C731.01%20264.17%2C480.21%20267.11%2C328.36%20251.43%2C219.61%22%2F%3E%3C%2Fg%3E%3C%2Fmask%3E%3C%2Fdefs%3E%3Crect%20width%3D%22629%22%20height%3D%22772%22%20fill%3D%22white%22%20mask%3D%22url(%23chairDepth)%22%2F%3E%3C%2Fsvg%3E") 0 0/100% 100% no-repeat;mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20629%20772%22%3E%3Cdefs%3E%3Cmask%20id%3D%22chairDepth%22%20maskUnits%3D%22userSpaceOnUse%22%20x%3D%220%22%20y%3D%220%22%20width%3D%22629%22%20height%3D%22772%22%20style%3D%22mask-type%3Aluminance%22%3E%3Crect%20width%3D%22629%22%20height%3D%22772%22%20fill%3D%22white%22%2F%3E%3Cpolygon%20fill%3D%22black%22%20points%3D%22111.238%2C240.152%20300.702%2C240.152%20442.800%2C225.943%20435.695%2C316.000%20336.227%2C344.360%20208.338%2C344.360%20118.343%2C315.938%22%2F%3E%3Cg%20fill%3D%22white%22%3E%3Cpolygon%20points%3D%220%2C0%20380%2C0%20380%2C265%200%2C265%22%2F%3E%3Cpolygon%20points%3D%22229.88%2C123.6%20264.17%2C125.56%20279.84%2C152.02%20319.03%2C381.26%20314.13%2C573.28%20303.36%2C736.89%20262.21%2C750.6%20242.62%2C731.01%20264.17%2C480.21%20267.11%2C328.36%20251.43%2C219.61%22%2F%3E%3C%2Fg%3E%3C%2Fmask%3E%3C%2Fdefs%3E%3Crect%20width%3D%22629%22%20height%3D%22772%22%20fill%3D%22white%22%20mask%3D%22url(%23chairDepth)%22%2F%3E%3C%2Fsvg%3E") 0 0/100% 100% no-repeat}
+.desk-chair-front{z-index:2;display:none}
 .sili[data-activity="desk"]~.desk-chair-front{display:block}
 
-.sili[data-activity="desk"][data-desk-mode="computer"]~.desk-foreground{clip-path:polygon(77.23677% 77.63185%,82.14407% 77.63185%,84.25535% 74.18463%,87.05136% 72.56241%,88.07847% 74.08324%,88.30672% 83.20824%,89.44795% 85.84435%,88.64909% 89.19018%,85.62482% 89.89991%,84.31241% 87.56796%,82.37232% 89.19018%,80.88871% 88.58185%,80.43222% 86.45268%,81.00284% 83.00546%,78.94862% 81.89018%,77.23677% 80.16657%)}
 
-.sili[data-activity="desk"][data-desk-mode="writing"]~.desk-foreground{clip-path:polygon(77.12265% 77.12491%,82.14407% 77.12491%,84.36947% 73.98185%,88.82027% 69.92629%,90.24681% 70.73741%,90.76037% 72.76518%,90.36094% 83.10685%,91.67335% 86.04713%,90.81743% 89.29157%,88.07847% 89.89991%,86.76606% 87.77074%,85.05421% 89.19018%,82.77175% 89.29157%,81.97288% 87.36518%,81.97288% 85.13463%,82.82881% 82.09296%,79.46218% 82.09296%,77.17971% 80.06518%)}
 
 /* Cats remain above furniture patches on their supported landing surfaces. */
 .cat::before{content:"";position:absolute;left:34%;bottom:10%;width:32%;height:5%;border-radius:50%;background:#35241322;filter:blur(2px);pointer-events:none}
@@ -175,25 +172,25 @@ dialog.album-view::backdrop{background:#24180f65;backdrop-filter:blur(4px)}
 @keyframes quiet-purr{25%{opacity:.65}100%{opacity:0;transform:translate(7px,-5px) scale(1.5)}}
 @media(prefers-reduced-motion:reduce){.sili[data-cat-target] .sili-sprite,.cat[data-interaction] .cat-sprite{animation:none!important}.cat[data-interaction]::after{display:none}}
 
-/* The pointing cell has extra padding; preserve standing height and foot position. */
-.sili[data-activity="interactions"][data-activity-frame="5"] .sili-sprite{transform:scale(1.1);transform-origin:50% 95.66%}
+/* Match the pointing silhouette to the walking figure, anchored at the feet. */
+.sili[data-activity="interactions"][data-activity-frame="5"] .sili-sprite{transform:scale(.95);transform-origin:50% 95.49%}
 
 /* Keep every character atlas mounted; switching activities only changes visibility. */
 .sili .sili-sprite{position:relative;background-image:none}
 .sili-sheet{position:absolute;inset:0;background-repeat:no-repeat;background-size:inherit;background-position:inherit;visibility:hidden}
-.sheet-walking{background-image:url('assets/sili-walk-v2.png');inset:0 auto auto -16.6666667%;width:133.3333333%;height:100%;background-size:300% 200%;background-position:calc(var(--walk-column,0) * 50%) calc(var(--walk-row,0) * 100%);transform:translateY(var(--walk-ground-offset,-3.8125%)) scale(.96);transform-origin:50% 100%}
+.sheet-walking{background-image:none;inset:0 auto auto -16.6666667%;width:133.3333333%;height:100%;background-size:300% 200%;background-position:calc(var(--walk-column,0) * 50%) calc(var(--walk-row,0) * 100%);transform:translateY(var(--walk-ground-offset,-3.8125%)) scale(.96);transform-origin:50% 100%}
 .sili[data-walk-frame="1"]{--walk-ground-offset:-4%}
 .sili[data-walk-frame="2"]{--walk-ground-offset:-3.8125%}
 .sili[data-walk-frame="3"]{--walk-ground-offset:-3.0625%}
 .sili[data-walk-frame="4"]{--walk-ground-offset:-2.875%}
 .sili[data-walk-frame="5"]{--walk-ground-offset:-3.4375%}
 .sili[data-walk-frame="0"]{--walk-ground-offset:-3.8125%}
-.sheet-standing{background-image:url('assets/sili-poses-v1.png')}
-.sheet-piano{background-image:url('assets/sili-piano-v4.png')}
-.sheet-coffee{background-image:url('assets/sili-coffee-v3.png')}
-.sheet-computer{background-image:url('assets/sili-computer-v3.png')}
-.sheet-writing{background-image:url('assets/sili-writing-v2.png')}
-.sheet-interactions{background-image:url('assets/sili-interactions-v1.png')}
+.sheet-standing{background-image:none}
+.sheet-piano{background-image:none}
+.sheet-coffee{background-image:none}
+.sheet-computer{background-image:none}
+.sheet-writing{background-image:none}
+.sheet-interactions{background-image:none}
 .sili[data-pose="idle"] .sheet-standing,.sili[data-pose="walk"] .sheet-walking{visibility:visible}
 .sili[data-pose="seated"] .sheet-piano,.sili[data-pose="playing"] .sheet-piano{visibility:visible}
 .sili[data-pose="activity"][data-activity="coffee"] .sheet-coffee{visibility:visible}
@@ -229,3 +226,25 @@ dialog.album-view::backdrop{background:#24180f65;backdrop-filter:blur(4px)}
 
 /* The clean workstation underlay contains no loose pen; writing holds this prop. */
 .room:has(.sili[data-activity="desk"][data-desk-mode="writing"]) [data-part="writing-pen"]{visibility:hidden}
+
+/* The extra back-facing poses share the original coffee frame clock. */
+.sheet-coffee-brewing{background-size:400% 100%;background-position:calc((var(--activity-frame,4) - 4) * 33.3333333333%) 0}
+.sili[data-activity="coffee"][data-activity-frame="4"] .sheet-coffee,
+.sili[data-activity="coffee"][data-activity-frame="5"] .sheet-coffee,
+.sili[data-activity="coffee"][data-activity-frame="6"] .sheet-coffee,
+.sili[data-activity="coffee"][data-activity-frame="7"] .sheet-coffee{visibility:hidden}
+.sili[data-activity="coffee"][data-activity-frame="4"] .sheet-coffee-brewing,
+.sili[data-activity="coffee"][data-activity-frame="5"] .sheet-coffee-brewing,
+.sili[data-activity="coffee"][data-activity-frame="6"] .sheet-coffee-brewing,
+.sili[data-activity="coffee"][data-activity-frame="7"] .sheet-coffee-brewing{visibility:visible}
+
+/* Turn between registered upper-body poses while the seated anchor stays fixed. */
+.sili[data-activity="desk"] :is(.sheet-computer,.sheet-writing){visibility:visible;opacity:0;transition:opacity .2s ease;}
+.sili[data-activity="desk"][data-desk-mode="computer"] .sheet-computer,
+.sili[data-activity="desk"][data-desk-mode="writing"] .sheet-writing{opacity:1;}
+@media(prefers-reduced-motion:reduce){.sili[data-activity="desk"] :is(.sheet-computer,.sheet-writing){transition:none;}}
+
+/* Pointer activation feedback expires even when touch/programmatic focus stays.
+   Tab clears the pointer marker so keyboard focus remains easy to locate. */
+[data-feedback="expired"][data-feedback-input="pointer"]:focus-visible{outline:none;}
+.object[data-feedback="expired"][data-feedback-input="pointer"]:focus-visible .object-shape path{stroke:transparent;filter:none;}

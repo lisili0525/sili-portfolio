@@ -1,10 +1,14 @@
+import { canonicalEntry } from '../data/destinations.js';
 import { catMeetingPoint } from '../data/catInteraction.js';
+import layout from '../../assets/rebuilt/v1/layout.json';
+const pianoX=layout.seating.piano.x/1672*100;
+const pianoFeetY=layout.seating.piano.feetY/941*100;
 
 const walkingSpeed = 14;
 // A longer gait cycle softens the steps without slowing travel.
 const walkCycleDistance = 12;
 const walkFrames = 6;
-const isWorkstation = key => key === 'computer' || key === 'notebook';
+const isWorkstation = key => canonicalEntry(key) === 'workstation';
 // Interruptible room journeys. Coordinates describe Sili's feet in room percent.
 export function createJourneyController(root, services) {
   const sili = root.querySelector('#sili');
@@ -42,9 +46,9 @@ export function createJourneyController(root, services) {
     sili.style.height = `${height}%`;
     sili.style.bottom = `${100 - y - height * bottomPadding}%`;
   }
-  function visual(group, frame = 0) {
-    // The active coffee atlas contains only brew A/B, lean and sip.
-    if (group === 'coffee' && ![0, 1, 2, 3].includes(frame)) frame = 0;
+  function visual(group, frame = 0, coffeePhase = 'drinking') {
+    // Original tamp/sip atlas plus four back-facing brewing poses.
+    if (group === 'coffee' && ![0, 1, 2, 3, 4, 5, 6, 7].includes(frame)) frame = 0;
     sili.classList.remove('at-piano', 'walking', 'inactive');
     sili.classList.toggle('is-activity', Boolean(group));
     sili.dataset.pose = group ? 'activity' : 'idle';
@@ -52,7 +56,8 @@ export function createJourneyController(root, services) {
     sili.dataset.deskMode = group === 'desk' && (frame === 3 || frame === 4) ? 'writing' : 'computer';
     sili.style.setProperty('--activity-frame', frame);
     sili.dataset.activityFrame = String(frame);
-    sili.dispatchEvent(new CustomEvent('room:pose',{bubbles:true,detail:{group,frame}}));
+    sili.dataset.coffeePhase = room.dataset.coffeePhase = group === 'coffee' ? coffeePhase : 'idle';
+    sili.dispatchEvent(new CustomEvent('room:pose',{bubbles:true,detail:{group,frame,coffeePhase:room.dataset.coffeePhase}}));
     position();
   }
   function cancel() {
@@ -76,20 +81,21 @@ export function createJourneyController(root, services) {
       sili.dataset.pose = 'walk';
       sili.style.setProperty('--walk-facing', action.x < x ? -1 : 1);
       camera(action.x);
-    } else if (action.group) visual(action.group, action.frame);
+    } else if (action.group) visual(action.group, action.frame, action.coffeePhase);
     action.start?.();
   }
   function idleCycle() {
     if (!ready || motion.matches) return;
     if (activity === 'coffee') queue.push(pose('coffee', 2, random(12, 24)), pose('coffee', 3, 1.3), pose('coffee', 2, 1));
-    if (isWorkstation(activity)) {
-      queue.push(pose('desk', 1, random(8, 14)), pose('desk', 3, random(4, 7)), pose('desk', 0, random(2, 4)));
-    }
+    if (isWorkstation(activity)) queue.push(
+      pose('desk', 1, random(7, 11)), pose('desk', 0, .6),
+      pose('desk', 3, random(6, 9)), pose('desk', 4, random(2, 3)),
+      pose('desk', 0, .6));
   }
   function route(key, options = {}) {
     services.piano.select(key);
     room.classList.remove('piano-view');
-    if (key === 'music') { camera(13.2); return; }
+    if (key === 'music') { camera(pianoX); return; }
     visual(null);
     if(key==='cats'){
       const handle=services.cats?.beginInteraction({name:options.cat,mode:options.catInteraction,actor:{x,y}});
@@ -103,7 +109,11 @@ export function createJourneyController(root, services) {
     const finish = { duration: 0, end: arrived };
     if (key === 'coffee') {
       queue.push(walk(38.5, 84.4),
-        pose('coffee', 0, 1.2), pose('coffee', 1, .7), pose('coffee', 0, .65), pose('coffee', 1, .8),
+        pose('coffee', 0, 1.2, {coffeePhase:'tamping'}), pose('coffee', 1, .7, {coffeePhase:'tamping'}),
+        pose('coffee', 0, .65, {coffeePhase:'tamping'}), pose('coffee', 1, .8, {coffeePhase:'tamping'}),
+        pose('coffee', 4, .7, {coffeePhase:'locking'}), pose('coffee', 5, .5, {coffeePhase:'starting'}),
+        pose('coffee', 6, 3.6, {coffeePhase:'extracting'}),
+        pose('coffee', 7, .65, {coffeePhase:'taking'}),
         pose('coffee', 2, .6, { start: () => cup(true) }), finish);
     } else if (isWorkstation(key)) {
       queue.push(walk(69, 84), walk(81.4593, 90.1027), pose('desk', 0, .5), pose('desk', 1, .5), finish);
@@ -117,6 +127,7 @@ export function createJourneyController(root, services) {
     }
   }
   function select(key, options = {}) {
+    key=canonicalEntry(key);
     // Content opens only after the selected destination reports arrival.
     if(key===activity&&!ready&&resolveSelection&&key!=='cats') return pendingSelection;
     if(key==='cats'&&options.direct&&services.piano.keepsPiano) services.piano.stop();
@@ -126,13 +137,20 @@ export function createJourneyController(root, services) {
     }
     if (key === activity && ((ready && key !== 'cats') || (key === 'music' && services.piano.isEngaged))) return Promise.resolve(true);
     const previousActivity = activity;
+    const staySeated = isWorkstation(previousActivity) && isWorkstation(key) && sili.dataset.activity === 'desk';
     cancel(); ready = false; activity = key;
     room.dataset.activity = key;
     status.textContent = key === 'photos' ? 'Sili is picking up the photo album. Press Escape to cancel.' : '';
     const result = pendingSelection = new Promise(resolve => { resolveSelection = resolve; });
-    // Return the cup at the counter using the existing rear pose. The discarded
-    // cup-placement frame has an unnatural head angle and must not be shown.
-    if (heldCup) queue.push(pose('coffee', 0, .4, { start: () => cup(false) }));
+    // Legacy destination aliases resolve to the same seated workstation.
+    if (staySeated) {
+      visual('desk', 1);
+      queue.push(pose('desk', 1, .35), {duration:0,end:arrived});
+      if (motion.matches) drain();
+      return result;
+    }
+    // Return the cup with the back-facing reach, never a tamping frame.
+    if (heldCup) queue.push(pose('coffee', 7, .4, {coffeePhase:'returning', start: () => cup(false)}));
     if (heldBook) queue.push(pose('interactions', 1, .45, { end: () => book(false) }));
     if (isWorkstation(previousActivity)) queue.push(pose('desk', 0, .35));
     queue.push({ duration: 0, end: () => route(key, options) });
@@ -141,11 +159,11 @@ export function createJourneyController(root, services) {
   }
   function walkPiano(onArrival) {
     if (y > 89) queue.push(walk(x, 84));
-    if (!sili.classList.contains('at-piano')) queue.push(walk(13.2, 84));
+    if (!sili.classList.contains('at-piano')) queue.push(walk(pianoX, 84));
     queue.push({ duration: 0, end: () => {
       sili.style.left = ''; sili.style.bottom = ''; sili.style.height = '';
       sili.classList.remove('is-activity');
-      x = 13.2; y = 82.3; sili.dataset.depthY = String(y);
+      x = pianoX; y = pianoFeetY; sili.dataset.depthY = String(y);
       onArrival(); arrived();
     } });
     if (motion.matches) drain();

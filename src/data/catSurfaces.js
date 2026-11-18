@@ -1,5 +1,6 @@
 import { furniture } from "../scene/furnitureCatalog.js";
 import { coffeeStation, roomWindow, supportPoint } from "../scene/sceneObjects.js";
+import layout from '../../assets/rebuilt/v1/layout.json';
 
 // Coordinates describe paw contact points in the shared room artwork.
 export const catSurfaces = {
@@ -20,6 +21,9 @@ export const catSurfaces = {
   stool: supportPoint(furniture.stool,'step'),
   window: supportPoint(roomWindow,'sill')
 };
+// Recalibrated contacts belong to the new physical artwork, not the historical
+// room silhouettes. Width remains stage percent; contact coordinates are world.
+for(const [id,point] of Object.entries(layout.supports))catSurfaces[id]={...point,x:point.x/1672*100,y:point.y/941*100};
 
 // Each route returns by its incoming stepping stones before walking elsewhere.
 export const catExcursions = {

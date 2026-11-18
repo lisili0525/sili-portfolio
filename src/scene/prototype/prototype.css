@@ -1,0 +1,8 @@
+.scene-prototype .sili,.scene-prototype .cat-layer{display:none}
+.scene-prototype .room :is(.object,.window-control,.curtain-control,.cat){pointer-events:none}
+.scene-prototype .room *{animation:none!important;transition:none!important}
+.prototype-canvas{position:absolute;inset:0;pointer-events:none;z-index:1}
+.prototype-canvas canvas{display:block;width:100%!important;height:100%!important}
+.prototype-controls{position:fixed;left:12px;bottom:max(12px,env(safe-area-inset-bottom));z-index:10;display:flex;gap:6px;flex-wrap:wrap;align-items:center;max-width:calc(100vw - 24px);padding:8px;background:#faf3e6f5;border:1px solid #d5c4a9;border-radius:8px;font-size:12px}
+.prototype-controls p{margin:0;width:100%}
+.prototype-controls button,.prototype-controls a{padding:8px;border:1px solid #d5c4a9;border-radius:5px;background:#faf3e6;min-height:44px}

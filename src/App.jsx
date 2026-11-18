@@ -1,3 +1,5 @@
+import { useInteractionFeedback } from './hooks/useInteractionFeedback.js';
+import { canonicalEntry } from './data/destinations.js';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Room } from './components/Room.jsx';
 import { PhotoAlbum } from './components/PhotoAlbum.jsx';
@@ -11,9 +13,11 @@ export function App() {
   const origin = useRef(null), request = useRef(0), mounted = useRef(false), switchingDialog = useRef(false);
   const [entry,setEntry] = useState(null), [menu,setMenu] = useState(false), [spread,setSpread] = useState(0);
   const {services,piano} = useRoomRuntime(rootRef);
+  useInteractionFeedback(rootRef);
   const screen = useFullscreen();
   const closeMenu = useCallback((restore = false) => { setMenu(false); if (restore) exploreRef.current?.focus(); },[]);
   const openEntry = useCallback(async (key,trigger) => {
+    key=canonicalEntry(key);
     if (!entries[key]) return;
     if(key==='cats'&&trigger?.dataset.cat){
       request.current++;setMenu(false);origin.current=trigger;

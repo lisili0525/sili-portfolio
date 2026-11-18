@@ -1,0 +1,4414 @@
+{
+  "version": 1,
+  "world": {
+    "width": 1672,
+    "height": 941
+  },
+  "background": {
+    "file": "assets/objects/generated/bare-room.png",
+    "source": "assets/room-architecture-v3.png",
+    "opening": "M954 178 H1356 V441 H954 Z"
+  },
+  "sourceHashes": {
+    "assets/room-clean-v7.png": "740792a7aea907e6289c61b5a8fcf3bdc1d11aea34326f7991a0f291de4edc21",
+    "assets/objects/masters/rug-underpainting-v1.png": "856e763a1dbd503ec73c80a2eb63eabe83d6543e9a9559b6ca88a0c65299b07f",
+    "assets/room-hidden-surfaces-v1.png": "f0bb554cecd922f0a56e5976ada202c9a02d8a76d787c13589d11c7b584a964b",
+    "assets/objects/masters/furniture-underpainting-v1.png": "eb6fdfaa92fe56c143d06f2028b64fec05d56d02af34b4243c73e4382e68f18c",
+    "assets/room-workstation-no-pen-v1.png": "035661ba393f55d69892b387bc9ed3d991073140d66a9bd75ccf0a20a92b1fea",
+    "assets/objects/masters/desk-underpainting-v1.png": "54b8567ca28b55ab1fae5aa7f1f0484d1f9fe883085a5357ab9d0e262f4bed5a",
+    "assets/objects/masters/laptop-candidate-v1.png": "ed427a1ed95b783f807bc56717498b95a0ec85f62533f691f79b0f6f11f1d31e",
+    "assets/room-module-underpainting-v2.png": "b568b64ed0bb73046ef21adb08c9ec388cd29a8cb5d9532aba99aa61fc476f58",
+    "assets/window-closed-v1.png": "4987ef7cf07cc2e00914a94e54b8a8436e24695f267c61e6b5c5311e2a8ad339",
+    "assets/curtains-closed-v1.png": "a39fd3a9f712db83c6b2b0707ce02e69271efd94c60e1cdee3126ebec3bde646",
+    "assets/sili-poses-v1.png": "9aa8847d7321786e0422007a37f1ce6eb6cf430a57593a091f98e3fb70fcd86e",
+    "assets/sili-walk-v2.png": "507bccb122ae157f9c281c4f480441133e7e089dcdf0466bafab427af91d5287",
+    "assets/sili-piano-v4.png": "506634164bedd1250e05b40902cd1b8f1784e5a831fe5b5b6a2efc2b4540cb0b",
+    "assets/sili-coffee-v3.png": "53323486fb663d229d6ae347801c76d27a9aaf577e4b194808e2d5cfc34339a4",
+    "assets/sili-computer-v3.png": "fca4289ac282649f7f681021f2ca86bd26102493b7b1a80324c2de2f729b6acb",
+    "assets/sili-writing-v2.png": "14f250c62b13b4a95745eefb276dbb5dad67f4f660608fe9d92449cd2822a90d",
+    "assets/sili-interactions-v1.png": "d0464180c4c312ad6297150a044c785211d26510b2028c3329647192991b513e",
+    "assets/viola-poses-v1.png": "643c77b2bcc31bba302e57dd094b20a7a5d13d7ae47c30ec824a6caf4ea66871",
+    "assets/java-poses-v1.png": "080da6432febd386f2c9375dada2e54f5c84966ed53bea9a8e05b5cfa3d7ddaa",
+    "assets/room-architecture-v3.png": "275c82b7a06ff7ea6754971f1523d3aeb023e4d1b32019c3dea7471ee14a3fd9",
+    "assets/objects/masters/beam-underpainting-v1.png": "106082e08627c68d0b397aeb95cdbea5cf2f6da0f13f342b26ad0d03934a87af",
+    "assets/room-architecture-v1.png": "02595d0493b4dc5c19b142998e5dfbed8ffb0f6ea54f4ed46af196cd81f4f928"
+  },
+  "objects": [
+    {
+      "id": "rug--woven-rug",
+      "owner": "rug",
+      "source": "assets/room-clean-v7.png",
+      "path": "M498 824 L1171 824 L1253 941 L420 941 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "animation": null,
+      "pivot": [
+        836.5,
+        941
+      ],
+      "supports": null,
+      "key": "art-4ab64ac",
+      "repairSource": "assets/objects/masters/rug-underpainting-v1.png",
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [
+        "M650 905 Q664 867 733 848 Q828 823 954 837 Q1077 839 1129 892 Q1150 913 1146 941 L648 941 Z",
+        "M0 821 Q45 796 99 809 L129 817 Q206 809 251 823 L298 823 Q401 827 435 854 L456 891 L468 941 L0 941 Z",
+        "M20 155 Q20 139 49 140 L48 128 Q52 112 76 116 L91 107 L114 109 L126 120 L148 116 L167 121 L189 117 L211 129 L232 153 L224 173 L203 185 L209 206 L190 215 L175 210 L164 236 L147 244 L150 263 L137 278 L142 300 L130 323 L128 344 L108 367 L111 386 L91 402 L92 424 L82 438 L77 461 L69 478 L63 500 L55 505 L47 488 L53 465 L47 451 L55 435 L54 414 L63 395 L63 378 L47 367 L55 349 L53 333 L36 324 L38 304 L27 296 L37 275 L25 268 L22 252 L32 232 L19 220 L21 198 L28 183 L19 178 Z",
+        "M1507 120 H1672 V211 L1590 230 L1560 263 L1545 295 L1532 337 L1518 396 L1480 396 L1480 260 L1490 223 L1507 220 Z",
+        "M1504 545 L1512 542 L1516 520 L1524 514 L1531 537 L1541 526 L1548 533 L1543 548 L1556 549 L1554 563 L1533 575 L1510 569 Z",
+        "M976 844 L986 827 L1006 824 L1018 808 L1041 812 L1057 804 L1078 806 L1091 823 L1083 842 L1098 849 L1095 871 L1111 882 L1121 904 L1115 930 L1101 932 L1089 917 L1080 896 L1065 888 L1056 865 L1040 878 L1026 863 L1011 871 L1003 891 L988 883 L978 869 Z",
+        "M0 768 L15 779 L23 776 L37 783 L47 785 L59 801 L58 817 L0 819 Z",
+        "M692 861 L818 832 L855 833 L875 826 L910 824 L977 894 L975 906 L850 941 L824 939 L807 941 L714 932 L680 875 Z"
+      ],
+      "file": "assets/objects/generated/rug--woven-rug.png",
+      "bounds": {
+        "x": 414,
+        "y": 818,
+        "width": 845,
+        "height": 123
+      },
+      "alpha": true,
+      "sha256": "882224da820d8762cffc8c89c9e6a42a5e38026934210f56a0f89be99ba0e980",
+      "anchor": {
+        "x": 836.5,
+        "y": 941
+      },
+      "clippedByViewport": true,
+      "pixelCount": 91928,
+      "transparentPixels": 1481424
+    },
+    {
+      "id": "piano--cabinet",
+      "owner": "piano",
+      "source": "assets/room-hidden-surfaces-v1.png",
+      "path": "M10 365 Q8 361 17 361 L363 360 Q372 361 371 368 L370 378 L359 382 L360 479 L368 486 L371 519 L386 548 Q396 551 395 566 L393 605 Q391 622 382 633 L377 780 L358 782 L352 771 L62 776 L52 782 L14 782 L12 637 L0 617 L0 559 L10 546 L12 382 L12 380 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "animation": null,
+      "pivot": [
+        200.5,
+        788
+      ],
+      "supports": {
+        "top": {
+          "x": 275.88,
+          "y": 368.872,
+          "width": 9.8,
+          "group": "piano"
+        },
+        "keys": {
+          "x": 334.4,
+          "y": 564.6,
+          "width": 9.8,
+          "group": "piano"
+        }
+      },
+      "key": "art-60c11583",
+      "repairSource": "assets/objects/masters/furniture-underpainting-v1.png",
+      "renderSource": "assets/room-hidden-surfaces-v1.png",
+      "repairPaths": [
+        "M118 439 Q147 420 201 436 Q238 421 273 433 L290 517 L212 528 L136 530 Z",
+        "M20 155 Q20 139 49 140 L48 128 Q52 112 76 116 L91 107 L114 109 L126 120 L148 116 L167 121 L189 117 L211 129 L232 153 L224 173 L203 185 L209 206 L190 215 L175 210 L164 236 L147 244 L150 263 L137 278 L142 300 L130 323 L128 344 L108 367 L111 386 L91 402 L92 424 L82 438 L77 461 L69 478 L63 500 L55 505 L47 488 L53 465 L47 451 L55 435 L54 414 L63 395 L63 378 L47 367 L55 349 L53 333 L36 324 L38 304 L27 296 L37 275 L25 268 L22 252 L32 232 L19 220 L21 198 L28 183 L19 178 Z",
+        "M1507 120 H1672 V211 L1590 230 L1560 263 L1545 295 L1532 337 L1518 396 L1480 396 L1480 260 L1490 223 L1507 220 Z",
+        "M1504 545 L1512 542 L1516 520 L1524 514 L1531 537 L1541 526 L1548 533 L1543 548 L1556 549 L1554 563 L1533 575 L1510 569 Z",
+        "M976 844 L986 827 L1006 824 L1018 808 L1041 812 L1057 804 L1078 806 L1091 823 L1083 842 L1098 849 L1095 871 L1111 882 L1121 904 L1115 930 L1101 932 L1089 917 L1080 896 L1065 888 L1056 865 L1040 878 L1026 863 L1011 871 L1003 891 L988 883 L978 869 Z",
+        "M0 768 L15 779 L23 776 L37 783 L47 785 L59 801 L58 817 L0 819 Z"
+      ],
+      "file": "assets/objects/generated/piano--cabinet.png",
+      "bounds": {
+        "x": 0,
+        "y": 354,
+        "width": 401,
+        "height": 434
+      },
+      "alpha": true,
+      "sha256": "405b998ffa414b8a64185a7261aa7f793ac3a644c5aba8880ef262a87ed2217c",
+      "anchor": {
+        "x": 200.5,
+        "y": 788
+      },
+      "clippedByViewport": true,
+      "pixelCount": 157721,
+      "transparentPixels": 1415631
+    },
+    {
+      "id": "piano--keyboard",
+      "owner": "piano",
+      "source": "assets/room-clean-v7.png",
+      "path": "M42 549 L367 542 L392 558 L391 596 L40 604 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "animation": null,
+      "pivot": [
+        216,
+        610
+      ],
+      "supports": {
+        "top": {
+          "x": 275.88,
+          "y": 368.872,
+          "width": 9.8,
+          "group": "piano"
+        },
+        "keys": {
+          "x": 334.4,
+          "y": 564.6,
+          "width": 9.8,
+          "group": "piano"
+        }
+      },
+      "key": "art-198520f2",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/piano--keyboard.png",
+      "bounds": {
+        "x": 34,
+        "y": 536,
+        "width": 364,
+        "height": 74
+      },
+      "alpha": true,
+      "sha256": "1974af84b9ebcb61d470356db1d4352cdaaf6f5c0b652b33b2424599607a0221",
+      "anchor": {
+        "x": 216,
+        "y": 610
+      },
+      "clippedByViewport": false,
+      "pixelCount": 22129,
+      "transparentPixels": 1551223
+    },
+    {
+      "id": "piano--brass-trim",
+      "owner": "piano",
+      "source": "assets/room-clean-v7.png",
+      "path": "M42 545 Q197 544 365 534 L365 542 Q198 552 43 552 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "animation": "piano-brass-trim",
+      "pivot": [
+        203.5,
+        558
+      ],
+      "supports": {
+        "top": {
+          "x": 275.88,
+          "y": 368.872,
+          "width": 9.8,
+          "group": "piano"
+        },
+        "keys": {
+          "x": 334.4,
+          "y": 564.6,
+          "width": 9.8,
+          "group": "piano"
+        }
+      },
+      "key": "art-18c73b96",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/piano--brass-trim.png",
+      "bounds": {
+        "x": 36,
+        "y": 528,
+        "width": 335,
+        "height": 30
+      },
+      "alpha": true,
+      "sha256": "d4725aaabe4238683a8e87dcb9ad7fb05d8baa4242ea4693875d999a390f92f3",
+      "anchor": {
+        "x": 203.5,
+        "y": 558
+      },
+      "clippedByViewport": false,
+      "pixelCount": 5089,
+      "transparentPixels": 1568263
+    },
+    {
+      "id": "piano--sheet-music",
+      "owner": "piano",
+      "source": "assets/room-clean-v7.png",
+      "path": "M118 439 Q147 420 201 436 Q238 421 273 433 L290 517 L212 528 L136 530 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "animation": "music-paper",
+      "pivot": [
+        204,
+        536
+      ],
+      "supports": {
+        "top": {
+          "x": 275.88,
+          "y": 368.872,
+          "width": 9.8,
+          "group": "piano"
+        },
+        "keys": {
+          "x": 334.4,
+          "y": 564.6,
+          "width": 9.8,
+          "group": "piano"
+        }
+      },
+      "key": "art-e39b0c3a",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/piano--sheet-music.png",
+      "bounds": {
+        "x": 112,
+        "y": 422,
+        "width": 184,
+        "height": 114
+      },
+      "alpha": true,
+      "sha256": "3f455a5b913d922e048a4c5f143abf698455038c2874a938ff2f6dd94b1cdc6f",
+      "anchor": {
+        "x": 204,
+        "y": 536
+      },
+      "clippedByViewport": false,
+      "pixelCount": 16764,
+      "transparentPixels": 1556588
+    },
+    {
+      "id": "piano-bench--wooden-bench",
+      "owner": "piano-bench",
+      "source": "assets/room-clean-v7.png",
+      "path": "M84 697 Q106 684 151 680 L294 675 Q344 678 377 692 L382 711 L371 724 L374 799 L366 804 L355 800 L350 732 L332 736 L331 787 L322 792 L309 787 L306 740 L145 747 L144 801 L136 807 L121 802 L118 742 L106 735 L106 787 L98 793 L86 788 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "animation": null,
+      "pivot": [
+        233,
+        813
+      ],
+      "supports": {
+        "seat": {
+          "x": 239.096,
+          "y": 698.222,
+          "width": 11.2,
+          "group": "piano"
+        }
+      },
+      "key": "art-a39ebedc",
+      "repairSource": "assets/objects/masters/furniture-underpainting-v1.png",
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [
+        "M151 679 L192 676 L252 675 L293 674 L313 683 L330 694 L335 709 L336 742 L332 749 L327 749 L326 760 L321 762 L316 759 L315 767 L309 770 L304 766 L303 771 L297 774 L292 770 L290 774 L284 777 L279 773 L277 777 L271 779 L266 775 L264 779 L258 781 L253 777 L251 781 L245 782 L240 778 L238 782 L232 783 L227 779 L225 782 L219 783 L214 779 L213 782 L207 782 L202 777 L201 708 L192 695 L173 687 Z"
+      ],
+      "file": "assets/objects/generated/piano-bench--wooden-bench.png",
+      "bounds": {
+        "x": 78,
+        "y": 669,
+        "width": 310,
+        "height": 144
+      },
+      "alpha": true,
+      "sha256": "0a1beaab9df624ff1a76bc8244fef46918c6f417beba5d10472b1ed67d7136de",
+      "anchor": {
+        "x": 233,
+        "y": 813
+      },
+      "clippedByViewport": false,
+      "pixelCount": 27224,
+      "transparentPixels": 1546128
+    },
+    {
+      "id": "piano-bench--bench-blanket",
+      "owner": "piano-bench",
+      "source": "assets/room-clean-v7.png",
+      "path": "M151 679 L192 676 L252 675 L293 674 L313 683 L330 694 L335 709 L336 742 L332 749 L327 749 L326 760 L321 762 L316 759 L315 767 L309 770 L304 766 L303 771 L297 774 L292 770 L290 774 L284 777 L279 773 L277 777 L271 779 L266 775 L264 779 L258 781 L253 777 L251 781 L245 782 L240 778 L238 782 L232 783 L227 779 L225 782 L219 783 L214 779 L213 782 L207 782 L202 777 L201 708 L192 695 L173 687 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "animation": null,
+      "pivot": [
+        243.5,
+        789
+      ],
+      "supports": {
+        "seat": {
+          "x": 239.096,
+          "y": 698.222,
+          "width": 11.2,
+          "group": "piano"
+        }
+      },
+      "key": "art-5c5fba54",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/piano-bench--bench-blanket.png",
+      "bounds": {
+        "x": 145,
+        "y": 668,
+        "width": 197,
+        "height": 121
+      },
+      "alpha": true,
+      "sha256": "8061a5c5979f986cbc4f1c95aca5fae68443c5c37c6ac282216078b06a103f4e",
+      "anchor": {
+        "x": 243.5,
+        "y": 789
+      },
+      "clippedByViewport": false,
+      "pixelCount": 15566,
+      "transparentPixels": 1557786
+    },
+    {
+      "id": "wall-portrait--frame-and-portrait",
+      "owner": "wall-portrait",
+      "source": "assets/room-clean-v7.png",
+      "path": "M398 147 L614 146 Q622 146 622 155 L621 357 Q621 365 612 366 L399 366 Q391 366 392 357 L392 155 Q392 148 398 147 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "animation": null,
+      "pivot": [
+        507,
+        372
+      ],
+      "supports": null,
+      "key": "art-b6531b7e",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/wall-portrait--frame-and-portrait.png",
+      "bounds": {
+        "x": 386,
+        "y": 140,
+        "width": 242,
+        "height": 232
+      },
+      "alpha": true,
+      "sha256": "d641a3adc6e90a1b90237c0dfa646d412ca5c8a81eadde65190f74d1da762794",
+      "anchor": {
+        "x": 507,
+        "y": 372
+      },
+      "clippedByViewport": false,
+      "pixelCount": 53853,
+      "transparentPixels": 1519499
+    },
+    {
+      "id": "calendar--hanging-loop",
+      "owner": "calendar",
+      "source": "assets/room-clean-v7.png",
+      "path": "M669 170 L718 142 Q722 140 726 147 L770 170 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "animation": null,
+      "pivot": [
+        719.5,
+        176
+      ],
+      "supports": null,
+      "key": "art-5cdff358",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/calendar--hanging-loop.png",
+      "bounds": {
+        "x": 663,
+        "y": 136,
+        "width": 113,
+        "height": 40
+      },
+      "alpha": true,
+      "sha256": "5834ec93ffee33d50497a1e8f9f37bd059229c911d2ff28dee9f391cd8ab25f6",
+      "anchor": {
+        "x": 719.5,
+        "y": 176
+      },
+      "clippedByViewport": false,
+      "pixelCount": 2289,
+      "transparentPixels": 1571063
+    },
+    {
+      "id": "calendar--calendar-page",
+      "owner": "calendar",
+      "source": "assets/room-clean-v7.png",
+      "path": "M655 166 L783 166 Q791 165 791 174 L790 326 Q790 334 782 333 L655 333 Q647 333 648 325 L648 174 Q647 166 655 166 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "animation": "calendar-paper",
+      "pivot": [
+        719.5,
+        339
+      ],
+      "supports": null,
+      "key": "art-6c4e0de5",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/calendar--calendar-page.png",
+      "bounds": {
+        "x": 642,
+        "y": 160,
+        "width": 155,
+        "height": 179
+      },
+      "alpha": true,
+      "sha256": "388a15f20442358061f02449c73ded6125d6c65c217561cc264844188176aef6",
+      "anchor": {
+        "x": 719.5,
+        "y": 339
+      },
+      "clippedByViewport": false,
+      "pixelCount": 26226,
+      "transparentPixels": 1547126
+    },
+    {
+      "id": "coffee-cabinet--cabinet-and-counter",
+      "owner": "coffee-cabinet",
+      "source": "assets/room-clean-v7.png",
+      "path": "M502 527 L513 517 L821 517 L837 530 L835 545 L828 548 L831 710 L827 719 L815 718 L810 701 L528 701 L527 716 L509 718 L507 547 L501 544 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "animation": null,
+      "pivot": [
+        669,
+        725
+      ],
+      "supports": {
+        "counter": {
+          "x": 543.4,
+          "y": 521.314,
+          "width": 9.4,
+          "group": "counter"
+        }
+      },
+      "key": "art-5f34e969",
+      "repairSource": "assets/objects/masters/furniture-underpainting-v1.png",
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [
+        "M577 413 L593 411 L587 406 Q585 399 593 399 L626 399 Q635 400 628 410 L655 411 Q670 411 670 426 L670 497 L682 501 L682 522 L578 524 L574 513 L575 502 L577 497 L570 496 L571 424 Q570 416 577 413 Z",
+        "M686 388 L731 388 Q738 389 735 400 L732 422 L720 439 L722 448 L733 452 L741 518 Q741 524 733 524 L682 523 L680 517 L685 455 L697 447 L698 438 L686 424 L681 399 Q679 390 686 388 Z",
+        "M751 449 L760 446 L762 439 L779 440 L782 447 L790 449 L791 458 L785 463 Q797 474 798 486 L797 515 Q794 525 775 524 L754 522 Q744 519 746 509 L745 478 L752 464 L747 458 Z",
+        "M708 497 Q718 490 742 495 L743 500 Q758 495 753 508 Q751 514 742 514 L739 523 L713 524 Z"
+      ],
+      "file": "assets/objects/generated/coffee-cabinet--cabinet-and-counter.png",
+      "bounds": {
+        "x": 495,
+        "y": 511,
+        "width": 348,
+        "height": 214
+      },
+      "alpha": true,
+      "sha256": "1606b8b1477ec04706cc3f3f6c92130dea34b43869c09996a7871e6459bec8c6",
+      "anchor": {
+        "x": 669,
+        "y": 725
+      },
+      "clippedByViewport": false,
+      "pixelCount": 64269,
+      "transparentPixels": 1509083
+    },
+    {
+      "id": "tennis-corner--red-racket",
+      "owner": "tennis-corner",
+      "source": "assets/room-clean-v7.png",
+      "path": "M988 497 Q990 490 997 493 L1005 496 L1006 504 L986 576 Q1006 613 995 654 Q985 696 963 707 Q938 714 924 694 Q915 672 925 640 Q931 609 951 580 L976 549 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "animation": null,
+      "pivot": [
+        963,
+        715
+      ],
+      "supports": null,
+      "key": "art-4910c35d",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/tennis-corner--red-racket.png",
+      "bounds": {
+        "x": 914,
+        "y": 486,
+        "width": 98,
+        "height": 229
+      },
+      "alpha": true,
+      "sha256": "79bc17eee9910439631d9b78253f0ff8ba4df684593571d4caf282e86ff49e6c",
+      "anchor": {
+        "x": 963,
+        "y": 715
+      },
+      "clippedByViewport": false,
+      "pixelCount": 10140,
+      "transparentPixels": 1563212
+    },
+    {
+      "id": "tennis-corner--blue-racket",
+      "owner": "tennis-corner",
+      "source": "assets/room-clean-v7.png",
+      "path": "M1017 511 Q1025 506 1034 513 L1033 527 L1026 580 L1028 608 Q1041 626 1047 648 Q1060 693 1038 710 Q1015 725 990 709 Q966 694 973 666 Q977 636 997 613 L1011 578 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "animation": null,
+      "pivot": [
+        1012,
+        723
+      ],
+      "supports": null,
+      "key": "art-dbe46b3",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/tennis-corner--blue-racket.png",
+      "bounds": {
+        "x": 966,
+        "y": 503,
+        "width": 92,
+        "height": 220
+      },
+      "alpha": true,
+      "sha256": "a4fbb2f352f62d6432082238005fc3deb33628b1bbdd460a0e4141c292c2372c",
+      "anchor": {
+        "x": 1012,
+        "y": 723
+      },
+      "clippedByViewport": false,
+      "pixelCount": 8490,
+      "transparentPixels": 1564862
+    },
+    {
+      "id": "tennis-corner--ball-basket",
+      "owner": "tennis-corner",
+      "source": "assets/room-clean-v7.png",
+      "path": "M883 651 Q883 642 890 636 Q889 624 903 623 Q910 608 925 613 Q938 611 944 625 Q955 622 961 635 Q974 637 974 649 L967 704 Q966 716 933 716 Q900 716 892 704 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "animation": null,
+      "pivot": [
+        928.5,
+        722
+      ],
+      "supports": null,
+      "key": "art-99b683a",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/tennis-corner--ball-basket.png",
+      "bounds": {
+        "x": 877,
+        "y": 606,
+        "width": 103,
+        "height": 116
+      },
+      "alpha": true,
+      "sha256": "a0a8b8959eec6edb6df8cb3e3da399d34567d8630f6a6f59a19a19f4886b35ce",
+      "anchor": {
+        "x": 928.5,
+        "y": 722
+      },
+      "clippedByViewport": false,
+      "pixelCount": 8338,
+      "transparentPixels": 1565014
+    },
+    {
+      "id": "window-stool--stool-top",
+      "owner": "window-stool",
+      "source": "assets/room-clean-v7.png",
+      "path": "M1091 538 L1105 534 L1182 534 L1195 538 L1196 554 L1090 555 Z",
+      "edgePadding": 1,
+      "kind": "object",
+      "animation": null,
+      "pivot": [
+        1143,
+        558
+      ],
+      "supports": {
+        "step": {
+          "x": 1145.32,
+          "y": 606.945,
+          "width": 9.6,
+          "group": "window"
+        }
+      },
+      "key": "art-c3d6530d",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/window-stool--stool-top.png",
+      "bounds": {
+        "x": 1087,
+        "y": 531,
+        "width": 112,
+        "height": 27
+      },
+      "alpha": true,
+      "sha256": "9e54e770cd458f83469386337710741850290fdaaad009250e9e6ed4dfef4db7",
+      "anchor": {
+        "x": 1143,
+        "y": 558
+      },
+      "clippedByViewport": false,
+      "pixelCount": 2406,
+      "transparentPixels": 1570946
+    },
+    {
+      "id": "window-stool--stool-left-leg",
+      "owner": "window-stool",
+      "source": "assets/room-clean-v7.png",
+      "path": "M1100 554 L1116 554 L1090 714 L1081 717 L1072 714 Z",
+      "edgePadding": 1,
+      "kind": "object",
+      "animation": null,
+      "pivot": [
+        1094,
+        720
+      ],
+      "supports": {
+        "step": {
+          "x": 1145.32,
+          "y": 606.945,
+          "width": 9.6,
+          "group": "window"
+        }
+      },
+      "key": "art-90c9cced",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/window-stool--stool-left-leg.png",
+      "bounds": {
+        "x": 1069,
+        "y": 551,
+        "width": 50,
+        "height": 169
+      },
+      "alpha": true,
+      "sha256": "55742aeab0f80e31d2aabf83aca74a5ea6e6ac231c1992b8eea99dbe1172cb2f",
+      "anchor": {
+        "x": 1094,
+        "y": 720
+      },
+      "clippedByViewport": false,
+      "pixelCount": 3256,
+      "transparentPixels": 1570096
+    },
+    {
+      "id": "window-stool--stool-right-leg",
+      "owner": "window-stool",
+      "source": "assets/room-clean-v7.png",
+      "path": "M1170 554 L1187 554 L1205 713 L1198 717 L1188 714 Z",
+      "edgePadding": 1,
+      "kind": "object",
+      "animation": null,
+      "pivot": [
+        1187.5,
+        720
+      ],
+      "supports": {
+        "step": {
+          "x": 1145.32,
+          "y": 606.945,
+          "width": 9.6,
+          "group": "window"
+        }
+      },
+      "key": "art-3bb0b716",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/window-stool--stool-right-leg.png",
+      "bounds": {
+        "x": 1167,
+        "y": 551,
+        "width": 41,
+        "height": 169
+      },
+      "alpha": true,
+      "sha256": "0cb2894e350aa667e3abcf24e463ba5afc121a8516cda9503c5f8caa3edc6258",
+      "anchor": {
+        "x": 1187.5,
+        "y": 720
+      },
+      "clippedByViewport": false,
+      "pixelCount": 3252,
+      "transparentPixels": 1570100
+    },
+    {
+      "id": "window-stool--stool-step",
+      "owner": "window-stool",
+      "source": "assets/room-clean-v7.png",
+      "path": "M1082 601 L1194 600 L1199 606 L1199 622 L1078 623 L1077 607 Z",
+      "edgePadding": 1,
+      "kind": "object",
+      "animation": null,
+      "pivot": [
+        1138,
+        626
+      ],
+      "supports": {
+        "step": {
+          "x": 1145.32,
+          "y": 606.945,
+          "width": 9.6,
+          "group": "window"
+        }
+      },
+      "key": "art-d36b6a6f",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/window-stool--stool-step.png",
+      "bounds": {
+        "x": 1074,
+        "y": 597,
+        "width": 128,
+        "height": 29
+      },
+      "alpha": true,
+      "sha256": "97f84630e9a4d4f8a6ece21ba311f595d24fc0c6446d633e142a10c6802e620d",
+      "anchor": {
+        "x": 1138,
+        "y": 626
+      },
+      "clippedByViewport": false,
+      "pixelCount": 3033,
+      "transparentPixels": 1570319
+    },
+    {
+      "id": "window-stool--stool-lower-rung",
+      "owner": "window-stool",
+      "source": "assets/room-clean-v7.png",
+      "path": "M1092 669 L1183 669 L1185 682 L1090 682 Z",
+      "edgePadding": 1,
+      "kind": "object",
+      "animation": null,
+      "pivot": [
+        1137.5,
+        685
+      ],
+      "supports": {
+        "step": {
+          "x": 1145.32,
+          "y": 606.945,
+          "width": 9.6,
+          "group": "window"
+        }
+      },
+      "key": "art-7da90de5",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/window-stool--stool-lower-rung.png",
+      "bounds": {
+        "x": 1087,
+        "y": 666,
+        "width": 101,
+        "height": 19
+      },
+      "alpha": true,
+      "sha256": "d550d4bfd4195df7cf301c6aa2554c7678c450635482658662cdda207d83394a",
+      "anchor": {
+        "x": 1137.5,
+        "y": 685
+      },
+      "clippedByViewport": false,
+      "pixelCount": 1437,
+      "transparentPixels": 1571915
+    },
+    {
+      "id": "bookcase--wooden-bookcase",
+      "owner": "bookcase",
+      "source": "assets/room-clean-v7.png",
+      "path": "M1543 215 L1672 185 L1672 581 L1541 559 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "animation": null,
+      "pivot": [
+        1603.5,
+        587
+      ],
+      "supports": {
+        "top": {
+          "x": 1588.4,
+          "y": 211.725,
+          "width": 8.4,
+          "group": "bookcase"
+        },
+        "step": {
+          "x": 1596.76,
+          "y": 442.27,
+          "width": 8.4,
+          "group": "bookcase"
+        }
+      },
+      "key": "art-9c9df901",
+      "repairSource": "assets/objects/masters/furniture-underpainting-v1.png",
+      "renderSource": "assets/objects/masters/furniture-underpainting-v1.png",
+      "repairPaths": [
+        "M1564 257 L1580 255 L1580 321 L1564 322 Z",
+        "M1579 248 L1598 246 L1599 322 L1579 323 Z",
+        "M1598 247 L1617 246 L1617 321 L1598 322 Z",
+        "M1616 236 L1637 233 L1639 319 L1616 320 Z",
+        "M1637 235 L1657 235 L1657 319 L1638 319 Z",
+        "M1562 373 L1576 372 L1576 431 L1562 430 Z",
+        "M1575 360 L1596 360 L1596 431 L1575 431 Z",
+        "M1596 361 L1617 361 L1618 432 L1596 432 Z",
+        "M1616 350 L1637 350 L1638 432 L1617 432 Z",
+        "M1637 352 L1658 352 L1658 432 L1637 432 Z",
+        "M1591 472 L1611 472 L1611 539 L1591 537 Z",
+        "M1610 464 L1634 462 L1635 543 L1610 541 Z",
+        "M1634 465 L1658 464 L1658 548 L1634 545 Z",
+        "M20 155 Q20 139 49 140 L48 128 Q52 112 76 116 L91 107 L114 109 L126 120 L148 116 L167 121 L189 117 L211 129 L232 153 L224 173 L203 185 L209 206 L190 215 L175 210 L164 236 L147 244 L150 263 L137 278 L142 300 L130 323 L128 344 L108 367 L111 386 L91 402 L92 424 L82 438 L77 461 L69 478 L63 500 L55 505 L47 488 L53 465 L47 451 L55 435 L54 414 L63 395 L63 378 L47 367 L55 349 L53 333 L36 324 L38 304 L27 296 L37 275 L25 268 L22 252 L32 232 L19 220 L21 198 L28 183 L19 178 Z",
+        "M1507 120 H1672 V211 L1590 230 L1560 263 L1545 295 L1532 337 L1518 396 L1480 396 L1480 260 L1490 223 L1507 220 Z",
+        "M1504 545 L1512 542 L1516 520 L1524 514 L1531 537 L1541 526 L1548 533 L1543 548 L1556 549 L1554 563 L1533 575 L1510 569 Z",
+        "M976 844 L986 827 L1006 824 L1018 808 L1041 812 L1057 804 L1078 806 L1091 823 L1083 842 L1098 849 L1095 871 L1111 882 L1121 904 L1115 930 L1101 932 L1089 917 L1080 896 L1065 888 L1056 865 L1040 878 L1026 863 L1011 871 L1003 891 L988 883 L978 869 Z",
+        "M0 768 L15 779 L23 776 L37 783 L47 785 L59 801 L58 817 L0 819 Z"
+      ],
+      "file": "assets/objects/generated/bookcase--wooden-bookcase.png",
+      "bounds": {
+        "x": 1535,
+        "y": 179,
+        "width": 137,
+        "height": 408
+      },
+      "alpha": true,
+      "sha256": "9b9287d3797e2bee0466cdab34ed9a471462363c9bade0bc9ba8c1502534cd05",
+      "anchor": {
+        "x": 1603.5,
+        "y": 587
+      },
+      "clippedByViewport": true,
+      "pixelCount": 50474,
+      "transparentPixels": 1522878
+    },
+    {
+      "id": "bookcase--bookcase-top-book-01",
+      "owner": "bookcase",
+      "source": "assets/room-clean-v7.png",
+      "path": "M1564 257 L1580 255 L1580 321 L1564 322 Z",
+      "edgePadding": 0.6,
+      "kind": "book",
+      "repairColor": "#e4b089",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      },
+      "animation": null,
+      "pivot": [
+        1572,
+        325
+      ],
+      "supports": {
+        "top": {
+          "x": 1588.4,
+          "y": 211.725,
+          "width": 8.4,
+          "group": "bookcase"
+        },
+        "step": {
+          "x": 1596.76,
+          "y": 442.27,
+          "width": 8.4,
+          "group": "bookcase"
+        }
+      },
+      "key": "art-dadbc2ed",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/bookcase--bookcase-top-book-01.png",
+      "bounds": {
+        "x": 1561,
+        "y": 252,
+        "width": 22,
+        "height": 73
+      },
+      "alpha": true,
+      "sha256": "ec03e5ddc3288f9477df31a6045f18748cfda92ff6195af5d2aca17587ae3006",
+      "anchor": {
+        "x": 1572,
+        "y": 325
+      },
+      "clippedByViewport": false,
+      "pixelCount": 1215,
+      "transparentPixels": 1572137
+    },
+    {
+      "id": "bookcase--bookcase-top-book-02",
+      "owner": "bookcase",
+      "source": "assets/room-clean-v7.png",
+      "path": "M1579 248 L1598 246 L1599 322 L1579 323 Z",
+      "edgePadding": 0.6,
+      "kind": "book",
+      "repairColor": "#345b75",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      },
+      "animation": null,
+      "pivot": [
+        1589,
+        326
+      ],
+      "supports": {
+        "top": {
+          "x": 1588.4,
+          "y": 211.725,
+          "width": 8.4,
+          "group": "bookcase"
+        },
+        "step": {
+          "x": 1596.76,
+          "y": 442.27,
+          "width": 8.4,
+          "group": "bookcase"
+        }
+      },
+      "key": "art-904fc6d4",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/bookcase--bookcase-top-book-02.png",
+      "bounds": {
+        "x": 1576,
+        "y": 243,
+        "width": 26,
+        "height": 83
+      },
+      "alpha": true,
+      "sha256": "62651efc39565ce3820be80ec4be2651560a270373858bd1a7b041f560f546c2",
+      "anchor": {
+        "x": 1589,
+        "y": 326
+      },
+      "clippedByViewport": false,
+      "pixelCount": 1665,
+      "transparentPixels": 1571687
+    },
+    {
+      "id": "bookcase--bookcase-top-book-03",
+      "owner": "bookcase",
+      "source": "assets/room-clean-v7.png",
+      "path": "M1598 247 L1617 246 L1617 321 L1598 322 Z",
+      "edgePadding": 0.6,
+      "kind": "book",
+      "repairColor": "#737c47",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      },
+      "animation": null,
+      "pivot": [
+        1607.5,
+        325
+      ],
+      "supports": {
+        "top": {
+          "x": 1588.4,
+          "y": 211.725,
+          "width": 8.4,
+          "group": "bookcase"
+        },
+        "step": {
+          "x": 1596.76,
+          "y": 442.27,
+          "width": 8.4,
+          "group": "bookcase"
+        }
+      },
+      "key": "art-819c5b80",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/bookcase--bookcase-top-book-03.png",
+      "bounds": {
+        "x": 1595,
+        "y": 243,
+        "width": 25,
+        "height": 82
+      },
+      "alpha": true,
+      "sha256": "cc0a3ad8434b43f704de7badb287ad2f90200f44aeee54204b3c472cd0531c00",
+      "anchor": {
+        "x": 1607.5,
+        "y": 325
+      },
+      "clippedByViewport": false,
+      "pixelCount": 1616,
+      "transparentPixels": 1571736
+    },
+    {
+      "id": "bookcase--bookcase-top-book-04",
+      "owner": "bookcase",
+      "source": "assets/room-clean-v7.png",
+      "path": "M1616 236 L1637 233 L1639 319 L1616 320 Z",
+      "edgePadding": 0.6,
+      "kind": "book",
+      "repairColor": "#ebbd93",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      },
+      "animation": null,
+      "pivot": [
+        1627.5,
+        323
+      ],
+      "supports": {
+        "top": {
+          "x": 1588.4,
+          "y": 211.725,
+          "width": 8.4,
+          "group": "bookcase"
+        },
+        "step": {
+          "x": 1596.76,
+          "y": 442.27,
+          "width": 8.4,
+          "group": "bookcase"
+        }
+      },
+      "key": "art-c1c6fb9b",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/bookcase--bookcase-top-book-04.png",
+      "bounds": {
+        "x": 1613,
+        "y": 230,
+        "width": 29,
+        "height": 93
+      },
+      "alpha": true,
+      "sha256": "0d3766930b902c3da8a119b5e663f496039a422e4f3232453d046e879521a65f",
+      "anchor": {
+        "x": 1627.5,
+        "y": 323
+      },
+      "clippedByViewport": false,
+      "pixelCount": 2090,
+      "transparentPixels": 1571262
+    },
+    {
+      "id": "bookcase--bookcase-top-book-05",
+      "owner": "bookcase",
+      "source": "assets/room-clean-v7.png",
+      "path": "M1637 235 L1657 235 L1657 319 L1638 319 Z",
+      "edgePadding": 0.6,
+      "kind": "book",
+      "repairColor": "#c66537",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      },
+      "animation": null,
+      "pivot": [
+        1647,
+        322
+      ],
+      "supports": {
+        "top": {
+          "x": 1588.4,
+          "y": 211.725,
+          "width": 8.4,
+          "group": "bookcase"
+        },
+        "step": {
+          "x": 1596.76,
+          "y": 442.27,
+          "width": 8.4,
+          "group": "bookcase"
+        }
+      },
+      "key": "art-d6d93be3",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/bookcase--bookcase-top-book-05.png",
+      "bounds": {
+        "x": 1634,
+        "y": 232,
+        "width": 26,
+        "height": 90
+      },
+      "alpha": true,
+      "sha256": "d3138a42612376e0ea065164b373240f221ecf902c89c51bfb0f171a416f3fdd",
+      "anchor": {
+        "x": 1647,
+        "y": 322
+      },
+      "clippedByViewport": false,
+      "pixelCount": 1848,
+      "transparentPixels": 1571504
+    },
+    {
+      "id": "bookcase--bookcase-middle-book-01",
+      "owner": "bookcase",
+      "source": "assets/room-clean-v7.png",
+      "path": "M1562 373 L1576 372 L1576 431 L1562 430 Z",
+      "edgePadding": 0.6,
+      "kind": "book",
+      "repairColor": "#aa673c",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      },
+      "animation": null,
+      "pivot": [
+        1569,
+        434
+      ],
+      "supports": {
+        "top": {
+          "x": 1588.4,
+          "y": 211.725,
+          "width": 8.4,
+          "group": "bookcase"
+        },
+        "step": {
+          "x": 1596.76,
+          "y": 442.27,
+          "width": 8.4,
+          "group": "bookcase"
+        }
+      },
+      "key": "art-93b64bae",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/bookcase--bookcase-middle-book-01.png",
+      "bounds": {
+        "x": 1559,
+        "y": 369,
+        "width": 20,
+        "height": 65
+      },
+      "alpha": true,
+      "sha256": "2dfe145c91888da96a6ce888facaf5e3cfd1fe31ad1a5e24d9f8b1b8f68d79c0",
+      "anchor": {
+        "x": 1569,
+        "y": 434
+      },
+      "clippedByViewport": false,
+      "pixelCount": 960,
+      "transparentPixels": 1572392
+    },
+    {
+      "id": "bookcase--bookcase-middle-book-02",
+      "owner": "bookcase",
+      "source": "assets/room-clean-v7.png",
+      "path": "M1575 360 L1596 360 L1596 431 L1575 431 Z",
+      "edgePadding": 0.6,
+      "kind": "book",
+      "repairColor": "#798047",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      },
+      "animation": null,
+      "pivot": [
+        1585.5,
+        434
+      ],
+      "supports": {
+        "top": {
+          "x": 1588.4,
+          "y": 211.725,
+          "width": 8.4,
+          "group": "bookcase"
+        },
+        "step": {
+          "x": 1596.76,
+          "y": 442.27,
+          "width": 8.4,
+          "group": "bookcase"
+        }
+      },
+      "key": "art-ac8a57e6",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/bookcase--bookcase-middle-book-02.png",
+      "bounds": {
+        "x": 1572,
+        "y": 357,
+        "width": 27,
+        "height": 77
+      },
+      "alpha": true,
+      "sha256": "fcc86a09592fc958bb85aa88591836cb2e7829297181cecba330b8f4018e3d66",
+      "anchor": {
+        "x": 1585.5,
+        "y": 434
+      },
+      "clippedByViewport": false,
+      "pixelCount": 1679,
+      "transparentPixels": 1571673
+    },
+    {
+      "id": "bookcase--bookcase-middle-book-03",
+      "owner": "bookcase",
+      "source": "assets/room-clean-v7.png",
+      "path": "M1596 361 L1617 361 L1618 432 L1596 432 Z",
+      "edgePadding": 0.6,
+      "kind": "book",
+      "repairColor": "#375d79",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      },
+      "animation": null,
+      "pivot": [
+        1607,
+        435
+      ],
+      "supports": {
+        "top": {
+          "x": 1588.4,
+          "y": 211.725,
+          "width": 8.4,
+          "group": "bookcase"
+        },
+        "step": {
+          "x": 1596.76,
+          "y": 442.27,
+          "width": 8.4,
+          "group": "bookcase"
+        }
+      },
+      "key": "art-afd1dd5f",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/bookcase--bookcase-middle-book-03.png",
+      "bounds": {
+        "x": 1593,
+        "y": 358,
+        "width": 28,
+        "height": 77
+      },
+      "alpha": true,
+      "sha256": "b1ec86a9b71d732b87da640cd05097749372fe5030eeca7889c2ba9679c714a6",
+      "anchor": {
+        "x": 1607,
+        "y": 435
+      },
+      "clippedByViewport": false,
+      "pixelCount": 1714,
+      "transparentPixels": 1571638
+    },
+    {
+      "id": "bookcase--bookcase-middle-book-04",
+      "owner": "bookcase",
+      "source": "assets/room-clean-v7.png",
+      "path": "M1616 350 L1637 350 L1638 432 L1617 432 Z",
+      "edgePadding": 0.6,
+      "kind": "book",
+      "repairColor": "#e6ba93",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      },
+      "animation": null,
+      "pivot": [
+        1627,
+        435
+      ],
+      "supports": {
+        "top": {
+          "x": 1588.4,
+          "y": 211.725,
+          "width": 8.4,
+          "group": "bookcase"
+        },
+        "step": {
+          "x": 1596.76,
+          "y": 442.27,
+          "width": 8.4,
+          "group": "bookcase"
+        }
+      },
+      "key": "art-9b657740",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/bookcase--bookcase-middle-book-04.png",
+      "bounds": {
+        "x": 1613,
+        "y": 347,
+        "width": 28,
+        "height": 88
+      },
+      "alpha": true,
+      "sha256": "642cae7045c59d5aeff075cf72a18aaa0ddcad9cacd9b3f2c638535e5add5fbc",
+      "anchor": {
+        "x": 1627,
+        "y": 435
+      },
+      "clippedByViewport": false,
+      "pixelCount": 1929,
+      "transparentPixels": 1571423
+    },
+    {
+      "id": "bookcase--bookcase-middle-book-05",
+      "owner": "bookcase",
+      "source": "assets/room-clean-v7.png",
+      "path": "M1637 352 L1658 352 L1658 432 L1637 432 Z",
+      "edgePadding": 0.6,
+      "kind": "book",
+      "repairColor": "#b77844",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      },
+      "animation": null,
+      "pivot": [
+        1647.5,
+        435
+      ],
+      "supports": {
+        "top": {
+          "x": 1588.4,
+          "y": 211.725,
+          "width": 8.4,
+          "group": "bookcase"
+        },
+        "step": {
+          "x": 1596.76,
+          "y": 442.27,
+          "width": 8.4,
+          "group": "bookcase"
+        }
+      },
+      "key": "art-8f66c5d2",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/bookcase--bookcase-middle-book-05.png",
+      "bounds": {
+        "x": 1634,
+        "y": 349,
+        "width": 27,
+        "height": 86
+      },
+      "alpha": true,
+      "sha256": "0e36452ebda1c51d1a034605e397121e85178b941215dd0046e2e8297ec887d5",
+      "anchor": {
+        "x": 1647.5,
+        "y": 435
+      },
+      "clippedByViewport": false,
+      "pixelCount": 1886,
+      "transparentPixels": 1571466
+    },
+    {
+      "id": "bookcase--bookcase-bottom-book-01",
+      "owner": "bookcase",
+      "source": "assets/room-clean-v7.png",
+      "path": "M1591 472 L1611 472 L1611 539 L1591 537 Z",
+      "edgePadding": 0.6,
+      "kind": "book",
+      "repairColor": "#ecc09b",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      },
+      "animation": null,
+      "pivot": [
+        1601,
+        542
+      ],
+      "supports": {
+        "top": {
+          "x": 1588.4,
+          "y": 211.725,
+          "width": 8.4,
+          "group": "bookcase"
+        },
+        "step": {
+          "x": 1596.76,
+          "y": 442.27,
+          "width": 8.4,
+          "group": "bookcase"
+        }
+      },
+      "key": "art-241095e0",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/bookcase--bookcase-bottom-book-01.png",
+      "bounds": {
+        "x": 1588,
+        "y": 469,
+        "width": 26,
+        "height": 73
+      },
+      "alpha": true,
+      "sha256": "c72688d343c826ee9e498d0e323168640cd69b4ad11779c1b56dac8774e97393",
+      "anchor": {
+        "x": 1601,
+        "y": 542
+      },
+      "clippedByViewport": false,
+      "pixelCount": 1496,
+      "transparentPixels": 1571856
+    },
+    {
+      "id": "bookcase--bookcase-bottom-book-02",
+      "owner": "bookcase",
+      "source": "assets/room-clean-v7.png",
+      "path": "M1610 464 L1634 462 L1635 543 L1610 541 Z",
+      "edgePadding": 0.6,
+      "kind": "book",
+      "repairColor": "#345b78",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      },
+      "animation": null,
+      "pivot": [
+        1622.5,
+        546
+      ],
+      "supports": {
+        "top": {
+          "x": 1588.4,
+          "y": 211.725,
+          "width": 8.4,
+          "group": "bookcase"
+        },
+        "step": {
+          "x": 1596.76,
+          "y": 442.27,
+          "width": 8.4,
+          "group": "bookcase"
+        }
+      },
+      "key": "art-5795ba39",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/bookcase--bookcase-bottom-book-02.png",
+      "bounds": {
+        "x": 1607,
+        "y": 459,
+        "width": 31,
+        "height": 87
+      },
+      "alpha": true,
+      "sha256": "ccb589c9fee2b640c0b67c9d162379b7df073a44cc5fe52a03a66430ff453f22",
+      "anchor": {
+        "x": 1622.5,
+        "y": 546
+      },
+      "clippedByViewport": false,
+      "pixelCount": 2145,
+      "transparentPixels": 1571207
+    },
+    {
+      "id": "bookcase--bookcase-bottom-book-03",
+      "owner": "bookcase",
+      "source": "assets/room-clean-v7.png",
+      "path": "M1634 465 L1658 464 L1658 548 L1634 545 Z",
+      "edgePadding": 0.6,
+      "kind": "book",
+      "repairColor": "#d99960",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      },
+      "animation": null,
+      "pivot": [
+        1646,
+        551
+      ],
+      "supports": {
+        "top": {
+          "x": 1588.4,
+          "y": 211.725,
+          "width": 8.4,
+          "group": "bookcase"
+        },
+        "step": {
+          "x": 1596.76,
+          "y": 442.27,
+          "width": 8.4,
+          "group": "bookcase"
+        }
+      },
+      "key": "art-3aa5f32",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/bookcase--bookcase-bottom-book-03.png",
+      "bounds": {
+        "x": 1631,
+        "y": 461,
+        "width": 30,
+        "height": 90
+      },
+      "alpha": true,
+      "sha256": "b0a7bcf659e620b7ffb3214ae8035526a666ebdb9e72f97734bcc0bbdb05c657",
+      "anchor": {
+        "x": 1646,
+        "y": 551
+      },
+      "clippedByViewport": false,
+      "pixelCount": 2184,
+      "transparentPixels": 1571168
+    },
+    {
+      "id": "work-desk--desk-frame",
+      "owner": "work-desk",
+      "source": "assets/room-workstation-no-pen-v1.png",
+      "path": "M1213 596 L1296 583 L1460 568 L1560 582 L1672 598 L1672 717 L1552 725 L1211 623 Z M1241 640 L1285 655 L1259 804 L1244 815 Q1230 815 1210 808 L1208 801 Z M1516 715 L1579 715 L1558 913 Q1544 927 1528 927 Q1510 926 1491 915 L1490 911 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "animation": null,
+      "pivot": [
+        1437,
+        933
+      ],
+      "supports": {
+        "top": {
+          "x": 1554.96,
+          "y": 663.405,
+          "width": 10,
+          "group": "workstation"
+        }
+      },
+      "key": "art-f0423799",
+      "repairSource": "assets/objects/masters/desk-underpainting-v1.png",
+      "renderSource": "assets/room-workstation-no-pen-v1.png",
+      "repairPaths": [
+        "M1297 593 L1327 579 L1359 505 Q1361 497 1373 499 L1471 502 Q1482 503 1478 516 L1456 575 L1483 597 L1440 627 L1351 613 L1297 604 Z",
+        "M1401 568 L1478 572 L1501 575 L1567 602 L1556 641 L1552 653 L1538 665 L1460 650 L1437 651 L1368 638 Z",
+        "M1473 655 L1513 623 Q1521 615 1527 623 Q1531 628 1525 633 L1488 666 Q1481 672 1475 666 Q1470 662 1473 655 Z",
+        "M1284 550 L1281 535 L1285 532 L1291 545 L1296 531 L1300 534 L1298 547 L1310 534 L1315 536 L1309 550 Z",
+        "M1278 549 Q1294 541 1315 547 L1310 586 L1282 591 Z",
+        "M1424 435 L1440 411 L1466 402 L1474 384 Q1484 375 1496 384 L1500 399 L1578 456 L1582 468 L1556 558 L1576 570 L1578 588 L1533 595 L1519 588 L1520 578 L1539 568 L1562 470 L1492 417 L1506 449 L1499 466 L1479 468 Z",
+        "M1596 579 L1665 582 L1671 608 L1662 615 L1594 606 L1594 583 Z",
+        "M1576 607 L1594 609 L1665 615 L1670 631 L1660 644 L1575 630 L1568 622 L1568 615 Z",
+        "M1574 631 L1660 643 L1670 641 L1671 655 L1658 669 L1576 654 L1568 646 L1568 638 Z",
+        "M1504 545 L1512 542 L1516 520 L1524 514 L1531 537 L1541 526 L1548 533 L1543 548 L1556 549 L1554 563 L1533 575 L1510 569 Z"
+      ],
+      "file": "assets/objects/generated/work-desk--desk-frame.png",
+      "bounds": {
+        "x": 1202,
+        "y": 562,
+        "width": 470,
+        "height": 371
+      },
+      "alpha": true,
+      "sha256": "d10eca18438f0d419ea7c7d51f7c7bb720f9a6156e0f22ce908a95b02a5abcd8",
+      "anchor": {
+        "x": 1437,
+        "y": 933
+      },
+      "clippedByViewport": true,
+      "pixelCount": 76530,
+      "transparentPixels": 1496822
+    },
+    {
+      "id": "computer--laptop",
+      "owner": "computer",
+      "source": "assets/room-workstation-no-pen-v1.png",
+      "path": "M1297 593 L1327 579 L1359 505 Q1361 497 1373 499 L1471 502 Q1482 503 1478 516 L1456 575 L1483 597 L1440 627 L1351 613 L1297 604 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "animation": null,
+      "pivot": [
+        1388,
+        631
+      ],
+      "supports": null,
+      "completionSource": "assets/objects/masters/laptop-candidate-v1.png",
+      "key": "art-6e83518b",
+      "repairSource": null,
+      "renderSource": "assets/room-workstation-no-pen-v1.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/computer--laptop.png",
+      "bounds": {
+        "x": 1291,
+        "y": 493,
+        "width": 194,
+        "height": 138
+      },
+      "alpha": true,
+      "sha256": "334c9ada519bf78f4cd7ac64a5330cdf95f8f4f853e42b184ab04917e9b8c7d5",
+      "anchor": {
+        "x": 1388,
+        "y": 631
+      },
+      "clippedByViewport": false,
+      "pixelCount": 17470,
+      "transparentPixels": 1555882
+    },
+    {
+      "id": "desk-notebook--open-notebook",
+      "owner": "desk-notebook",
+      "source": "assets/room-workstation-no-pen-v1.png",
+      "path": "M1401 568 L1478 572 L1501 575 L1567 602 L1556 641 L1552 653 L1538 665 L1460 650 L1437 651 L1368 638 Z",
+      "edgePadding": 1,
+      "kind": "object",
+      "animation": null,
+      "pivot": [
+        1467.5,
+        668
+      ],
+      "supports": null,
+      "key": "art-ac11adc6",
+      "repairSource": null,
+      "renderSource": "assets/room-workstation-no-pen-v1.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/desk-notebook--open-notebook.png",
+      "bounds": {
+        "x": 1365,
+        "y": 565,
+        "width": 205,
+        "height": 103
+      },
+      "alpha": true,
+      "sha256": "9e5eb3708a3327e2c2ff8ac8cc23ebeb5b98a5186425331492679e1903b62337",
+      "anchor": {
+        "x": 1467.5,
+        "y": 668
+      },
+      "clippedByViewport": false,
+      "pixelCount": 14254,
+      "transparentPixels": 1559098
+    },
+    {
+      "id": "desk-notebook--writing-pen",
+      "owner": "desk-notebook",
+      "source": "assets/room-hidden-surfaces-v1.png",
+      "path": "M1473 655 L1513 623 Q1521 615 1527 623 Q1531 628 1525 633 L1488 666 Q1481 672 1475 666 Q1470 662 1473 655 Z",
+      "edgePadding": 0,
+      "kind": "object",
+      "animation": "pen-idle",
+      "pivot": [
+        1500.5,
+        671
+      ],
+      "supports": null,
+      "key": "art-118e5b1c",
+      "repairSource": null,
+      "renderSource": "assets/room-hidden-surfaces-v1.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/desk-notebook--writing-pen.png",
+      "bounds": {
+        "x": 1470,
+        "y": 617,
+        "width": 61,
+        "height": 54
+      },
+      "alpha": true,
+      "sha256": "ba2a3512356501bad15dccda97ebbf0be591c0aa72a8f5e95433583690a1d347",
+      "anchor": {
+        "x": 1500.5,
+        "y": 671
+      },
+      "clippedByViewport": false,
+      "pixelCount": 1149,
+      "transparentPixels": 1572203
+    },
+    {
+      "id": "stationery--pencils",
+      "owner": "stationery",
+      "source": "assets/room-workstation-no-pen-v1.png",
+      "path": "M1284 550 L1281 535 L1285 532 L1291 545 L1296 531 L1300 534 L1298 547 L1310 534 L1315 536 L1309 550 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "animation": null,
+      "pivot": [
+        1298,
+        556
+      ],
+      "supports": null,
+      "key": "art-91da04e",
+      "repairSource": null,
+      "renderSource": "assets/room-workstation-no-pen-v1.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/stationery--pencils.png",
+      "bounds": {
+        "x": 1275,
+        "y": 525,
+        "width": 46,
+        "height": 31
+      },
+      "alpha": true,
+      "sha256": "f59251a32b29502eb9fa21cc0b8621c9797d271c4afb12e03b3c9e50a4561c7c",
+      "anchor": {
+        "x": 1298,
+        "y": 556
+      },
+      "clippedByViewport": false,
+      "pixelCount": 866,
+      "transparentPixels": 1572486
+    },
+    {
+      "id": "stationery--pencil-cup",
+      "owner": "stationery",
+      "source": "assets/room-workstation-no-pen-v1.png",
+      "path": "M1278 549 Q1294 541 1315 547 L1310 586 L1282 591 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "animation": null,
+      "pivot": [
+        1296.5,
+        597
+      ],
+      "supports": null,
+      "key": "art-2e80bf83",
+      "repairSource": null,
+      "renderSource": "assets/room-workstation-no-pen-v1.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/stationery--pencil-cup.png",
+      "bounds": {
+        "x": 1272,
+        "y": 539,
+        "width": 49,
+        "height": 58
+      },
+      "alpha": true,
+      "sha256": "0b551770b91194ff99f6449ebd339a8d30ee94c034254f6e2c54e98cbd2739ff",
+      "anchor": {
+        "x": 1296.5,
+        "y": 597
+      },
+      "clippedByViewport": false,
+      "pixelCount": 2009,
+      "transparentPixels": 1571343
+    },
+    {
+      "id": "desk-lamp--lamp",
+      "owner": "desk-lamp",
+      "source": "assets/room-workstation-no-pen-v1.png",
+      "path": "M1424 435 L1440 411 L1466 402 L1474 384 Q1484 375 1496 384 L1500 399 L1578 456 L1582 468 L1556 558 L1576 570 L1578 588 L1533 595 L1519 588 L1520 578 L1539 568 L1562 470 L1492 417 L1506 449 L1499 466 L1479 468 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "animation": null,
+      "pivot": [
+        1503,
+        601
+      ],
+      "supports": null,
+      "key": "art-6bf5fac",
+      "repairSource": null,
+      "renderSource": "assets/room-workstation-no-pen-v1.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/desk-lamp--lamp.png",
+      "bounds": {
+        "x": 1418,
+        "y": 374,
+        "width": 170,
+        "height": 227
+      },
+      "alpha": true,
+      "sha256": "9f5001eb26b0f521575334c2c693868ffa5acf140a308fcd5d7984fc06bc8804",
+      "anchor": {
+        "x": 1503,
+        "y": 601
+      },
+      "clippedByViewport": false,
+      "pixelCount": 12143,
+      "transparentPixels": 1561209
+    },
+    {
+      "id": "desk-books--desk-book-01",
+      "owner": "desk-books",
+      "source": "assets/room-workstation-no-pen-v1.png",
+      "path": "M1596 579 L1665 582 L1671 608 L1662 615 L1594 606 L1594 583 Z",
+      "edgePadding": 0.6,
+      "kind": "book",
+      "repairColor": "#9d6049",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      },
+      "animation": null,
+      "pivot": [
+        1631.5,
+        618
+      ],
+      "supports": null,
+      "key": "art-239f9cfd",
+      "repairSource": null,
+      "renderSource": "assets/room-workstation-no-pen-v1.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/desk-books--desk-book-01.png",
+      "bounds": {
+        "x": 1591,
+        "y": 576,
+        "width": 81,
+        "height": 42
+      },
+      "alpha": true,
+      "sha256": "7e93884306ac4c95db509690562fd73df7364f3bf71045a43f9d733d673caec5",
+      "anchor": {
+        "x": 1631.5,
+        "y": 618
+      },
+      "clippedByViewport": true,
+      "pixelCount": 2439,
+      "transparentPixels": 1570913
+    },
+    {
+      "id": "desk-books--desk-book-02",
+      "owner": "desk-books",
+      "source": "assets/room-workstation-no-pen-v1.png",
+      "path": "M1576 607 L1594 609 L1665 615 L1670 631 L1660 644 L1575 630 L1568 622 L1568 615 Z",
+      "edgePadding": 0.6,
+      "kind": "book",
+      "repairColor": "#497b6e",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      },
+      "animation": null,
+      "pivot": [
+        1618.5,
+        647
+      ],
+      "supports": null,
+      "key": "art-407ba65c",
+      "repairSource": null,
+      "renderSource": "assets/room-workstation-no-pen-v1.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/desk-books--desk-book-02.png",
+      "bounds": {
+        "x": 1565,
+        "y": 604,
+        "width": 107,
+        "height": 43
+      },
+      "alpha": true,
+      "sha256": "d21131d518b06c1fecfd5db514f72f619186f878b90eeb69f4f183f8cc859d16",
+      "anchor": {
+        "x": 1618.5,
+        "y": 647
+      },
+      "clippedByViewport": true,
+      "pixelCount": 2752,
+      "transparentPixels": 1570600
+    },
+    {
+      "id": "desk-books--desk-book-03",
+      "owner": "desk-books",
+      "source": "assets/room-workstation-no-pen-v1.png",
+      "path": "M1574 631 L1660 643 L1670 641 L1671 655 L1658 669 L1576 654 L1568 646 L1568 638 Z",
+      "edgePadding": 0.6,
+      "kind": "book",
+      "repairColor": "#a65946",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      },
+      "animation": null,
+      "pivot": [
+        1618.5,
+        672
+      ],
+      "supports": null,
+      "key": "art-eb3d97a7",
+      "repairSource": null,
+      "renderSource": "assets/room-workstation-no-pen-v1.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/desk-books--desk-book-03.png",
+      "bounds": {
+        "x": 1565,
+        "y": 628,
+        "width": 107,
+        "height": 44
+      },
+      "alpha": true,
+      "sha256": "ec33f1807e567a270332fb5441152df3980b73e6437b546ae4f15de09df4a5ca",
+      "anchor": {
+        "x": 1618.5,
+        "y": 672
+      },
+      "clippedByViewport": true,
+      "pixelCount": 2645,
+      "transparentPixels": 1570707
+    },
+    {
+      "id": "sofa--sofa-body",
+      "owner": "sofa",
+      "source": "assets/room-clean-v7.png",
+      "path": "M0 821 Q45 796 99 809 L129 817 Q206 809 251 823 L298 823 Q401 827 435 854 L456 891 L468 941 L0 941 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "animation": null,
+      "pivot": [
+        237,
+        941
+      ],
+      "supports": {
+        "seat": {
+          "x": 267.52,
+          "y": 851.605,
+          "width": 13,
+          "group": "sofa"
+        }
+      },
+      "key": "art-ed87468",
+      "repairSource": "assets/objects/masters/furniture-underpainting-v1.png",
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [
+        "M238 873 L258 855 L308 871 L408 851 Q427 853 429 872 L415 893 L440 941 L264 941 Z",
+        "M0 815 Q31 795 59 805 L80 810 L87 803 L111 810 L125 808 L150 825 L159 849 L183 941 L115 941 L84 884 L76 865 L53 850 L22 847 Z",
+        "M20 155 Q20 139 49 140 L48 128 Q52 112 76 116 L91 107 L114 109 L126 120 L148 116 L167 121 L189 117 L211 129 L232 153 L224 173 L203 185 L209 206 L190 215 L175 210 L164 236 L147 244 L150 263 L137 278 L142 300 L130 323 L128 344 L108 367 L111 386 L91 402 L92 424 L82 438 L77 461 L69 478 L63 500 L55 505 L47 488 L53 465 L47 451 L55 435 L54 414 L63 395 L63 378 L47 367 L55 349 L53 333 L36 324 L38 304 L27 296 L37 275 L25 268 L22 252 L32 232 L19 220 L21 198 L28 183 L19 178 Z",
+        "M1507 120 H1672 V211 L1590 230 L1560 263 L1545 295 L1532 337 L1518 396 L1480 396 L1480 260 L1490 223 L1507 220 Z",
+        "M1504 545 L1512 542 L1516 520 L1524 514 L1531 537 L1541 526 L1548 533 L1543 548 L1556 549 L1554 563 L1533 575 L1510 569 Z",
+        "M976 844 L986 827 L1006 824 L1018 808 L1041 812 L1057 804 L1078 806 L1091 823 L1083 842 L1098 849 L1095 871 L1111 882 L1121 904 L1115 930 L1101 932 L1089 917 L1080 896 L1065 888 L1056 865 L1040 878 L1026 863 L1011 871 L1003 891 L988 883 L978 869 Z",
+        "M0 768 L15 779 L23 776 L37 783 L47 785 L59 801 L58 817 L0 819 Z"
+      ],
+      "file": "assets/objects/generated/sofa--sofa-body.png",
+      "bounds": {
+        "x": 0,
+        "y": 799,
+        "width": 474,
+        "height": 142
+      },
+      "alpha": true,
+      "sha256": "2bf4bf4770a5d47b441f79960ad18df4dfe84e05e476bc40d5b4a517af56e369",
+      "anchor": {
+        "x": 237,
+        "y": 941
+      },
+      "clippedByViewport": true,
+      "pixelCount": 56507,
+      "transparentPixels": 1516845
+    },
+    {
+      "id": "sofa--sofa-cushion",
+      "owner": "sofa",
+      "source": "assets/room-clean-v7.png",
+      "path": "M238 873 L258 855 L308 871 L408 851 Q427 853 429 872 L415 893 L440 941 L264 941 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "animation": null,
+      "pivot": [
+        331.5,
+        941
+      ],
+      "supports": {
+        "seat": {
+          "x": 267.52,
+          "y": 851.605,
+          "width": 13,
+          "group": "sofa"
+        }
+      },
+      "key": "art-300b0a5f",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/sofa--sofa-cushion.png",
+      "bounds": {
+        "x": 233,
+        "y": 846,
+        "width": 197,
+        "height": 95
+      },
+      "alpha": true,
+      "sha256": "6850d939bf90f3895282f09c2f71eae0ae142851c2cb612e08072ceabfbd5f97",
+      "anchor": {
+        "x": 331.5,
+        "y": 941
+      },
+      "clippedByViewport": true,
+      "pixelCount": 11905,
+      "transparentPixels": 1561447
+    },
+    {
+      "id": "sofa--sofa-throw",
+      "owner": "sofa",
+      "source": "assets/room-clean-v7.png",
+      "path": "M0 815 Q31 795 59 805 L80 810 L87 803 L111 810 L125 808 L150 825 L159 849 L183 941 L115 941 L84 884 L76 865 L53 850 L22 847 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "animation": null,
+      "pivot": [
+        94.5,
+        941
+      ],
+      "supports": {
+        "seat": {
+          "x": 267.52,
+          "y": 851.605,
+          "width": 13,
+          "group": "sofa"
+        }
+      },
+      "key": "art-c5380aa6",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/sofa--sofa-throw.png",
+      "bounds": {
+        "x": 0,
+        "y": 796,
+        "width": 189,
+        "height": 145
+      },
+      "alpha": true,
+      "sha256": "0578ce3f8922ff7f874743ed8d04efdfd0ed1da18be0ac795800961f4a434966",
+      "anchor": {
+        "x": 94.5,
+        "y": 941
+      },
+      "clippedByViewport": true,
+      "pixelCount": 11683,
+      "transparentPixels": 1561669
+    },
+    {
+      "id": "coffee-table--round-coffee-table",
+      "owner": "coffee-table",
+      "source": "assets/room-hidden-surfaces-v1.png",
+      "path": "M650 905 Q664 867 733 848 Q828 823 954 837 Q1077 839 1129 892 Q1150 913 1146 941 L648 941 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "animation": null,
+      "pivot": [
+        897,
+        941
+      ],
+      "supports": {
+        "top": {
+          "x": 785.84,
+          "y": 903.36,
+          "width": 13,
+          "group": "table"
+        }
+      },
+      "key": "art-def1ef7f",
+      "repairSource": "assets/objects/masters/furniture-underpainting-v1.png",
+      "renderSource": "assets/room-hidden-surfaces-v1.png",
+      "repairPaths": [
+        "M20 155 Q20 139 49 140 L48 128 Q52 112 76 116 L91 107 L114 109 L126 120 L148 116 L167 121 L189 117 L211 129 L232 153 L224 173 L203 185 L209 206 L190 215 L175 210 L164 236 L147 244 L150 263 L137 278 L142 300 L130 323 L128 344 L108 367 L111 386 L91 402 L92 424 L82 438 L77 461 L69 478 L63 500 L55 505 L47 488 L53 465 L47 451 L55 435 L54 414 L63 395 L63 378 L47 367 L55 349 L53 333 L36 324 L38 304 L27 296 L37 275 L25 268 L22 252 L32 232 L19 220 L21 198 L28 183 L19 178 Z",
+        "M1507 120 H1672 V211 L1590 230 L1560 263 L1545 295 L1532 337 L1518 396 L1480 396 L1480 260 L1490 223 L1507 220 Z",
+        "M1504 545 L1512 542 L1516 520 L1524 514 L1531 537 L1541 526 L1548 533 L1543 548 L1556 549 L1554 563 L1533 575 L1510 569 Z",
+        "M976 844 L986 827 L1006 824 L1018 808 L1041 812 L1057 804 L1078 806 L1091 823 L1083 842 L1098 849 L1095 871 L1111 882 L1121 904 L1115 930 L1101 932 L1089 917 L1080 896 L1065 888 L1056 865 L1040 878 L1026 863 L1011 871 L1003 891 L988 883 L978 869 Z",
+        "M0 768 L15 779 L23 776 L37 783 L47 785 L59 801 L58 817 L0 819 Z",
+        "M1012 871 L1079 875 L1071 924 L1059 931 L1024 928 L1014 920 Z"
+      ],
+      "file": "assets/objects/generated/coffee-table--round-coffee-table.png",
+      "bounds": {
+        "x": 642,
+        "y": 826,
+        "width": 510,
+        "height": 115
+      },
+      "alpha": true,
+      "sha256": "84eb535e2a6e611b809f849b22ece9e946746501127fa4c981786a31e01b0357",
+      "anchor": {
+        "x": 897,
+        "y": 941
+      },
+      "clippedByViewport": true,
+      "pixelCount": 47956,
+      "transparentPixels": 1525396
+    },
+    {
+      "id": "table-album--physical-album",
+      "owner": "table-album",
+      "source": "assets/room-clean-v7.png",
+      "path": "M692 861 L818 832 L855 833 L875 826 L910 824 L977 894 L975 906 L850 941 L824 939 L807 941 L714 932 L680 875 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "animation": null,
+      "pivot": [
+        828.5,
+        941
+      ],
+      "supports": null,
+      "key": "art-2c550b33",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/table-album--physical-album.png",
+      "bounds": {
+        "x": 674,
+        "y": 818,
+        "width": 309,
+        "height": 123
+      },
+      "alpha": true,
+      "sha256": "a72f070e3eeed0870321c1a50954f2878632224940d5c5bdb7ec9edf25030b29",
+      "anchor": {
+        "x": 828.5,
+        "y": 941
+      },
+      "clippedByViewport": true,
+      "pixelCount": 27046,
+      "transparentPixels": 1546306
+    },
+    {
+      "id": "wall-shelf--shelf",
+      "owner": "wall-shelf",
+      "source": "assets/room-clean-v7.png",
+      "path": "M5 248 L366 247 L375 253 L374 267 L348 270 L338 306 L325 306 L326 270 L20 272 L6 266 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "animation": null,
+      "pivot": [
+        190.5,
+        312
+      ],
+      "supports": null,
+      "key": "art-ad2eceb4",
+      "repairSource": "assets/objects/masters/furniture-underpainting-v1.png",
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [
+        "M210 193 L232 192 L233 249 L210 249 Z",
+        "M227 184 L238 179 L249 183 L250 249 L228 249 Z",
+        "M246 168 L259 166 L267 168 L269 248 L247 249 Z",
+        "M269 177 L274 172 L286 173 L286 248 L269 249 Z",
+        "M300 210 L312 209 L315 201 L329 201 L332 207 L351 210 L356 218 L359 243 L351 249 L298 247 L293 240 L294 218 Z",
+        "M20 155 Q20 139 49 140 L48 128 Q52 112 76 116 L91 107 L114 109 L126 120 L148 116 L167 121 L189 117 L211 129 L232 153 L224 173 L203 185 L209 206 L190 215 L175 210 L164 236 L147 244 L150 263 L137 278 L142 300 L130 323 L128 344 L108 367 L111 386 L91 402 L92 424 L82 438 L77 461 L69 478 L63 500 L55 505 L47 488 L53 465 L47 451 L55 435 L54 414 L63 395 L63 378 L47 367 L55 349 L53 333 L36 324 L38 304 L27 296 L37 275 L25 268 L22 252 L32 232 L19 220 L21 198 L28 183 L19 178 Z",
+        "M1507 120 H1672 V211 L1590 230 L1560 263 L1545 295 L1532 337 L1518 396 L1480 396 L1480 260 L1490 223 L1507 220 Z",
+        "M1504 545 L1512 542 L1516 520 L1524 514 L1531 537 L1541 526 L1548 533 L1543 548 L1556 549 L1554 563 L1533 575 L1510 569 Z",
+        "M976 844 L986 827 L1006 824 L1018 808 L1041 812 L1057 804 L1078 806 L1091 823 L1083 842 L1098 849 L1095 871 L1111 882 L1121 904 L1115 930 L1101 932 L1089 917 L1080 896 L1065 888 L1056 865 L1040 878 L1026 863 L1011 871 L1003 891 L988 883 L978 869 Z",
+        "M0 768 L15 779 L23 776 L37 783 L47 785 L59 801 L58 817 L0 819 Z"
+      ],
+      "file": "assets/objects/generated/wall-shelf--shelf.png",
+      "bounds": {
+        "x": 0,
+        "y": 241,
+        "width": 381,
+        "height": 71
+      },
+      "alpha": true,
+      "sha256": "f13f3becfa560105a524f1f8e77e64ac41668ab5cec68aeb1965f8ed326b5338",
+      "anchor": {
+        "x": 190.5,
+        "y": 312
+      },
+      "clippedByViewport": true,
+      "pixelCount": 12439,
+      "transparentPixels": 1560913
+    },
+    {
+      "id": "wall-shelf--wall-shelf-book-01",
+      "owner": "wall-shelf",
+      "source": "assets/room-clean-v7.png",
+      "path": "M210 193 L232 192 L233 249 L210 249 Z",
+      "edgePadding": 0.6,
+      "kind": "book",
+      "repairColor": "#c77946",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      },
+      "animation": null,
+      "pivot": [
+        221.5,
+        252
+      ],
+      "supports": null,
+      "key": "art-de0720c",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/wall-shelf--wall-shelf-book-01.png",
+      "bounds": {
+        "x": 207,
+        "y": 189,
+        "width": 29,
+        "height": 63
+      },
+      "alpha": true,
+      "sha256": "108a9b3f4043999d2404ba062da08c7d326a4dec2e09687fbd4b069da42ccbd5",
+      "anchor": {
+        "x": 221.5,
+        "y": 252
+      },
+      "clippedByViewport": false,
+      "pixelCount": 1432,
+      "transparentPixels": 1571920
+    },
+    {
+      "id": "wall-shelf--wall-shelf-book-02",
+      "owner": "wall-shelf",
+      "source": "assets/room-clean-v7.png",
+      "path": "M227 184 L238 179 L249 183 L250 249 L228 249 Z",
+      "edgePadding": 0.6,
+      "kind": "book",
+      "repairColor": "#755343",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      },
+      "animation": null,
+      "pivot": [
+        238.5,
+        252
+      ],
+      "supports": null,
+      "key": "art-3bbb818e",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/wall-shelf--wall-shelf-book-02.png",
+      "bounds": {
+        "x": 224,
+        "y": 176,
+        "width": 29,
+        "height": 76
+      },
+      "alpha": true,
+      "sha256": "b18ae7ede4510b203c35fcd3a8d96fd7e7f8f20fb2274f3c48d744cbad3b487a",
+      "anchor": {
+        "x": 238.5,
+        "y": 252
+      },
+      "clippedByViewport": false,
+      "pixelCount": 1669,
+      "transparentPixels": 1571683
+    },
+    {
+      "id": "wall-shelf--wall-shelf-book-03",
+      "owner": "wall-shelf",
+      "source": "assets/room-clean-v7.png",
+      "path": "M246 168 L259 166 L267 168 L269 248 L247 249 Z",
+      "edgePadding": 0.6,
+      "kind": "book",
+      "repairColor": "#407c77",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      },
+      "animation": null,
+      "pivot": [
+        257.5,
+        252
+      ],
+      "supports": null,
+      "key": "art-54781023",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/wall-shelf--wall-shelf-book-03.png",
+      "bounds": {
+        "x": 243,
+        "y": 163,
+        "width": 29,
+        "height": 89
+      },
+      "alpha": true,
+      "sha256": "9096d6bbe40051009b0602d5eb6f3af6f81eac83a5cf4eb9aaab4aee32f0367d",
+      "anchor": {
+        "x": 257.5,
+        "y": 252
+      },
+      "clippedByViewport": false,
+      "pixelCount": 1957,
+      "transparentPixels": 1571395
+    },
+    {
+      "id": "wall-shelf--wall-shelf-book-04",
+      "owner": "wall-shelf",
+      "source": "assets/room-clean-v7.png",
+      "path": "M269 177 L274 172 L286 173 L286 248 L269 249 Z",
+      "edgePadding": 0.6,
+      "kind": "book",
+      "repairColor": "#e8c09b",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      },
+      "animation": null,
+      "pivot": [
+        277.5,
+        252
+      ],
+      "supports": null,
+      "key": "art-e7aa7ab8",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/wall-shelf--wall-shelf-book-04.png",
+      "bounds": {
+        "x": 266,
+        "y": 169,
+        "width": 23,
+        "height": 83
+      },
+      "alpha": true,
+      "sha256": "80c597c9f58b5aa6cc2c478729c4e7515cef1b574100b6c57fb26f8edc4cd141",
+      "anchor": {
+        "x": 277.5,
+        "y": 252
+      },
+      "clippedByViewport": false,
+      "pixelCount": 1469,
+      "transparentPixels": 1571883
+    },
+    {
+      "id": "wall-shelf--camera",
+      "owner": "wall-shelf",
+      "source": "assets/room-clean-v7.png",
+      "path": "M300 210 L312 209 L315 201 L329 201 L332 207 L351 210 L356 218 L359 243 L351 249 L298 247 L293 240 L294 218 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "animation": null,
+      "pivot": [
+        326,
+        255
+      ],
+      "supports": null,
+      "key": "art-c0de5f84",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/wall-shelf--camera.png",
+      "bounds": {
+        "x": 287,
+        "y": 195,
+        "width": 78,
+        "height": 60
+      },
+      "alpha": true,
+      "sha256": "e01a3dbafaddb2f065d1f0bdfad4c78a1827ac7a002f2355f1e17d7edba81d70",
+      "anchor": {
+        "x": 326,
+        "y": 255
+      },
+      "clippedByViewport": false,
+      "pixelCount": 3356,
+      "transparentPixels": 1569996
+    },
+    {
+      "id": "toy-mouse--mouse-toy",
+      "owner": "toy-mouse",
+      "source": "assets/room-clean-v7.png",
+      "path": "M1050 771 L1064 753 L1076 749 L1078 737 L1089 733 L1099 737 L1109 741 L1122 738 L1131 747 L1135 755 L1150 767 L1149 776 L1174 780 L1180 785 L1174 788 L1144 780 L1106 786 L1060 781 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "animation": null,
+      "pivot": [
+        1115,
+        794
+      ],
+      "supports": null,
+      "key": "art-578d773a",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/toy-mouse--mouse-toy.png",
+      "bounds": {
+        "x": 1044,
+        "y": 727,
+        "width": 142,
+        "height": 67
+      },
+      "alpha": true,
+      "sha256": "54aa152bbd891c58808a704ff57d7d4fbea7dd597f05e93a4710443fc4c84dd1",
+      "anchor": {
+        "x": 1115,
+        "y": 794
+      },
+      "clippedByViewport": false,
+      "pixelCount": 4971,
+      "transparentPixels": 1568381
+    },
+    {
+      "id": "shelf-plant--plant-pot",
+      "owner": "shelf-plant",
+      "source": "assets/room-clean-v7.png",
+      "path": "M113 182 L174 174 L190 224 L181 245 L142 249 L126 235 Z",
+      "edgePadding": 3.5,
+      "kind": "plant",
+      "animation": null,
+      "pivot": [
+        151.5,
+        255
+      ],
+      "exclude": [],
+      "key": "art-da46aafa",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/shelf-plant--plant-pot.png",
+      "bounds": {
+        "x": 107,
+        "y": 168,
+        "width": 89,
+        "height": 87
+      },
+      "alpha": true,
+      "sha256": "1dd2a0ee3e72bd98782efee517af3eaadd3cdb402a2f6e714a5f51270d61439e",
+      "anchor": {
+        "x": 151.5,
+        "y": 255
+      },
+      "clippedByViewport": false,
+      "pixelCount": 5299,
+      "transparentPixels": 1568053
+    },
+    {
+      "id": "shelf-plant--trailing-leaves",
+      "owner": "shelf-plant",
+      "source": "assets/room-clean-v7.png",
+      "path": "M20 155 Q20 139 49 140 L48 128 Q52 112 76 116 L91 107 L114 109 L126 120 L148 116 L167 121 L189 117 L211 129 L232 153 L224 173 L203 185 L209 206 L190 215 L175 210 L164 236 L147 244 L150 263 L137 278 L142 300 L130 323 L128 344 L108 367 L111 386 L91 402 L92 424 L82 438 L77 461 L69 478 L63 500 L55 505 L47 488 L53 465 L47 451 L55 435 L54 414 L63 395 L63 378 L47 367 L55 349 L53 333 L36 324 L38 304 L27 296 L37 275 L25 268 L22 252 L32 232 L19 220 L21 198 L28 183 L19 178 Z",
+      "edgePadding": 3.5,
+      "kind": "plant",
+      "animation": "plant-leaves",
+      "pivot": [
+        120,
+        190
+      ],
+      "exclude": [],
+      "key": "art-874437f0",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/shelf-plant--trailing-leaves.png",
+      "bounds": {
+        "x": 22,
+        "y": 107,
+        "width": 211,
+        "height": 392
+      },
+      "alpha": true,
+      "sha256": "fb4f276c4fa2a8850ce259567d0ae2f83420ef594452d04d418fa2ede1ed700c",
+      "anchor": {
+        "x": 127.5,
+        "y": 499
+      },
+      "clippedByViewport": false,
+      "pixelCount": 29034,
+      "transparentPixels": 1544318
+    },
+    {
+      "id": "bookcase-plant--leaf-cascade",
+      "owner": "bookcase-plant",
+      "source": "assets/room-clean-v7.png",
+      "path": "M1507 120 H1672 V211 L1590 230 L1560 263 L1545 295 L1532 337 L1518 396 L1480 396 L1480 260 L1490 223 L1507 220 Z",
+      "edgePadding": 3.5,
+      "kind": "plant",
+      "animation": null,
+      "pivot": [
+        1578,
+        402
+      ],
+      "exclude": [
+        "M1424 435 L1440 411 L1466 402 L1474 384 Q1484 375 1496 384 L1500 399 L1578 456 L1582 468 L1556 558 L1576 570 L1578 588 L1533 595 L1519 588 L1520 578 L1539 568 L1562 470 L1492 417 L1506 449 L1499 466 L1479 468 Z"
+      ],
+      "key": "art-c47a3b8f",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/bookcase-plant--leaf-cascade.png",
+      "bounds": {
+        "x": 1492,
+        "y": 121,
+        "width": 172,
+        "height": 281
+      },
+      "alpha": true,
+      "sha256": "f2adc6cc85cbe6ccf070bd5a5bf18bb33aa9366a9c7c3cb51ad511184c0baceb",
+      "anchor": {
+        "x": 1578,
+        "y": 402
+      },
+      "clippedByViewport": false,
+      "pixelCount": 15060,
+      "transparentPixels": 1558292
+    },
+    {
+      "id": "desk-plant--desk-leaves",
+      "owner": "desk-plant",
+      "source": "assets/room-clean-v7.png",
+      "path": "M1504 545 L1512 542 L1516 520 L1524 514 L1531 537 L1541 526 L1548 533 L1543 548 L1556 549 L1554 563 L1533 575 L1510 569 Z",
+      "edgePadding": 3.5,
+      "kind": "plant",
+      "animation": "plant-leaves",
+      "pivot": [
+        1530,
+        563
+      ],
+      "exclude": [],
+      "key": "art-e8963b88",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/desk-plant--desk-leaves.png",
+      "bounds": {
+        "x": 1500,
+        "y": 516,
+        "width": 61,
+        "height": 65
+      },
+      "alpha": true,
+      "sha256": "a4e1ed407fe1ea73dcc06d65dbe8293a979b7ac6b5a7e68eeb83aa049bde9cbf",
+      "anchor": {
+        "x": 1530.5,
+        "y": 581
+      },
+      "clippedByViewport": false,
+      "pixelCount": 1995,
+      "transparentPixels": 1571357
+    },
+    {
+      "id": "table-plant--pot",
+      "owner": "table-plant",
+      "source": "assets/room-clean-v7.png",
+      "path": "M1012 871 L1079 875 L1071 924 L1059 931 L1024 928 L1014 920 Z",
+      "edgePadding": 3.5,
+      "kind": "plant",
+      "animation": null,
+      "pivot": [
+        1045.5,
+        937
+      ],
+      "exclude": [],
+      "key": "art-9c2af5ae",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/table-plant--pot.png",
+      "bounds": {
+        "x": 1006,
+        "y": 865,
+        "width": 79,
+        "height": 72
+      },
+      "alpha": true,
+      "sha256": "a9f73efa474c97f4852919916208b90f8bef01f1efe178b5b83b54ba4e7bbef4",
+      "anchor": {
+        "x": 1045.5,
+        "y": 937
+      },
+      "clippedByViewport": false,
+      "pixelCount": 4326,
+      "transparentPixels": 1569026
+    },
+    {
+      "id": "table-plant--leaves",
+      "owner": "table-plant",
+      "source": "assets/room-clean-v7.png",
+      "path": "M976 844 L986 827 L1006 824 L1018 808 L1041 812 L1057 804 L1078 806 L1091 823 L1083 842 L1098 849 L1095 871 L1111 882 L1121 904 L1115 930 L1101 932 L1089 917 L1080 896 L1065 888 L1056 865 L1040 878 L1026 863 L1011 871 L1003 891 L988 883 L978 869 Z",
+      "edgePadding": 3.5,
+      "kind": "plant",
+      "animation": "plant-leaves",
+      "pivot": [
+        1047,
+        881
+      ],
+      "exclude": [],
+      "key": "art-4ff4912e",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/table-plant--leaves.png",
+      "bounds": {
+        "x": 972,
+        "y": 802,
+        "width": 154,
+        "height": 133
+      },
+      "alpha": true,
+      "sha256": "d029c0ff37d349edc4242c0723bb3edd86653cd16a08ceaa863edb7df3a07ce8",
+      "anchor": {
+        "x": 1049,
+        "y": 935
+      },
+      "clippedByViewport": false,
+      "pixelCount": 8349,
+      "transparentPixels": 1565003
+    },
+    {
+      "id": "sofa-plant--floor-leaves",
+      "owner": "sofa-plant",
+      "source": "assets/room-clean-v7.png",
+      "path": "M0 768 L15 779 L23 776 L37 783 L47 785 L59 801 L58 817 L0 819 Z",
+      "edgePadding": 3.5,
+      "kind": "plant",
+      "animation": "plant-leaves",
+      "pivot": [
+        21,
+        815
+      ],
+      "exclude": [],
+      "key": "art-18316402",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/sofa-plant--floor-leaves.png",
+      "bounds": {
+        "x": 0,
+        "y": 763,
+        "width": 65,
+        "height": 61
+      },
+      "alpha": true,
+      "sha256": "1e0c270ab85ae10ea6f702edb173422f587afa66742a66f61ee6af7591e662ba",
+      "anchor": {
+        "x": 32.5,
+        "y": 824
+      },
+      "clippedByViewport": true,
+      "pixelCount": 2426,
+      "transparentPixels": 1570926
+    },
+    {
+      "id": "coffee-station--machine",
+      "owner": "coffee-station",
+      "source": "assets/room-clean-v7.png",
+      "path": "M577 413 L593 411 L587 406 Q585 399 593 399 L626 399 Q635 400 628 410 L655 411 Q670 411 670 426 L670 497 L682 501 L682 522 L578 524 L574 513 L575 502 L577 497 L570 496 L571 424 Q570 416 577 413 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "key": "art-6a945e9e",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/coffee-station--machine.png",
+      "bounds": {
+        "x": 564,
+        "y": 393,
+        "width": 124,
+        "height": 137
+      },
+      "alpha": true,
+      "sha256": "8a634660fcec10a7a27cc00f223521089055a2b7e8e32ba5e047fe4ca70e3d2c",
+      "pivot": [
+        626,
+        530
+      ],
+      "anchor": {
+        "x": 626,
+        "y": 530
+      },
+      "clippedByViewport": false,
+      "pixelCount": 13542,
+      "transparentPixels": 1559810
+    },
+    {
+      "id": "coffee-station--grinder",
+      "owner": "coffee-station",
+      "source": "assets/room-clean-v7.png",
+      "path": "M686 388 L731 388 Q738 389 735 400 L732 422 L720 439 L722 448 L733 452 L741 518 Q741 524 733 524 L682 523 L680 517 L685 455 L697 447 L698 438 L686 424 L681 399 Q679 390 686 388 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "key": "art-688f52fa",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/coffee-station--grinder.png",
+      "bounds": {
+        "x": 674,
+        "y": 382,
+        "width": 73,
+        "height": 148
+      },
+      "alpha": true,
+      "sha256": "05d974db2260633388053fa2a70d8e0c4c1187db5e2105cecd811605b9479239",
+      "pivot": [
+        710.5,
+        530
+      ],
+      "anchor": {
+        "x": 710.5,
+        "y": 530
+      },
+      "clippedByViewport": false,
+      "pixelCount": 8202,
+      "transparentPixels": 1565150
+    },
+    {
+      "id": "coffee-station--beans",
+      "owner": "coffee-station",
+      "source": "assets/room-clean-v7.png",
+      "path": "M751 449 L760 446 L762 439 L779 440 L782 447 L790 449 L791 458 L785 463 Q797 474 798 486 L797 515 Q794 525 775 524 L754 522 Q744 519 746 509 L745 478 L752 464 L747 458 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "key": "art-c3eb608",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/coffee-station--beans.png",
+      "bounds": {
+        "x": 739,
+        "y": 433,
+        "width": 65,
+        "height": 97
+      },
+      "alpha": true,
+      "sha256": "f3c0cbabbb6528c49fac40482bd092eef6deaad8f12383827430f058df0b0504",
+      "pivot": [
+        771.5,
+        530
+      ],
+      "anchor": {
+        "x": 771.5,
+        "y": 530
+      },
+      "clippedByViewport": false,
+      "pixelCount": 4710,
+      "transparentPixels": 1568642
+    },
+    {
+      "id": "coffee-station--cup",
+      "owner": "coffee-station",
+      "source": "assets/room-clean-v7.png",
+      "path": "M708 497 Q718 490 742 495 L743 500 Q758 495 753 508 Q751 514 742 514 L739 523 L713 524 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "key": "art-dffd6dce",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/coffee-station--cup.png",
+      "bounds": {
+        "x": 702,
+        "y": 487,
+        "width": 58,
+        "height": 43
+      },
+      "alpha": true,
+      "sha256": "df7ca4747f796be2f527e5a2cec35e1243418d48cebbfa955a68a140a95f90fa",
+      "pivot": [
+        731,
+        530
+      ],
+      "anchor": {
+        "x": 731,
+        "y": 530
+      },
+      "clippedByViewport": false,
+      "pixelCount": 1639,
+      "transparentPixels": 1571713
+    },
+    {
+      "id": "window--frame",
+      "owner": "room-window",
+      "source": "assets/room-module-underpainting-v2.png",
+      "path": "M931 164 H1376 V478 H931 Z",
+      "edgePadding": 0.5,
+      "kind": "object",
+      "exclude": [
+        "M954 178 H1356 V441 H954 Z"
+      ],
+      "key": "art-95a8c451",
+      "repairSource": null,
+      "renderSource": "assets/room-module-underpainting-v2.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/window--frame.png",
+      "bounds": {
+        "x": 928,
+        "y": 161,
+        "width": 451,
+        "height": 320
+      },
+      "alpha": true,
+      "sha256": "cb3017201168d3f2e2953ecd12e37c48d8f35fa20d0ac7a9738fbc26a84b03f6",
+      "pivot": [
+        1153.5,
+        481
+      ],
+      "anchor": {
+        "x": 1153.5,
+        "y": 481
+      },
+      "clippedByViewport": false,
+      "pixelCount": 35526,
+      "transparentPixels": 1537826
+    },
+    {
+      "id": "window--rod",
+      "owner": "room-window",
+      "source": "assets/room-module-underpainting-v2.png",
+      "path": "M889 142 A11 11 0 1 1 867 142 A11 11 0 1 1 889 142 Z M888 135 H1428 V149 H888 Z M1449 142 A11 11 0 1 1 1427 142 A11 11 0 1 1 1449 142 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "key": "art-b9940102",
+      "repairSource": null,
+      "renderSource": "assets/room-module-underpainting-v2.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/window--rod.png",
+      "bounds": {
+        "x": 861,
+        "y": 125,
+        "width": 594,
+        "height": 34
+      },
+      "alpha": true,
+      "sha256": "330db7ab2b096e5fd86f706752449f6244ec60e3a15a542a956f4438a370f701",
+      "pivot": [
+        1158,
+        159
+      ],
+      "anchor": {
+        "x": 1158,
+        "y": 159
+      },
+      "clippedByViewport": false,
+      "pixelCount": 13128,
+      "transparentPixels": 1560224
+    },
+    {
+      "id": "window--left-sash",
+      "owner": "room-window",
+      "source": "assets/room-clean-v7.png",
+      "path": "M970 187 L1009 231 L1009 402 L959 437 L958 213 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "exclude": [
+        "M970.6068 221.7696 L982.9303000000001 231.5241 L982.5541000000001 274.7827 L969.9996 269.5712 Z",
+        "M969.7512 289.12640000000005 L982.4002000000002 292.47940000000006 L981.9898000000002 339.67060000000004 L969.0888 341.2736 Z",
+        "M968.8128000000002 363.0016 L981.8188000000001 359.3336 L981.4426000000001 402.5922 L968.2056000000001 410.80319999999995 Z",
+        "M988.2118 235.7046 L1000.1831999999999 245.1804 L1000.1303999999999 282.0788 L987.9346 277.01619999999997 Z",
+        "M987.8212000000001 293.9164 L1000.1088 297.1736 L1000.0511999999999 337.4264 L987.5188 338.9836 Z",
+        "M987.3928000000001 357.76160000000004 L1000.0272 354.19840000000005 L999.9744 391.0968 L987.1156000000001 399.0732 Z"
+      ],
+      "key": "art-b3e0b015",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/window--left-sash.png",
+      "bounds": {
+        "x": 952,
+        "y": 181,
+        "width": 63,
+        "height": 262
+      },
+      "alpha": true,
+      "sha256": "f69acce3eb91e4e181112da45b1a550b7ea1a15f95b0f16bc2a816e8cda0b344",
+      "pivot": [
+        983.5,
+        443
+      ],
+      "anchor": {
+        "x": 983.5,
+        "y": 443
+      },
+      "clippedByViewport": false,
+      "pixelCount": 9901,
+      "transparentPixels": 1563451
+    },
+    {
+      "id": "window--right-sash",
+      "owner": "room-window",
+      "source": "assets/room-clean-v7.png",
+      "path": "M1341 188 L1304 230 L1304 401 L1352 437 L1354 212 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "exclude": [
+        "M1312.6568000000002 244.32480000000004 L1324.2803000000001 234.89579999999998 L1324.5641 276.46259999999995 L1312.7096000000001 281.42560000000003 Z",
+        "M1312.7312000000002 296.6032 L1324.6802 293.46720000000005 L1324.9898 338.81280000000004 L1312.7888 337.07680000000005 Z",
+        "M1312.8128000000002 353.9408000000001 L1325.1188 357.70680000000004 L1325.4026 399.27360000000004 L1312.8656 391.0416 Z",
+        "M1329.2617999999998 230.8548 L1340.5531999999998 221.69519999999997 L1341.1604 269.51439999999997 L1329.6445999999999 274.3356 Z",
+        "M1329.8012 292.1232 L1341.4088000000002 289.07680000000005 L1342.0711999999999 341.24319999999994 L1330.2188 339.5568 Z",
+        "M1330.3928 359.32079999999996 L1342.3472 362.9792 L1342.9544 410.79839999999996 L1330.7756 402.8016 Z"
+      ],
+      "key": "art-be495351",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/window--right-sash.png",
+      "bounds": {
+        "x": 1298,
+        "y": 182,
+        "width": 62,
+        "height": 261
+      },
+      "alpha": true,
+      "sha256": "d504e4fa2fcf8e65d8517cc739a93c497b67874fdd54fda1236ebdcda68211a6",
+      "pivot": [
+        1329,
+        443
+      ],
+      "anchor": {
+        "x": 1329,
+        "y": 443
+      },
+      "clippedByViewport": false,
+      "pixelCount": 9740,
+      "transparentPixels": 1563612
+    },
+    {
+      "id": "window--closed-glass",
+      "owner": "room-window",
+      "source": "assets/window-closed-v1.png",
+      "path": "M954 178 H1356 V441 H954 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "exclude": [
+        "M970 189 H1040 V252 H970 Z",
+        "M1055 189 H1133 V252 H1055 Z",
+        "M970 269 H1040 V333 H970 Z",
+        "M1055 269 H1133 V333 H1055 Z",
+        "M970 350 H1040 V425 H970 Z",
+        "M1055 350 H1133 V425 H1055 Z",
+        "M1171 189 H1247 V252 H1171 Z",
+        "M1261 189 H1338 V252 H1261 Z",
+        "M1171 269 H1247 V333 H1171 Z",
+        "M1261 269 H1338 V333 H1261 Z",
+        "M1171 350 H1247 V425 H1171 Z",
+        "M1261 350 H1338 V425 H1261 Z"
+      ],
+      "key": "art-7c990172",
+      "repairSource": null,
+      "renderSource": "assets/window-closed-v1.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/window--closed-glass.png",
+      "bounds": {
+        "x": 948,
+        "y": 172,
+        "width": 414,
+        "height": 275
+      },
+      "alpha": true,
+      "sha256": "02510f1e39dc740daa5d9903d81198f7feb1058bab319f7d873e0062f544d772",
+      "pivot": [
+        1155,
+        447
+      ],
+      "anchor": {
+        "x": 1155,
+        "y": 447
+      },
+      "clippedByViewport": false,
+      "pixelCount": 50280,
+      "transparentPixels": 1523072
+    },
+    {
+      "id": "curtain--open-left",
+      "owner": "room-window",
+      "source": "assets/room-clean-v7.png",
+      "path": "M883 119 Q883 111 892 117 Q902 109 912 117 Q920 110 930 117 Q941 109 950 117 Q963 109 977 119 L978 143 Q972 216 949 274 L933 319 L940 325 L941 338 L933 349 L945 476 Q934 488 918 481 Q905 490 892 482 Q878 486 873 477 L889 349 L886 343 L887 326 L895 318 Q883 255 883 195 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "key": "art-e14f81cc",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/curtain--open-left.png",
+      "bounds": {
+        "x": 867,
+        "y": 107,
+        "width": 117,
+        "height": 385
+      },
+      "alpha": true,
+      "sha256": "00d15811dbdceec688cb9469a9f1f682f05e91e06dc863f009c061b910849350",
+      "pivot": [
+        925.5,
+        492
+      ],
+      "anchor": {
+        "x": 925.5,
+        "y": 492
+      },
+      "clippedByViewport": false,
+      "pixelCount": 28691,
+      "transparentPixels": 1544661
+    },
+    {
+      "id": "curtain--open-right",
+      "owner": "room-window",
+      "source": "assets/room-clean-v7.png",
+      "path": "M1334 120 Q1334 111 1343 117 Q1353 110 1364 117 Q1373 110 1383 117 Q1392 110 1402 117 Q1412 109 1424 119 L1430 146 L1430 260 L1426 318 L1429 325 L1426 343 L1417 349 L1440 476 Q1430 487 1417 481 Q1404 489 1390 481 Q1376 486 1367 476 L1375 348 L1365 340 L1363 325 L1372 319 Q1347 250 1338 190 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "key": "art-eca38512",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/curtain--open-right.png",
+      "bounds": {
+        "x": 1328,
+        "y": 108,
+        "width": 118,
+        "height": 383
+      },
+      "alpha": true,
+      "sha256": "d23b5ba4b2f33132e3640cd4f1f2dd80fad2fb547e6a18bf91a013cfe2b161ed",
+      "pivot": [
+        1387,
+        491
+      ],
+      "anchor": {
+        "x": 1387,
+        "y": 491
+      },
+      "clippedByViewport": false,
+      "pixelCount": 29943,
+      "transparentPixels": 1543409
+    },
+    {
+      "id": "curtain--closed-left",
+      "owner": "room-window",
+      "source": "assets/curtains-closed-v1.png",
+      "path": "M886 120 Q889 111 901 117 Q911 109 922 117 Q933 109 945 117 Q956 109 968 117 Q980 109 993 117 Q1005 109 1018 117 Q1030 109 1043 117 Q1055 109 1068 117 Q1080 109 1094 117 Q1106 109 1120 117 Q1134 109 1146 117 L1158 119 L1157 477 Q1145 486 1123 480 Q1106 488 1087 481 Q1068 487 1050 481 Q1031 488 1012 481 Q992 488 973 481 Q953 487 934 481 Q915 488 897 481 Q884 485 883 476 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "key": "art-5cd0de24",
+      "repairSource": null,
+      "renderSource": "assets/curtains-closed-v1.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/curtain--closed-left.png",
+      "bounds": {
+        "x": 877,
+        "y": 107,
+        "width": 287,
+        "height": 383
+      },
+      "alpha": true,
+      "sha256": "3b737ca79d16d118356afdb370579d5074e5777ad46627527a7d0517652c1727",
+      "pivot": [
+        1020.5,
+        490
+      ],
+      "anchor": {
+        "x": 1020.5,
+        "y": 490
+      },
+      "clippedByViewport": false,
+      "pixelCount": 105523,
+      "transparentPixels": 1467829
+    },
+    {
+      "id": "curtain--closed-right",
+      "owner": "room-window",
+      "source": "assets/curtains-closed-v1.png",
+      "path": "M1155 120 Q1158 111 1171 117 Q1182 109 1194 117 Q1206 109 1219 117 Q1231 109 1244 117 Q1256 109 1270 117 Q1282 109 1296 117 Q1308 109 1322 117 Q1334 109 1348 117 Q1360 109 1374 117 Q1386 109 1400 117 Q1415 109 1430 118 L1430 476 Q1418 487 1400 480 Q1383 487 1364 481 Q1345 488 1326 481 Q1307 488 1288 481 Q1268 487 1249 481 Q1229 488 1210 481 Q1190 487 1173 481 Q1161 486 1155 477 Z",
+      "edgePadding": 3.5,
+      "kind": "object",
+      "key": "art-48afd66",
+      "repairSource": null,
+      "renderSource": "assets/curtains-closed-v1.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/curtain--closed-right.png",
+      "bounds": {
+        "x": 1149,
+        "y": 107,
+        "width": 287,
+        "height": 383
+      },
+      "alpha": true,
+      "sha256": "6c8ce3a2b6ea79aef7a28b0dfd0a7eb2cc656ffef5a4314a0049276c5a00776b",
+      "pivot": [
+        1292.5,
+        490
+      ],
+      "anchor": {
+        "x": 1292.5,
+        "y": 490
+      },
+      "clippedByViewport": false,
+      "pixelCount": 106387,
+      "transparentPixels": 1466965
+    },
+    {
+      "id": "window--open-left-view",
+      "owner": "window-scenery",
+      "source": "assets/room-clean-v7.png",
+      "path": "M970.6068 221.7696 L982.9303000000001 231.5241 L982.5541000000001 274.7827 L969.9996 269.5712 Z M969.7512 289.12640000000005 L982.4002000000002 292.47940000000006 L981.9898000000002 339.67060000000004 L969.0888 341.2736 Z M968.8128000000002 363.0016 L981.8188000000001 359.3336 L981.4426000000001 402.5922 L968.2056000000001 410.80319999999995 Z M988.2118 235.7046 L1000.1831999999999 245.1804 L1000.1303999999999 282.0788 L987.9346 277.01619999999997 Z M987.8212000000001 293.9164 L1000.1088 297.1736 L1000.0511999999999 337.4264 L987.5188 338.9836 Z M987.3928000000001 357.76160000000004 L1000.0272 354.19840000000005 L999.9744 391.0968 L987.1156000000001 399.0732 Z",
+      "edgePadding": 0,
+      "kind": "scenery",
+      "glassCompensation": true,
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/window--open-left-view.png",
+      "bounds": {
+        "x": 966,
+        "y": 219,
+        "width": 37,
+        "height": 194
+      },
+      "alpha": true,
+      "sha256": "0c68a2c4bcb94dde65b0c798fa5191b093a4174c9385496b7176b098706079bd",
+      "pivot": [
+        984.5,
+        413
+      ],
+      "anchor": {
+        "x": 984.5,
+        "y": 413
+      },
+      "clippedByViewport": false,
+      "pixelCount": 3564,
+      "transparentPixels": 1569788
+    },
+    {
+      "id": "window--open-left-pane",
+      "owner": "window-glass",
+      "source": "assets/room-clean-v7.png",
+      "path": "M970.6068 221.7696 L982.9303000000001 231.5241 L982.5541000000001 274.7827 L969.9996 269.5712 Z M969.7512 289.12640000000005 L982.4002000000002 292.47940000000006 L981.9898000000002 339.67060000000004 L969.0888 341.2736 Z M968.8128000000002 363.0016 L981.8188000000001 359.3336 L981.4426000000001 402.5922 L968.2056000000001 410.80319999999995 Z M988.2118 235.7046 L1000.1831999999999 245.1804 L1000.1303999999999 282.0788 L987.9346 277.01619999999997 Z M987.8212000000001 293.9164 L1000.1088 297.1736 L1000.0511999999999 337.4264 L987.5188 338.9836 Z M987.3928000000001 357.76160000000004 L1000.0272 354.19840000000005 L999.9744 391.0968 L987.1156000000001 399.0732 Z",
+      "edgePadding": 0,
+      "kind": "glass",
+      "markup": "<rect width=\"1672\" height=\"941\" fill=\"white\" fill-opacity=\"0.031372549\"/>",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/window--open-left-pane.png",
+      "bounds": {
+        "x": 966,
+        "y": 219,
+        "width": 37,
+        "height": 194
+      },
+      "alpha": true,
+      "sha256": "5c7692d6e1cec473939ab23b947c00ca016d573ec8e05b1ae9333c8c90605045",
+      "pivot": [
+        984.5,
+        413
+      ],
+      "anchor": {
+        "x": 984.5,
+        "y": 413
+      },
+      "clippedByViewport": false,
+      "pixelCount": 3564,
+      "transparentPixels": 1569788
+    },
+    {
+      "id": "window--open-right-view",
+      "owner": "window-scenery",
+      "source": "assets/room-clean-v7.png",
+      "path": "M1312.6568000000002 244.32480000000004 L1324.2803000000001 234.89579999999998 L1324.5641 276.46259999999995 L1312.7096000000001 281.42560000000003 Z M1312.7312000000002 296.6032 L1324.6802 293.46720000000005 L1324.9898 338.81280000000004 L1312.7888 337.07680000000005 Z M1312.8128000000002 353.9408000000001 L1325.1188 357.70680000000004 L1325.4026 399.27360000000004 L1312.8656 391.0416 Z M1329.2617999999998 230.8548 L1340.5531999999998 221.69519999999997 L1341.1604 269.51439999999997 L1329.6445999999999 274.3356 Z M1329.8012 292.1232 L1341.4088000000002 289.07680000000005 L1342.0711999999999 341.24319999999994 L1330.2188 339.5568 Z M1330.3928 359.32079999999996 L1342.3472 362.9792 L1342.9544 410.79839999999996 L1330.7756 402.8016 Z",
+      "edgePadding": 0,
+      "kind": "scenery",
+      "glassCompensation": true,
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/window--open-right-view.png",
+      "bounds": {
+        "x": 1310,
+        "y": 219,
+        "width": 35,
+        "height": 194
+      },
+      "alpha": true,
+      "sha256": "f91c41da04a5ade384f36ec9eadf999354938659f059ef4d13747e6147c92c8c",
+      "pivot": [
+        1327.5,
+        413
+      ],
+      "anchor": {
+        "x": 1327.5,
+        "y": 413
+      },
+      "clippedByViewport": false,
+      "pixelCount": 3448,
+      "transparentPixels": 1569904
+    },
+    {
+      "id": "window--open-right-pane",
+      "owner": "window-glass",
+      "source": "assets/room-clean-v7.png",
+      "path": "M1312.6568000000002 244.32480000000004 L1324.2803000000001 234.89579999999998 L1324.5641 276.46259999999995 L1312.7096000000001 281.42560000000003 Z M1312.7312000000002 296.6032 L1324.6802 293.46720000000005 L1324.9898 338.81280000000004 L1312.7888 337.07680000000005 Z M1312.8128000000002 353.9408000000001 L1325.1188 357.70680000000004 L1325.4026 399.27360000000004 L1312.8656 391.0416 Z M1329.2617999999998 230.8548 L1340.5531999999998 221.69519999999997 L1341.1604 269.51439999999997 L1329.6445999999999 274.3356 Z M1329.8012 292.1232 L1341.4088000000002 289.07680000000005 L1342.0711999999999 341.24319999999994 L1330.2188 339.5568 Z M1330.3928 359.32079999999996 L1342.3472 362.9792 L1342.9544 410.79839999999996 L1330.7756 402.8016 Z",
+      "edgePadding": 0,
+      "kind": "glass",
+      "markup": "<rect width=\"1672\" height=\"941\" fill=\"white\" fill-opacity=\"0.031372549\"/>",
+      "repairSource": null,
+      "renderSource": "assets/room-clean-v7.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/window--open-right-pane.png",
+      "bounds": {
+        "x": 1310,
+        "y": 219,
+        "width": 35,
+        "height": 194
+      },
+      "alpha": true,
+      "sha256": "18e1368620b2e9e3204cfad679df31e3d86d4bfc8972a1e4fe3eed7144eb32bd",
+      "pivot": [
+        1327.5,
+        413
+      ],
+      "anchor": {
+        "x": 1327.5,
+        "y": 413
+      },
+      "clippedByViewport": false,
+      "pixelCount": 3448,
+      "transparentPixels": 1569904
+    },
+    {
+      "id": "window--closed-view",
+      "owner": "window-scenery",
+      "source": "assets/window-closed-v1.png",
+      "path": "M970 189 H1040 V252 H970 Z M1055 189 H1133 V252 H1055 Z M970 269 H1040 V333 H970 Z M1055 269 H1133 V333 H1055 Z M970 350 H1040 V425 H970 Z M1055 350 H1133 V425 H1055 Z M1171 189 H1247 V252 H1171 Z M1261 189 H1338 V252 H1261 Z M1171 269 H1247 V333 H1171 Z M1261 269 H1338 V333 H1261 Z M1171 350 H1247 V425 H1171 Z M1261 350 H1338 V425 H1261 Z",
+      "edgePadding": 0,
+      "kind": "scenery",
+      "glassCompensation": true,
+      "repairSource": null,
+      "renderSource": "assets/window-closed-v1.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/window--closed-view.png",
+      "bounds": {
+        "x": 968,
+        "y": 187,
+        "width": 372,
+        "height": 240
+      },
+      "alpha": true,
+      "sha256": "894f3c62da3096260a1e8d05f2e136115ac8755b51f775e650394551e38c1143",
+      "pivot": [
+        1154,
+        427
+      ],
+      "anchor": {
+        "x": 1154,
+        "y": 427
+      },
+      "clippedByViewport": false,
+      "pixelCount": 60802,
+      "transparentPixels": 1512550
+    },
+    {
+      "id": "window--closed-pane",
+      "owner": "window-glass",
+      "source": "assets/window-closed-v1.png",
+      "path": "M970 189 H1040 V252 H970 Z M1055 189 H1133 V252 H1055 Z M970 269 H1040 V333 H970 Z M1055 269 H1133 V333 H1055 Z M970 350 H1040 V425 H970 Z M1055 350 H1133 V425 H1055 Z M1171 189 H1247 V252 H1171 Z M1261 189 H1338 V252 H1261 Z M1171 269 H1247 V333 H1171 Z M1261 269 H1338 V333 H1261 Z M1171 350 H1247 V425 H1171 Z M1261 350 H1338 V425 H1261 Z",
+      "edgePadding": 0,
+      "kind": "glass",
+      "markup": "<rect width=\"1672\" height=\"941\" fill=\"white\" fill-opacity=\"0.031372549\"/>",
+      "repairSource": null,
+      "renderSource": "assets/window-closed-v1.png",
+      "repairPaths": [],
+      "file": "assets/objects/generated/window--closed-pane.png",
+      "bounds": {
+        "x": 968,
+        "y": 187,
+        "width": 372,
+        "height": 240
+      },
+      "alpha": true,
+      "sha256": "523b86941520ef343e676e5c7da330b5f6f3a64d2d05010ba1b1bd59c28df2f2",
+      "pivot": [
+        1154,
+        427
+      ],
+      "anchor": {
+        "x": 1154,
+        "y": 427
+      },
+      "clippedByViewport": false,
+      "pixelCount": 60802,
+      "transparentPixels": 1512550
+    },
+    {
+      "id": "work-desk--foreground",
+      "owner": "work-desk",
+      "source": "assets/room-workstation-no-pen-v1.png",
+      "path": "M1213 596 L1296 583 L1460 568 L1560 582 L1672 598 L1672 717 L1552 725 L1211 623 Z M1241 640 L1285 655 L1259 804 L1244 815 Q1230 815 1210 808 L1208 801 Z M1516 715 L1579 715 L1558 913 Q1544 927 1528 927 Q1510 926 1491 915 L1490 911 Z",
+      "edgePadding": 0,
+      "kind": "occluder",
+      "key": "art-eabad6b5",
+      "repairSource": "assets/objects/masters/desk-underpainting-v1.png",
+      "renderSource": "assets/room-workstation-no-pen-v1.png",
+      "repairPaths": [
+        "M1297 593 L1327 579 L1359 505 Q1361 497 1373 499 L1471 502 Q1482 503 1478 516 L1456 575 L1483 597 L1440 627 L1351 613 L1297 604 Z",
+        "M1401 568 L1478 572 L1501 575 L1567 602 L1556 641 L1552 653 L1538 665 L1460 650 L1437 651 L1368 638 Z",
+        "M1473 655 L1513 623 Q1521 615 1527 623 Q1531 628 1525 633 L1488 666 Q1481 672 1475 666 Q1470 662 1473 655 Z",
+        "M1284 550 L1281 535 L1285 532 L1291 545 L1296 531 L1300 534 L1298 547 L1310 534 L1315 536 L1309 550 Z",
+        "M1278 549 Q1294 541 1315 547 L1310 586 L1282 591 Z",
+        "M1424 435 L1440 411 L1466 402 L1474 384 Q1484 375 1496 384 L1500 399 L1578 456 L1582 468 L1556 558 L1576 570 L1578 588 L1533 595 L1519 588 L1520 578 L1539 568 L1562 470 L1492 417 L1506 449 L1499 466 L1479 468 Z",
+        "M1596 579 L1665 582 L1671 608 L1662 615 L1594 606 L1594 583 Z",
+        "M1576 607 L1594 609 L1665 615 L1670 631 L1660 644 L1575 630 L1568 622 L1568 615 Z",
+        "M1574 631 L1660 643 L1670 641 L1671 655 L1658 669 L1576 654 L1568 646 L1568 638 Z",
+        "M1504 545 L1512 542 L1516 520 L1524 514 L1531 537 L1541 526 L1548 533 L1543 548 L1556 549 L1554 563 L1533 575 L1510 569 Z"
+      ],
+      "file": "assets/objects/generated/work-desk--foreground.png",
+      "bounds": {
+        "x": 1206,
+        "y": 566,
+        "width": 466,
+        "height": 363
+      },
+      "alpha": true,
+      "sha256": "4428241fca49dbbddca9fef4098e212014be3454f8f36863914804180e2c8871",
+      "pivot": [
+        1439,
+        929
+      ],
+      "anchor": {
+        "x": 1439,
+        "y": 929
+      },
+      "clippedByViewport": true,
+      "pixelCount": 70322,
+      "transparentPixels": 1503030
+    },
+    {
+      "id": "work-chair--complete",
+      "owner": "work-chair",
+      "kind": "object",
+      "source": "assets/desk-chair-v1.png",
+      "file": "assets/desk-chair-v1.png",
+      "alpha": true,
+      "bounds": {
+        "x": 1238,
+        "y": 629,
+        "width": 253.39248704663214,
+        "height": 311
+      },
+      "pivot": [
+        1362.68,
+        766.915
+      ],
+      "anchor": {
+        "x": 1362.68,
+        "y": 766.915
+      },
+      "supports": {
+        "seat": {
+          "x": 1362.68,
+          "y": 766.915,
+          "width": 10.5,
+          "group": "workstation"
+        }
+      }
+    },
+    {
+      "id": "window--garden",
+      "owner": "room-window",
+      "kind": "scenery",
+      "source": "assets/room-clean-v7.png",
+      "file": "assets/objects/generated/window--garden.png",
+      "bounds": {
+        "x": 953,
+        "y": 178,
+        "width": 405,
+        "height": 263
+      },
+      "alpha": true,
+      "sha256": "5a2c9c100d9d489c41ea1d6b956c6923ecdc3f9d4e6871a750515f5385220a6c",
+      "pivot": [
+        1155.5,
+        441
+      ],
+      "anchor": {
+        "x": 1155.5,
+        "y": 441
+      },
+      "clippedByViewport": false,
+      "pixelCount": 103859,
+      "transparentPixels": 1469493
+    },
+    {
+      "id": "room--lettering",
+      "owner": "room-lettering",
+      "kind": "decoration",
+      "source": "assets/room-architecture-v3.png",
+      "path": "M42 18 H189 V63 H42 Z",
+      "edgePadding": 0,
+      "file": "assets/objects/generated/room--lettering.png",
+      "bounds": {
+        "x": 48,
+        "y": 19,
+        "width": 125,
+        "height": 36
+      },
+      "alpha": true,
+      "sha256": "175d8aff33846a86a1217f67eba96dc62e4538e75dad462b072aa8943bacd5bd",
+      "pivot": [
+        110.5,
+        55
+      ],
+      "anchor": {
+        "x": 110.5,
+        "y": 55
+      },
+      "clippedByViewport": false,
+      "pixelCount": 975,
+      "transparentPixels": 1572377
+    },
+    {
+      "id": "lighting--window-shade",
+      "owner": "sunlight",
+      "kind": "lighting",
+      "source": "assets/room-architecture-v1.png",
+      "file": "assets/objects/generated/lighting--window-shade.png",
+      "alpha": true,
+      "bounds": {
+        "x": 11,
+        "y": 700,
+        "width": 699,
+        "height": 122
+      }
+    },
+    {
+      "id": "lighting--window-sunlight",
+      "owner": "sunlight",
+      "kind": "lighting",
+      "source": "assets/room-architecture-v1.png",
+      "file": "assets/objects/generated/lighting--window-sunlight.png",
+      "alpha": true,
+      "bounds": {
+        "x": 11,
+        "y": 700,
+        "width": 699,
+        "height": 122
+      }
+    }
+  ],
+  "actors": [
+    {
+      "id": "sili-standing",
+      "source": "assets/sili-poses-v1.png",
+      "columns": 4,
+      "rows": 1,
+      "frames": [
+        {
+          "id": "sili-standing--frame-1",
+          "file": "assets/objects/generated/sili-standing--frame-01.png",
+          "sha256": "521ee841493de896273eb5b797b295d6e60087589b8b6ba0855f1ddb32aca1a3",
+          "cell": {
+            "x": 0,
+            "y": 0,
+            "width": 543,
+            "height": 724
+          }
+        },
+        {
+          "id": "sili-standing--frame-2",
+          "file": "assets/objects/generated/sili-standing--frame-02.png",
+          "sha256": "6ede1c5341e368b2f8655ae9fb5956ec9f93da23ee225659a579f2721a2479fb",
+          "cell": {
+            "x": 543,
+            "y": 0,
+            "width": 543,
+            "height": 724
+          }
+        },
+        {
+          "id": "sili-standing--frame-3",
+          "file": "assets/objects/generated/sili-standing--frame-03.png",
+          "sha256": "2a503a29c983167c66e940bdae80a363ca10d379781ce19b2369d3bc5631618d",
+          "cell": {
+            "x": 1086,
+            "y": 0,
+            "width": 543,
+            "height": 724
+          }
+        },
+        {
+          "id": "sili-standing--frame-4",
+          "file": "assets/objects/generated/sili-standing--frame-04.png",
+          "sha256": "d442a45ac31cb19ccd1ce4aa3aefc52ce929a25ea99b9f402909ec53bc84c11c",
+          "cell": {
+            "x": 1629,
+            "y": 0,
+            "width": 543,
+            "height": 724
+          }
+        }
+      ]
+    },
+    {
+      "id": "sili-walking",
+      "source": "assets/sili-walk-v2.png",
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "id": "sili-walking--frame-1",
+          "file": "assets/objects/generated/sili-walking--frame-01.png",
+          "sha256": "1789ec7114b0532db131af83b6840844ccdf1ed9b6dd713ee7e6e6a149f2fbcc",
+          "cell": {
+            "x": 0,
+            "y": 0,
+            "width": 512,
+            "height": 512
+          }
+        },
+        {
+          "id": "sili-walking--frame-2",
+          "file": "assets/objects/generated/sili-walking--frame-02.png",
+          "sha256": "7cc4c335a58feeb1047d9a29109bd27ed4e8823ff2206a30594224f27cc9e77a",
+          "cell": {
+            "x": 512,
+            "y": 0,
+            "width": 512,
+            "height": 512
+          }
+        },
+        {
+          "id": "sili-walking--frame-3",
+          "file": "assets/objects/generated/sili-walking--frame-03.png",
+          "sha256": "34b033aae193472d8246eb096a063af21d5411ea2448bfcde041288835d53025",
+          "cell": {
+            "x": 1024,
+            "y": 0,
+            "width": 512,
+            "height": 512
+          }
+        },
+        {
+          "id": "sili-walking--frame-4",
+          "file": "assets/objects/generated/sili-walking--frame-04.png",
+          "sha256": "ea71abf97b7deead94498ce6d947448c8207eda3b58a7f35ddce33ce0d428ab4",
+          "cell": {
+            "x": 0,
+            "y": 512,
+            "width": 512,
+            "height": 512
+          }
+        },
+        {
+          "id": "sili-walking--frame-5",
+          "file": "assets/objects/generated/sili-walking--frame-05.png",
+          "sha256": "4e3eb8f0c772a347424e6407127ed5f9a4af697c5a56e7da901a1a19660735ff",
+          "cell": {
+            "x": 512,
+            "y": 512,
+            "width": 512,
+            "height": 512
+          }
+        },
+        {
+          "id": "sili-walking--frame-6",
+          "file": "assets/objects/generated/sili-walking--frame-06.png",
+          "sha256": "d6600fadc77187cefab7bbb60ea501a40b827246ecf4d56e83047f4e60ea27c8",
+          "cell": {
+            "x": 1024,
+            "y": 512,
+            "width": 512,
+            "height": 512
+          }
+        }
+      ]
+    },
+    {
+      "id": "sili-piano",
+      "source": "assets/sili-piano-v4.png",
+      "columns": 6,
+      "rows": 1,
+      "frames": [
+        {
+          "id": "sili-piano--frame-1",
+          "file": "assets/objects/generated/sili-piano--frame-01.png",
+          "sha256": "9860ddee94d0ed8ee826c228e419f1b03720b0c2bab2f819c9f49ebfa3ec7241",
+          "cell": {
+            "x": 0,
+            "y": 0,
+            "width": 512,
+            "height": 512
+          }
+        },
+        {
+          "id": "sili-piano--frame-2",
+          "file": "assets/objects/generated/sili-piano--frame-02.png",
+          "sha256": "cce909fa0f836a26eacc404a682fb60c0b8bd954ff36bd5a2a4190115f25cd63",
+          "cell": {
+            "x": 512,
+            "y": 0,
+            "width": 512,
+            "height": 512
+          }
+        },
+        {
+          "id": "sili-piano--frame-3",
+          "file": "assets/objects/generated/sili-piano--frame-03.png",
+          "sha256": "9cafec9e41c8b7ef6771b1674825fc3eff8499f254b77df46678191a1f12d2bf",
+          "cell": {
+            "x": 1024,
+            "y": 0,
+            "width": 512,
+            "height": 512
+          }
+        },
+        {
+          "id": "sili-piano--frame-4",
+          "file": "assets/objects/generated/sili-piano--frame-04.png",
+          "sha256": "618feafd8d2eec4022ada882cd3452da0058f2871432647e4afed40fd43ee965",
+          "cell": {
+            "x": 1536,
+            "y": 0,
+            "width": 512,
+            "height": 512
+          }
+        },
+        {
+          "id": "sili-piano--frame-5",
+          "file": "assets/objects/generated/sili-piano--frame-05.png",
+          "sha256": "43d53be3acf35c588039df22e9b4f2facd694d94fc3bbecf22fa22287dd55ade",
+          "cell": {
+            "x": 2048,
+            "y": 0,
+            "width": 512,
+            "height": 512
+          }
+        },
+        {
+          "id": "sili-piano--frame-6",
+          "file": "assets/objects/generated/sili-piano--frame-06.png",
+          "sha256": "387552603294732bf8646b2e4eb9752df697e37ec1a83268c3955649017efad1",
+          "cell": {
+            "x": 2560,
+            "y": 0,
+            "width": 512,
+            "height": 512
+          }
+        }
+      ]
+    },
+    {
+      "id": "sili-coffee",
+      "source": "assets/sili-coffee-v3.png",
+      "columns": 4,
+      "rows": 1,
+      "frames": [
+        {
+          "id": "sili-coffee--frame-1",
+          "file": "assets/objects/generated/sili-coffee--frame-01.png",
+          "sha256": "332db1d1f5de09767773e33500778985f16bf09db082af780a013620a3bace9c",
+          "cell": {
+            "x": 0,
+            "y": 0,
+            "width": 576,
+            "height": 576
+          }
+        },
+        {
+          "id": "sili-coffee--frame-2",
+          "file": "assets/objects/generated/sili-coffee--frame-02.png",
+          "sha256": "a65353cd63bebfd6c3536454649052a36d551153adf77af6a72baed42127e64b",
+          "cell": {
+            "x": 576,
+            "y": 0,
+            "width": 576,
+            "height": 576
+          }
+        },
+        {
+          "id": "sili-coffee--frame-3",
+          "file": "assets/objects/generated/sili-coffee--frame-03.png",
+          "sha256": "f13cb775375b5c54daf82accc924b0ab48c6519defabb8cefe9f26ccd74f358b",
+          "cell": {
+            "x": 1152,
+            "y": 0,
+            "width": 576,
+            "height": 576
+          }
+        },
+        {
+          "id": "sili-coffee--frame-4",
+          "file": "assets/objects/generated/sili-coffee--frame-04.png",
+          "sha256": "b0e558c96ea9ba2b25a1d71bf45a5094dd217af914d790ee97f0d5f881c90ca3",
+          "cell": {
+            "x": 1728,
+            "y": 0,
+            "width": 576,
+            "height": 576
+          }
+        }
+      ]
+    },
+    {
+      "id": "sili-computer",
+      "source": "assets/sili-computer-v3.png",
+      "columns": 1,
+      "rows": 1,
+      "frames": [
+        {
+          "id": "sili-computer--frame-1",
+          "file": "assets/objects/generated/sili-computer--frame-01.png",
+          "sha256": "2f10f01dbe3ebed7e5a09382146d0d612f8d68fb5a1c9d844a71dbf66a93467a",
+          "cell": {
+            "x": 0,
+            "y": 0,
+            "width": 576,
+            "height": 576
+          }
+        }
+      ]
+    },
+    {
+      "id": "sili-writing",
+      "source": "assets/sili-writing-v2.png",
+      "columns": 1,
+      "rows": 1,
+      "frames": [
+        {
+          "id": "sili-writing--frame-1",
+          "file": "assets/objects/generated/sili-writing--frame-01.png",
+          "sha256": "7ac581d0043531d8e18293fd17ca9bc11f27007340f9be5a7fd6448b74f9160c",
+          "cell": {
+            "x": 0,
+            "y": 0,
+            "width": 576,
+            "height": 576
+          }
+        }
+      ]
+    },
+    {
+      "id": "sili-interactions",
+      "source": "assets/sili-interactions-v1.png",
+      "columns": 6,
+      "rows": 1,
+      "frames": [
+        {
+          "id": "sili-interactions--frame-1",
+          "file": "assets/objects/generated/sili-interactions--frame-01.png",
+          "sha256": "989d22728245f49edba7b0bbbaca748f6e04422cbc69f8a2dc6eafd57c7b58ce",
+          "cell": {
+            "x": 0,
+            "y": 0,
+            "width": 576,
+            "height": 576
+          }
+        },
+        {
+          "id": "sili-interactions--frame-2",
+          "file": "assets/objects/generated/sili-interactions--frame-02.png",
+          "sha256": "28a82b1f4373e9bd828c58d497ddeabb42f441938d5b0cd59b661ce21ef1f6c9",
+          "cell": {
+            "x": 576,
+            "y": 0,
+            "width": 576,
+            "height": 576
+          }
+        },
+        {
+          "id": "sili-interactions--frame-3",
+          "file": "assets/objects/generated/sili-interactions--frame-03.png",
+          "sha256": "38e392d7b0173d554cb500fab4e3c0ffa4bd46e18bc06936bd14935cd937be60",
+          "cell": {
+            "x": 1152,
+            "y": 0,
+            "width": 576,
+            "height": 576
+          }
+        },
+        {
+          "id": "sili-interactions--frame-4",
+          "file": "assets/objects/generated/sili-interactions--frame-04.png",
+          "sha256": "833c526b8afa1a0e2193fcffbe97e4b521c97798a5a7e63e31d2865ce07af348",
+          "cell": {
+            "x": 1728,
+            "y": 0,
+            "width": 576,
+            "height": 576
+          }
+        },
+        {
+          "id": "sili-interactions--frame-5",
+          "file": "assets/objects/generated/sili-interactions--frame-05.png",
+          "sha256": "6c76e05265edef422bb3c79077e477a7665d56e9758b2931539b6473362e0549",
+          "cell": {
+            "x": 2304,
+            "y": 0,
+            "width": 576,
+            "height": 576
+          }
+        },
+        {
+          "id": "sili-interactions--frame-6",
+          "file": "assets/objects/generated/sili-interactions--frame-06.png",
+          "sha256": "ae59f6156fd332e15a6beaa7f2df75c894000034a070b7ea8efd63c981b8e56a",
+          "cell": {
+            "x": 2880,
+            "y": 0,
+            "width": 576,
+            "height": 576
+          }
+        }
+      ]
+    },
+    {
+      "id": "viola",
+      "source": "assets/viola-poses-v1.png",
+      "columns": 6,
+      "rows": 1,
+      "frames": [
+        {
+          "id": "viola--frame-1",
+          "file": "assets/objects/generated/viola--frame-01.png",
+          "sha256": "9d985cdcc722360356ca1d820cd87ebe817b6f662d68d7c31b789a6478a9c052",
+          "cell": {
+            "x": 0,
+            "y": 0,
+            "width": 362,
+            "height": 362
+          }
+        },
+        {
+          "id": "viola--frame-2",
+          "file": "assets/objects/generated/viola--frame-02.png",
+          "sha256": "2e4e3ce25bf773b80f0857eefd8467808f79fb04639bf78739793b35cf87c47b",
+          "cell": {
+            "x": 362,
+            "y": 0,
+            "width": 362,
+            "height": 362
+          }
+        },
+        {
+          "id": "viola--frame-3",
+          "file": "assets/objects/generated/viola--frame-03.png",
+          "sha256": "36125ad0d102f505a9b927370d8e632314d1333f76f8c1126b7fcf47f489ed3f",
+          "cell": {
+            "x": 724,
+            "y": 0,
+            "width": 362,
+            "height": 362
+          }
+        },
+        {
+          "id": "viola--frame-4",
+          "file": "assets/objects/generated/viola--frame-04.png",
+          "sha256": "b5a264f7e6768c5e5e5e048e4dae9e01f246237e35533b3b9b18bb21e27ab141",
+          "cell": {
+            "x": 1086,
+            "y": 0,
+            "width": 362,
+            "height": 362
+          }
+        },
+        {
+          "id": "viola--frame-5",
+          "file": "assets/objects/generated/viola--frame-05.png",
+          "sha256": "ecea207774a4d930077e9c4df63908be62be6bb0c9a305d9106e66967422c447",
+          "cell": {
+            "x": 1448,
+            "y": 0,
+            "width": 362,
+            "height": 362
+          }
+        },
+        {
+          "id": "viola--frame-6",
+          "file": "assets/objects/generated/viola--frame-06.png",
+          "sha256": "45a864ff7a11257bbc9b069a5e2904b70547933a15897b5cad4493c06a7d05f8",
+          "cell": {
+            "x": 1810,
+            "y": 0,
+            "width": 362,
+            "height": 362
+          }
+        }
+      ]
+    },
+    {
+      "id": "java",
+      "source": "assets/java-poses-v1.png",
+      "columns": 6,
+      "rows": 1,
+      "frames": [
+        {
+          "id": "java--frame-1",
+          "file": "assets/objects/generated/java--frame-01.png",
+          "sha256": "c1c82a9acae51eac308f9273b4b6c0810c1a7eb898470d2f5f96d9548f2ecf8c",
+          "cell": {
+            "x": 0,
+            "y": 0,
+            "width": 362,
+            "height": 362
+          }
+        },
+        {
+          "id": "java--frame-2",
+          "file": "assets/objects/generated/java--frame-02.png",
+          "sha256": "5ce4695b2aba413aa1633c4b4f8bc44f397cba566096a5c69771d5f56fe9a7d1",
+          "cell": {
+            "x": 362,
+            "y": 0,
+            "width": 362,
+            "height": 362
+          }
+        },
+        {
+          "id": "java--frame-3",
+          "file": "assets/objects/generated/java--frame-03.png",
+          "sha256": "e36e3327cd1324bf28fef0033809eb12c353a0a3a7ac4dee7d6c26a0209431cf",
+          "cell": {
+            "x": 724,
+            "y": 0,
+            "width": 362,
+            "height": 362
+          }
+        },
+        {
+          "id": "java--frame-4",
+          "file": "assets/objects/generated/java--frame-04.png",
+          "sha256": "8db79307bb619f306aaf588b89ecb7f13fe431f371e6527ff7ab191cc898335b",
+          "cell": {
+            "x": 1086,
+            "y": 0,
+            "width": 362,
+            "height": 362
+          }
+        },
+        {
+          "id": "java--frame-5",
+          "file": "assets/objects/generated/java--frame-05.png",
+          "sha256": "9220c853098dc29f72ea43a42a51a74e334b1ac76470068a71c7d4000f97a467",
+          "cell": {
+            "x": 1448,
+            "y": 0,
+            "width": 362,
+            "height": 362
+          }
+        },
+        {
+          "id": "java--frame-6",
+          "file": "assets/objects/generated/java--frame-06.png",
+          "sha256": "8cf3636e281d2deb9847c4b41ec670942a0440cf75e3c475752d72119b3c7439",
+          "cell": {
+            "x": 1810,
+            "y": 0,
+            "width": 362,
+            "height": 362
+          }
+        }
+      ]
+    }
+  ],
+  "books": [
+    {
+      "id": "wall-shelf-book-01",
+      "owner": "wall-shelf",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      }
+    },
+    {
+      "id": "wall-shelf-book-02",
+      "owner": "wall-shelf",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      }
+    },
+    {
+      "id": "wall-shelf-book-03",
+      "owner": "wall-shelf",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      }
+    },
+    {
+      "id": "wall-shelf-book-04",
+      "owner": "wall-shelf",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      }
+    },
+    {
+      "id": "bookcase-top-book-01",
+      "owner": "bookcase",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      }
+    },
+    {
+      "id": "bookcase-top-book-02",
+      "owner": "bookcase",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      }
+    },
+    {
+      "id": "bookcase-top-book-03",
+      "owner": "bookcase",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      }
+    },
+    {
+      "id": "bookcase-top-book-04",
+      "owner": "bookcase",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      }
+    },
+    {
+      "id": "bookcase-top-book-05",
+      "owner": "bookcase",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      }
+    },
+    {
+      "id": "bookcase-middle-book-01",
+      "owner": "bookcase",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      }
+    },
+    {
+      "id": "bookcase-middle-book-02",
+      "owner": "bookcase",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      }
+    },
+    {
+      "id": "bookcase-middle-book-03",
+      "owner": "bookcase",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      }
+    },
+    {
+      "id": "bookcase-middle-book-04",
+      "owner": "bookcase",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      }
+    },
+    {
+      "id": "bookcase-middle-book-05",
+      "owner": "bookcase",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      }
+    },
+    {
+      "id": "bookcase-bottom-book-01",
+      "owner": "bookcase",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      }
+    },
+    {
+      "id": "bookcase-bottom-book-02",
+      "owner": "bookcase",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      }
+    },
+    {
+      "id": "bookcase-bottom-book-03",
+      "owner": "bookcase",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      }
+    },
+    {
+      "id": "desk-book-01",
+      "owner": "desk-books",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      }
+    },
+    {
+      "id": "desk-book-02",
+      "owner": "desk-books",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      }
+    },
+    {
+      "id": "desk-book-03",
+      "owner": "desk-books",
+      "content": {
+        "title": null,
+        "author": null,
+        "entry": null
+      }
+    }
+  ],
+  "groups": [
+    {
+      "id": "rug",
+      "parts": [
+        "rug--woven-rug"
+      ]
+    },
+    {
+      "id": "piano",
+      "parts": [
+        "piano--cabinet",
+        "piano--keyboard",
+        "piano--brass-trim",
+        "piano--sheet-music"
+      ]
+    },
+    {
+      "id": "piano-bench",
+      "parts": [
+        "piano-bench--wooden-bench",
+        "piano-bench--bench-blanket"
+      ]
+    },
+    {
+      "id": "wall-portrait",
+      "parts": [
+        "wall-portrait--frame-and-portrait"
+      ]
+    },
+    {
+      "id": "calendar",
+      "parts": [
+        "calendar--hanging-loop",
+        "calendar--calendar-page"
+      ]
+    },
+    {
+      "id": "coffee-cabinet",
+      "parts": [
+        "coffee-cabinet--cabinet-and-counter"
+      ]
+    },
+    {
+      "id": "tennis-corner",
+      "parts": [
+        "tennis-corner--red-racket",
+        "tennis-corner--blue-racket",
+        "tennis-corner--ball-basket"
+      ]
+    },
+    {
+      "id": "window-stool",
+      "parts": [
+        "window-stool--stool-top",
+        "window-stool--stool-left-leg",
+        "window-stool--stool-right-leg",
+        "window-stool--stool-step",
+        "window-stool--stool-lower-rung"
+      ]
+    },
+    {
+      "id": "bookcase",
+      "parts": [
+        "bookcase--wooden-bookcase",
+        "bookcase--bookcase-top-book-01",
+        "bookcase--bookcase-top-book-02",
+        "bookcase--bookcase-top-book-03",
+        "bookcase--bookcase-top-book-04",
+        "bookcase--bookcase-top-book-05",
+        "bookcase--bookcase-middle-book-01",
+        "bookcase--bookcase-middle-book-02",
+        "bookcase--bookcase-middle-book-03",
+        "bookcase--bookcase-middle-book-04",
+        "bookcase--bookcase-middle-book-05",
+        "bookcase--bookcase-bottom-book-01",
+        "bookcase--bookcase-bottom-book-02",
+        "bookcase--bookcase-bottom-book-03"
+      ]
+    },
+    {
+      "id": "work-desk",
+      "parts": [
+        "work-desk--desk-frame",
+        "work-desk--foreground"
+      ]
+    },
+    {
+      "id": "computer",
+      "parts": [
+        "computer--laptop"
+      ]
+    },
+    {
+      "id": "desk-notebook",
+      "parts": [
+        "desk-notebook--open-notebook",
+        "desk-notebook--writing-pen"
+      ]
+    },
+    {
+      "id": "stationery",
+      "parts": [
+        "stationery--pencils",
+        "stationery--pencil-cup"
+      ]
+    },
+    {
+      "id": "desk-lamp",
+      "parts": [
+        "desk-lamp--lamp"
+      ]
+    },
+    {
+      "id": "desk-books",
+      "parts": [
+        "desk-books--desk-book-01",
+        "desk-books--desk-book-02",
+        "desk-books--desk-book-03"
+      ]
+    },
+    {
+      "id": "sofa",
+      "parts": [
+        "sofa--sofa-body",
+        "sofa--sofa-cushion",
+        "sofa--sofa-throw"
+      ]
+    },
+    {
+      "id": "coffee-table",
+      "parts": [
+        "coffee-table--round-coffee-table"
+      ]
+    },
+    {
+      "id": "table-album",
+      "parts": [
+        "table-album--physical-album"
+      ]
+    },
+    {
+      "id": "wall-shelf",
+      "parts": [
+        "wall-shelf--shelf",
+        "wall-shelf--wall-shelf-book-01",
+        "wall-shelf--wall-shelf-book-02",
+        "wall-shelf--wall-shelf-book-03",
+        "wall-shelf--wall-shelf-book-04",
+        "wall-shelf--camera"
+      ]
+    },
+    {
+      "id": "toy-mouse",
+      "parts": [
+        "toy-mouse--mouse-toy"
+      ]
+    },
+    {
+      "id": "shelf-plant",
+      "parts": [
+        "shelf-plant--plant-pot",
+        "shelf-plant--trailing-leaves"
+      ]
+    },
+    {
+      "id": "bookcase-plant",
+      "parts": [
+        "bookcase-plant--leaf-cascade"
+      ]
+    },
+    {
+      "id": "desk-plant",
+      "parts": [
+        "desk-plant--desk-leaves"
+      ]
+    },
+    {
+      "id": "table-plant",
+      "parts": [
+        "table-plant--pot",
+        "table-plant--leaves"
+      ]
+    },
+    {
+      "id": "sofa-plant",
+      "parts": [
+        "sofa-plant--floor-leaves"
+      ]
+    },
+    {
+      "id": "coffee-station",
+      "parts": [
+        "coffee-station--machine",
+        "coffee-station--grinder",
+        "coffee-station--beans",
+        "coffee-station--cup"
+      ]
+    },
+    {
+      "id": "room-window",
+      "parts": [
+        "window--frame",
+        "window--rod",
+        "window--left-sash",
+        "window--right-sash",
+        "window--closed-glass",
+        "curtain--open-left",
+        "curtain--open-right",
+        "curtain--closed-left",
+        "curtain--closed-right",
+        "window--garden"
+      ]
+    },
+    {
+      "id": "window-scenery",
+      "parts": [
+        "window--open-left-view",
+        "window--open-right-view",
+        "window--closed-view"
+      ]
+    },
+    {
+      "id": "window-glass",
+      "parts": [
+        "window--open-left-pane",
+        "window--open-right-pane",
+        "window--closed-pane"
+      ]
+    },
+    {
+      "id": "work-chair",
+      "parts": [
+        "work-chair--complete"
+      ]
+    },
+    {
+      "id": "room-lettering",
+      "parts": [
+        "room--lettering"
+      ]
+    },
+    {
+      "id": "sunlight",
+      "parts": [
+        "lighting--window-shade",
+        "lighting--window-sunlight"
+      ]
+    }
+  ]
+}

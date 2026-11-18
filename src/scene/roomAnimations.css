@@ -36,3 +36,33 @@
 
 /* Keep the painted brass rail subdued instead of looking illuminated. */
 .piano-brass-trim{filter:sepia(.3) saturate(.85) brightness(.82)}
+/* Depth passes use complete newly drawn furniture, not historical outlines. */
+.rebuilt-room .piano-foreground,.rebuilt-room .table-foreground,.rebuilt-room .table-empty-foreground{clip-path:none!important;mask:none;-webkit-mask:none}
+.rebuilt-room .desk-chair-front{display:none;mask:none;-webkit-mask:none}
+.rebuilt-room .sili.at-piano{left:var(--piano-left);bottom:var(--piano-bottom);height:var(--piano-height)}
+/* Only the new chair's backrest and near legs pass in front of the sitter.
+   Its seat remains behind the thighs instead of erasing the seated contact. */
+.rebuilt-room .desk-chair-front{clip-path:polygon(0 0,60% 0,60% 36%,50% 36%,54% 100%,40% 100%,37% 60%,15% 56%,13% 90%,0 90%)}
+.rebuilt-room .sili[data-activity="desk"]~.desk-chair-front{display:block}
+.rebuilt-room .cat[data-pose="sleep"] .cat-sprite{clip-path:none}
+.rebuilt-room .sili[data-activity="desk"] .sili-sprite{translate:0 0}
+/* Generated plants include their pots: anchor their quiet sway at the real
+   contact, and keep the music-rest ledge/hanging pin grounded as well. */
+.rebuilt-room .shelf-plant-module .plant-leaves{transform-origin:8.97% 26.25%!important}
+.rebuilt-room .desk-plant-module .plant-leaves{transform-origin:97.91% 64.08%!important}
+.rebuilt-room .table-plant-module .plant-leaves{transform-origin:62.62% 96.49%!important}
+.rebuilt-room .sofa-plant-module .plant-leaves{transform-origin:1.20% 94.05%!important}
+.rebuilt-room .music-paper{transform-origin:11.81% 52.71%!important}
+.rebuilt-room .calendar-paper{transform-origin:43% 15.09%!important}
+.rebuilt-room .bookcase-glint{display:none}
+/* The corner plant grows behind the sofa; its pot must not sit on the arm. */
+.rebuilt-room .sofa-plant-module{z-index:0}
+.rebuilt-room .sofa-module{z-index:1}
+
+/* The actual near desk support occludes receding calves; never paint a patch
+   of wall/floor over the actor or change the chair's seated pelvis opening. */
+.desk-leg-foreground{display:none;position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2;clip-path:polygon(88.8% 76%,96% 76%,96% 100%,88.8% 100%);}
+.rebuilt-room .sili[data-activity="desk"]~.desk-leg-foreground{display:block;}
+/* Tucked typing calves pass behind the real front edge of the chair seat. */
+.desk-chair-seat-front{display:none;z-index:2;clip-path:polygon(12% 54%,95% 49%,98% 62%,14% 71%);}
+.rebuilt-room .sili[data-activity="desk"][data-desk-mode="computer"]~.desk-chair-seat-front{display:block;}

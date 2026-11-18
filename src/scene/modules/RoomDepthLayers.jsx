@@ -1,14 +1,21 @@
-import { furniture } from '../furnitureCatalog.js';
-import { SceneArtwork } from '../shared/SceneArtwork.jsx';
+import { RegisteredImages } from '../shared/SceneArtwork.jsx';
+import { findObjectAsset } from '../assets/objectAssets.js';
 
-// Keep these as direct stage siblings: calibrated actor-depth CSS depends on it.
+function Pieces({ids,className}) {
+  return <svg className={className} viewBox="0 0 1672 941" preserveAspectRatio="none" aria-hidden="true">
+    {ids.map(id=>{const asset=findObjectAsset(id);return asset&&<RegisteredImages key={id} asset={asset} />;})}
+  </svg>;
+}
+// Keep direct sibling ordering and the existing pose-specific occlusion geometry.
 export function RoomDepthLayers(){
-  const deskFrame=furniture.desk.parts.find(part=>part.id==='desk-frame');
+  const chair=findObjectAsset('work-chair--complete');
+  const table=['coffee-table--round-coffee-table','table-plant--pot','table-plant--leaves'];
   return <>
-    <SceneArtwork className="desk-foreground" dataPart="desk-occlusion" path={deskFrame.path} source={deskFrame.source} edgePadding={0} />
-    <img className="desk-chair desk-chair-front" src="assets/desk-chair-v1.png" alt="" aria-hidden="true" width="629" height="772" />
-    <img className="table-foreground" src="assets/room-clean-v7.png" alt="" aria-hidden="true" width="1672" height="941" />
-    <img className="table-empty-foreground" src="assets/room-hidden-surfaces-v1.png" alt="" aria-hidden="true" width="1672" height="941" />
-    <img className="piano-foreground" src="assets/room-clean-v7.png" alt="" aria-hidden="true" width="1672" height="941" />
+    <img className="desk-chair desk-chair-front" src={chair.file} style={{left:`${chair.bounds.x/1672*100}%`,top:`${chair.bounds.y/941*100}%`,width:`${chair.bounds.width/1672*100}%`,height:`${chair.bounds.height/941*100}%`}} alt="" aria-hidden="true" />
+    <img className="desk-chair desk-chair-seat-front" src={chair.file} style={{left:`${chair.bounds.x/1672*100}%`,top:`${chair.bounds.y/941*100}%`,width:`${chair.bounds.width/1672*100}%`,height:`${chair.bounds.height/941*100}%`}} alt="" aria-hidden="true" />
+    <Pieces className="scene-artwork desk-leg-foreground" ids={['work-desk--desk-frame']} />
+    <Pieces className="table-foreground" ids={[table[0],'table-album--physical-album',...table.slice(1)]} />
+    <Pieces className="table-empty-foreground" ids={table} />
+    <Pieces className="piano-foreground" ids={['piano-bench--wooden-bench','piano-bench--bench-blanket']} />
   </>;
 }

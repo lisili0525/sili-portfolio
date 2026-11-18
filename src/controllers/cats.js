@@ -37,7 +37,7 @@ export function createCatController(root) {
     if(groups.some(group=>reservations.has(group)&&reservations.get(group)!==cat.name)) return false;
     if(groups.includes('window')&&(room?.dataset.windowOpen==='false'||room?.dataset.curtainsOpen==='false')) return false;
     if(groups.includes('piano')&&(actor?.classList.contains('at-piano')||room?.dataset.activity==='music')) return false;
-    if(groups.includes('workstation')&&room?.dataset.activity==='notebook') return false;
+    if(groups.includes('workstation')&&['workstation','computer','notebook'].includes(room?.dataset.activity)) return false;
     if(groups.includes('counter')&&room?.dataset.activity==='coffee') return false;
     if(groups.includes('table')&&(room?.classList.contains('album-lifted')||room?.classList.contains('near-album'))) return false;
     return true;
@@ -154,7 +154,14 @@ export function createCatController(root) {
       if(progress===1) cat.surface=action.surface;
     }
     paint(cat);
-    if(progress===1) {action.end?.();cat.action=null;}
+    if(progress===1) {
+      action.end?.();
+      // The outbound portal endpoint is outside the room. Hide at contact,
+      // even when a modal prevents the following outside-rest action starting.
+      if(action.surface==='outside'){cat.outside=true;cat.layer.hidden=true;}
+      if(dialog.open&&action.pose==='hop'&&!cat.outside&&!cat.evacuating&&!cat.departing)cat.el.dataset.pose='sit';
+      cat.action=null;
+    }
   }
 
   let interactionId=0;
@@ -315,7 +322,10 @@ export function createCatController(root) {
       if(cat.outside&&(room?.dataset.windowOpen==='false'||room?.dataset.curtainsOpen==='false')) return;
       clearForPerson(cat);
       if(cat.interaction) {tickInteraction(cat,dt);return;}
-      if(!motion.matches&&(!dialog.open||cat.evacuating||cat.departing)) tick(cat,dt);
+      // Reading pauses roaming only at a grounded contact. An existing hop
+      // must finish; otherwise opening a dialog can suspend a cat in midair.
+      const landing=cat.action?.pose==='hop'&&cat.action.x!==undefined;
+      if(!motion.matches&&(!dialog.open||landing||cat.evacuating||cat.departing)) tick(cat,dt);
     });
     // Depth must follow a moving person even while the cat rests or reading pauses it.
     cats.forEach(paintDepth);

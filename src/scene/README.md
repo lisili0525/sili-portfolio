@@ -1,61 +1,38 @@
 # Modular room scene
 
-The main room is assembled from independently owned furniture, decoration, lighting and resident modules over an empty architectural background. `/?demo=modules` remains an enlarged coffee/window close-up. The scene expansion is included in the current GitHub Pages release.
+## Workstation merge and seated depth — November 17, 2026
 
-## Scene ownership
+Laptop and notebook remain independent transparent artwork but now share one `workstation` content destination/hit control. Legacy `computer`/`notebook` keys canonicalize to it; existing four project descriptions remain unchanged. The journey's existing RAF switches typing/writing holds with brief neutral turns, keeping the same seated anchor; reduced motion stays still. Crossfades are CSS opacity only, no extra clock. The writing pose holds the independent pen while the tabletop pen is hidden.
 
-- `furnitureCatalog.js` registers furniture and decorative props with named artwork pieces, placement, interaction contours, animation roles and support anchors. It includes piano/body/keyboard/music, piano bench/blanket, portrait, calendar, coffee cabinet, tennis rackets/basket, stool, bookcase/books, work desk, laptop, notebook/pen, stationery, lamp, desk books, work chair, sofa/cushion/throw, coffee table, physical album, wall shelf/books/camera, toy mouse and plant groups.
-- `sceneObjects.js` registers coffee equipment and the window's frame/sash/curtain geometry. World coordinates use the common 1672 x 941 room space. `moduleStyle` translates modules and hit targets; `supportPoint` supplies the corresponding percentage anchors to the cat routes.
-- `modules/Furniture.jsx` exposes the named room components. `shared/FurnitureModule.jsx` handles stable rendering, motion preferences, original-art masks and existing content navigation.
-- `modules/Residents.jsx` owns the character and cat markup. Scoped journey/cat controllers retain their lifecycle and calibrated poses.
-- `modules/RoomDepthLayers.jsx` owns the calibrated foreground depth passes. These remain direct siblings of the character because the existing CSS selectors depend on that relationship.
-- `modules/RoomLighting.jsx` renders floor sunlight independently of the neutral architecture.
+Both seated sources have versioned v3 lower-body edits and `registeredCanvas:true`, preserving full 576px registration instead of fitting the changed leg silhouette. Full sources, rejected v2 attempts, prompts and prior registered sheets remain archived. V31 supersedes the initial lower-body shear: it is removed. The typing source now has compact legs tucked inward with a downward calf; a typing-only actual chair seat-front pass occludes its upper part. Preserve the original rear-facing upper-body angle. `RoomDepthLayers` reuses that actual desk asset above Sili; its clip starts below the desktop so it cannot reintroduce the chair lighting seam. No floor-colored erase patch, new bitmap furniture or duplicate pen.
 
-## Window behavior
 
-The glass and curtains have separate states, controlled by the room or locally in an isolated preview. Click the glass to open/close the window. Click fabric to draw/open the curtains. No floating state buttons are rendered; interaction stays on the illustrated glass and fabric. The glass remains keyboard-accessible while curtains are drawn.
+The main room combines complete freshly generated transparent objects over one bare architectural background. See [artwork guide](../../assets/rebuilt/README.md). Historical room rasters and cutout exports are retained locally but excluded from the active render and publication.
 
-Curtain motion is derived from the window's open state; there is no independent breeze toggle. Drawn curtains can breathe gently if the glass behind them remains open. Closing the glass stops fabric motion. Drawing the curtains removes direct floor sunlight and adds a restrained ambient shade. Reduced motion and inactive-tab handling override decorative animation.
+## Ownership and registration
 
-Cats do not plan new trips through closed glass or drawn curtains. Outdoor Viola waits outside until access reopens. Controls avoid closing the window or curtains during an active portal crossing. Perched cats descend before another room activity needs their furniture.
+`furnitureCatalog.js` and `sceneObjects.js` retain stable module IDs, animation roles, placement and shared support anchors in a 1672 × 941 world. `assets/regeneratedAliases.js` maps old authoring keys to new complete objects, without reading old pixels. Several historical fragments now resolve to one complete object; redundant fragments render nothing. `SceneArtwork` renders registered images and never applies historical clipping geometry.
 
-## Artwork and occlusion
+`assets/regeneratedManifest.js` is the generated client registry. Full source prompts and normalization records remain in `assets/rebuilt/v1/catalog.json` and `manifest.json`. `scripts/prepare-regenerated.mjs` normalizes only fresh output alpha, transparent margins, scale and frame registration; `scripts/trace-regenerated.mjs` derives new hit contours. Do not hand-edit generated manifests.
 
-- `room-architecture-v2.png`: neutral peach wall and wooden floor, with structural beams/header retained and physical props removed.
-- `room-architecture-v1.png`: the matching direct-sunlight source used only through the floor-light mask.
-- `room-clean-v7.png`: approved source for original furniture/decorative artwork.
-- `room-hidden-surfaces-v1.png`: reconstructed piano lower cabinet, cleared desk/chair area and empty coffee tabletop behind separately rendered bench, chair and album.
-- `window-closed-v1.png` and `curtains-closed-v1.png`: matching illustrated closed poses.
-- `room-module-underpainting-v2.png`: a bare coffee/window repair source used by isolated modules and the bare window frame.
+Ornaments have standalone PNGs. Shelf books are integrated into their shelf art; standalone book variants are retained as reusable sources. The 20 book IDs survive artwork/content changes: four wall-shelf, thirteen bookcase and three desk books. `assets/books.js` retains empty title/author/entry slots. New favorite-book stories require supplied content. Plants remain whole, including their pots.
 
-`shared/SceneArtwork.jsx` creates transparent visual pieces with geometric SVG clip paths. Small translated copies provide the previous edge padding without alpha-mask textures or morphology filters. Avoid full-stage animated mask buffers: Chrome continued to flicker after filter removal, so both the filter and alpha-mask rendering paths are now replaced. It preserves original raster detail without repeatedly generating foreground artwork. Furniture is grouped into sensible components; related books/leaves can be split further within their owning module. The modules preserve the approved layout and calibrated support points. Large rearrangements still require reviewing masks, occluded surfaces and contact/depth geometry together.
+## Behaviors and depth
 
-Generation prompts and saved asset paths are in `assets/modular-room-prompts.md`. All artwork editing used the built-in image generation tool.
+`App` owns content, focus, arrival-gated dialogs, album state and music controls. `useRoomRuntime` retains two continuous animation clocks. Journey, piano and cat controllers keep their existing timing, cancellation and ownership; changing artwork must not add competing controllers.
 
-## Decorative animation
+Residents mount all seven person sheets, while cats use their own sheets. New sheets are packed into the existing CSS layouts with explicit foot baselines. Walking keeps six distance-driven phases, speed 14 and a 12-unit cycle. The person publishes grounded depth; cats compare supported depth independently of their jump arc.
 
-Coffee preparation drives steam, flow, indicator light and machine vibration. Piano key highlights follow playing state. The lamp has an independent on/off action and a quiet warm pulse; computer code lines change softly. Window airflow drives plant and paper movement; the bookcase plant stays static to avoid source-mask fragments. Portrait/book highlights are restrained; the mouse toy occasionally settles. Camera activation produces a short localized flash, respecting reduced motion. Existing album pickup, browsing, music and cat behavior remain integrated.
+`RoomDepthLayers` stays a direct sibling of Sili. New bench/table pictures provide foreground depth. The desk foreground patch has been removed: the new typing/writing anatomy uses a shared pelvis contact and a naturally lowered writing knee. Historical chair masks and the sleeping-cat crop are disabled; the chair foreground uses only the new solid backrest/near-post geometry, leaving the seat behind the sitter. The loose pen hides while writing; one station mug hides while held. Never use floor-colored repair patches to hide a character.
 
-## Validation
+Window glass and curtains have independent state. Open glass drives the breeze; drawn curtains suppress sunlight. Cats cannot cross closed glass or drawn curtains; closure is blocked during a crossing. Lamp and camera remain local controls. Reduced motion and hidden tabs suppress ambient loops. Album content and the supplied recording remain unchanged.
 
-Run `npm test` and `npm run build`. Integration checks cover scene ownership, unique modules, independent window/curtain/lamp states, brewing coordination, reduced motion/inactivity, cat route reservations, blocked window access and outdoor waiting. Browser review should include both window poses, both curtain poses, lamp control, physical album pickup and character-depth composition.
+## Review and checks
 
-## Shared cat meetings
+`/?demo=objects` provides a checkerboard library and PNG downloads in development or the explicit runtime-preview build. `/?demo=runtime` is the PixiJS/XState experiment; the complete room has not migrated to Pixi. `/?demo=modules` shows isolated coffee/window modules.
 
-The cat controller exposes beginInteraction handles with stable identity, live snapshots, readiness, contact and cancellation. Journey control uses these snapshots and src/data/catInteraction.js to calculate a reachable hand/feet anchor rather than querying only floor cats or using a fixed pointing fallback. The handle owns attention, invitation/descent, contact, play settling, farewell and departure. An active jump finishes before cancellation, and the person leaves the petting pose before roaming resumes. Direct clicks stay in the room; biographies remain in Explore. No additional floating interaction toolbar is introduced.
+Run `npm run assets:export`, `npm run assets:check`, `npm run typecheck`, `npm test`, `npm run build` and `npm run test:browser`. Compiled preview checks use `playwright.preview.config.js`. Browser emulation covers Chrome/Firefox/WebKit plus Android/iPhone sizes; real hardware remains a separate review.
 
-Character atlases remain mounted on separate sprite surfaces, with initial decode warming. Pose switches select visibility while preserving the existing frame geometry, mirroring and foot registration. Journey control consumes zero-duration route markers within a single tick.
+Placement and cat contact points are authored in `assets/rebuilt/v1/layout.json`. Active hops complete before content-reading pauses roaming. Closed-curtain alpha coverage is verified across the whole window opening.
 
-## Resident depth
-
-The person publishes grounded depthY through the journey controller. Cats compare their supported foot position against it, using stage layer 1 behind the person (DOM order) or layer 3 in front. Existing furniture foreground passes remain layer 2 and the chair back remains layer 1 before residents. Jump arcs affect visual height, not the interpolated sort position. Depth is refreshed on the existing cat clock even when ambient cat movement is paused. Preserve Residents ordering: cat layers before Sili, and calibrated foreground passes as direct siblings.
-
-## Person walking
-
-The dedicated transparent sili-walk-v2.png atlas supplies six small-step phases in a 3 x 2 grid. It stays mounted and decoded beside the original standing and activity sheets. Ground offsets account for each cell's painted sole baseline without changing the world-space feet or actor depth. The journey controller uses distance-driven frames and a speed of 14 world-percent units/second instead of 22. Keep direction mirroring on the outer sprite and registration calibration on sheet-walking; do not re-enable the old single-pose wobble.
-
-The interaction-only desk foreground reuses the desk-frame artwork path and source with zero padding. Pose-specific clips may restrict that silhouette further, but must not replace it with broad floor-containing mask polygons. This keeps the tabletop/legs identical before and after selecting the computer or notebook.
-
-Enable the desk foreground only for the actor's seated desk activity, never from the room's notebook destination alone. During approach the pose clip is not set, so enabling the whole desk silhouette would cover the chair back.
-
-Workstation parts use room-workstation-no-pen-v1.png as a shared pen-free underlay. The loose writing-pen part alone samples the original source with a tight complete clip. Hide that part for the desk/writing pose via the room state selector; all other desktop parts, including the owned foreground, keep the same clean source. This prevents baked-in duplicate pens and state-dependent image seams.
+Workstation placement, standalone prop overlap and hidden assets are owned by `assets/rebuilt/v1/layout.json`. The upper-right and desk plants are hidden while their sources remain archived. Desk books paint bottom-to-top with actual alpha contact, and the pencil cup is supported beside the laptop. The piano music rack is part of its upper front panel; the separate score uses layout.json musicRack contact rather than the keyboard trim.

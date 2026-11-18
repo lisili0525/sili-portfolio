@@ -1,0 +1,407 @@
+{
+  "version": 2,
+  "booksIntegratedIntoShelves": true,
+  "assets": {
+    "wall-shelf": {
+      "bounds": {
+        "x": 5,
+        "y": 165,
+        "width": 371,
+        "height": 142
+      },
+      "fit": "fill"
+    },
+    "bookcase": {
+      "bounds": {
+        "x": 1535,
+        "y": 185,
+        "width": 190,
+        "height": 403
+      },
+      "fit": "fill"
+    },
+    "shelf-plant": {
+      "bounds": {
+        "x": 28,
+        "y": 110,
+        "width": 200,
+        "height": 300
+      },
+      "fit": "fill"
+    },
+    "bookcase-plant": {
+      "bounds": {
+        "x": 1480,
+        "y": 121,
+        "width": 180,
+        "height": 225
+      },
+      "fit": "fill"
+    },
+    "camera": {
+      "bounds": {
+        "x": 293,
+        "y": 194,
+        "width": 68,
+        "height": 49
+      },
+      "fit": "fill"
+    },
+    "chair": {
+      "bounds": {
+        "x": 1238,
+        "y": 629,
+        "width": 253,
+        "height": 311
+      },
+      "fit": "fill"
+    },
+    "sheet-music": {
+      "bounds": {
+        "x": 120,
+        "y": 408,
+        "width": 155,
+        "height": 88
+      },
+      "fit": "fill",
+      "transform": "translate(0 2.082) rotate(0.553 197.5 493)"
+    },
+    "physical-album": {
+      "bounds": {
+        "x": 700,
+        "y": 884,
+        "width": 285,
+        "height": 80
+      },
+      "fit": "fill"
+    },
+    "curtain-rod": {
+      "bounds": {
+        "x": 866,
+        "y": 130,
+        "width": 584,
+        "height": 24
+      },
+      "fit": "fill"
+    },
+    "curtain-open-left": {
+      "bounds": {
+        "x": 873,
+        "y": 130,
+        "width": 106,
+        "height": 358
+      },
+      "fit": "fill"
+    },
+    "curtain-open-right": {
+      "bounds": {
+        "x": 1334,
+        "y": 130,
+        "width": 106,
+        "height": 358
+      },
+      "fit": "fill"
+    },
+    "curtain-closed-left": {
+      "bounds": {
+        "x": 873,
+        "y": 130,
+        "width": 320,
+        "height": 358
+      },
+      "fit": "fill"
+    },
+    "curtain-closed-right": {
+      "bounds": {
+        "x": 1120,
+        "y": 130,
+        "width": 320,
+        "height": 358
+      },
+      "fit": "fill"
+    },
+    "sofa": {
+      "bounds": {
+        "x": -80,
+        "y": 805,
+        "width": 555,
+        "height": 300
+      },
+      "fit": "fill"
+    },
+    "sofa-cushion": {
+      "bounds": {
+        "x": 238,
+        "y": 868,
+        "width": 190,
+        "height": 120
+      },
+      "fit": "fill"
+    },
+    "sofa-throw": {
+      "bounds": {
+        "x": 35,
+        "y": 821,
+        "width": 190,
+        "height": 245
+      },
+      "fit": "fill"
+    },
+    "desk": {
+      "bounds": {
+        "x": 1202,
+        "y": 562,
+        "width": 550,
+        "height": 371
+      },
+      "fit": "fill"
+    },
+    "desk-plant": {
+      "bounds": {
+        "x": 1610,
+        "y": 540,
+        "width": 54,
+        "height": 63
+      },
+      "fit": "fill"
+    },
+    "desk-book-03": {
+      "bounds": {
+        "x": 1575,
+        "y": 620,
+        "width": 100,
+        "height": 47
+      },
+      "fit": "fill"
+    },
+    "desk-book-02": {
+      "bounds": {
+        "x": 1575,
+        "y": 600,
+        "width": 100,
+        "height": 47
+      },
+      "fit": "fill"
+    },
+    "desk-book-01": {
+      "bounds": {
+        "x": 1578,
+        "y": 581,
+        "width": 94,
+        "height": 44
+      },
+      "fit": "fill"
+    },
+    "actor-sili-computer": {
+      "normalizedHeight": 470,
+      "seatAnchor": [
+        0.5,
+        0.795
+      ]
+    },
+    "actor-sili-writing": {
+      "seatAnchor": [
+        0.49,
+        0.805
+      ]
+    },
+    "notebook": {
+      "bounds": {
+        "x": 1375,
+        "y": 600,
+        "width": 200,
+        "height": 65
+      },
+      "fit": "fill"
+    },
+    "pencil-cup": {
+      "bounds": {
+        "x": 1252,
+        "y": 559,
+        "width": 41,
+        "height": 47
+      },
+      "fit": "fill"
+    },
+    "pencil-1": {
+      "bounds": {
+        "x": 1256,
+        "y": 545,
+        "width": 10,
+        "height": 30
+      },
+      "fit": "fill"
+    },
+    "pencil-2": {
+      "bounds": {
+        "x": 1265,
+        "y": 545,
+        "width": 10,
+        "height": 30
+      },
+      "fit": "fill"
+    },
+    "pencil-3": {
+      "bounds": {
+        "x": 1274,
+        "y": 545,
+        "width": 10,
+        "height": 30
+      },
+      "fit": "fill"
+    },
+    "curtain-closed-pair": {
+      "bounds": {
+        "x": 873,
+        "y": 130,
+        "width": 567,
+        "height": 358
+      },
+      "fit": "fill"
+    },
+    "blue-racket": {
+      "bounds": {
+        "x": 958,
+        "y": 496,
+        "width": 104,
+        "height": 222
+      }
+    },
+    "espresso-machine": {
+      "bounds": {
+        "x": 570,
+        "y": 411,
+        "width": 112,
+        "height": 126
+      }
+    },
+    "grinder": {
+      "bounds": {
+        "x": 680,
+        "y": 406,
+        "width": 62,
+        "height": 139
+      }
+    },
+    "beans-jar": {
+      "bounds": {
+        "x": 745,
+        "y": 451,
+        "width": 54,
+        "height": 86
+      }
+    },
+    "mug": {
+      "bounds": {
+        "x": 708,
+        "y": 507,
+        "width": 48,
+        "height": 31
+      }
+    }
+  },
+  "supports": {
+    "piano-bench": {
+      "x": 239,
+      "y": 695,
+      "width": 11.2,
+      "group": "piano"
+    },
+    "piano-keys": {
+      "x": 334,
+      "y": 568,
+      "width": 9.8,
+      "group": "piano"
+    },
+    "piano-top": {
+      "x": 275,
+      "y": 392.5,
+      "width": 9.8,
+      "group": "piano"
+    },
+    "coffee-counter": {
+      "x": 543,
+      "y": 530,
+      "width": 9.4,
+      "group": "counter"
+    },
+    "coffee-table": {
+      "x": 830,
+      "y": 918,
+      "width": 13,
+      "group": "table"
+    },
+    "chair": {
+      "x": 1310,
+      "y": 650,
+      "width": 10.5,
+      "group": "workstation"
+    },
+    "desk": {
+      "x": 1530,
+      "y": 675,
+      "width": 8.4,
+      "group": "workstation"
+    },
+    "bookshelf-step": {
+      "x": 1598,
+      "y": 450,
+      "width": 8.4,
+      "group": "bookcase"
+    },
+    "bookshelf": {
+      "x": 1610,
+      "y": 224,
+      "width": 6,
+      "group": "bookcase"
+    },
+    "sofa": {
+      "x": 280,
+      "y": 810,
+      "width": 13,
+      "group": "sofa"
+    },
+    "stool": {
+      "x": 1145,
+      "y": 613,
+      "width": 9.6,
+      "group": "window"
+    },
+    "window": {
+      "x": 1155,
+      "y": 454,
+      "width": 9.5,
+      "group": "window"
+    }
+  },
+  "seating": {
+    "piano": {
+      "x": 220,
+      "feetY": 782,
+      "height": 540
+    }
+  },
+  "hiddenAssets": [
+    "bookcase-plant",
+    "desk-plant"
+  ],
+  "contacts": {
+    "musicRack": {
+      "left": {
+        "x": 80,
+        "y": 497
+      },
+      "right": {
+        "x": 325,
+        "y": 493
+      }
+    },
+    "coffeeTabletop": {
+      "minY": 519,
+      "maxY": 546
+    }
+  },
+  "curtains": {
+    "closedSeamX": 1156
+  }
+}

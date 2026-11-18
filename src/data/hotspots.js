@@ -32,7 +32,7 @@ export const hotspots = [
     ]
   },
   {
-    id:'desk', entry:'notebook', label:'Inside my notebook', tooltip:[86,52],
+    id:'desk', entry:'workstation', label:'At my workstation', tooltip:[86,52],
     paths:[
       'M1327 579 L1359 505 Q1361 497 1373 499 L1471 502 Q1482 503 1478 516 L1456 575 L1417 607 L1351 613 L1297 604 L1297 594 Z',
       'M1402 571 L1490 587 L1519 583 L1559 609 L1549 640 L1553 650 L1541 660 L1464 647 L1438 649 L1372 635 Z',

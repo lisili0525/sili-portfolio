@@ -1,13 +1,14 @@
 import { useEffect } from 'react';
-import standing from '../../../assets/sili-poses-v1.png';
-import walking from '../../../assets/sili-walk-v2.png';
-import piano from '../../../assets/sili-piano-v4.png';
-import coffee from '../../../assets/sili-coffee-v3.png';
-import computer from '../../../assets/sili-computer-v3.png';
-import writing from '../../../assets/sili-writing-v2.png';
-import interactions from '../../../assets/sili-interactions-v1.png';
+import { findActorAsset, rebuiltArtwork } from '../assets/objectAssets.js';
+import layout from '../../../assets/rebuilt/v1/layout.json';
 
-const characterSheets={standing,walking,piano,coffee,computer,writing,interactions};
+const characterSheets=Object.fromEntries(['standing','walking','piano','coffee','coffee-brewing','computer','writing','interactions'].map(name=>[name,findActorAsset(`sili-${name}`).file]));
+const pianoSeat=layout.seating.piano;
+const seatedStyle={
+  '--piano-left':`${pianoSeat.x/1672*100}%`,
+  '--piano-bottom':`${(941-pianoSeat.feetY-pianoSeat.height*26/512)/941*100}%`,
+  '--piano-height':`${pianoSeat.height/941*100}%`,
+};
 
 export function Residents({onEntry}) {
   useEffect(()=>{
@@ -19,8 +20,8 @@ export function Residents({onEntry}) {
   },[]);
   return <>
     {['viola','java'].map(name=><div id={name} key={name} className="cat-layer" data-scene-object={name}>
-      <button type="button" className="cat" data-entry="cats" data-cat={name} onClick={event=>onEntry('cats',event.currentTarget)} aria-label={`Meet Viola & Java: ${name==='viola'?'Viola':'Java'}`} title="Meet Viola & Java"><span className="cat-sprite" aria-hidden="true" /></button>
+      <button type="button" className="cat" data-entry="cats" data-cat={name} onClick={event=>onEntry('cats',event.currentTarget)} aria-label={`Meet Viola & Java: ${name==='viola'?'Viola':'Java'}`} title="Meet Viola & Java"><span className="cat-sprite" style={rebuiltArtwork?{backgroundImage:`url("${findActorAsset(name).file}")`}:undefined} aria-hidden="true" /></button>
     </div>)}
-    <div id="sili" className="sili" data-scene-object="sili" data-pose="idle" aria-hidden="true"><div className="sili-sprite">{Object.keys(characterSheets).map(sheet=><span key={sheet} className={`sili-sheet sheet-${sheet}`} />)}</div></div>
+    <div id="sili" className="sili" style={seatedStyle} data-scene-object="sili" data-pose="idle" aria-hidden="true"><div className="sili-sprite">{Object.entries(characterSheets).map(([sheet,file])=><span key={sheet} className={`sili-sheet sheet-${sheet}`} style={{backgroundImage:`url("${file}")`}} />)}</div></div>
   </>;
 }

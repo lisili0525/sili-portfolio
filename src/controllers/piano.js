@@ -3,7 +3,6 @@ export const recordings = [{src:'assets/music/one-summers-day.m4a', title:'One S
 export function createPianoController(root, services, onChange) {
   const sili = root.querySelector('#sili');
   const room = root.querySelector('.room');
-  const motion = matchMedia('(prefers-reduced-motion: reduce)');
   const abort = new AbortController();
   const audio = new Audio(recordings[0].src);
   audio.preload = 'none';
@@ -41,7 +40,9 @@ export function createPianoController(root, services, onChange) {
     if (hasPausedProgress) {
       state = 'paused'; pose('seated'); sili.classList.add('inactive'); update();
     } else {
-      pose(motion.matches ? 'seated' : 'playing');
+      // Reduced motion freezes the playing frame in CSS; it must not select
+      // the hands-in-lap resting drawing while audio is still playing.
+      pose('playing');
       state = 'playing'; update(); void playAudio();
     }
   }
@@ -70,13 +71,15 @@ export function createPianoController(root, services, onChange) {
     if (!['walking','playing'].includes(state)) return;
     hasPausedProgress = true; pendingArrival = state === 'walking';
     audio.pause(); playRequest++; playbackBlocked = false;
-    state = 'paused'; sili.classList.add('inactive'); update();
+    state = 'paused';
+    if (sili.classList.contains('at-piano')) pose('seated');
+    sili.classList.add('inactive'); update();
   }
   function resume() {
     if (document.hidden) return;
     hasPausedProgress = false; mediaError = false; playbackBlocked = false;
     if (pendingArrival) { pendingArrival = false; state = 'walking'; services.actions.resumePiano(); update(); }
-    else { state = 'playing'; pose(motion.matches ? 'seated' : 'playing'); update(); void playAudio(); }
+    else { state = 'playing'; pose('playing'); update(); void playAudio(); }
     sili.classList.remove('inactive');
   }
   function chooseTrack(index) {
@@ -91,9 +94,6 @@ export function createPianoController(root, services, onChange) {
   }
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) pause();
-  }, {signal:abort.signal});
-  motion.addEventListener('change', () => {
-    if (state === 'playing') pose(motion.matches ? 'seated' : 'playing');
   }, {signal:abort.signal});
   audio.addEventListener('ended', stop, {signal:abort.signal});
   audio.addEventListener('error', () => { mediaError = true; stop(); }, {signal:abort.signal});

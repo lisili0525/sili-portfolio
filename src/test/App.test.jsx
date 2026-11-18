@@ -11,7 +11,7 @@ const clickObject = name => fireEvent.click(within(document.querySelector('.room
 describe('React room integration',() => {
   it('mounts one pair of animation clocks under StrictMode and disposes both on unmount',() => {
     const app=mount(); expect(frames.size).toBe(2);
-    expect(screen.getByRole('img',{name:/warmly lit/}).getAttribute('src')).toContain('architecture');
+    expect(screen.getByRole('img',{name:/warmly lit/}).getAttribute('src')).toContain('rebuilt/v1/ready/bare-room');
     expect(screen.queryByText('Pause cats')).toBeNull();
     app.unmount(); expect(frames.size).toBe(0); expect(audios.every(audio=>audio.paused)).toBe(true);
   });
@@ -28,46 +28,48 @@ describe('React room integration',() => {
     await act(async()=>advance(12));
     expect(screen.getByRole('heading',{name:'Something brewing'})).toBeTruthy();
     fireEvent.click(screen.getByText(/I enjoy making/)); expect(document.querySelector('#detail').open).toBe(true);
-    fireEvent.click(screen.getByRole('button',{name:/Open the computer projects/}));
+    fireEvent.click(screen.getByRole('button',{name:/Open workstation projects/}));
     expect(document.querySelector('#detail').open).toBe(false);
     await act(async()=>advance(12));
-    expect(screen.getByRole('heading',{name:'Inside my computer'})).toBeTruthy();
+    expect(screen.getByRole('heading',{name:'At my workstation'})).toBeTruthy();
     tick(12); expect(document.querySelector('#sili').dataset.activity).toBe('desk');
     fireEvent.click(screen.getByRole('button',{name:'Close and return to the room'}));
     expect(document.querySelector('#detail').open).toBe(false);
   });
-  it('separates workstation content and Explore destinations while preserving focus and arrival',async()=>{
-    mount(); const computer=within(document.querySelector('.room')).getByRole('button',{name:'Use the computer',hidden:true});
-    fireEvent.click(computer);
-    expect(document.querySelector('#detail').open).toBe(false);
+  it('merges workstation content and destinations while preserving focus and arrival',async()=>{
+    mount(); const button=within(document.querySelector('.room')).getByRole('button',{name:'At my workstation',hidden:true});
+    fireEvent.click(button);expect(document.querySelector('#detail').open).toBe(false);
     await act(async()=>advance(15));
-    expect(document.querySelector('#detail').dataset.entry).toBe('computer');
-    expect(screen.getByRole('heading',{name:'CoffeeHeads'})).toBeTruthy();
-    expect(screen.queryByRole('heading',{name:'SVD & PCA'})).toBeNull();
-    fireEvent.click(screen.getByRole('button',{name:'Close and return to the room'}));
-    expect(document.activeElement).toBe(computer);
-    clickObject('Inside my notebook'); await act(async()=>advance(15));
-    expect(document.querySelector('#detail').dataset.entry).toBe('notebook');
-    expect(screen.getByRole('heading',{name:'SVD & PCA'})).toBeTruthy();
-    expect(screen.queryByRole('heading',{name:'CoffeeHeads'})).toBeNull();
-    fireEvent.click(screen.getByRole('button',{name:'Close and return to the room'}));
+    expect(document.querySelector('#detail').dataset.entry).toBe('workstation');
+    for(const title of ['CoffeeHeads','Biomedical machine learning','SVD & PCA','Cloud microphysics modeling'])expect(screen.getByRole('heading',{name:title})).toBeTruthy();
+    fireEvent.click(screen.getByRole('button',{name:'Close and return to the room'}));expect(document.activeElement).toBe(button);
     fireEvent.click(screen.getByRole('button',{name:/Explore/}));
-    const nav=within(document.querySelector('#destinations'));
-    expect(nav.getByRole('button',{name:'Inside my computer'})).toBeTruthy();
-    expect(nav.getByRole('button',{name:'Inside my notebook'})).toBeTruthy();
+    expect(within(document.querySelector('#destinations')).getAllByRole('button')).toHaveLength(7);
+    expect(within(document.querySelector('#destinations')).getAllByRole('button',{name:'At my workstation'})).toHaveLength(1);
+  });
+  it.each([false,true])('cycles workstation poses without moving the seat (reduced motion: %s)',async reduced=>{
+    mount();if(reduced)act(()=>media.forEach(item=>{item.matches=true;item.dispatchEvent(new Event('change'));}));
+    clickObject('At my workstation');await act(async()=>advance(15));
+    const actor=document.querySelector('#sili'),seat={left:actor.style.left,bottom:actor.style.bottom,height:actor.style.height},seen=new Set();
+    for(let i=0;i<300;i++){
+      tick(.2);seen.add(actor.dataset.deskMode);
+      expect(actor.dataset.activity).toBe('desk');
+      expect({left:actor.style.left,bottom:actor.style.bottom,height:actor.style.height}).toEqual(seat);
+    }
+    expect(seen).toEqual(new Set(reduced?['computer']:['computer','writing']));
   });
   it('preserves piano browsing and reduced-motion cancellation for both workstation entries',async()=>{
-    mount(); clickObject('Use the computer'); tick(.1);
+    mount(); clickObject('At my workstation'); tick(.1);
     fireEvent.keyDown(document,{key:'Escape'}); await act(async()=>advance(15));
     expect(document.querySelector('#detail').open).toBe(false);
     act(()=>media.forEach(item=>{item.matches=true;item.dispatchEvent(new Event('change'));}));
-    clickObject('Use the computer'); await act(async()=>{});
-    expect(document.querySelector('#detail').dataset.entry).toBe('computer');
-    clickObject('Inside my notebook'); await act(async()=>{});
-    expect(document.querySelector('#detail').dataset.entry).toBe('notebook');
+    clickObject('At my workstation'); await act(async()=>{});
+    expect(document.querySelector('#detail').dataset.entry).toBe('workstation');
+    clickObject('At my workstation'); await act(async()=>{});
+    expect(document.querySelector('#detail').dataset.entry).toBe('workstation');
     clickObject('At the piano'); await act(async()=>{});
     const audio=audios.at(-1); audio.currentTime=23;
-    for(const [name,key] of [['Use the computer','computer'],['Inside my notebook','notebook']]) {
+    for(const [name,key] of [['At my workstation','workstation']]) {
       clickObject(name); await act(async()=>{});
       expect(document.querySelector('#detail').dataset.entry).toBe(key);
       expect(document.querySelector('#sili').classList.contains('at-piano')).toBe(true);
@@ -94,7 +96,7 @@ describe('React room integration',() => {
   it('uses six distance-driven walking frames at a smaller, slower pace',async()=>{
     mount(); const actor=document.querySelector('#sili');
     expect(actor.querySelector('.sheet-walking')).toBeTruthy();
-    clickObject('Inside my notebook'); tick(.1);
+    clickObject('At my workstation'); tick(.1);
     expect(actor.dataset.pose).toBe('walk');
     const initialX=parseFloat(actor.style.left), seen=new Set();
     let previousFrame=actor.dataset.walkFrame, changes=0;
@@ -108,7 +110,7 @@ describe('React room integration',() => {
     expect(seen).toEqual(new Set(['0','1','2','3','4','5']));
     expect(actor.style.getPropertyValue('--walk-facing')).toBe('1');
     await act(async()=>advance(15));
-    expect(screen.getByRole('heading',{name:'Inside my notebook'})).toBeTruthy();
+    expect(screen.getByRole('heading',{name:'At my workstation'})).toBeTruthy();
     clickObject('At the piano'); tick(1.4);
     expect(actor.style.getPropertyValue('--walk-facing')).toBe('-1');
     await act(async()=>advance(15));
@@ -189,11 +191,13 @@ describe('React room integration',() => {
     fireEvent.click(screen.getByRole('button',{name:'Close and return to the room'}));
     fireEvent.click(screen.getByRole('button',{name:'Pause piano',exact:true}));
     expect(audio.paused).toBe(true); expect(audio.currentTime).toBe(32);
+    expect(document.querySelector('#sili').dataset.pose).toBe('seated');
     expect(document.querySelector('#sili').classList.contains('inactive')).toBe(true);
     expect(document.querySelector('#detail').open).toBe(false);
     expect(document.querySelector('#piano-playback').textContent).toBe('');
     await act(async()=>fireEvent.click(screen.getByRole('button',{name:'Play piano',exact:true})));
     expect(audio.paused).toBe(false); expect(audio.currentTime).toBe(32);
+    expect(document.querySelector('#sili').dataset.pose).toBe('playing');
     fireEvent.click(screen.getByRole('button',{name:'Pause piano',exact:true}));
     clickObject('Something brewing'); await act(async()=>advance(12));
     expect(screen.queryByRole('button',{name:/^(Pause|Play) piano$/})).toBeNull();
@@ -259,7 +263,7 @@ describe('React room integration',() => {
     mount(); clickObject('At the piano'); await act(async()=>advance(12));
     const audio=audios.at(-1); audio.currentTime=18;
     fireEvent.click(screen.getByRole('button',{name:'Pause',exact:true}));
-    clickObject('Inside my notebook'); await act(async()=>advance(15));
+    clickObject('At my workstation'); await act(async()=>advance(15));
     clickObject('At the piano'); tick(.1);
     fireEvent.keyDown(document,{key:'Escape'}); await act(async()=>advance(15));
     expect(audio.paused).toBe(true); expect(audio.currentTime).toBe(18);
@@ -277,10 +281,12 @@ describe('React room integration',() => {
     await act(async()=>fireEvent.click(screen.getByRole('button',{name:'Continue',exact:true})));
     expect(screen.getByRole('button',{name:/^(Mute|Unmute) music$/})).toBeTruthy();
   });
-  it('honors reduced motion and freezes cats while content is open',async() => {
+  it('honors reduced motion and pauses grounded cats while content is open',async() => {
     mount(); tick(30); clickObject('Something brewing');
     // A perched cat first clears the counter for the person, then rests.
     await act(async()=>advance(12));
+    // An existing hop lands before the content-reading pause takes over.
+    await act(async()=>advance(2));
     const positions=()=>[...document.querySelectorAll('.cat')].map(cat=>cat.style.cssText);
     const before=positions(); tick(20); expect(positions()).toEqual(before);
     act(()=>media.forEach(item=>{item.matches=true;item.dispatchEvent(new Event('change'));}));

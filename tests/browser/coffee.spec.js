@@ -1,0 +1,28 @@
+import { test, expect } from '@playwright/test';
+test('coffee waits for extraction before taking the cup and remains interruptible',async({page},info)=>{
+  await page.clock.install();await page.goto('/');
+  const errors=[];page.on('pageerror',error=>errors.push(error.message));
+  await page.locator('.room').getByRole('button',{name:'Something brewing',exact:true}).press('Enter');
+  const actor=page.locator('#sili'),cup=page.locator('#station-cup'),station=page.locator('[data-scene-object="coffee-station"]');
+  for(let i=0;i<24&&await actor.getAttribute('data-coffee-phase')!=='extracting';i++)await page.clock.runFor(300);
+  await expect(actor).toHaveAttribute('data-coffee-phase','extracting');
+  await expect(station).toHaveAttribute('data-brewing','true');await expect(cup).toBeVisible();
+  const sheet=actor.locator('.sheet-coffee-brewing');await expect(sheet).toBeVisible();
+  expect(parseFloat(await sheet.evaluate(el=>getComputedStyle(el).backgroundPositionX))).toBeCloseTo(66.6667,3);
+  await page.locator('.room').screenshot({animations:'disabled',path:`tmp/${info.project.name}-coffee-extracting.png`});
+  await page.clock.runFor(2000);await expect(cup).toBeVisible();
+  await page.clock.runFor(3000);await expect(actor).toHaveAttribute('data-coffee-phase','drinking');await expect(cup).toBeHidden();
+  await page.getByRole('button',{name:'Open workstation projects ↗'}).click();
+  await page.clock.runFor(100);
+  await expect(actor).toHaveAttribute('data-coffee-phase','returning');
+  await expect(actor).toHaveAttribute('data-activity-frame','7');await expect(cup).toBeVisible();
+  await expect(station).toHaveAttribute('data-brewing','false');
+  await page.clock.runFor(12000);await expect(actor).toHaveAttribute('data-activity','desk');
+  await page.emulateMedia({reducedMotion:'reduce'});
+  await page.locator('.room').screenshot({animations:'disabled',path:`tmp/${info.project.name}-computer-leg.png`});
+  await page.getByRole('button',{name:'Close and return to the room'}).click();
+  await page.locator('.room').getByRole('button',{name:'At my workstation',exact:true}).press('Enter');
+  await page.clock.runFor(500);await expect(actor).toHaveAttribute('data-desk-mode','computer');
+  await page.locator('.room').screenshot({animations:'disabled',path:`tmp/${info.project.name}-writing-leg.png`});
+  expect(errors).toEqual([]);
+});

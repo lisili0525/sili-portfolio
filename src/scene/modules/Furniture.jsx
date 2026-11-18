@@ -1,7 +1,9 @@
+import { WindowDeskLight } from './WindowDaylight.jsx';
 import { useEffect, useRef, useState } from 'react';
 import { FurnitureModule } from '../shared/FurnitureModule.jsx';
 import { ObjectHotspot } from '../../components/ObjectHotspot.jsx';
 import { furniture,plants } from '../furnitureCatalog.js';
+import { findObjectAsset } from '../assets/objectAssets.js';
 
 export const RoomRug=()=> <FurnitureModule object={furniture.rug} />;
 export const PianoBench=()=> <FurnitureModule object={furniture.pianoBench} />;
@@ -55,7 +57,7 @@ export function DeskLamp() {
 }
 export function Workstation({onEntry}) {
   return <>
-    <FurnitureModule object={furniture.desk} />
+    <FurnitureModule object={furniture.desk} /><WindowDeskLight />
     <DeskLamp />
     <FurnitureModule object={furniture.computer} onEntry={onEntry}>
       <svg className="scene-artwork computer-screen" viewBox="0 0 1672 941" aria-hidden="true">
@@ -70,5 +72,6 @@ export function Workstation({onEntry}) {
 }
 export function WorkingChair(){
   const object=furniture.workChair;
-  return <img className="desk-chair desk-chair-back" data-scene-object={object.id} style={{left:`${object.position.x/1672*100}%`,top:`${object.position.y/941*100}%`,height:`${object.height/941*100}%`}} src={object.image} alt="" aria-hidden="true" width="629" height="772" />;
+  const asset=findObjectAsset('work-chair--complete');
+  return <img className="desk-chair desk-chair-back" data-scene-object={object.id} style={{left:`${asset.bounds.x/1672*100}%`,top:`${asset.bounds.y/941*100}%`,width:`${asset.bounds.width/1672*100}%`,height:`${asset.bounds.height/941*100}%`}} src={asset.file} alt="" aria-hidden="true" width="629" height="772" />;
 }
