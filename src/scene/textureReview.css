@@ -8,23 +8,17 @@
 }
 .room-paper { display:none; position:absolute; inset:0; width:100%; height:100%; z-index:20; pointer-events:none; opacity:.045; mix-blend-mode:soft-light; }
 .room:is([data-texture="soft"],[data-texture="lived"],[data-texture="painted"]) .room-paper { display:block; }
-.texture-review { position:fixed; left:50%; top:max(12px,env(safe-area-inset-top)); transform:translateX(-50%); z-index:40; display:flex; gap:4px; padding:4px; background:#faf3e6f5; border:1px solid #d5c4a9; border-radius:22px; box-shadow:0 3px 16px #35241330; }
-.texture-review button { min-height:36px; border:0; border-radius:18px; padding:5px 12px; background:transparent; font-size:12px; white-space:nowrap; }
-.texture-review button[aria-pressed="true"] { background:#72543b; color:#fff9ed; }
-@media(max-width:600px) { .texture-review { top:auto; bottom:max(12px,env(safe-area-inset-bottom)); } .texture-review button { min-height:44px; padding:5px 10px; } }
 /* WebKit rasterizes fractional blur on small HTML sprites too coarsely.
    Keep their native resampling; share only the restrained pigment adjustment. */
 .room:is([data-texture="soft"],[data-texture="lived"],[data-texture="painted"]) :is(.desk-chair,.sili-sheet,.cat-sprite) {
   filter: contrast(.965) saturate(.96) sepia(.035);
 }
-@media(max-width:600px) { .texture-review { bottom:max(74px,calc(env(safe-area-inset-bottom) + 62px)); } }
 
 /* C adds local material, retaining B unchanged as a reference. */
 .material-finish,.material-contacts { display:none; }
 .room[data-texture="lived"] .material-finish { display:inline; }
 .room[data-texture="lived"] .material-contacts { display:block; }
 .room[data-texture="lived"] .coffee-contact-shadows { opacity:1; filter:blur(.6px); }
-@media(max-width:600px) { .texture-review button { padding-inline:8px; font-size:11px; } }
 /* Keep appliance highlights chalkier, without adding scratches or dirt. */
 .room[data-texture="lived"] .scene-artwork image:is([data-asset-id="espresso-machine"],[data-asset-id="grinder"]) {
   filter:blur(.32px) contrast(.94) saturate(.94) sepia(.04);

@@ -1,3 +1,16 @@
+# Production release — November 19, 2026
+
+Owner explicitly authorized publishing the current local D-only version to the formal website.
+
+- Previous live source: `55bcb3d8702ce2565e0189aaaa5798b4baa669f7`.
+- Successful prior Pages run: `44240217667`; deployment `7874541347` (success, https://silispace.net/).
+- Rollback tag for this publication: `rollback/production-before-seated-d-2026-11-19`.
+- Scope: current review v44 behavior, fixed D rendering with no A/B controls; smaller photo-guided seated legs, independent matte upper/lower materials, corrected waist and real chair/desk occlusion, corrected window handedness, calibrated racket pose. All historical assets/prompts retained. Existing interaction, animation and audio behavior preserved.
+- Validation: registered asset and silhouette checks, typecheck, 65 unit tests and production build; latest browser checks6/6 and compiled preview4/4. Updated the independent-asset directory assertion to include D's existing style-study assets now always rendered.
+- This document belongs to the release source commit. Deployment result will be recorded after GitHub Pages finishes.
+
+---
+
 # Production release — November 17, 2026
 
 The owner authorized recording the current live Git version and pushing the local work to update the production website in this session.

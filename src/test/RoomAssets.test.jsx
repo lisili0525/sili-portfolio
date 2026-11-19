@@ -26,7 +26,7 @@ describe('reusable transparent room assets',()=>{
     expect(document.querySelector('.room-art').getAttribute('src')).toBe(objectManifest.background.file);
     const images=[...document.querySelectorAll('.room svg image')];
     expect(images.length).toBeGreaterThan(50);
-    expect(images.every(image=>image.getAttribute('href').startsWith('assets/rebuilt/v1/ready/'))).toBe(true);
+    expect(images.every(image=>/^assets\/rebuilt\/v1\/(ready|(?:seating-study|style-study)\/ready)\//.test(image.getAttribute('href')))).toBe(true);
     expect(document.querySelectorAll('.scene-artwork clipPath')).toHaveLength(0);
     expect(document.querySelector('[data-asset-id="bookcase-plant"]')).toBeNull();
     expect(document.querySelector('[data-asset-id="desk-plant"]')).toBeNull();

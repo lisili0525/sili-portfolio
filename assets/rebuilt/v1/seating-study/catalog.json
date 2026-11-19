@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "status": "photo-reference-review",
+  "poses": {
+    "computer": {
+      "source": "assets/rebuilt/v1/seating-study/sources/computer-photo-v1.png",
+      "sourceSha256": "e5ab5febfbacb5370ca5d1a642b61c9e251b56620e082f59c79544d6d5d83601",
+      "file": "assets/rebuilt/v1/seating-study/ready/lower-computer-flat-v1.png",
+      "crop": {
+        "left": 295,
+        "top": 355,
+        "width": 701,
+        "height": 642
+      },
+      "seatAnchor": [
+        490,
+        640
+      ],
+      "floorY": 996,
+      "displayScale": 0.65,
+      "displaySoleY": 889,
+      "readySha256": "4ee826866aa570c13a827773fd799fd8b56b66eb4766852c9e40fa9ad0759696",
+      "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-7854bb3b-00fb-4193-acbd-55b054635408.png",
+      "references": [
+        "assets/rebuilt/v1/references/seated-computer-before-v2.png",
+        "/var/folders/f2/5q8yg10j6_gfyc7kcrgln4wh0000gn/T/codex-clipboard-7fc99a1e-ce55-4e07-b7b3-6a750e1d16b8.png"
+      ],
+      "bounds": {
+        "x": 1303.0337078651685,
+        "y": 701.7415730337078,
+        "width": 204.78651685393257,
+        "height": 187.5505617977528
+      },
+      "prompt": "assets/rebuilt/v1/seating-study/prompts/computer-photo-v1.txt",
+      "materialSource": "assets/rebuilt/v1/seating-study/sources/lower-computer-flat-v1.png",
+      "seatWorld": [
+        1360,
+        785
+      ]
+    },
+    "writing": {
+      "source": "assets/rebuilt/v1/seating-study/sources/writing-photo-v1.png",
+      "sourceSha256": "b3fb25fc46cf6079c1141906f5a28ab7759296c65e257e90e569ea57ad6eb506",
+      "file": "assets/rebuilt/v1/seating-study/ready/lower-writing-flat-v1.png",
+      "crop": {
+        "left": 237,
+        "top": 295,
+        "width": 850,
+        "height": 727
+      },
+      "seatAnchor": [
+        450,
+        570
+      ],
+      "floorY": 1021,
+      "displayScale": 0.7,
+      "displaySoleY": 897,
+      "readySha256": "a323bd26c35f02bc4704530db5aa730439523981d4b9707e717e1d0f86e4f179",
+      "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-617ebf8d-7be7-4982-ac3a-379230e786ea.png",
+      "references": [
+        "assets/rebuilt/v1/sources/actor-sili-writing.png",
+        "/var/folders/f2/5q8yg10j6_gfyc7kcrgln4wh0000gn/T/codex-clipboard-c8e47b46-eaff-4f4a-8db5-f0216ef05565.png"
+      ],
+      "bounds": {
+        "x": 1307.1042128603103,
+        "y": 716.7073170731708,
+        "width": 211.08647450110865,
+        "height": 180.54101995565412
+      },
+      "prompt": "assets/rebuilt/v1/seating-study/prompts/writing-photo-v1.txt",
+      "materialSource": "assets/rebuilt/v1/seating-study/sources/lower-writing-flat-v1.png",
+      "seatWorld": [
+        1360,
+        785
+      ]
+    }
+  }
+}

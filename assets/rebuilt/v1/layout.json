@@ -298,6 +298,15 @@
         "width": 48,
         "height": 31
       }
+    },
+    "closed-left-sash": {
+      "transform": "translate(2114 0) scale(-1 1)"
+    },
+    "closed-right-sash": {
+      "transform": "translate(2506 0) scale(-1 1)"
+    },
+    "glass-closed": {
+      "transform": "translate(2114 0) scale(-1 1)"
     }
   },
   "supports": {

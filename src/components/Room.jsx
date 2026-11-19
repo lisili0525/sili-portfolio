@@ -6,9 +6,10 @@ import { RoomWindow } from '../scene/modules/RoomWindow.jsx';
 import { RoomLighting } from '../scene/modules/RoomLighting.jsx';
 import { Residents } from '../scene/modules/Residents.jsx';
 import { RoomDepthLayers } from '../scene/modules/RoomDepthLayers.jsx';
+import { DeskSeatedBody } from '../scene/modules/DeskSeatedBody.jsx';
 import { Bookshelf,Calendar,CoffeeCabinet,CoffeeTable,Piano,PianoBench,Plants,RoomRug,Sofa,TennisCorner,ToyMouse,WallPortrait,WallShelf,WindowStool,WorkingChair,Workstation } from '../scene/modules/Furniture.jsx';
 import '../scene/roomAnimations.css';
-import { RoomPaper, TextureReview, textureReviewEnabled } from '../scene/TextureReview.jsx';
+import { RoomPaper } from '../scene/TextureReview.jsx';
 import '../scene/textureReview.css';
 import { WindowAirLight } from '../scene/modules/WindowDaylight.jsx';
 import { RoomTextureContext } from '../scene/shared/RoomTextureContext.js';
@@ -16,8 +17,7 @@ import { FurnitureContacts } from '../scene/shared/MaterialFinish.jsx';
 
 export const Room=memo(function Room(/** @type {{roomRef: import("react").RefObject<HTMLElement | null>, onEntry: (key: string, trigger?: HTMLElement) => void}} */ {roomRef,onEntry}){
   const [windowOpen,setWindowOpen]=useState(true),[curtainsOpen,setCurtainsOpen]=useState(true);
-  const [texture,setTexture]=useState(()=>textureReviewEnabled&&['original','soft','lived','painted'].includes(new URLSearchParams(location.search).get('texture'))?new URLSearchParams(location.search).get('texture'):(textureReviewEnabled?'soft':'painted'));
-  const changeTexture=value=>{setTexture(value);const url=new URL(location.href);url.searchParams.set('texture',value);history.replaceState(history.state,'',url);};
+  const texture='painted';
   const lettering=objectManifest.objects.find(asset=>asset.id==='room--lettering');
   return <main><div className="room-frame">
     <RoomTextureContext.Provider value={texture}><section ref={roomRef} className="room rebuilt-room" data-artwork-version="regenerated-v1" data-texture={texture} data-window-open={windowOpen} data-curtains-open={curtainsOpen} aria-label="Sili's illustrated room. Select an object to explore.">
@@ -29,7 +29,7 @@ export const Room=memo(function Room(/** @type {{roomRef: import("react").RefObj
       <RoomWindow windowOpen={windowOpen} onWindowChange={setWindowOpen} curtainsOpen={curtainsOpen} onCurtainsChange={setCurtainsOpen} />
       <TennisCorner onEntry={onEntry} /><WindowStool /><Sofa />
       <CoffeeTable onEntry={onEntry} /><Workstation onEntry={onEntry} /><Plants /><ToyMouse />
-      <WorkingChair /><Residents onEntry={onEntry} /><RoomDepthLayers /><WindowAirLight /><RoomPaper /><ContactLinks />
+      <WorkingChair /><DeskSeatedBody /><Residents onEntry={onEntry} /><RoomDepthLayers /><WindowAirLight /><RoomPaper /><ContactLinks />
     </section></RoomTextureContext.Provider>
-  </div>{textureReviewEnabled&&<TextureReview value={texture} onChange={changeTexture} />}</main>;
+  </div></main>;
 });

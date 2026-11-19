@@ -1,5 +1,13 @@
 # Modular room scene
 
+## Current photo-guided seated study (v38)
+
+The owner rejected the v37 native-vector candidate and supplied two seated photos. The app now uses two transparent cartoon lower-body rasters registered by hip/floor anchors; the upper PNGs retain their approved angles. Sources/prompts/provenance and v37 recovery code are in `assets/rebuilt/v1/seating-study/`. `prepare-seated-study.mjs` generates only trimmed ready PNGs and bounds (uniform scaling), and the new checker is included in assets:check. The actual desk apron covers the lower body beneath the existing arms; the chair's wooden foreground covers both, with air light above. V38 remains an unapproved review candidate.
+
+## Current seated anatomy candidate (v37)
+
+The owner rejected the prior lower-body silhouettes. `DeskSeatedBody` now renders chair-registered native SVG legs before the actual chair and seated hips/thighs after it. The upper-body raster follows its sweater-hem clip, preserving heads/hands/angles while excluding old knee pixels. Both new SVG modes use the same desk-mode state and CSS opacity transition as the raster. Feet can reach room y930 beyond the original square raster's bounds. All original transparent PNGs remain complete and versioned. V37 is a review candidate; do not describe it as an accepted final pose.
+
 ## Workstation merge and seated depth — November 17, 2026
 
 Laptop and notebook remain independent transparent artwork but now share one `workstation` content destination/hit control. Legacy `computer`/`notebook` keys canonicalize to it; existing four project descriptions remain unchanged. The journey's existing RAF switches typing/writing holds with brief neutral turns, keeping the same seated anchor; reduced motion stays still. Crossfades are CSS opacity only, no extra clock. The writing pose holds the independent pen while the tabletop pen is hidden.

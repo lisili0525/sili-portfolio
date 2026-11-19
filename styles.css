@@ -248,3 +248,6 @@ dialog.album-view::backdrop{background:#24180f65;backdrop-filter:blur(4px)}
    Tab clears the pointer marker so keyboard focus remains easy to locate. */
 [data-feedback="expired"][data-feedback-input="pointer"]:focus-visible{outline:none;}
 .object[data-feedback="expired"][data-feedback-input="pointer"]:focus-visible .object-shape path{stroke:transparent;filter:none;}
+
+/* Match the racket pose to the walking silhouette; keep its sole planted. */
+.sili[data-activity="interactions"][data-activity-frame="3"] .sili-sprite{transform:scale(.94);transform-origin:50% 95.49%}

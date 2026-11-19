@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "status": "coffee-style-review",
+  "materials": {
+    "upper-computer-flat-v1": {
+      "role": "upper",
+      "mode": "computer",
+      "source": "assets/rebuilt/v1/seating-study/sources/upper-computer-flat-v1.png",
+      "file": "assets/rebuilt/v1/seating-study/ready/upper-computer-flat-v1.png",
+      "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-559f6d62-b372-48e5-98a9-840eba5c3ff6.png",
+      "sourceSha256": "4b82cade72822bfa8b0a39820a4c0b4b00cf2822d5105740edf8770aa7234c50",
+      "readySha256": "50396d32e4f57cf0ca01a2e173985e7b8f37ec931fc3450759443c3a66c76e31",
+      "registration": {
+        "scale": 1,
+        "dx": 0,
+        "dy": 0
+      },
+      "prompt": "assets/rebuilt/v1/seating-study/prompts/upper-computer-flat-v1.txt",
+      "references": [
+        "assets/rebuilt/v1/ready/actor-sili-computer.png",
+        "assets/rebuilt/v1/ready/actor-sili-coffee-02.png"
+      ]
+    },
+    "upper-writing-flat-v1": {
+      "role": "upper",
+      "mode": "writing",
+      "source": "assets/rebuilt/v1/seating-study/sources/upper-writing-flat-v1.png",
+      "file": "assets/rebuilt/v1/seating-study/ready/upper-writing-flat-v1.png",
+      "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-32c0cf29-4571-4029-8ae3-8c1d6b4b365a.png",
+      "sourceSha256": "c9f87943bf1848f8cf086be17b05cc3579da93a65b14a5b9039e032cd8d722b8",
+      "readySha256": "b56e6355d89b20b69d0206181961ef5b3ab354417cbc993591b58c897ffaf62c",
+      "registration": {
+        "scale": 1,
+        "dx": 0,
+        "dy": 0
+      },
+      "prompt": "assets/rebuilt/v1/seating-study/prompts/upper-writing-flat-v1.txt",
+      "references": [
+        "assets/rebuilt/v1/ready/actor-sili-writing.png",
+        "assets/rebuilt/v1/ready/actor-sili-coffee-02.png"
+      ]
+    },
+    "lower-computer-flat-v1": {
+      "role": "lower",
+      "mode": "computer",
+      "source": "assets/rebuilt/v1/seating-study/sources/lower-computer-flat-v1.png",
+      "file": "assets/rebuilt/v1/seating-study/ready/lower-computer-flat-v1.png",
+      "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-790498b0-9423-467d-886e-551e44b2cf85.png",
+      "sourceSha256": "d24b7a38d2fb10f611f06dac67c8823b071303830c8dccd6889162b0fc0c07a3",
+      "readySha256": "4ee826866aa570c13a827773fd799fd8b56b66eb4766852c9e40fa9ad0759696",
+      "registration": {
+        "scale": 0.9937888198757764,
+        "dx": 5.503105590062091,
+        "dy": 2.211180124223631
+      },
+      "prompt": "assets/rebuilt/v1/seating-study/prompts/lower-computer-flat-v1.txt",
+      "references": [
+        "assets/rebuilt/v1/seating-study/sources/computer-photo-v1.png",
+        "assets/rebuilt/v1/ready/actor-sili-coffee-02.png"
+      ]
+    },
+    "lower-writing-flat-v1": {
+      "role": "lower",
+      "mode": "writing",
+      "source": "assets/rebuilt/v1/seating-study/sources/lower-writing-flat-v1.png",
+      "file": "assets/rebuilt/v1/seating-study/ready/lower-writing-flat-v1.png",
+      "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-b518bd1d-f187-4f74-8e4a-31f231e3ef0d.png",
+      "sourceSha256": "46b67158825c903deebf383e3150daee1f4ab1ab28587faa0fb39018f1379ba7",
+      "readySha256": "a323bd26c35f02bc4704530db5aa730439523981d4b9707e717e1d0f86e4f179",
+      "registration": {
+        "scale": 0.9931600547195623,
+        "dx": 4.528043775649735,
+        "dy": -12.87961696306428
+      },
+      "prompt": "assets/rebuilt/v1/seating-study/prompts/lower-writing-flat-v1.txt",
+      "references": [
+        "assets/rebuilt/v1/seating-study/sources/writing-photo-v1.png",
+        "assets/rebuilt/v1/ready/actor-sili-coffee-02.png"
+      ]
+    }
+  }
+}

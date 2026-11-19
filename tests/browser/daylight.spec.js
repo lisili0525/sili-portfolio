@@ -23,6 +23,5 @@ test('daylight follows curtains and projects the closed window grid onto the rig
  for(const light of [air,floor,desk])await expect(light).toHaveCSS('opacity','0');
  await page.locator('.curtain-toggle path').click();
  await expect(air).toHaveCSS('opacity','1');
- await page.getByRole('button',{name:'B · Soft paper',exact:true}).click();
- await expect(air).toHaveCSS('display','none');
+ await expect(page.locator('.texture-review')).toHaveCount(0);
 });

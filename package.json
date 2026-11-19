@@ -12,7 +12,7 @@
     "test:browser": "playwright test",
     "build:preview": "vite build --mode runtime-preview --outDir tmp/runtime-preview/site/dist",
     "assets:export": "node scripts/prepare-regenerated.mjs && node scripts/trace-regenerated.mjs",
-    "assets:check": "node scripts/check-regenerated.mjs",
+    "assets:check": "node scripts/check-regenerated.mjs && node scripts/check-seated-study.mjs && node scripts/check-seated-materials.mjs",
     "assets:legacy:export": "node scripts/export-room-objects.mjs",
     "assets:legacy:check": "node scripts/check-room-objects.mjs"
   },

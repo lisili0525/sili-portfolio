@@ -515,7 +515,8 @@ export const regeneratedManifest = {
         "y": 180,
         "width": 198,
         "height": 260
-      }
+      },
+      "transform": "translate(2114 0) scale(-1 1)"
     },
     {
       "id": "closed-right-sash",
@@ -526,7 +527,8 @@ export const regeneratedManifest = {
         "y": 180,
         "width": 198,
         "height": 260
-      }
+      },
+      "transform": "translate(2506 0) scale(-1 1)"
     },
     {
       "id": "curtain-open-left",
@@ -882,7 +884,8 @@ export const regeneratedManifest = {
         "y": 180,
         "width": 198,
         "height": 260
-      }
+      },
+      "transform": "translate(2114 0) scale(-1 1)"
     },
     {
       "id": "curtain-closed-pair",
@@ -1136,12 +1139,12 @@ export const regeneratedManifest = {
     },
     {
       "id": "actor-sili-computer",
-      "file": "assets/rebuilt/v1/ready/actor-sili-computer.png?v=47937200ceac",
+      "file": "assets/rebuilt/v1/ready/actor-sili-computer.png?v=aeea457a6f36",
       "frames": [
         {
           "id": "actor-sili-computer-0",
           "kind": "actor",
-          "file": "assets/rebuilt/v1/ready/actor-sili-computer-00.png?v=47937200ceac",
+          "file": "assets/rebuilt/v1/ready/actor-sili-computer-00.png?v=aeea457a6f36",
           "bounds": {
             "width": 576,
             "height": 576
@@ -1159,12 +1162,12 @@ export const regeneratedManifest = {
     },
     {
       "id": "actor-sili-writing",
-      "file": "assets/rebuilt/v1/ready/actor-sili-writing.png?v=474b4ad03c23",
+      "file": "assets/rebuilt/v1/ready/actor-sili-writing.png?v=53b79e5ebd55",
       "frames": [
         {
           "id": "actor-sili-writing-0",
           "kind": "actor",
-          "file": "assets/rebuilt/v1/ready/actor-sili-writing-00.png?v=474b4ad03c23",
+          "file": "assets/rebuilt/v1/ready/actor-sili-writing-00.png?v=53b79e5ebd55",
           "bounds": {
             "width": 576,
             "height": 576

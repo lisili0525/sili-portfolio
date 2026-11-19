@@ -1,20 +1,16 @@
 import {test,expect} from '@playwright/test';
-test('texture comparison preserves live scene state and fabric hit contours',async({page})=>{
+test('D is the only texture and preserves live scene state and fabric hit contours',async({page})=>{
   await page.emulateMedia({reducedMotion:'reduce'});
   await page.goto('/?texture=soft');
-  await expect(page.locator('.room')).toHaveAttribute('data-texture','soft');
+  await expect(page.locator('.room')).toHaveAttribute('data-texture','painted');
   const actor=page.locator('#sili');
   await page.locator('.room').getByRole('button',{name:'At my workstation',exact:true}).press('Enter');
   await expect(page.getByRole('dialog')).toBeVisible();
   await page.getByRole('button',{name:'Close and return to the room'}).click();
   const geometry=await actor.getAttribute('style');
-  for(const name of ['A · Current','B · Soft paper','D · Repaint']) {
-    await page.getByRole('button',{name,exact:true}).click();
-    await expect(actor).toHaveAttribute('data-desk-mode','computer');
-    expect(await actor.getAttribute('style')).toBe(geometry);
-    expect(await page.locator('.room').evaluate(e=>getComputedStyle(e).filter)).toBe('none');
-    expect(await page.locator('.contact-links').evaluate(e=>getComputedStyle(e).filter)).toBe('none');
-  }
+  await expect(page.getByRole('group',{name:'Illustration texture comparison'})).toHaveCount(0);
+  await expect(actor).toHaveAttribute('data-desk-mode','computer');
+  expect(await actor.getAttribute('style')).toBe(geometry);
   for(let i=0;i<3;i++) {
     await page.locator('.curtain-toggle path').first().click();
     await expect(page.locator('.room')).toHaveAttribute('data-curtains-open','false');

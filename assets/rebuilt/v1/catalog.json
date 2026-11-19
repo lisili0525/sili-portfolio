@@ -2401,14 +2401,14 @@
         576
       ],
       "references": [
-        "/Users/lisili/sili-portfolio/assets/rebuilt/v1/sources/revisions/actor-sili-computer-1794971567600.png"
+        "/Users/lisili/sili-portfolio/assets/rebuilt/v1/sources/revisions/actor-sili-computer-1794978676982.png"
       ],
       "transparent": true,
       "status": "generated",
-      "prompt": "Fix ONLY the lower legs of the transparent character in image1. KEEP approved straight rear-view upper body, head, hair, shoulders, arms, hands, hoodie, seated hip position and canvas registration EXACTLY. The legs are now tucked horizontally correctly, but the SHOES ARE FAR TOO HIGH: it looks like he is kneeling/squatting on the chair. He must sit on a chair with FEET DOWN ON THE FLOOR. Keep the narrow foreshortened thighs, do NOT extend any thigh to the side. From the near knee beside the right hip let a SLIM STRAIGHT VERTICAL CALF descend substantially DOWN, with the small cream shoe near the BOTTOM of the canvas. The bottom of the near shoe must be approximately 160px BELOW the seated bottom on this1254canvas (seated bottom y1010, shoe bottom y1205). Near calf hangs down at x750..790, from y1000 to1170, sneaker at x780,y1185. No knee beside hoodie, no curled-up calf, no feet on the seat, no squat, no leg crossing. Natural seated rearview, feet below hips by about the length of his forearm. The room chair/desk will occlude legs; draw character only. Preserve all upper body and pelvis from image1 without change. Exact same square canvas; transparent exterior, no chair, desk, floor, cast shadow or background.\n",
+      "prompt": "Edit ONLY the seated TAN HIP/BUTTOCKS area of image1. Preserve exact1254square canvas and ALL head, hair, back-facing shoulders, hands, purple hoodie, upper body pixels/position/scale. The existing tan seated buttocks curve is STILL TOO SMALL and HIGH: make a clearly deeper, rounder seated body below the hoodie specifically on its LEFT HALF. Keep waist attached at y950. Extend the left buttock contour LEFT to x405 and DOWN to y1125 (current bottom near1040), smoothly rounding through (420,1040),(460,1100),(540,1120),(635,1080). The new tan hip mass should FILL the transparent area x410..640,y1000..1120, with continuous rounded silhouette, visibly about75pixels DEEPER than existing, not a tiny change. Retain right hip/calf/shoe as existing; they will be hidden by application occlusion. No raised knee or new sideways thigh. Tan trousers with restrained soft folds, same cartoon illustration. Do not move torso, pelvis-waist, head or hands. Do not scale the whole character, add a chair/desk/floor/background/shadow, or alter approved upper-body angle. Transparent exterior. This is adding the missing lower-left body volume that rests on a chair seat, not changing body pose.\n",
       "generatedFile": "assets/rebuilt/v1/sources/actor-sili-computer.png",
-      "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-97647c58-7441-4f32-91ba-be728305b68f.png",
-      "sourceSha256": "9d2480ad92d4a16267540983354bd06d5f8637829df11d23c8335c22e824a84b",
+      "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-f6050bf9-6077-43d9-8898-b26c16ccd1df.png",
+      "sourceSha256": "c92ec8f62b501ba9aff607d15cf3d3304ed7d79f15804b262d07fa5dc892d1bc",
       "sourceSize": {
         "width": 1254,
         "height": 1254,
@@ -2479,6 +2479,24 @@
           "references": [
             "/Users/lisili/sili-portfolio/assets/rebuilt/v1/references/seated-computer-before-v2.png"
           ]
+        },
+        {
+          "generatedFile": "assets/rebuilt/v1/sources/revisions/actor-sili-computer-1794978109548.png",
+          "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-97647c58-7441-4f32-91ba-be728305b68f.png",
+          "sourceSha256": "9d2480ad92d4a16267540983354bd06d5f8637829df11d23c8335c22e824a84b",
+          "prompt": "Fix ONLY the lower legs of the transparent character in image1. KEEP approved straight rear-view upper body, head, hair, shoulders, arms, hands, hoodie, seated hip position and canvas registration EXACTLY. The legs are now tucked horizontally correctly, but the SHOES ARE FAR TOO HIGH: it looks like he is kneeling/squatting on the chair. He must sit on a chair with FEET DOWN ON THE FLOOR. Keep the narrow foreshortened thighs, do NOT extend any thigh to the side. From the near knee beside the right hip let a SLIM STRAIGHT VERTICAL CALF descend substantially DOWN, with the small cream shoe near the BOTTOM of the canvas. The bottom of the near shoe must be approximately 160px BELOW the seated bottom on this1254canvas (seated bottom y1010, shoe bottom y1205). Near calf hangs down at x750..790, from y1000 to1170, sneaker at x780,y1185. No knee beside hoodie, no curled-up calf, no feet on the seat, no squat, no leg crossing. Natural seated rearview, feet below hips by about the length of his forearm. The room chair/desk will occlude legs; draw character only. Preserve all upper body and pelvis from image1 without change. Exact same square canvas; transparent exterior, no chair, desk, floor, cast shadow or background.\n",
+          "references": [
+            "/Users/lisili/sili-portfolio/assets/rebuilt/v1/sources/revisions/actor-sili-computer-1794971567600.png"
+          ]
+        },
+        {
+          "generatedFile": "assets/rebuilt/v1/sources/revisions/actor-sili-computer-1794978676982.png",
+          "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-5749a20e-930b-425b-a568-77bd12a15fd3.png",
+          "sourceSha256": "adac1b31566acc3a7042504a4948903623abcec1fce85d3184c0c27288aa61a3",
+          "prompt": "Edit ONLY the seated trouser/hip band just below the hoodie of image1. Upper body, approved straight rear-facing angle, head/hair/hands, purple hoodie and all their position/scale MUST stay identical. Preserve1254square canvas registration. The seated bottom currently appears underfilled, leaving a gap where it should meet the chair seat on the viewer's LEFT. Add a smoothly rounded tan-trouser seated rump/hip volume below the hoodie: extend the LEFT lower hip contour about25pixels LEFT and about50pixels DOWN, and round the underside toward the center. The lower trouser band should fill the area x425..710,y960..1070, with a rounded buttocks contour supporting the seated torso. Keep the waist attached under hoodie, not floating. Do NOT enlarge torso/head, do NOT make a wide sideways thigh or raised knee. Keep existing narrow calf/foot unchanged; their occlusion is handled by separate furniture in the application. Natural soft trouser folds, no extra limbs. Exactly same warm cartoon style/tan fabric, transparent background, no chair/desk/floor/shadow. Only fill out the seated hip silhouette, particularly its lower-left curve; preserve all else.\n",
+          "references": [
+            "/Users/lisili/sili-portfolio/assets/rebuilt/v1/sources/revisions/actor-sili-computer-1794978109548.png"
+          ]
         }
       ],
       "registeredCanvas": true
@@ -2496,14 +2514,14 @@
         576
       ],
       "references": [
-        "/Users/lisili/sili-portfolio/assets/rebuilt/v1/sources/revisions/actor-sili-writing-1794969509938.png"
+        "/Users/lisili/sili-portfolio/assets/rebuilt/v1/sources/revisions/actor-sili-writing-1794978055480.png"
       ],
       "transparent": true,
       "status": "generated",
-      "prompt": "Precise lower-body correction of image1 transparent seated WRITER. Previous edit put his shoe too high beside the chair seat. He must sit normally, NOT cross his leg or put a foot on the seat. Preserve ALL head/hair/face, hoodie/torso/arms/hands/pen and seated hip pixels and registration EXACTLY. On the existing1254x1254 square canvas pelvis stays near(600,1000). Extend the RIGHT thigh forward/right to knee around(1010,980), then calf descends toward(1040,1110), with small receding shoe centered(1080,1150), fully inside x1010..1160,y1100..1215. Move current foot substantially RIGHT AND DOWN, clearly BELOW seat/pelvis level. Normal nearly-horizontal thigh and90deg bent knee; lower leg down, no curled-up/crossed pose. In the room this right calf/shoe will be behind the actual near wooden desk support at screen x1530,y830, mostly occluded. Do NOT include furniture/occlusion in the sprite: draw the independent full receding leg. Far left leg stays almost fully tucked. Exact same canvas, upper-body scale/position, warm cartoon style, tan trousers, cream sneaker; true transparent exterior. No desk/chair/notebook/room/floor/shadow/halo. Do not move the hips or regenerate the upper body.\n",
+      "prompt": "Local edit ONLY trousers and legs of this transparent seated WRITING sprite. Preserve the exact 1254x1254 canvas registration, head, hair, face angle, hoodie, torso, sleeves, hands and pen of the reference. Upper body through hoodie hem y~940 stays unchanged. The current seated right THIGH is TOO LONG, calf TOO SHORT, and knee TOO HIGH/far to the right. Shorten visible thigh by about35%, move the knee LEFT toward the chair front and DOWN by about100pixels: pelvis near(600,975) stays seated; knee center should be around(820,1030), not(960,920). Thigh slopes gently down toward that knee, relaxed seated leg, NOT squat or raised knee. From the new knee a slender calf hangs VERTICALLY DOWN near x835 through y1160; small cream sneaker centered x855,y1200. Make lower leg visibly longer than current calf, about the same projected length as the short visible thigh. Legs point into the desk with perspective foreshortening, not sideways. Far leg mostly hidden behind pelvis/near leg. No giant shoe, no knee beside hoodie, no foot on chair seat. All pants/feet stay inside canvas. Draw complete transparent standalone character, no chair, desk, floor, shadow or background. Keep purple hoodie/tan trousers/cream shoe and soft warm cartoon style. DO NOT change the approved upper-body pose or its size/position.\n",
       "generatedFile": "assets/rebuilt/v1/sources/actor-sili-writing.png",
-      "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-76139169-422c-4314-a65e-09fcaa75573d.png",
-      "sourceSha256": "1c4544a191e3e41e484e4e20a940907bc470d9297bba3652fe76aaf0e7464a9a",
+      "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-3826c678-5888-4ed4-89d7-df90c4058f16.png",
+      "sourceSha256": "8acc7e96993e3022fd8a794e795665c3a652b18a0dc25ea4716c1955a15ec1ee",
       "sourceSize": {
         "width": 1254,
         "height": 1254,
@@ -2547,6 +2565,15 @@
           "prompt": "Use case: precise-object-edit. Image1 is the registered 576x576 transparent seated WRITING character, image2 actual room with the overexposed right leg. Edit ONLY image1 RIGHT thigh/calf/shoe to recede away from the camera under the desktop, so the real desk's near-right wooden support will cover 75-85% of that lower leg/shoe. Keep ALL head/hair/face/hoodie/torso/shoulders/arms/hands/pen pixels, pelvis anchor and square canvas registration exactly unchanged. Existing writing direction and pen grip retained. Current big right calf and full sneaker hang toward viewer; shift/foreshorten them forward/right into desk depth: knee roughly x450,y435, small receding cuff/shoe roughly x475..515,y445..490 on the 576 canvas. Thigh extends naturally forward from existing seated hip at about x270,y450; knee may be slightly farther/higher by perspective but NOT raised or crossed. Lower leg angles forward/right under desk, not down toward camera; shoe small and seen receding. Far left leg stays almost fully hidden as already fixed. Preserve natural anatomy and warm outlined cartoon clothes/identity. Do not move/scale upper body or hips or redraw the camera. Character ONLY, no furniture/desk/chair/notebook/room/floor/shadow. Full transparent 576-square registered canvas with alpha zero outside character. Room image is positioning context only, do not include room pixels or simulate furniture inside the sprite.\n",
           "references": [
             "/Users/lisili/sili-portfolio/assets/rebuilt/v1/references/seated-writing-before-v2.png"
+          ]
+        },
+        {
+          "generatedFile": "assets/rebuilt/v1/sources/revisions/actor-sili-writing-1794978055480.png",
+          "generationSource": "/Users/lisili/.codex/generated_images/01a1ec13-4c16-72e1-968c-728c5474d237/exec-76139169-422c-4314-a65e-09fcaa75573d.png",
+          "sourceSha256": "1c4544a191e3e41e484e4e20a940907bc470d9297bba3652fe76aaf0e7464a9a",
+          "prompt": "Precise lower-body correction of image1 transparent seated WRITER. Previous edit put his shoe too high beside the chair seat. He must sit normally, NOT cross his leg or put a foot on the seat. Preserve ALL head/hair/face, hoodie/torso/arms/hands/pen and seated hip pixels and registration EXACTLY. On the existing1254x1254 square canvas pelvis stays near(600,1000). Extend the RIGHT thigh forward/right to knee around(1010,980), then calf descends toward(1040,1110), with small receding shoe centered(1080,1150), fully inside x1010..1160,y1100..1215. Move current foot substantially RIGHT AND DOWN, clearly BELOW seat/pelvis level. Normal nearly-horizontal thigh and90deg bent knee; lower leg down, no curled-up/crossed pose. In the room this right calf/shoe will be behind the actual near wooden desk support at screen x1530,y830, mostly occluded. Do NOT include furniture/occlusion in the sprite: draw the independent full receding leg. Far left leg stays almost fully tucked. Exact same canvas, upper-body scale/position, warm cartoon style, tan trousers, cream sneaker; true transparent exterior. No desk/chair/notebook/room/floor/shadow/halo. Do not move the hips or regenerate the upper body.\n",
+          "references": [
+            "/Users/lisili/sili-portfolio/assets/rebuilt/v1/sources/revisions/actor-sili-writing-1794969509938.png"
           ]
         }
       ],

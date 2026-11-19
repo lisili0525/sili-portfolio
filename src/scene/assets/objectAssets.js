@@ -16,7 +16,7 @@ function replaceAsset(legacy) {
     if (!asset) throw Error(`Missing freshly generated asset: ${id}`);
     return asset;
   }).filter(asset=>!layout.hiddenAssets?.includes(asset.id));
-  if(legacy.id==='window--closed-pane')parts.push({...parts[0],id:'glass-closed-right-instance',bounds:{...parts[0].bounds,x:1154}});
+  if(legacy.id==='window--closed-pane')parts.push({...parts[0],id:'glass-closed-right-instance',bounds:{...parts[0].bounds,x:1154},transform:'translate(2506 0) scale(-1 1)'});
   return { ...legacy, ...(parts[0] || {}), id: legacy.id, key: legacy.key, parts, suppressed: !parts.length };
 }
 export const objectManifest = rebuiltArtwork ? { ...historicalManifest, version: 2,
